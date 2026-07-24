@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "NOI: creative",
+    "description": "TODO metadata description"
+  },
+  "hero": {
+    "eyebrow": "TODO eyebrow pending P01",
+    "headline": {
+      "primary": "Marcas con",
+      "accent": "estrategia"
+    },
+    "lede": "En NOI filtraremos y estructuramos cada paso creativo para transformar tus ideas en una identidad visual sólida.",
+    "primaryCta": "Agendar tu llamado",
+    "secondaryCta": "Ver portafolio"
+  },
+  "placeholder": {
+    "pending": "Esta página se implementa en el ciclo P01."
+  }
+}

@@ -1,0 +1,5 @@
+// Application entry for global styles. Loads the SCSS architecture from
+// `src/styles/` and forwards nothing — the public API of the styles layer
+// is the `:root` token set plus the base reset and typography rules.
+
+@use '../styles/index';

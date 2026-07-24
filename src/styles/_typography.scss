@@ -1,0 +1,72 @@
+// Base typography. Consumes the tokens defined in `_tokens.scss`.
+// No raw font families, sizes, weights or colours here.
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-background-page);
+  letter-spacing: var(--tracking-normal);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+}
+
+h4 {
+  font-size: var(--font-size-md);
+}
+
+// Eyebrow helper. Tracked, uppercase, smaller size. Optional utility class.
+.eyebrow {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-text-accent);
+}
+
+// Playfair italic helper. Used inside mixed-font phrases (DESIGN.md §4.2
+// and C03 audit §4.2). Inline use only; never apply to whole paragraphs.
+.font-serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+}
+
+// Reduced motion: respect the user agent. Non-essential movement is removed;
+// content and interaction are preserved.
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

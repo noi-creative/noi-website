@@ -1,0 +1,75 @@
+{
+  "metadata": {
+    "title": "Contacto — NOI: creative",
+    "description": "TODO metadata description"
+  },
+  "hero": {
+    "eyebrow": "El primer paso es simple",
+    "headline": {
+      "primary": "Hablemos de",
+      "accent": "tu marca"
+    },
+    "lede": "Agendemos una llamada de 30 minutos para hablar de tu proyecto. Cuéntanos dónde está tu negocio hoy y hacia dónde quieres ir. Solo una conversación de persona a persona para entender qué necesita tu marca y descubrir si somos el equipo ideal para ayudarte a llegar allí.",
+    "cta": "Agenda tu llamada gratuita"
+  },
+  "encontrarnos": {
+    "headline": {
+      "primary": "También puedes",
+      "accent": "encontrarnos aquí"
+    },
+    "lede": "Respondemos todos los mensajes en un máximo de 48 horas hábiles. Nos tomamos el tiempo de leer cada consulta antes de responder — porque tu proyecto lo merece.",
+    "channels": {
+      "email": {
+        "label": "Email",
+        "value": "hola@creativenoi.com"
+      },
+      "whatsapp": {
+        "label": "WhatsApp",
+        "value": "+1 (321) 337-4754"
+      },
+      "instagram": {
+        "label": "Instagram",
+        "value": "@noicrealive"
+      },
+      "location": {
+        "label": "Ubicación",
+        "value": "Orlando, Florida — Atendemos clientes en todo el mundo."
+      }
+    },
+    "formHeading": "¿Prefieres que te contactemos?"
+  },
+  "form": {
+    "fields": {
+      "email": "Correo electrónico",
+      "name": "Nombre",
+      "service": "Servicio a cotizar",
+      "investment": "Rango de inversión previsto",
+      "social": "Red social de la marca",
+      "socialPlaceholder": "@tuusuario",
+      "comments": "Comentarios adicionales",
+      "commentsPlaceholder": "Cuéntanos más sobre tu proyecto…"
+    },
+    "serviceOptions": ["Diseño web", "Ecommerce", "Naming", "Diseño gráfico"],
+    "investmentOptions": [
+      "Menos de USD 500",
+      "USD 500–1.000",
+      "USD 1.000–2.000",
+      "USD 2.000–5.000",
+      "Más de USD 5.000"
+    ],
+    "submit": "Enviar",
+    "privacy": "Acepto el tratamiento de mis datos conforme a la Política de Privacidad.",
+    "submitting": "Enviando…",
+    "success": "Gracias. Te contactaremos en menos de 48 horas hábiles.",
+    "error": "No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos directamente a hola@creativenoi.com."
+  },
+  "brand": {
+    "headline": {
+      "primary": "NOI existe para",
+      "accent": "acompañarte"
+    }
+  },
+  "placeholder": {
+    "pending": "Esta página se implementa en el ciclo P03."
+  }
+}

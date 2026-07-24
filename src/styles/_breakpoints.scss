@@ -1,0 +1,11 @@
+// Compile-time breakpoints. Never use these as runtime values; use them with
+// the `from()` or `until()` mixin in `_mixins.scss`, or in raw `@media` queries.
+// Sass variables are used because the values are only needed at compile time
+// (they are interpolated into media-query strings). CSS custom properties are
+// not appropriate here.
+
+$breakpoint-compact-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1280px;
+$breakpoint-reference: 1440px;

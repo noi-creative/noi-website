@@ -1,0 +1,19 @@
+.eyebrow {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  line-height: var(--line-height-subheading);
+}
+
+.accent {
+  color: var(--color-text-accent);
+}
+
+.ink {
+  color: var(--color-text-primary);
+}
+
+.cream {
+  color: var(--color-text-on-dark);
+}

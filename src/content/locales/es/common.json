@@ -1,0 +1,40 @@
+{
+  "brand": {
+    "shortTitle": "NOI: creative"
+  },
+  "navigation": {
+    "nosotras": "Nosotras",
+    "portafolio": "Portafolio",
+    "servicios": "Servicios",
+    "contacto": "Contacto"
+  },
+  "cta": {
+    "hablemos": "Hablemos",
+    "agendarLlamada": "Agenda tu llamada",
+    "agendarLlamadaGratuita": "Agenda tu llamada gratuita",
+    "agendarLlamadaOrientacion": "Agenda tu llamada de orientación",
+    "enviar": "Enviar",
+    "suscribir": "Suscribir",
+    "verPortafolio": "Ver portafolio",
+    "verTodosServicios": "Ver todos los servicios",
+    "explorarPortafolioCompleto": "Explorar el portafolio completo",
+    "escribenosDirectamente": "Escríbenos directamente"
+  },
+  "footer": {
+    "newsletterHeading": "Suscríbete a nuestro newsletter",
+    "newsletterPlaceholder": "Tu correo electrónico",
+    "subscribeLabel": "Suscribir",
+    "contactHeading": "Información de contacto",
+    "studioHeading": "Estudio",
+    "copyright": "© 2025 NOI Creative. Todos los derechos reservados.",
+    "privacyLink": "Privacidad",
+    "termsLink": "Términos y condiciones"
+  },
+  "legal": {
+    "pageTitle": "Política de Privacidad",
+    "lastUpdated": "Última actualización:"
+  },
+  "errors": {
+    "generic": "Algo salió mal. Por favor, inténtalo de nuevo."
+  }
+}
