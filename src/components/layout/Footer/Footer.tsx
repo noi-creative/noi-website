@@ -7,27 +7,29 @@ import { NewsletterForm } from '../NewsletterForm';
 import styles from './Footer.module.scss';
 
 /**
- * Site footer. Server Component. Renders the navy footer shared by every
- * public page, per the C03 audit:
- *   - white NOI Creative logo on the left
- *   - "Suscríbete a nuestro newsletter" form
- *   - "Información de contacto" (email + social icons: Instagram,
- *     LinkedIn, TikTok — WhatsApp is intentionally **not** in the footer
- *     per the audit)
- *   - "Estudio" link list
- *   - copyright + legal links
+ * Site footer. Server Component. Three-row layout that matches the
+ * approved Figma reference (verified visually in the C07 follow-up):
+ *
+ *   ┌────────────────────────────────────────────────────────────────┐
+ *   │  [ big NOI brand mark         ]   [ Newsletter (form)        ] │
+ *   ├────────────────────────────────────────────────────────────────┤
+ *   │  [ INFORMACIÓN DE CONTACTO     ]   [ ESTUDIO                  ] │
+ *   │  [ email + social icons        ]   [ 3 nav links              ] │
+ *   ├────────────────────────────────────────────────────────────────┤
+ *   │  [ © 2025 …    ]   [ Privacidad    ·    Términos y cond…  ]   │
+ *   └────────────────────────────────────────────────────────────────┘
  */
 export function Footer() {
   return (
     <footer className={styles.footer}>
       <Container>
-        <div className={styles.grid}>
+        <div className={styles.topRow}>
           <div className={styles.brand}>
             <Image
               src={assets.shared.logo.noiBlanco.src}
               alt={assets.shared.logo.noiBlanco.alt ?? 'NOI Creative'}
-              width={160}
-              height={48}
+              width={192}
+              height={96}
               className={styles.logo}
             />
           </div>
@@ -35,7 +37,9 @@ export function Footer() {
           <div className={styles.newsletter}>
             <NewsletterForm />
           </div>
+        </div>
 
+        <div className={styles.middleRow}>
           <div className={styles.contact}>
             <h2 className={styles.heading}>{common.footer.contactHeading}</h2>
             <a className={styles.email} href={`mailto:${site.contactEmail}`}>
