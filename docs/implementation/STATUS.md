@@ -4,7 +4,7 @@ Single source of truth for "where is the project right now".
 
 ## Current active cycle
 
-**None.** C03 (Figma audit and asset inventory) is complete. The next cycle to start is **C04 — SCSS architecture, tokens and fonts** (see [ROADMAP.md](./ROADMAP.md)).
+**None.** C04 (SCSS architecture, tokens and fonts) is complete. The next cycle to start is **C05 — Static architecture and content foundation** (see [ROADMAP.md](./ROADMAP.md)).
 
 When a cycle is in progress, replace this section with:
 
@@ -16,6 +16,9 @@ When a cycle is in progress, replace this section with:
 
 ## Recently completed cycles
 
+- **C04 — SCSS architecture, tokens and fonts** (Complete — design foundation, no pages implemented)
+  - Record: [./cycles/C04-scss-tokens-fonts.md](./cycles/C04-scss-tokens-fonts.md)
+  - Outcome: SCSS architecture under `src/styles/` (`_breakpoints.scss`, `_functions.scss`, `_mixins.scss`, `_reset.scss`, `_tokens.scss`, `_typography.scss`, `index.scss`), all using modern `@use`/`@forward`. CSS custom properties on `:root` for every token from `DESIGN.md` (primitive + semantic colors, font families, font weights, fluid type scale via `clamp()`, line-height, tracking, spacing, layout, radii, shadows, z-index, motion). `src/app/globals.scss` replaces the (already removed) `globals.css`. `src/app/fonts.ts` loads Satoshi via `next/font/local` (4 weights) and Playfair Display via `next/font/google` (3 weights × 2 styles, subset Latin). Panel Sans staged on disk but not loaded, per the C03 finding. `src/app/layout.tsx` attaches the font variables to `<html>`. `src/app/page.tsx` is enriched with a development-only fixture (mixed-font heading, brand-colour swatches, full type scale, mixed-font paragraph) that C05 will replace. Provisional `DESIGN.md` values (containers, gutters, spacing max, shadows) carry a `// TODO pending Figma MCP` comment. `sass` is a devDependency. `npm run verify` end-to-end OK; `/` and `/_not-found` static.
 - **C03 — Figma audit and asset inventory** (Complete — documentation-only)
   - Record: [./cycles/C03-figma-audit.md](./cycles/C03-figma-audit.md)
   - Outcome: `docs/design/FIGMA_AUDIT.md` (28 KB, 18 sections covering typography, colour, spacing, container, radii, shadows, buttons, form patterns, image treatment, SVGs and stickers, repeated patterns, cross-frame inconsistencies, provisional `DESIGN.md` values, missing assets). `docs/design/ASSET_INVENTORY.md` (16 KB, per-asset inventory of all 96 image files and 6 font files, manifest ↔ disk alignment, drift list, deferred actions). `public/assets/README.md` (asset naming and usage rules). Pre-existing asset tree preserved; no file under `public/` moved or renamed. `src/lib/assets.ts` not modified. Real gaps surfaced: `home.ctaCollage` (null, P01 will source) and `nosotras.teamPortraits[2]` (null, P02 will source). Panel Sans confirmed not used in any approved frame; C04 will register it only if a future cycle needs it.
@@ -50,11 +53,12 @@ When a cycle is in progress, replace this section with:
 
 ## Verification status
 
-| Cycle | typecheck  | lint                                  | format    | test             | build | static-routes                | notes                                                                  |
-| ----- | ---------- | ------------------------------------- | --------- | ---------------- | ----- | ---------------------------- | ---------------------------------------------------------------------- |
-| C00   | n/a        | n/a                                   | n/a       | n/a              | n/a   | n/a                          | Documentation-only cycle.                                              |
-| C01   | OK (build) | OK (0 errors, 1 pre-existing warning) | n/a (C02) | n/a (C11)        | OK    | `/` and `/_not-found` static | One-line fix in pre-existing `src/lib/assets.ts` to satisfy strict TS. |
-| C02   | OK         | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static | tsconfig excludes `tests/` until C11 installs vitest.                  |
-| C03   | OK (build) | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static | Documentation-only cycle. No source touched.                           |
+| Cycle | typecheck  | lint                                  | format    | test             | build | static-routes                | notes                                                                                                                         |
+| ----- | ---------- | ------------------------------------- | --------- | ---------------- | ----- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| C00   | n/a        | n/a                                   | n/a       | n/a              | n/a   | n/a                          | Documentation-only cycle.                                                                                                     |
+| C01   | OK (build) | OK (0 errors, 1 pre-existing warning) | n/a (C02) | n/a (C11)        | OK    | `/` and `/_not-found` static | One-line fix in pre-existing `src/lib/assets.ts` to satisfy strict TS.                                                        |
+| C02   | OK         | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static | tsconfig excludes `tests/` until C11 installs vitest.                                                                         |
+| C03   | OK (build) | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static | Documentation-only cycle. No source touched.                                                                                  |
+| C04   | OK         | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static | SCSS architecture + tokens + fonts (Satoshi + Playfair). Panel Sans not loaded. Fixture on `/` is dev-only, C05 will replace. |
 
 Verification rows will be filled as each cycle runs its own `Verification commands` block.

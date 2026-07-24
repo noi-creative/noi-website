@@ -1,0 +1,6 @@
+// Entry point. Cascade order matters: tokens must be declared before reset
+// and typography so the structural rules can read the custom properties.
+
+@use 'tokens';
+@use 'reset';
+@use 'typography';
