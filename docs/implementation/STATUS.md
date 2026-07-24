@@ -4,7 +4,7 @@ Single source of truth for "where is the project right now".
 
 ## Current active cycle
 
-**None.** C02 (Quality tooling and CI) is complete. The next cycle to start is **C03 — Figma audit and asset inventory** (see [ROADMAP.md](./ROADMAP.md)).
+**None.** C03 (Figma audit and asset inventory) is complete. The next cycle to start is **C04 — SCSS architecture, tokens and fonts** (see [ROADMAP.md](./ROADMAP.md)).
 
 When a cycle is in progress, replace this section with:
 
@@ -16,6 +16,9 @@ When a cycle is in progress, replace this section with:
 
 ## Recently completed cycles
 
+- **C03 — Figma audit and asset inventory** (Complete — documentation-only)
+  - Record: [./cycles/C03-figma-audit.md](./cycles/C03-figma-audit.md)
+  - Outcome: `docs/design/FIGMA_AUDIT.md` (28 KB, 18 sections covering typography, colour, spacing, container, radii, shadows, buttons, form patterns, image treatment, SVGs and stickers, repeated patterns, cross-frame inconsistencies, provisional `DESIGN.md` values, missing assets). `docs/design/ASSET_INVENTORY.md` (16 KB, per-asset inventory of all 96 image files and 6 font files, manifest ↔ disk alignment, drift list, deferred actions). `public/assets/README.md` (asset naming and usage rules). Pre-existing asset tree preserved; no file under `public/` moved or renamed. `src/lib/assets.ts` not modified. Real gaps surfaced: `home.ctaCollage` (null, P01 will source) and `nosotras.teamPortraits[2]` (null, P02 will source). Panel Sans confirmed not used in any approved frame; C04 will register it only if a future cycle needs it.
 - **C02 — Quality tooling and CI** (Complete — agent committed `8dcc344` with pure formatting only; remaining C02 files unstaged for the user to commit)
   - Record: [./cycles/C02-quality-tooling.md](./cycles/C02-quality-tooling.md)
   - Outcome: Prettier baseline, eslint-config-prettier extension, Husky pre-commit (lint-staged only, no build), GitHub Actions quality workflow, scripts `typecheck`/`format`/`format:check`/`verify` (and `test` placeholder), `tsconfig.json` now excludes `tests/` so `typecheck` passes until vitest lands in C11. `npm run verify` end-to-end OK. Pre-existing content preserved.
@@ -52,5 +55,6 @@ When a cycle is in progress, replace this section with:
 | C00   | n/a        | n/a                                   | n/a       | n/a              | n/a   | n/a                          | Documentation-only cycle.                                              |
 | C01   | OK (build) | OK (0 errors, 1 pre-existing warning) | n/a (C02) | n/a (C11)        | OK    | `/` and `/_not-found` static | One-line fix in pre-existing `src/lib/assets.ts` to satisfy strict TS. |
 | C02   | OK         | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static | tsconfig excludes `tests/` until C11 installs vitest.                  |
+| C03   | OK (build) | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static | Documentation-only cycle. No source touched.                           |
 
 Verification rows will be filled as each cycle runs its own `Verification commands` block.
