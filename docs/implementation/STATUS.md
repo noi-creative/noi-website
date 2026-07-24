@@ -4,7 +4,7 @@ Single source of truth for "where is the project right now".
 
 ## Current active cycle
 
-**None.** C04 (SCSS architecture, tokens and fonts) is complete. The next cycle to start is **C05 — Static architecture and content foundation** (see [ROADMAP.md](./ROADMAP.md)).
+**None.** C05 (Static architecture and content foundation) is complete. The next cycle to start is **C06 — UI primitives** (see [ROADMAP.md](./ROADMAP.md)).
 
 When a cycle is in progress, replace this section with:
 
@@ -16,6 +16,9 @@ When a cycle is in progress, replace this section with:
 
 ## Recently completed cycles
 
+- **C05 — Static architecture and content foundation** (Complete — every public route is static, placeholders only)
+  - Record: [./cycles/C05-static-architecture.md](./cycles/C05-static-architecture.md)
+  - Outcome: App Router reorganised under `src/app/(site)/` with the `dynamic = "error"` static-render guardrail in the layout. All 7 public routes from `PRD.md` §4 have placeholder pages; `/portafolio/[slug]` uses `generateStaticParams` to prerender 6 paths. Two API Route Handlers (`/api/contact`, `/api/newsletter`) live outside the group and return `501 Not Implemented` (C10 implements the real flow). Content split per ADR-003: `src/content/locales/es/*.json` for Spanish copy, `src/content/data/{projects,services,team}.ts` for structural records, `src/content/legal/{privacidad,terminos-y-condiciones}.md` for legal. `src/config/site.ts` centralises brand metadata, the route registry, and TODO markers for unverified social URLs. `react-markdown` renders the legal pages through a Server Component. The pre-existing `mds/privacy-policy.md` and `mds/terms-conditions.md` were moved verbatim to `src/content/legal/`. `mds/` removed. `npm run verify` end-to-end OK. Build output: 7 public routes static, 2 API routes dynamic. **The dev fixture from C04 was replaced with a minimal home page placeholder that reads its content from `home.json` + `common.json` and respects the static guardrail.**
 - **C04 — SCSS architecture, tokens and fonts** (Complete — design foundation, no pages implemented)
   - Record: [./cycles/C04-scss-tokens-fonts.md](./cycles/C04-scss-tokens-fonts.md)
   - Outcome: SCSS architecture under `src/styles/` (`_breakpoints.scss`, `_functions.scss`, `_mixins.scss`, `_reset.scss`, `_tokens.scss`, `_typography.scss`, `index.scss`), all using modern `@use`/`@forward`. CSS custom properties on `:root` for every token from `DESIGN.md` (primitive + semantic colors, font families, font weights, fluid type scale via `clamp()`, line-height, tracking, spacing, layout, radii, shadows, z-index, motion). `src/app/globals.scss` replaces the (already removed) `globals.css`. `src/app/fonts.ts` loads Satoshi via `next/font/local` (4 weights) and Playfair Display via `next/font/google` (3 weights × 2 styles, subset Latin). Panel Sans staged on disk but not loaded, per the C03 finding. `src/app/layout.tsx` attaches the font variables to `<html>`. `src/app/page.tsx` is enriched with a development-only fixture (mixed-font heading, brand-colour swatches, full type scale, mixed-font paragraph) that C05 will replace. Provisional `DESIGN.md` values (containers, gutters, spacing max, shadows) carry a `// TODO pending Figma MCP` comment. `sass` is a devDependency. `npm run verify` end-to-end OK; `/` and `/_not-found` static.
@@ -38,7 +41,8 @@ When a cycle is in progress, replace this section with:
 
 ## Open TODOs carried across cycles
 
-- Move legal content from `/mds/` to `/src/content/legal/` in C05.
+- **Cookie policy content is currently absent.** The pre-existing `mds/cookie-policy.md` was removed with the rest of `mds/` because the PRD defers the cookie banner. Q01 (Final SEO and content completion) will decide whether to recreate the policy and whether it needs a public route.
+- **Decide the URL slug for the Simbi Cakes project.** C05 uses `simbi` (the manifest key) as the slug, so the project lives at `/portafolio/simbi`. P05/P06 can rename the on-disk folder, expose a friendly URL mapping, or keep the current asymmetry.
 - Validate every `src` declared in `/src/lib/assets.ts` against the Figma inventory during C03 and update `alt` text from `null` to real copy.
 - Pin the Node version in C01 and mirror it in Vercel during C12.
 - Re-validate the assets manifest's `width`/`height` against the on-disk files (vitest test already in `tests/assets.test.ts`) once `npm install` is run.
@@ -53,12 +57,13 @@ When a cycle is in progress, replace this section with:
 
 ## Verification status
 
-| Cycle | typecheck  | lint                                  | format    | test             | build | static-routes                | notes                                                                                                                         |
-| ----- | ---------- | ------------------------------------- | --------- | ---------------- | ----- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| C00   | n/a        | n/a                                   | n/a       | n/a              | n/a   | n/a                          | Documentation-only cycle.                                                                                                     |
-| C01   | OK (build) | OK (0 errors, 1 pre-existing warning) | n/a (C02) | n/a (C11)        | OK    | `/` and `/_not-found` static | One-line fix in pre-existing `src/lib/assets.ts` to satisfy strict TS.                                                        |
-| C02   | OK         | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static | tsconfig excludes `tests/` until C11 installs vitest.                                                                         |
-| C03   | OK (build) | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static | Documentation-only cycle. No source touched.                                                                                  |
-| C04   | OK         | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static | SCSS architecture + tokens + fonts (Satoshi + Playfair). Panel Sans not loaded. Fixture on `/` is dev-only, C05 will replace. |
+| Cycle | typecheck  | lint                                  | format    | test             | build | static-routes                                                                             | notes                                                                                                                          |
+| ----- | ---------- | ------------------------------------- | --------- | ---------------- | ----- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| C00   | n/a        | n/a                                   | n/a       | n/a              | n/a   | n/a                                                                                       | Documentation-only cycle.                                                                                                      |
+| C01   | OK (build) | OK (0 errors, 1 pre-existing warning) | n/a (C02) | n/a (C11)        | OK    | `/` and `/_not-found` static                                                              | One-line fix in pre-existing `src/lib/assets.ts` to satisfy strict TS.                                                         |
+| C02   | OK         | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static                                                              | tsconfig excludes `tests/` until C11 installs vitest.                                                                          |
+| C03   | OK (build) | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static                                                              | Documentation-only cycle. No source touched.                                                                                   |
+| C04   | OK         | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static                                                              | SCSS architecture + tokens + fonts (Satoshi + Playfair). Panel Sans not loaded. Fixture on `/` is dev-only, C05 will replace.  |
+| C05   | OK         | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | All 7 public routes static + 6 SSG paths under `/portafolio/[slug]`; 2 API routes dynamic | Placeholders only. `dynamic = "error"` guardrail on `(site)/layout.tsx`. `mds/` removed. `react-markdown` renders legal pages. |
 
 Verification rows will be filled as each cycle runs its own `Verification commands` block.

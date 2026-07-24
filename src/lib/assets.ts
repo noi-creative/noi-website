@@ -165,13 +165,10 @@ export const assets = {
     },
     sectionDevolver: [
       {
-        src: '/images/pages/nosotras/section-devolver-1.jpg',
-        width: 658,
-        height: 840,
-        alt: tbd,
-      },
-      {
-        src: '/images/pages/nosotras/section-devolver-2.png',
+        // C05: the devolver section uses a single wider shot. The previous
+        // `section-devolver-1.jpg` was actually María Patricia's portrait
+        // and was moved into the team folder as `team-portrait-2.jpg`.
+        src: '/images/pages/nosotras/section-devolver.png',
         width: 894,
         height: 778,
         alt: tbd,
@@ -180,17 +177,24 @@ export const assets = {
     teamPortraits: [
       {
         src: '/images/pages/nosotras/team-portrait-1.jpg',
-        width: 657,
+        width: 658,
         height: 840,
         alt: 'Daniela — Founder & Brand Strategist',
       },
       {
+        // María Patricia. The file used to live at `section-devolver-1.jpg`;
+        // C05 moved it into the team folder as a self-documenting slot.
         src: '/images/pages/nosotras/team-portrait-2.jpg',
         width: 658,
         height: 840,
         alt: 'María Patricia — Creative Director',
       },
-      null as RasterAsset | null,
+      {
+        src: '/images/pages/nosotras/team-portrait-3.jpg',
+        width: 657,
+        height: 840,
+        alt: 'Carla — Brand & Project Coordinator',
+      },
     ],
   },
   contacto: {

@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "Nosotras — NOI: creative",
+    "description": "TODO metadata description"
+  },
+  "intro": {
+    "eyebrow": "Quiénes somos",
+    "headline": {
+      "primary": "Somos NOI. Y NOI",
+      "accent": "significa nosotros."
+    },
+    "lede": "Ese \"nosotros\" lo decimos en serio."
+  },
+  "devolver": {
+    "eyebrow": "Por qué existimos",
+    "headline": {
+      "primary": "Devolver lo humano",
+      "accent": "al proceso creativo"
+    }
+  },
+  "team": {
+    "eyebrow": "Las personas detrás de NOI",
+    "headline": {
+      "primary": "Un equipo de tres.",
+      "accent": "Un solo proceso."
+    }
+  },
+  "finalCta": {
+    "headline": {
+      "primary": "¿Trabajamos",
+      "accent": "juntos?"
+    },
+    "lede": "Si tu marca está creciendo, evolucionando, o necesitas darle un orden estratégico para despegar: este es el momento. Queremos conocerte.",
+    "cta": "Agenda tu llamada de orientación"
+  },
+  "placeholder": {
+    "pending": "Esta página se implementa en el ciclo P02."
+  }
+}
