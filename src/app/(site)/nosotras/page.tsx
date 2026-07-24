@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import nosotras from '@/content/locales/es/nosotras.json';
+import { buildPageMetadata } from '@/lib/metadata';
+import { site } from '@/config/site';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: nosotras.metadata.title,
   description: nosotras.metadata.description,
-};
+  path: site.routes.nosotras,
+});
 
 export default function NosotrasPage() {
   return (

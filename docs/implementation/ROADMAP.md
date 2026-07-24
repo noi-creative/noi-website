@@ -14,7 +14,7 @@ This roadmap is the live execution plan for the project. It mirrors the cycle se
 | C05 | Static architecture and content foundation | Complete | [C05-static-architecture.md](./cycles/C05-static-architecture.md) |
 | C06 | UI primitives                              | Complete | [C06-ui-primitives.md](./cycles/C06-ui-primitives.md)             |
 | C07 | Shared site shell (header, nav, footer)    | Complete | [C07-shared-site-shell.md](./cycles/C07-shared-site-shell.md)     |
-| C08 | SEO and metadata foundation                | Planned  | —                                                                 |
+| C08 | SEO and metadata foundation                | Complete | [C08-seo-metadata.md](./cycles/C08-seo-metadata.md)               |
 | C09 | Motion foundation                          | Planned  | —                                                                 |
 | C10 | Contact and newsletter backends            | Planned  | —                                                                 |
 | C11 | Focused testing foundation                 | Planned  | —                                                                 |

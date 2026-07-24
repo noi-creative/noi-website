@@ -1,9 +1,18 @@
+import type { Metadata } from 'next';
 import common from '@/content/locales/es/common.json';
 import home from '@/content/locales/es/home.json';
+import { buildPageMetadata } from '@/lib/metadata';
+import { site } from '@/config/site';
 import { Button } from '@/components/ui/Button';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Heading } from '@/components/ui/Heading';
 import { Section } from '@/components/ui/Section';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: home.metadata.title,
+  description: home.metadata.description,
+  path: site.routes.home,
+});
 
 /**
  * Home page placeholder. C07 now provides the shared header and footer

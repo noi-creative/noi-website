@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import contacto from '@/content/locales/es/contacto.json';
+import { buildPageMetadata } from '@/lib/metadata';
+import { site } from '@/config/site';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: contacto.metadata.title,
   description: contacto.metadata.description,
-};
+  path: site.routes.contacto,
+});
 
 export default function ContactoPage() {
   return (
