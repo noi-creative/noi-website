@@ -7,7 +7,7 @@ This roadmap is the live execution plan for the project. It mirrors the cycle se
 | ID    | Cycle                                       | Status      | Cycle record                                                |
 | ----- | ------------------------------------------- | ----------- | ----------------------------------------------------------- |
 | C00   | Governance and repository contract          | Complete    | [C00-governance.md](./cycles/C00-governance.md)             |
-| C01   | Next.js bootstrap                           | Planned     | —                                                           |
+| C01   | Next.js bootstrap                           | Complete    | [C01-bootstrap.md](./cycles/C01-bootstrap.md)               |
 | C02   | Quality tooling and CI                      | Planned     | —                                                           |
 | C03   | Figma audit and asset inventory             | Planned     | —                                                           |
 | C04   | SCSS architecture, tokens and fonts         | Planned     | —                                                           |

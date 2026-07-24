@@ -32,7 +32,7 @@ export type SvgAsset = {
   readonly alt: string | null;
 };
 
-const tbd = null as const;
+const tbd: null = null;
 
 export const assets = {
   shared: {
