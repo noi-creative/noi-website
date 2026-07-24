@@ -4,21 +4,21 @@ This roadmap is the live execution plan for the project. It mirrors the cycle se
 
 ## Foundation phase
 
-| ID  | Cycle                                      | Status   | Cycle record                                    |
-| --- | ------------------------------------------ | -------- | ----------------------------------------------- |
-| C00 | Governance and repository contract         | Complete | [C00-governance.md](./cycles/C00-governance.md) |
-| C01 | Next.js bootstrap                          | Complete | [C01-bootstrap.md](./cycles/C01-bootstrap.md)   |
-| C02 | Quality tooling and CI                     | Planned  | —                                               |
-| C03 | Figma audit and asset inventory            | Planned  | —                                               |
-| C04 | SCSS architecture, tokens and fonts        | Planned  | —                                               |
-| C05 | Static architecture and content foundation | Planned  | —                                               |
-| C06 | UI primitives                              | Planned  | —                                               |
-| C07 | Shared site shell (header, nav, footer)    | Planned  | —                                               |
-| C08 | SEO and metadata foundation                | Planned  | —                                               |
-| C09 | Motion foundation                          | Planned  | —                                               |
-| C10 | Contact and newsletter backends            | Planned  | —                                               |
-| C11 | Focused testing foundation                 | Planned  | —                                               |
-| C12 | Vercel baseline deployment                 | Planned  | —                                               |
+| ID  | Cycle                                      | Status   | Cycle record                                              |
+| --- | ------------------------------------------ | -------- | --------------------------------------------------------- |
+| C00 | Governance and repository contract         | Complete | [C00-governance.md](./cycles/C00-governance.md)           |
+| C01 | Next.js bootstrap                          | Complete | [C01-bootstrap.md](./cycles/C01-bootstrap.md)             |
+| C02 | Quality tooling and CI                     | Complete | [C02-quality-tooling.md](./cycles/C02-quality-tooling.md) |
+| C03 | Figma audit and asset inventory            | Planned  | —                                                         |
+| C04 | SCSS architecture, tokens and fonts        | Planned  | —                                                         |
+| C05 | Static architecture and content foundation | Planned  | —                                                         |
+| C06 | UI primitives                              | Planned  | —                                                         |
+| C07 | Shared site shell (header, nav, footer)    | Planned  | —                                                         |
+| C08 | SEO and metadata foundation                | Planned  | —                                                         |
+| C09 | Motion foundation                          | Planned  | —                                                         |
+| C10 | Contact and newsletter backends            | Planned  | —                                                         |
+| C11 | Focused testing foundation                 | Planned  | —                                                         |
+| C12 | Vercel baseline deployment                 | Planned  | —                                                         |
 
 ## Page implementation phase
 

@@ -4,7 +4,7 @@ Single source of truth for "where is the project right now".
 
 ## Current active cycle
 
-**None.** The foundation is bootstrapped. The next cycle to start is **C02 — Quality tooling and CI** (see [ROADMAP.md](./ROADMAP.md)).
+**None.** C02 (Quality tooling and CI) is complete. The next cycle to start is **C03 — Figma audit and asset inventory** (see [ROADMAP.md](./ROADMAP.md)).
 
 When a cycle is in progress, replace this section with:
 
@@ -16,6 +16,9 @@ When a cycle is in progress, replace this section with:
 
 ## Recently completed cycles
 
+- **C02 — Quality tooling and CI** (Complete — agent committed `8dcc344` with pure formatting only; remaining C02 files unstaged for the user to commit)
+  - Record: [./cycles/C02-quality-tooling.md](./cycles/C02-quality-tooling.md)
+  - Outcome: Prettier baseline, eslint-config-prettier extension, Husky pre-commit (lint-staged only, no build), GitHub Actions quality workflow, scripts `typecheck`/`format`/`format:check`/`verify` (and `test` placeholder), `tsconfig.json` now excludes `tests/` so `typecheck` passes until vitest lands in C11. `npm run verify` end-to-end OK. Pre-existing content preserved.
 - **C01 — Next.js bootstrap** (Complete — awaiting user commit)
   - Record: [./cycles/C01-bootstrap.md](./cycles/C01-bootstrap.md)
   - Outcome: Next.js 16.2.11, React 19.2.4, App Router, strict TS, ESLint v9. `npm run build` succeeds; `/` is statically prerendered. Demo content removed. Pre-existing `src/lib/`, `tests/`, `public/`, `mds/`, `references/`, `docs/`, canonical docs and `.env` preserved. One-line fix applied to pre-existing `src/lib/assets.ts` so strict TS passes the build.
@@ -44,9 +47,10 @@ When a cycle is in progress, replace this section with:
 
 ## Verification status
 
-| Cycle | typecheck  | lint                                  | format    | test      | build | static-routes                | notes                                                                  |
-| ----- | ---------- | ------------------------------------- | --------- | --------- | ----- | ---------------------------- | ---------------------------------------------------------------------- |
-| C00   | n/a        | n/a                                   | n/a       | n/a       | n/a   | n/a                          | Documentation-only cycle.                                              |
-| C01   | OK (build) | OK (0 errors, 1 pre-existing warning) | n/a (C02) | n/a (C11) | OK    | `/` and `/_not-found` static | One-line fix in pre-existing `src/lib/assets.ts` to satisfy strict TS. |
+| Cycle | typecheck  | lint                                  | format    | test             | build | static-routes                | notes                                                                  |
+| ----- | ---------- | ------------------------------------- | --------- | ---------------- | ----- | ---------------------------- | ---------------------------------------------------------------------- |
+| C00   | n/a        | n/a                                   | n/a       | n/a              | n/a   | n/a                          | Documentation-only cycle.                                              |
+| C01   | OK (build) | OK (0 errors, 1 pre-existing warning) | n/a (C02) | n/a (C11)        | OK    | `/` and `/_not-found` static | One-line fix in pre-existing `src/lib/assets.ts` to satisfy strict TS. |
+| C02   | OK         | OK (0 errors, 1 pre-existing warning) | OK        | OK (placeholder) | OK    | `/` and `/_not-found` static | tsconfig excludes `tests/` until C11 installs vitest.                  |
 
 Verification rows will be filled as each cycle runs its own `Verification commands` block.
