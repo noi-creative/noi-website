@@ -16,7 +16,7 @@ This roadmap is the live execution plan for the project. It mirrors the cycle se
 | C07   | Shared site shell (header, nav, footer)         | Complete | [C07-shared-site-shell.md](./cycles/C07-shared-site-shell.md)     |
 | C07.1 | Foundation visual corrections (footer + shadow) | Complete | [C07-followup.md](./cycles/C07-followup.md)                       |
 | C08   | SEO and metadata foundation                     | Complete | [C08-seo-metadata.md](./cycles/C08-seo-metadata.md)               |
-| C09   | Motion foundation                               | Planned  | —                                                                 |
+| C09   | Motion foundation                               | Complete | [C09-motion-foundation.md](./cycles/C09-motion-foundation.md)     |
 | C10   | Contact and newsletter backends                 | Planned  | —                                                                 |
 | C11   | Focused testing foundation                      | Planned  | —                                                                 |
 | C12   | Vercel baseline deployment                      | Planned  | —                                                                 |
