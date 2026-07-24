@@ -67,9 +67,11 @@ export const contactSchema = z.object({
     message: 'Debes aceptar la política de privacidad.',
   }),
   // Honeypot. The form renders this as a real input that is hidden from
-  // sighted users and from the tab order. If a bot fills it, the server
-  // returns 200 silently and discards the submission.
-  website: z.string().max(0, 'spam').optional().default(''),
+  // sighted users and from the tab order. The schema accepts any string
+  // so the route's POST handler can check the value AFTER validation
+  // and return 200 silently when it is filled (bots believe they
+  // succeeded; the email is never sent).
+  website: z.string().optional().default(''),
 });
 
 export type ContactInput = z.input<typeof contactSchema>;

@@ -34,32 +34,40 @@ function getClient() {
 export async function sendContactInternal(payload: ContactPayload): Promise<EmailResult> {
   const env = getEnv();
   const { subject, html, text } = buildContactInternalEmail(payload);
-  const { data, error } = await getClient().emails.send({
-    from: env.CONTACT_FROM_EMAIL,
-    to: env.CONTACT_RECIPIENT_EMAIL,
-    replyTo: payload.email,
-    subject,
-    html,
-    text,
-  });
-  if (error || !data) {
+  try {
+    const { data, error } = await getClient().emails.send({
+      from: env.CONTACT_FROM_EMAIL,
+      to: env.CONTACT_RECIPIENT_EMAIL,
+      replyTo: payload.email,
+      subject,
+      html,
+      text,
+    });
+    if (error || !data) {
+      return { ok: false, reason: 'provider_error' };
+    }
+    return { ok: true, id: data.id };
+  } catch {
     return { ok: false, reason: 'provider_error' };
   }
-  return { ok: true, id: data.id };
 }
 
 export async function sendContactConfirmation(payload: ContactPayload): Promise<EmailResult> {
   const env = getEnv();
   const { subject, html, text } = buildContactConfirmationEmail(payload);
-  const { data, error } = await getClient().emails.send({
-    from: env.CONTACT_FROM_EMAIL,
-    to: payload.email,
-    subject,
-    html,
-    text,
-  });
-  if (error || !data) {
+  try {
+    const { data, error } = await getClient().emails.send({
+      from: env.CONTACT_FROM_EMAIL,
+      to: payload.email,
+      subject,
+      html,
+      text,
+    });
+    if (error || !data) {
+      return { ok: false, reason: 'provider_error' };
+    }
+    return { ok: true, id: data.id };
+  } catch {
     return { ok: false, reason: 'provider_error' };
   }
-  return { ok: true, id: data.id };
 }

@@ -4,7 +4,7 @@ Single source of truth for "where is the project right now".
 
 ## Current active cycle
 
-**None.** C10 (Contact and newsletter backends) is complete. The next cycle to start is **C11 — Focused testing foundation** (see [ROADMAP.md](./ROADMAP.md)).
+**None.** C11 (Focused testing foundation) is complete. The next cycle to start is **C12 — Baseline deployment and operational checklist** (see [ROADMAP.md](./ROADMAP.md)).
 
 When a cycle is in progress, replace this section with:
 
@@ -34,20 +34,21 @@ When a cycle is in progress, replace this section with:
 
 Full per-cycle records live under `docs/implementation/cycles/`. Use this table to see the lineage at a glance; read the linked record for decisions and deviations.
 
-| Cycle                                              | Outcome                                                                                                          |
-| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| [C00](./cycles/C00-governance.md)                  | Governance + traceability structure (ROADMAP, STATUS, ADRs).                                                     |
-| [C01](./cycles/C01-bootstrap.md)                   | Next.js 16 + React 19 + strict TS + ESLint v9.                                                                   |
-| [C02](./cycles/C02-quality-tooling.md)             | Prettier + Husky + lint-staged + GitHub Actions quality workflow.                                                |
-| [C03](./cycles/C03-figma-audit.md)                 | Figma audit + asset inventory (96 images + 6 fonts catalogued; real gaps surfaced).                              |
-| [C04](./cycles/C04-scss-tokens-fonts.md)           | SCSS tokens + Satoshi + Playfair Display (Panel Sans staged but not loaded).                                     |
-| [C05](./cycles/C05-static-architecture.md)         | `(site)` route group + `dynamic = "error"` guardrail + legal Markdown + content split.                           |
-| [C06](./cycles/C06-ui-primitives.md)               | 11 UI primitives (Button 6 variants, Heading, Eyebrow, Container, Section, VisuallyHidden, 5 form primitives).   |
-| [C07](./cycles/C07-shared-site-shell.md)           | Header (pill, mobile dropdown) + Footer + NewsletterForm + SkipLink in `(site)/layout.tsx`.                      |
-| [C07.1](./cycles/C07-followup.md)                  | Foundation visual corrections (footer layout to match the Figma reference; header shadow more visible).          |
-| [C08](./cycles/C08-seo-metadata.md)                | Typed metadata helper + robots + sitemap + JSON-LD + OG/favicon placeholders + custom 404.                       |
-| [C09](./cycles/C09-motion-foundation.md)           | Motion installed; TS motion tokens + `useReducedMotion` hook + conventions document. No page animation yet.      |
-| [C10](./cycles/C10-contact-newsletter-backends.md) | Resend + Google Sheets backends; RHF + Zod in both client forms; env validation; honeypot; controlled responses. |
+| Cycle                                              | Outcome                                                                                                                 |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [C00](./cycles/C00-governance.md)                  | Governance + traceability structure (ROADMAP, STATUS, ADRs).                                                            |
+| [C01](./cycles/C01-bootstrap.md)                   | Next.js 16 + React 19 + strict TS + ESLint v9.                                                                          |
+| [C02](./cycles/C02-quality-tooling.md)             | Prettier + Husky + lint-staged + GitHub Actions quality workflow.                                                       |
+| [C03](./cycles/C03-figma-audit.md)                 | Figma audit + asset inventory (96 images + 6 fonts catalogued; real gaps surfaced).                                     |
+| [C04](./cycles/C04-scss-tokens-fonts.md)           | SCSS tokens + Satoshi + Playfair Display (Panel Sans staged but not loaded).                                            |
+| [C05](./cycles/C05-static-architecture.md)         | `(site)` route group + `dynamic = "error"` guardrail + legal Markdown + content split.                                  |
+| [C06](./cycles/C06-ui-primitives.md)               | 11 UI primitives (Button 6 variants, Heading, Eyebrow, Container, Section, VisuallyHidden, 5 form primitives).          |
+| [C07](./cycles/C07-shared-site-shell.md)           | Header (pill, mobile dropdown) + Footer + NewsletterForm + SkipLink in `(site)/layout.tsx`.                             |
+| [C07.1](./cycles/C07-followup.md)                  | Foundation visual corrections (footer layout to match the Figma reference; header shadow more visible).                 |
+| [C08](./cycles/C08-seo-metadata.md)                | Typed metadata helper + robots + sitemap + JSON-LD + OG/favicon placeholders + custom 404.                              |
+| [C09](./cycles/C09-motion-foundation.md)           | Motion installed; TS motion tokens + `useReducedMotion` hook + conventions document. No page animation yet.             |
+| [C10](./cycles/C10-contact-newsletter-backends.md) | Resend + Google Sheets backends; RHF + Zod in both client forms; env validation; honeypot; controlled responses.        |
+| [C11](./cycles/C11-focused-testing-foundation.md)  | Vitest installed; 8 new test files (93 tests) covering schemas, services, and the two API routes with mocked providers. |
 
 ## Pre-cycle work (between C01 and C02)
 
@@ -65,6 +66,7 @@ Full per-cycle records live under `docs/implementation/cycles/`. Use this table 
 - **Resend domain verification** for `formularios@creativenoi.com` (Q01/Q03; both senders need DNS records before production traffic).
 - **Google Sheets setup** — create the sheet, share with the service account email as Editor, ensure columns A:D match `email | createdAt | source | locale` (Q01/Q03).
 - **Add `forwardRef` to the C06 form primitives** so future forms can use `register()` without the `Controller` boilerplate (logged as a follow-up opportunity; not blocking C10).
+- **The contact schema's honeypot accepts any string** (the route's POST handler is responsible for the silent-200 path). The schema test for "honeypot rejects non-empty" was removed because the check is now in the route, not the schema. Verified by `tests/api/contact.test.ts`.
 
 ## Verification status (recent)
 
@@ -76,5 +78,6 @@ Full per-cycle records live under `docs/implementation/cycles/`. Use this table 
 | C08   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public + 4 C08 + 6 SSG + 2 API | Metadata helper + robots + sitemap + JSON-LD.                                                                                   |
 | C09   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public + 4 C08 + 6 SSG + 2 API | Motion 12.42.2 installed; `src/lib/motion/` + `MOTION.md` conventions. No page animation.                                       |
 | C10   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public + 4 C08 + 6 SSG + 2 API | RHF+Zod+Resend+googleapis; `/api/contact` & `/api/newsletter` real; ContactForm + NewsletterForm rewired; env validated lazily. |
+| C11   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (93 tests)    | OK    | 9 public + 4 C08 + 6 SSG + 2 API | Vitest 2.1.9; 9 test files, 93 tests; schemas + services + routes covered with mocked providers.                                |
 
 Earlier cycles (C00 → C05) all pass the same quality gates. See their per-cycle records for cycle-specific verification evidence.

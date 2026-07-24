@@ -18,7 +18,7 @@ This roadmap is the live execution plan for the project. It mirrors the cycle se
 | C08   | SEO and metadata foundation                     | Complete | [C08-seo-metadata.md](./cycles/C08-seo-metadata.md)                               |
 | C09   | Motion foundation                               | Complete | [C09-motion-foundation.md](./cycles/C09-motion-foundation.md)                     |
 | C10   | Contact and newsletter backends                 | Complete | [C10-contact-newsletter-backends.md](./cycles/C10-contact-newsletter-backends.md) |
-| C11   | Focused testing foundation                      | Planned  | —                                                                                 |
+| C11   | Focused testing foundation                      | Complete | [C11-focused-testing-foundation.md](./cycles/C11-focused-testing-foundation.md)   |
 | C12   | Vercel baseline deployment                      | Planned  | —                                                                                 |
 
 ## Page implementation phase
