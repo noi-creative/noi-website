@@ -1,105 +1,112 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { newsletterSchema, type NewsletterInput } from '@/lib/schemas/newsletter';
 import common from '@/content/locales/es/common.json';
 import { Button } from '@/components/ui/Button';
 import { TextField } from '@/components/ui/TextField';
+import { FormMessage } from '@/components/ui/FormMessage';
 import styles from './NewsletterForm.module.scss';
 
-type NewsletterStatus = 'idle' | 'submitting' | 'success' | 'not-implemented' | 'error';
-
-type NewsletterResponse = { ok: true } | { ok: false; error: string };
+type ServerResponse =
+  | {
+      status: 'ok';
+    }
+  | {
+      status: 'error';
+      code: 'validation_error' | 'rate_limited' | 'server_error';
+      message: string;
+      fieldErrors?: { email?: string };
+    };
 
 /**
- * Newsletter signup form. Posts to `/api/newsletter`. C10 will replace
- * the placeholder handler with the real Google Sheets integration; the
- * form's UX (success / not-implemented / error) does not need to change.
+ * Newsletter signup form. Posts to `/api/newsletter`. Uses React Hook
+ * Form + Zod (the shared schema in `src/lib/schemas/newsletter`) so the
+ * client validation matches the server-side validation.
  *
- * The form is fully self-contained: it owns its own state, the submit
- * transition and the inline feedback. The 501 placeholder response is
- * surfaced as a distinct `not-implemented` status so the user understands
- * the feature is wired but the backend is not yet connected.
+ * UX states:
+ *   - idle        — initial state
+ *   - submitting  — `formState.isSubmitting` is true; the submit button
+ *                   is disabled
+ *   - success     — the form resets and an inline `FormMessage` (success)
+ *                   appears below the input
+ *   - error       — a controlled server error message appears below the
+ *                   input. User input is preserved
+ *
+ * The form is fully self-contained: it owns its state, the submit
+ * transition and the inline feedback. The honeypot and Captcha do not
+ * apply (this is a single-field form).
  */
 export function NewsletterForm() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<NewsletterStatus>('idle');
-  const [message, setMessage] = useState<string | null>(null);
-  const [isPending, startTransition] = useTransition();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setError,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
+  } = useForm<NewsletterInput>({
+    resolver: zodResolver(newsletterSchema),
+    defaultValues: { email: '' },
+  });
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setStatus('submitting');
-    setMessage(null);
-    startTransition(async () => {
-      try {
-        const response = await fetch('/api/newsletter', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
-        });
-
-        if (response.status === 501) {
-          setStatus('not-implemented');
-          setMessage(
-            'El newsletter aún no está conectado. Vuelve pronto — lo activaremos en breve.',
-          );
-          return;
-        }
-
-        const data = (await response.json().catch(() => null)) as NewsletterResponse | null;
-
-        if (response.ok && data?.ok !== false) {
-          setStatus('success');
-          setMessage('Gracias. Te has suscrito al newsletter de NOI Creative.');
-          setEmail('');
-          return;
-        }
-
-        setStatus('error');
-        setMessage(data && 'error' in data ? data.error : common.errors.generic);
-      } catch {
-        setStatus('error');
-        setMessage(common.errors.generic);
-      }
+  const onSubmit = handleSubmit(async (values) => {
+    const response = await fetch('/api/newsletter', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values),
     });
-  };
+    const data = (await response.json().catch(() => null)) as ServerResponse | null;
+
+    if (response.ok && data?.status === 'ok') {
+      reset();
+      return;
+    }
+
+    if (data?.status === 'error' && data.code === 'validation_error' && data.fieldErrors?.email) {
+      setError('email', { type: 'server', message: data.fieldErrors.email });
+      return;
+    }
+
+    setError('root.serverError', {
+      type: 'server',
+      message: data && data.status === 'error' ? data.message : common.errors.generic,
+    });
+  });
+
+  const serverError = errors.root?.serverError?.message;
+  const success = isSubmitSuccessful && !serverError;
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate>
+    <form className={styles.form} onSubmit={onSubmit} noValidate>
       <label htmlFor="newsletter-email" className={styles.label}>
         {common.footer.newsletterHeading}
       </label>
       <div className={styles.row}>
         <TextField
           type="email"
-          name="email"
-          required
           autoComplete="email"
           placeholder={common.footer.newsletterPlaceholder}
-          value={email}
-          onChange={(event) => setEmail(event.currentTarget.value)}
-          ariaLabel="Correo electrónico"
-          aria-describedby="newsletter-status"
+          required
+          disabled={isSubmitting}
+          errorText={errors.email?.message}
           containerClassName={styles.input}
+          {...register('email')}
         />
-        <Button type="submit" variant="primary-orange" disabled={isPending}>
-          {isPending ? '…' : common.footer.subscribeLabel}
+        <Button type="submit" variant="primary-orange" disabled={isSubmitting}>
+          {isSubmitting ? '…' : common.footer.subscribeLabel}
         </Button>
       </div>
-      <p
-        id="newsletter-status"
-        className={[
-          styles.status,
-          status === 'success' ? styles.success : '',
-          status === 'error' ? styles.error : '',
-          status === 'not-implemented' ? styles.notImplemented : '',
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        role={status === 'error' ? 'alert' : 'status'}
-      >
-        {message ?? ' '}
-      </p>
+      {success ? (
+        <FormMessage id="newsletter-status" tone="success">
+          Gracias. Te has suscrito al newsletter de NOI Creative.
+        </FormMessage>
+      ) : null}
+      {serverError ? (
+        <FormMessage id="newsletter-status" tone="error">
+          {serverError}
+        </FormMessage>
+      ) : null}
     </form>
   );
 }

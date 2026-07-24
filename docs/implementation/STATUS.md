@@ -4,7 +4,7 @@ Single source of truth for "where is the project right now".
 
 ## Current active cycle
 
-**None.** C09 (Motion foundation) is complete. The next cycle to start is **C10 — Contact and newsletter backends** (see [ROADMAP.md](./ROADMAP.md)).
+**None.** C10 (Contact and newsletter backends) is complete. The next cycle to start is **C11 — Focused testing foundation** (see [ROADMAP.md](./ROADMAP.md)).
 
 When a cycle is in progress, replace this section with:
 
@@ -34,19 +34,20 @@ When a cycle is in progress, replace this section with:
 
 Full per-cycle records live under `docs/implementation/cycles/`. Use this table to see the lineage at a glance; read the linked record for decisions and deviations.
 
-| Cycle                                      | Outcome                                                                                                        |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| [C00](./cycles/C00-governance.md)          | Governance + traceability structure (ROADMAP, STATUS, ADRs).                                                   |
-| [C01](./cycles/C01-bootstrap.md)           | Next.js 16 + React 19 + strict TS + ESLint v9.                                                                 |
-| [C02](./cycles/C02-quality-tooling.md)     | Prettier + Husky + lint-staged + GitHub Actions quality workflow.                                              |
-| [C03](./cycles/C03-figma-audit.md)         | Figma audit + asset inventory (96 images + 6 fonts catalogued; real gaps surfaced).                            |
-| [C04](./cycles/C04-scss-tokens-fonts.md)   | SCSS tokens + Satoshi + Playfair Display (Panel Sans staged but not loaded).                                   |
-| [C05](./cycles/C05-static-architecture.md) | `(site)` route group + `dynamic = "error"` guardrail + legal Markdown + content split.                         |
-| [C06](./cycles/C06-ui-primitives.md)       | 11 UI primitives (Button 6 variants, Heading, Eyebrow, Container, Section, VisuallyHidden, 5 form primitives). |
-| [C07](./cycles/C07-shared-site-shell.md)   | Header (pill, mobile dropdown) + Footer + NewsletterForm + SkipLink in `(site)/layout.tsx`.                    |
-| [C07.1](./cycles/C07-followup.md)          | Foundation visual corrections (footer layout to match the Figma reference; header shadow more visible).        |
-| [C08](./cycles/C08-seo-metadata.md)        | Typed metadata helper + robots + sitemap + JSON-LD + OG/favicon placeholders + custom 404.                     |
-| [C09](./cycles/C09-motion-foundation.md)   | Motion installed; TS motion tokens + `useReducedMotion` hook + conventions document. No page animation yet.    |
+| Cycle                                              | Outcome                                                                                                          |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| [C00](./cycles/C00-governance.md)                  | Governance + traceability structure (ROADMAP, STATUS, ADRs).                                                     |
+| [C01](./cycles/C01-bootstrap.md)                   | Next.js 16 + React 19 + strict TS + ESLint v9.                                                                   |
+| [C02](./cycles/C02-quality-tooling.md)             | Prettier + Husky + lint-staged + GitHub Actions quality workflow.                                                |
+| [C03](./cycles/C03-figma-audit.md)                 | Figma audit + asset inventory (96 images + 6 fonts catalogued; real gaps surfaced).                              |
+| [C04](./cycles/C04-scss-tokens-fonts.md)           | SCSS tokens + Satoshi + Playfair Display (Panel Sans staged but not loaded).                                     |
+| [C05](./cycles/C05-static-architecture.md)         | `(site)` route group + `dynamic = "error"` guardrail + legal Markdown + content split.                           |
+| [C06](./cycles/C06-ui-primitives.md)               | 11 UI primitives (Button 6 variants, Heading, Eyebrow, Container, Section, VisuallyHidden, 5 form primitives).   |
+| [C07](./cycles/C07-shared-site-shell.md)           | Header (pill, mobile dropdown) + Footer + NewsletterForm + SkipLink in `(site)/layout.tsx`.                      |
+| [C07.1](./cycles/C07-followup.md)                  | Foundation visual corrections (footer layout to match the Figma reference; header shadow more visible).          |
+| [C08](./cycles/C08-seo-metadata.md)                | Typed metadata helper + robots + sitemap + JSON-LD + OG/favicon placeholders + custom 404.                       |
+| [C09](./cycles/C09-motion-foundation.md)           | Motion installed; TS motion tokens + `useReducedMotion` hook + conventions document. No page animation yet.      |
+| [C10](./cycles/C10-contact-newsletter-backends.md) | Resend + Google Sheets backends; RHF + Zod in both client forms; env validation; honeypot; controlled responses. |
 
 ## Pre-cycle work (between C01 and C02)
 
@@ -60,15 +61,20 @@ Full per-cycle records live under `docs/implementation/cycles/`. Use this table 
 - **Final social URLs** (Q01; currently TODO placeholders in `site.ts`).
 - **Replace OG image and favicon placeholders** with designer-supplied assets (Q01; C08 ships dynamic `ImageResponse` placeholders).
 - **Per-page metadata descriptions** are currently `TODO metadata description` everywhere (P01–P08 will replace as pages are built).
+- **Production rate limiting** is a stub today (`checkRateLimit` returns `{ allowed: true }`). The exact Vercel WAF rule (60 req/min/IP for the two API routes) is recorded in the C10 cycle record and will be configured in C12.
+- **Resend domain verification** for `formularios@creativenoi.com` (Q01/Q03; both senders need DNS records before production traffic).
+- **Google Sheets setup** — create the sheet, share with the service account email as Editor, ensure columns A:D match `email | createdAt | source | locale` (Q01/Q03).
+- **Add `forwardRef` to the C06 form primitives** so future forms can use `register()` without the `Controller` boilerplate (logged as a follow-up opportunity; not blocking C10).
 
 ## Verification status (recent)
 
-| Cycle | typecheck | lint                                  | format | test             | build | static-routes                    | notes                                                                                     |
-| ----- | --------- | ------------------------------------- | ------ | ---------------- | ----- | -------------------------------- | ----------------------------------------------------------------------------------------- |
-| C06   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public routes + 6 SSG + 2 API  | 11 UI primitives.                                                                         |
-| C07   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public routes + 6 SSG + 2 API  | Header (Client) + Footer + Newsletter + SkipLink.                                         |
-| C07.1 | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public routes + 6 SSG + 2 API  | Footer rebuilt as 2-row grid; shadow bumped.                                              |
-| C08   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public + 4 C08 + 6 SSG + 2 API | Metadata helper + robots + sitemap + JSON-LD.                                             |
-| C09   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public + 4 C08 + 6 SSG + 2 API | Motion 12.42.2 installed; `src/lib/motion/` + `MOTION.md` conventions. No page animation. |
+| Cycle | typecheck | lint                                  | format | test             | build | static-routes                    | notes                                                                                                                           |
+| ----- | --------- | ------------------------------------- | ------ | ---------------- | ----- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| C06   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public routes + 6 SSG + 2 API  | 11 UI primitives.                                                                                                               |
+| C07   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public routes + 6 SSG + 2 API  | Header (Client) + Footer + Newsletter + SkipLink.                                                                               |
+| C07.1 | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public routes + 6 SSG + 2 API  | Footer rebuilt as 2-row grid; shadow bumped.                                                                                    |
+| C08   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public + 4 C08 + 6 SSG + 2 API | Metadata helper + robots + sitemap + JSON-LD.                                                                                   |
+| C09   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public + 4 C08 + 6 SSG + 2 API | Motion 12.42.2 installed; `src/lib/motion/` + `MOTION.md` conventions. No page animation.                                       |
+| C10   | OK        | OK (0 errors, 1 pre-existing warning) | OK     | OK (placeholder) | OK    | 9 public + 4 C08 + 6 SSG + 2 API | RHF+Zod+Resend+googleapis; `/api/contact` & `/api/newsletter` real; ContactForm + NewsletterForm rewired; env validated lazily. |
 
 Earlier cycles (C00 → C05) all pass the same quality gates. See their per-cycle records for cycle-specific verification evidence.

@@ -24,26 +24,3 @@
 .input {
   flex: 1 1 12rem;
 }
-
-.status {
-  font-family: var(--font-sans);
-  font-size: var(--font-size-xs);
-  line-height: var(--line-height-body);
-  margin: 0;
-  color: var(--color-text-on-dark);
-  min-height: 1em;
-}
-
-.success {
-  color: var(--color-action-light);
-}
-
-.error {
-  color: var(--color-action-light);
-  font-weight: var(--font-weight-bold);
-}
-
-.notImplemented {
-  color: var(--color-text-on-dark);
-  opacity: 0.85;
-}
