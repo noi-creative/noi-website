@@ -13,7 +13,7 @@ This roadmap is the live execution plan for the project. It mirrors the cycle se
 | C04 | SCSS architecture, tokens and fonts        | Complete | [C04-scss-tokens-fonts.md](./cycles/C04-scss-tokens-fonts.md)     |
 | C05 | Static architecture and content foundation | Complete | [C05-static-architecture.md](./cycles/C05-static-architecture.md) |
 | C06 | UI primitives                              | Complete | [C06-ui-primitives.md](./cycles/C06-ui-primitives.md)             |
-| C07 | Shared site shell (header, nav, footer)    | Planned  | —                                                                 |
+| C07 | Shared site shell (header, nav, footer)    | Complete | [C07-shared-site-shell.md](./cycles/C07-shared-site-shell.md)     |
 | C08 | SEO and metadata foundation                | Planned  | —                                                                 |
 | C09 | Motion foundation                          | Planned  | —                                                                 |
 | C10 | Contact and newsletter backends            | Planned  | —                                                                 |

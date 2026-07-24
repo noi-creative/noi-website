@@ -1,0 +1,49 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 28rem;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-on-dark);
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.input {
+  flex: 1 1 12rem;
+}
+
+.status {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-body);
+  margin: 0;
+  color: var(--color-text-on-dark);
+  min-height: 1em;
+}
+
+.success {
+  color: var(--color-action-light);
+}
+
+.error {
+  color: var(--color-action-light);
+  font-weight: var(--font-weight-bold);
+}
+
+.notImplemented {
+  color: var(--color-text-on-dark);
+  opacity: 0.85;
+}

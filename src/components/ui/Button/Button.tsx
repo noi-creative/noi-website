@@ -66,17 +66,14 @@ export function Button(props: ButtonProps) {
   );
 
   if ('href' in props && props.href !== undefined) {
-    const {
-      href,
-      variant: _v,
-      size: _s,
-      withArrow: _w,
-      className: _c,
-      children: _ch,
-      ...rest
-    } = props;
+    const { variant: _v, size: _s, withArrow: _w, className: _c, children: _ch, ...rest } = props;
+    void _v;
+    void _s;
+    void _w;
+    void _c;
+    void _ch;
     return (
-      <a {...rest} href={href} className={classNames}>
+      <a {...rest} href={props.href} className={classNames}>
         {content}
       </a>
     );
@@ -90,6 +87,11 @@ export function Button(props: ButtonProps) {
     children: _ch,
     ...rest
   } = props as ButtonAsButton;
+  void _v;
+  void _s;
+  void _w;
+  void _c;
+  void _ch;
   return (
     <button {...rest} className={classNames}>
       {content}

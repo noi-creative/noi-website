@@ -6,7 +6,8 @@ export type TextFieldProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'id' | 'className' | 'children'
 > & {
-  readonly label: ReactNode;
+  readonly label?: ReactNode;
+  readonly ariaLabel?: string;
   readonly helpText?: ReactNode;
   readonly errorText?: ReactNode;
   readonly containerClassName?: string;
@@ -17,9 +18,14 @@ export type TextFieldProps = Omit<
  * optional error text. RHF-compatible: forwards every standard input
  * prop (name, defaultValue, onChange, value, etc.) so it can be wired
  * to React Hook Form in C10 without breaking changes.
+ *
+ * Pass either a `label` (visible text associated with the input via
+ * `htmlFor`/`id`) or an `ariaLabel` (an accessible name only — useful
+ * when a visible heading already labels the form, like the newsletter).
  */
 export function TextField({
   label,
+  ariaLabel,
   helpText,
   errorText,
   containerClassName,
@@ -41,14 +47,17 @@ export function TextField({
         .filter(Boolean)
         .join(' ')}
     >
-      <label htmlFor={inputId} className={styles.label}>
-        {label}
-        {required ? <span aria-hidden="true"> *</span> : null}
-      </label>
+      {label ? (
+        <label htmlFor={inputId} className={styles.label}>
+          {label}
+          {required ? <span aria-hidden="true"> *</span> : null}
+        </label>
+      ) : null}
       <input
         {...inputProps}
         id={inputId}
         required={required}
+        aria-label={ariaLabel}
         aria-invalid={errorText ? true : undefined}
         aria-describedby={describedBy || undefined}
         className={styles.input}
