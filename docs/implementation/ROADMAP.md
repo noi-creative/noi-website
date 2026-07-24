@@ -12,7 +12,7 @@ This roadmap is the live execution plan for the project. It mirrors the cycle se
 | C03 | Figma audit and asset inventory            | Complete | [C03-figma-audit.md](./cycles/C03-figma-audit.md)                 |
 | C04 | SCSS architecture, tokens and fonts        | Complete | [C04-scss-tokens-fonts.md](./cycles/C04-scss-tokens-fonts.md)     |
 | C05 | Static architecture and content foundation | Complete | [C05-static-architecture.md](./cycles/C05-static-architecture.md) |
-| C06 | UI primitives                              | Planned  | —                                                                 |
+| C06 | UI primitives                              | Complete | [C06-ui-primitives.md](./cycles/C06-ui-primitives.md)             |
 | C07 | Shared site shell (header, nav, footer)    | Planned  | —                                                                 |
 | C08 | SEO and metadata foundation                | Planned  | —                                                                 |
 | C09 | Motion foundation                          | Planned  | —                                                                 |

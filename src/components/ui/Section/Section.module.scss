@@ -1,0 +1,43 @@
+@use '../../../styles/mixins' as *;
+
+.section {
+  position: relative;
+  padding-block: var(--space-8);
+
+  @include from(768px) {
+    padding-block: var(--space-9);
+  }
+
+  @include from(1280px) {
+    padding-block: var(--space-10);
+  }
+}
+
+.inner {
+  @include container('wide');
+}
+
+.bg-cream {
+  background-color: var(--color-background-page);
+  color: var(--color-text-primary);
+}
+
+.bg-navy {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-on-dark);
+}
+
+.bg-yellow {
+  background-color: var(--color-background-warm);
+  color: var(--color-text-primary);
+}
+
+.bg-burgundy {
+  background-color: var(--color-background-strong);
+  color: var(--color-text-on-dark);
+}
+
+.bg-soft {
+  background-color: var(--color-background-soft);
+  color: var(--color-text-primary);
+}

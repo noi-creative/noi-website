@@ -1,0 +1,19 @@
+import type { ReactNode } from 'react';
+import styles from './Eyebrow.module.scss';
+
+type EyebrowProps = {
+  readonly children: ReactNode;
+  readonly tone?: 'accent' | 'ink' | 'cream';
+  readonly as?: 'p' | 'span' | 'div';
+};
+
+/**
+ * Small uppercase + tracked label used above section headings. The C03
+ * audit confirmed the pattern is used on every approved page. The `tone`
+ * prop selects the colour token; `accent` (burgundy) is the most common
+ * but the design uses `cream` on dark surfaces.
+ */
+export function Eyebrow({ children, tone = 'accent', as = 'p' }: EyebrowProps) {
+  const Tag = as;
+  return <Tag className={[styles.eyebrow, styles[tone]].filter(Boolean).join(' ')}>{children}</Tag>;
+}

@@ -1,0 +1,13 @@
+@use '../../../styles/mixins' as *;
+
+.container {
+  @include container('wide');
+}
+
+.content {
+  @include container('content');
+}
+
+.viewport {
+  @include container('viewport');
+}
