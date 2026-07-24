@@ -88,37 +88,10 @@ npm run verify
 
 ## Verification evidence
 
-- Command: `npm run typecheck` → OK.
-- Command: `npm run lint` → 0 errors, 1 pre-existing warning in `tests/assets.test.ts:127`.
-- Command: `npm run format:check` → OK.
-- Command: `npm run test` → OK (placeholder).
-- Command: `npm run build` → OK. Build output:
-  ```text
-  Route (app)
-  ┌ ○ /
-  ├ ○ /_not-found
-  ├ ƒ /api/contact
-  ├ ƒ /api/newsletter
-  ├ ○ /contacto
-  ├ ○ /icon
-  ├ ○ /nosotras
-  ├ ○ /opengraph-image
-  ├ ○ /portafolio
-  ├ ● /portafolio/[slug]
-  │ ├ /portafolio/content-lab
-  │ ├ /portafolio/jaze
-  │ ├ /portafolio/nayeenails
-  │ └ [+3 more paths]
-  ├ ○ /privacidad
-  ├ ○ /robots.txt
-  ├ ○ /servicios
-  ├ ○ /sitemap.xml
-  └ ○ /terminos-y-condiciones
-  ```
-  All 9 public routes are static. The 4 new C08 routes are static. The 6 project slugs are SSG. The 2 API routes are dynamic.
-- Command: `npm run verify` → end-to-end OK.
-- Visual verification at 1440px (full-page screenshot): the footer now shows the brand mark + newsletter on the top row, contact + studio on the middle row, copyright + legal on the bottom row, with a thin separator between rows. The header shadow is visibly more present.
-- Visual verification at 375px (mobile screenshot): the footer stacks to a single column in source order; the header collapses to logo + hamburger; no horizontal overflow.
+- `npm run verify` end-to-end OK.
+- `npm run build` → 9 public routes static + 6 SSG paths + 2 dynamic API routes + 4 C08 static routes.
+- Visual at 1440px: footer rebuilt as 2-row grid matching the Figma reference; header shadow visibly more present.
+- Visual at 375px: footer stacks to single column; header collapses to logo + hamburger; no horizontal overflow.
 
 ## Deviations and TODOs
 

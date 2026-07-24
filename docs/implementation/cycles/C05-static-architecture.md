@@ -160,41 +160,11 @@ npm run verify
 
 ## Verification evidence
 
-- Command: `ls 'src/app/(site)/'` → `contacto/`, `layout.tsx`, `nosotras/`, `page.tsx`, `portafolio/`, `privacidad/`, `servicios/`, `terminos-y-condiciones/`. The (site) group is in place.
-- Command: `ls src/app/api/` → `contact/`, `newsletter/`. Both Route Handlers exist.
-- Command: `ls -1 src/content/locales/es/` → `common.json`, `contacto.json`, `home.json`, `nosotras.json`, `portafolio.json`, `servicios.json`. All six JSON files present.
-- Command: `ls -1 src/content/data/` → `projects.ts`, `services.ts`, `team.ts`. All three data files present.
-- Command: `ls -1 src/content/legal/` → `privacidad.md`, `terminos-y-condiciones.md`. Both legal Markdown files present, copied verbatim from the pre-existing `mds/*.md` files.
-- Command: `ls -1 src/config/` → `site.ts`. Site config present.
-- Command: `test -d mds/` → false. `mds/` removed.
-- Command: `grep -E "react-markdown" package.json` → matches: `"react-markdown": "^9.0.1"`.
-- Command: `npm run typecheck` → OK.
-- Command: `npm run lint` → 0 errors, 1 pre-existing warning in `tests/assets.test.ts:127`.
-- Command: `npm run format:check` → OK.
-- Command: `npm run test` → OK (placeholder).
-- Command: `npm run build` → OK. Build output:
-  ```text
-  Route (app)
-  ┌ ○ /
-  ├ ○ /_not-found
-  ├ ƒ /api/contact
-  ├ ƒ /api/newsletter
-  ├ ○ /contacto
-  ├ ○ /nosotras
-  ├ ○ /portafolio
-  ├ ● /portafolio/[slug]
-  │ ├ /portafolio/content-lab
-  │ ├ /portafolio/jaze
-  │ ├ /portafolio/nayeenails
-  │ └ [+3 more paths]
-  ├ ○ /privacidad
-  ├ ○ /servicios
-  └ ○ /terminos-y-condiciones
-  ```
-  All 9 public routes are static. The two API routes are correctly dynamic. The 6 `generateStaticParams` paths render as SSG.
-- Command: `npm run verify` → end-to-end OK.
-- Visual viewport checked: not applicable (placeholders only).
-- Build route output: every public route is static.
+- `npm run build` → 9 public routes static + 6 SSG paths under `/portafolio/[slug]` + 2 dynamic API routes.
+- `dynamic = "error"` guardrail on `(site)/layout.tsx` confirmed by build.
+- `react-markdown` renders the legal pages (server-side).
+- `mds/` removed; legal files moved to `src/content/legal/` verbatim.
+- All 6 content JSON files + 3 data TS files + `site.ts` config in place.
 
 ## Deviations and TODOs
 

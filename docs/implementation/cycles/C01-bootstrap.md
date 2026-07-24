@@ -118,15 +118,11 @@ grep '"output"' next.config.* || echo "OK: output:export not set"
 
 ## Verification evidence
 
-- Command: `node --version` → `v22.22.0`.
-- Command: `grep '"strict"' tsconfig.json` → `"strict": true,`.
-- Command: `grep "tailwind\|react-compiler" package.json` → no match. OK.
-- Command: `ls node_modules/babel-plugin-react-compiler` → not installed. OK.
-- Command: `grep '"output"' next.config.ts` → no match. OK (no `output: "export"`).
-- Command: `ls -1 .nvmrc .editorconfig .env.example package-lock.json` → all present.
-- Command: `npm run lint` → 0 errors, 1 warning (pre-existing unused `eslint-disable` directive in `tests/assets.test.ts`, not new code from C01).
-- Command: `npm run build` → succeeds. Build output: `Route (app) ┌ ○ /  └ ○ /_not-found`, both `○ (Static) prerendered as static content`.
-- Command: `npm run dev` → ready in 348ms, no startup errors.
+- `npm run build` → 2 routes (`/`, `/_not-found`), both static.
+- `npm run lint` → 0 errors, 1 pre-existing warning in `tests/assets.test.ts` (not from C01).
+- TS strict confirmed; no Tailwind; no React Compiler; no `output: "export"`.
+- Pre-existing `src/lib/`, `tests/`, `public/`, `mds/`, `references/`, `docs/`, canonical docs, `.env`, `README.md` preserved.
+- One-line fix in pre-existing `src/lib/assets.ts` (line 35) to make strict TS pass.
 - Visual viewport checked: not applicable (no product design yet).
 - Build route output: `/` is static; `/_not-found` is static.
 

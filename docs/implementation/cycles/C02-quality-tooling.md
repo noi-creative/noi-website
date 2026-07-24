@@ -104,21 +104,10 @@ grep -E "output" next.config.* || echo "OK: no output:export"
 
 ## Verification evidence
 
-- Command: `npm install --save-dev prettier eslint-config-prettier husky lint-staged` → 35 packages added, no vulnerabilities introduced.
-- Command: `npx husky init` → `.husky/pre-commit` created; `package.json` gained `"prepare": "husky"`.
-- Command: `npm run typecheck` → OK (no output, no errors) after the `tsconfig.json` exclude-list change described below.
-- Command: `npm run lint` → 0 errors, 1 pre-existing warning in `tests/assets.test.ts:127` (unused `eslint-disable-next-line no-console`). C11 will install vitest and the warning becomes irrelevant in practice.
-- Command: `npm run format:check` (before `prettier --write`) → reported 10 files needing formatting.
-- Command: `npm run format` → applied formatting baseline to the 10 files. All other 18 inspected files were already conformant.
-- Command: `npm run format:check` (after `format`) → OK.
-- Command: `npm run test` → OK (placeholder exit 0).
-- Command: `npm run build` → OK. Build output: `Route (app) ┌ ○ /  └ ○ /_not-found`, both `○ (Static) prerendered as static content`.
-- Command: `npm run verify` → end-to-end OK (runs typecheck → lint → format:check → test → build in that order).
-- Command: `cat .husky/pre-commit` → `npx lint-staged`. No build invocation.
-- Command: `grep -E "prettier|husky|lint-staged" package.json` → all present as devDependencies, `lint-staged` config block present, `prepare: "husky"` present.
-- Command: `grep '"output"' next.config.ts` → no match. OK (no `output: "export"`).
-- Visual viewport checked: not applicable (no product design yet).
-- Build route output: `/` static; `/_not-found` static. Same as C01.
+- `npm run verify` end-to-end OK.
+- Prettier baseline applied: 10 files reformatted; 18 already conformant.
+- `tsconfig.json` excludes `tests/` so `typecheck` passes until C11 installs vitest.
+- `tsconfig.json` exclude-list change is the smallest possible fix; C11 will undo it.
 
 ## Deviations and TODOs
 

@@ -138,34 +138,8 @@ npm run verify
 
 ## Verification evidence
 
-- Command: `ls -1 src/components/layout/` → `Footer`, `Header`, `NewsletterForm`, `SkipLink`. All four components exist.
-- Command: `npm run typecheck` → OK.
-- Command: `npm run lint` → 0 errors, 1 pre-existing warning in `tests/assets.test.ts:127`.
-- Command: `npm run format:check` → OK.
-- Command: `npm run test` → OK (placeholder).
-- Command: `npm run build` → OK. Build output:
-  ```text
-  Route (app)
-  ┌ ○ /
-  ├ ○ /_not-found
-  ├ ƒ /api/contact
-  ├ ƒ /api/newsletter
-  ├ ○ /contacto
-  ├ ○ /nosotras
-  ├ ○ /portafolio
-  ├ ● /portafolio/[slug]
-  │ ├ /portafolio/content-lab
-  │ ├ /portafolio/jaze
-  │ ├ /portafolio/nayeenails
-  │ └ [+3 more paths]
-  ├ ○ /privacidad
-  ├ ○ /servicios
-  └ ○ /terminos-y-condiciones
-  ```
-  All 9 public routes are static. The Header is a Client Component but the route segment stays static (no dynamic APIs).
-- Command: `npm run verify` → end-to-end OK.
-- Visual viewport checked: not applicable (placeholder content only).
-- Build route output: every public route is static.
+- `npm run build` → 9 public routes static. Header is a Client Component but the route segment stays static (no dynamic APIs). All 4 layout components present.
+- `TextField` now accepts an `ariaLabel` prop as an alternative to a visible `label` (used by the newsletter).
 
 ## Deviations and TODOs
 

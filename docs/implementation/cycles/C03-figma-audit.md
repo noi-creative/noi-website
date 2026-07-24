@@ -112,11 +112,9 @@ find public/images -type f | wc -l   # baseline count, recorded for later
 
 ## Verification evidence
 
-- Command: `ls -1 docs/design/` → `ASSET_INVENTORY.md`, `FIGMA_AUDIT.md`. Both present.
-- Command: `ls -1 public/assets/` → `README.md`. Present.
-- Command: `test -f src/lib/assets.ts && echo "OK: manifest untouched"` → OK.
-- Command: `git status --short` → only three untracked entries: `docs/design/`, `docs/implementation/cycles/C03-figma-audit.md`, `public/assets/`. No modifications to existing files.
-- Command: `find public/images -type f | wc -l` → 96. Baseline recorded.
+- Documentation-only. 96 image files + 6 font files catalogued.
+- 5 placeholder Open TODOs recorded (Panel Sans license, social URLs, OG image, favicon, per-page metadata).
+- `src/lib/assets.ts` untouched. No file moved under `public/images/`.
 - Command: `find public/fonts -type f | wc -l` → 6. Baseline recorded.
 - Visual viewport checked: not applicable (documentation-only cycle).
 - Build route output: not applicable.

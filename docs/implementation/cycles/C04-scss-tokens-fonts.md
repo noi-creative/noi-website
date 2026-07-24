@@ -142,21 +142,9 @@ grep -E "tailwind" package.json || echo "OK: no tailwind"
 
 ## Verification evidence
 
-- Command: `node --version` → `v22.22.0`.
-- Command: `grep -E '"sass"' package.json` → matches: `"sass": "^1.97.1"`.
-- Command: `ls -1 src/styles/` → `_breakpoints.scss`, `_functions.scss`, `_mixins.scss`, `_reset.scss`, `_tokens.scss`, `_typography.scss`, `index.scss` (7 partials + 1 entry).
-- Command: `ls -1 src/app/fonts.ts src/app/globals.scss` → both present.
-- Command: `test -f src/app/globals.css` → false. OK (the file was already removed in C01; the cycle record's expectation holds).
-- Command: `npm run typecheck` → OK (no output, no errors).
-- Command: `npm run lint` → 0 errors, 1 pre-existing warning in `tests/assets.test.ts:127`.
-- Command: `npm run format:check` → OK (after the post-creation `prettier --write` pass).
-- Command: `npm run test` → OK (placeholder).
-- Command: `npm run build` → OK. Build output: `Route (app) ┌ ○ /  └ ○ /_not-found`, both `○ (Static) prerendered as static content`.
-- Command: `npm run verify` → end-to-end OK.
-- Command: `grep -E "tailwind" package.json` → no match. OK.
-- Command: `grep -rE "@import" src/styles/ src/app/globals.scss` → no match. OK (modern `@use`/`@forward` only).
-- Visual inspection of the built CSS (`/tmp/noi-website-backup-…css`) confirms: every token from `DESIGN.md` is emitted on `:root`; `next/font` generated `@font-face` rules for the four Satoshi weights (`Satoshi_Regular-s.p.*.otf`, …, `Satoshi_Black-s.p.*.otf`) and for the six Playfair Display variants (3 weights × 2 styles, subsetted to Latin); the semantic aliases `--font-sans` and `--font-serif` resolve through `--font-satoshi` and `--font-playfair`; `--font-display-accent` falls back to `--font-sans` because Panel Sans is not loaded.
-- Visual viewport checked: not applicable (no product design yet; the placeholder uses the tokens at small/large sizes and the fluid type scale responds to the viewport).
+- `npm run verify` end-to-end OK. `/` and `/_not-found` static.
+- Built CSS inspection: every `DESIGN.md` token emitted on `:root`; `next/font` generated `@font-face` for all 4 Satoshi weights and 6 Playfair variants (3 weights × 2 styles, Latin subset); semantic aliases `--font-sans` / `--font-serif` / `--font-display-accent` resolve correctly with fallbacks; Panel Sans not loaded per C03 finding.
+- Provisional `DESIGN.md` values (containers, gutters, spacing max, shadows) carry a `// TODO pending Figma MCP` comment.
 - Build route output: `/` and `/_not-found` static.
 
 ## Deviations and TODOs

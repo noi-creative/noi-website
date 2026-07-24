@@ -154,38 +154,10 @@ npm run verify
 
 ## Verification evidence
 
-- Command: `ls -1 src/lib/metadata/` → `build-page-metadata.ts`, `index.ts`. Both present.
-- Command: `ls -1 src/app/robots.ts src/app/sitemap.ts src/app/opengraph-image.tsx src/app/icon.tsx` → all present.
-- Command: `test -f src/app/(site)/not-found.tsx` → true. OK.
-- Command: `npm run typecheck` → OK.
-- Command: `npm run lint` → 0 errors, 1 pre-existing warning in `tests/assets.test.ts:127`.
-- Command: `npm run format:check` → OK.
-- Command: `npm run test` → OK (placeholder).
-- Command: `npm run build` → OK. Build output:
-  ```text
-  Route (app)
-  ┌ ○ /
-  ├ ○ /_not-found
-  ├ ƒ /api/contact
-  ├ ƒ /api/newsletter
-  ├ ○ /contacto
-  ├ ○ /icon
-  ├ ○ /nosotras
-  ├ ○ /opengraph-image
-  ├ ○ /portafolio
-  ├ ● /portafolio/[slug]
-  │ ├ /portafolio/content-lab
-  │ ├ /portafolio/jaze
-  │ ├ /portafolio/nayeenails
-  │ └ [+3 more paths]
-  ├ ○ /privacidad
-  ├ ○ /robots.txt
-  ├ ○ /servicios
-  ├ ○ /sitemap.xml
-  └ ○ /terminos-y-condiciones
-  ```
-  All 9 public routes are static. The 4 new C08 routes (`/icon`, `/opengraph-image`, `/robots.txt`, `/sitemap.xml`) are also static. The 6 project slugs are SSG. The 2 API routes are correctly dynamic.
-- Command: `npm run verify` → end-to-end OK.
+- `npm run build` → 9 public routes static + 4 new C08 routes (`/icon`, `/opengraph-image`, `/robots.txt`, `/sitemap.xml`) all static + 6 project slugs SSG + 2 dynamic API routes.
+- `Organization` JSON-LD with confirmed fields only (TODO social URLs filtered out).
+- `not-found.tsx` uses the shared header/footer and is `noIndex`.
+- No SEO library installed.
 
 ## Deviations and TODOs
 
