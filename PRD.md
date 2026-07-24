@@ -149,7 +149,7 @@ The website must use the normal Next.js deployment model on Vercel.
 Do not configure:
 
 ```ts
-output: "export"
+output: 'export';
 ```
 
 Public pages remain statically prerendered, while isolated Route Handlers may process form submissions.
@@ -300,9 +300,9 @@ Example:
 ```ts
 export const projects = [
   {
-    id: "jaze",
-    slug: "jaze",
-    coverImage: "/images/projects/jaze/cover.webp",
+    id: 'jaze',
+    slug: 'jaze',
+    coverImage: '/images/projects/jaze/cover.webp',
     featured: true,
   },
 ] as const;

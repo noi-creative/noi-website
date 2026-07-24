@@ -44,9 +44,9 @@ When a cycle is in progress, replace this section with:
 
 ## Verification status
 
-| Cycle | typecheck | lint | format | test | build | static-routes | notes |
-| ----- | --------- | ---- | ------ | ---- | ----- | ------------- | ----- |
-| C00   | n/a       | n/a  | n/a    | n/a  | n/a   | n/a           | Documentation-only cycle. |
-| C01   | OK (build) | OK (0 errors, 1 pre-existing warning) | n/a (C02) | n/a (C11) | OK | `/` and `/_not-found` static | One-line fix in pre-existing `src/lib/assets.ts` to satisfy strict TS. |
+| Cycle | typecheck  | lint                                  | format    | test      | build | static-routes                | notes                                                                  |
+| ----- | ---------- | ------------------------------------- | --------- | --------- | ----- | ---------------------------- | ---------------------------------------------------------------------- |
+| C00   | n/a        | n/a                                   | n/a       | n/a       | n/a   | n/a                          | Documentation-only cycle.                                              |
+| C01   | OK (build) | OK (0 errors, 1 pre-existing warning) | n/a (C02) | n/a (C11) | OK    | `/` and `/_not-found` static | One-line fix in pre-existing `src/lib/assets.ts` to satisfy strict TS. |
 
 Verification rows will be filled as each cycle runs its own `Verification commands` block.
