@@ -22,14 +22,16 @@ export function ServicesPreview() {
 
       <Container className={styles.servicesContainer}>
         <div className={styles.header}>
-          <Eyebrow tone="accent"><b>{home.services.eyebrow}</b></Eyebrow>
+          <Eyebrow tone="accent">
+            <b>{home.services.eyebrow}</b>
+          </Eyebrow>
           <Heading
             as="h2"
             id="home-services-heading"
             primary={home.services.headline.primary}
             accent={home.services.headline.accent}
             weight="bold"
-            align='center'
+            align="center"
           />
         </div>
 
