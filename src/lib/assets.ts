@@ -75,6 +75,14 @@ export const assets = {
     figuras: {
       figura1: { src: '/images/shared/figuras/figura-1.svg', alt: tbd },
       figura2: { src: '/images/shared/figuras/figura-2.svg', alt: tbd },
+      semiCirculoAzul: {
+        src: '/images/shared/figuras/semi-circulo-azul.svg',
+        alt: tbd,
+      },
+      semiCirculoNaranja: {
+        src: '/images/shared/figuras/semi-circulo-naranja.svg',
+        alt: tbd,
+      },
     },
     stickers: {
       blobCeleste: {
@@ -129,49 +137,133 @@ export const assets = {
         src: '/images/shared/stickers/sticker-telefono-amarillo.svg',
         alt: tbd,
       },
+      calendar: {
+        src: '/images/shared/stickers/sticker-calendar.svg',
+        alt: tbd,
+      },
+      textBubble: {
+        src: '/images/shared/stickers/sticker-text-bubble.svg',
+        alt: tbd,
+      },
     },
   },
   home: {
     heroCollage: [
-      { src: '/images/pages/home/hero-collage-1.png', width: 348, height: 422, alt: tbd },
-      { src: '/images/pages/home/hero-collage-2.png', width: 646, height: 766, alt: tbd },
-      { src: '/images/pages/home/hero-collage-3.png', width: 573, height: 652, alt: tbd },
+      {
+        src: '/images/pages/home/hero-collage-1.png',
+        width: 348,
+        height: 422,
+        alt: 'Persona trabajando en su laptop',
+      },
+      {
+        src: '/images/pages/home/hero-collage-2.png',
+        width: 646,
+        height: 766,
+        alt: 'Persona trabajando con material de marca',
+      },
+      {
+        src: '/images/pages/home/hero-collage-3.png',
+        width: 573,
+        height: 652,
+        alt: 'Persona revisando su teléfono y un cuaderno',
+      },
     ],
     headerWheel: [
-      { src: '/images/pages/home/header-wheel-1.png', width: 348, height: 282, alt: tbd },
-      { src: '/images/pages/home/header-wheel-2.png', width: 348, height: 282, alt: tbd },
-      { src: '/images/pages/home/header-wheel-3.png', width: 348, height: 282, alt: tbd },
-      { src: '/images/pages/home/header-wheel-4.png', width: 348, height: 278, alt: tbd },
-      { src: '/images/pages/home/header-wheel-5.png', width: 347, height: 282, alt: tbd },
-      { src: '/images/pages/home/header-wheel-6.png', width: 347, height: 282, alt: tbd },
-      { src: '/images/pages/home/header-wheel-7.png', width: 347, height: 282, alt: tbd },
-      { src: '/images/pages/home/header-wheel-8.png', width: 348, height: 278, alt: tbd },
-      { src: '/images/pages/home/header-wheel-9.png', width: 348, height: 278, alt: tbd },
+      {
+        src: '/images/pages/home/header-wheel-1.png',
+        width: 348,
+        height: 282,
+        alt: 'Muestra de proyecto 1',
+      },
+      {
+        src: '/images/pages/home/header-wheel-2.png',
+        width: 348,
+        height: 282,
+        alt: 'Muestra de proyecto 2',
+      },
+      {
+        src: '/images/pages/home/header-wheel-3.png',
+        width: 348,
+        height: 282,
+        alt: 'Muestra de proyecto 3',
+      },
+      {
+        src: '/images/pages/home/header-wheel-4.png',
+        width: 348,
+        height: 278,
+        alt: 'Muestra de proyecto 4',
+      },
+      {
+        src: '/images/pages/home/header-wheel-5.png',
+        width: 347,
+        height: 282,
+        alt: 'Muestra de proyecto 5',
+      },
+      {
+        src: '/images/pages/home/header-wheel-6.png',
+        width: 347,
+        height: 282,
+        alt: 'Muestra de proyecto 6',
+      },
+      {
+        src: '/images/pages/home/header-wheel-7.png',
+        width: 347,
+        height: 282,
+        alt: 'Muestra de proyecto 7',
+      },
+      {
+        src: '/images/pages/home/header-wheel-8.png',
+        width: 348,
+        height: 278,
+        alt: 'Muestra de proyecto 8',
+      },
+      {
+        src: '/images/pages/home/header-wheel-9.png',
+        width: 348,
+        height: 278,
+        alt: 'Muestra de proyecto 9',
+      },
     ],
     sectionBrandingPortrait: {
       src: '/images/pages/home/section-branding-portrait.png',
       width: 850,
       height: 1018,
-      alt: tbd,
+      alt: 'Mujer leyendo un libro con concentración',
     },
-    ctaCollage: null as readonly RasterAsset[] | null,
+    ctaCollage: [
+      {
+        src: '/images/pages/home/hero-collage-1.png',
+        width: 348,
+        height: 422,
+        alt: 'Persona trabajando en su laptop',
+      },
+      {
+        src: '/images/pages/home/hero-collage-2.png',
+        width: 646,
+        height: 766,
+        alt: 'Persona trabajando con material de marca',
+      },
+      {
+        src: '/images/pages/home/hero-collage-3.png',
+        width: 573,
+        height: 652,
+        alt: 'Persona revisando su teléfono y un cuaderno',
+      },
+    ],
   },
   nosotras: {
     teamIllustration: {
-      src: '/images/pages/nosotras/team-illustration.png',
-      width: 982,
-      height: 1052,
-      alt: tbd,
+      src: '/images/pages/nosotras/section-devolver.png',
+      width: 894,
+      height: 778,
+      alt: 'Ilustración lineal de tres mujeres del equipo de NOI',
     },
     sectionDevolver: [
       {
-        // C05: the devolver section uses a single wider shot. The previous
-        // `section-devolver-1.jpg` was actually María Patricia's portrait
-        // and was moved into the team folder as `team-portrait-2.jpg`.
-        src: '/images/pages/nosotras/section-devolver.png',
-        width: 894,
-        height: 778,
-        alt: tbd,
+        src: '/images/pages/nosotras/team-illustration.png',
+        width: 982,
+        height: 1052,
+        alt: 'Las tres integrantes de NOI trabajando juntas en una mesa',
       },
     ],
     teamPortraits: [
@@ -199,8 +291,18 @@ export const assets = {
   },
   contacto: {
     hero: [
-      { src: '/images/pages/contacto/contact-hero-1.jpg', width: 552, height: 653, alt: tbd },
-      { src: '/images/pages/contacto/contact-hero-2.jpg', width: 489, height: 556, alt: tbd },
+      {
+        src: '/images/pages/contacto/contact-hero-1.jpg',
+        width: 552,
+        height: 653,
+        alt: 'Integrante de NOI hablando por teléfono con un cliente',
+      },
+      {
+        src: '/images/pages/contacto/contact-hero-2.jpg',
+        width: 489,
+        height: 556,
+        alt: 'Integrante de NOI revisando un proyecto en su laptop',
+      },
     ],
   },
   proyectos: {
@@ -354,7 +456,7 @@ export const assets = {
         },
       ],
     },
-    simbi: {
+    'simbi-cakes': {
       large: {
         src: '/images/proyectos/simbi-cakes/simbi-cakes-large.jpg',
         width: 1184,

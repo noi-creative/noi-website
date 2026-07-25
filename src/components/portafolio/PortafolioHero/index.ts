@@ -1,0 +1,1 @@
+export { PortafolioHero } from './PortafolioHero';

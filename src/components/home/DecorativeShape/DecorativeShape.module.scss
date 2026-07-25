@@ -1,0 +1,36 @@
+@use '../../../styles/mixins' as *;
+
+.shape {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  color: var(--color-brand-orange);
+  z-index: 0;
+}
+
+.fill {
+  fill: currentColor;
+}
+
+.placement-hero {
+  inset-block-start: 30%;
+  inset-inline-start: -30%;
+  opacity: 0.95;
+  position: absolute;
+
+  @include from(768px) {
+    inset-block-start: 50%;
+    inset-inline-start: -27.5%;
+    width: 60%;
+  }
+}
+
+.placement-branding {
+  inset-block-start: 4%;
+  inset-inline-end: -4%;
+  width: clamp(160px, 16vw, 240px);
+  height: auto;
+  transform: rotate(8deg) scaleX(-1);
+  opacity: 0.92;
+  z-index: var(--z-decoration);
+}

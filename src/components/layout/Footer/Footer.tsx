@@ -92,8 +92,11 @@ export function Footer() {
                 <a href={site.routes.portafolio}>{common.navigation.portafolio}</a>
               </li>
               <li>
-                <a href={site.routes.servicios}>{common.navigation.servicios}</a>
+                <a href={'/contacto'}>Contacto</a>
               </li>
+              {/*<li>
+                <a href={site.routes.servicios}>{common.navigation.servicios}</a>
+              </li>*/}
             </ul>
           </nav>
         </div>

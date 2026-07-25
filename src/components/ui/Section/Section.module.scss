@@ -2,14 +2,14 @@
 
 .section {
   position: relative;
-  padding-block: var(--space-8);
+  padding-block: var(--space-6);
 
   @include from(768px) {
-    padding-block: var(--space-9);
+    padding-block: var(--space-7);
   }
 
   @include from(1280px) {
-    padding-block: var(--space-10);
+    padding-block: var(--space-8);
   }
 }
 

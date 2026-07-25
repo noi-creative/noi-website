@@ -1,0 +1,236 @@
+@use '../../../styles/mixins' as *;
+
+.testimonialsSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonialsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  align-items: center;
+  padding-block: var(--space-10);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  max-width: 40rem;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  width: 100%;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand-orange);
+    outline-offset: var(--space-3);
+    border-radius: var(--radius-md);
+  }
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  height: 30rem;
+
+  @include from(768px) {
+    height: 30rem;
+  }
+}
+
+.card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  max-width: 23rem;
+  width: calc(100% - 2 * var(--space-4));
+  height: 100%;
+  text-align: start;
+  inset-block-start: 0;
+  will-change: transform, opacity;
+
+  @include from(768px) {
+    width: 23rem;
+    padding: var(--space-7);
+  }
+}
+
+.card-navy {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-on-dark);
+}
+
+.card-burgundy {
+  background-color: var(--color-background-strong);
+  color: var(--color-text-on-dark);
+}
+
+.card-orange {
+  background-color: var(--color-brand-orange);
+  color: var(--color-text-on-dark);
+}
+
+.card-yellow {
+  background-color: var(--color-brand-yellow);
+  color: var(--color-background-dark);
+
+  .attribution {
+    color: var(--color-background-dark);
+  }
+}
+
+.cardFront {
+  z-index: var(--z-content);
+  box-shadow: var(--shadow-card);
+}
+
+.cardBack {
+  z-index: var(--z-base);
+  pointer-events: none;
+}
+
+.quoteMark {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  line-height: 0.8;
+  color: currentColor;
+  opacity: 0.35;
+  user-select: none;
+}
+
+.mark {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-subheading);
+  color: currentColor;
+  margin: 0;
+  margin-block-start: calc(var(--space-2) * -1);
+}
+
+.quote {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+  margin: 0;
+
+  p {
+    margin: 0;
+  }
+}
+
+.attribution {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-block-start: auto;
+  padding-block-start: var(--space-3);
+  border-block-start: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+}
+
+.author {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+}
+
+.role {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  opacity: 0.85;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  z-index: var(--z-content);
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-background-dark);
+  color: var(--color-text-on-dark);
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-duration-base) var(--motion-ease-out),
+    transform var(--motion-duration-fast) var(--motion-ease-out);
+
+  &:hover {
+    background-color: var(--color-background-strong);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand-orange);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+
+.arrowGlyphLeft {
+  transform: scaleX(-1);
+}
+
+.arrowGlyphRight {
+  transform: none;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-text-accent);
+  opacity: 0.4;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    opacity var(--motion-duration-base) var(--motion-ease-out),
+    transform var(--motion-duration-fast) var(--motion-ease-out);
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand-orange);
+    outline-offset: 2px;
+  }
+}
+
+.dotActive {
+  opacity: 1;
+  transform: scale(1.3);
+}

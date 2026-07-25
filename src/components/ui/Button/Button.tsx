@@ -5,6 +5,7 @@ export type ButtonVariant =
   | 'primary-yellow'
   | 'primary-burgundy'
   | 'primary-orange'
+  | 'primary-ink'
   | 'outline-on-dark'
   | 'outline-on-light'
   | 'text-link';
@@ -38,6 +39,7 @@ export type ButtonProps = ButtonAsButton | ButtonAsLink;
  *   - `primary-yellow`     — pill, yellow background, ink text
  *   - `primary-burgundy`   — pill, burgundy background, cream text
  *   - `primary-orange`     — pill, orange background, cream text
+ *   - `primary-ink`        — pill, ink background, cream text
  *   - `outline-on-dark`    — pill, transparent bg, cream border + text
  *   - `outline-on-light`   — pill, transparent bg, ink border + text
  *   - `text-link`          — inline text link, no background, underline

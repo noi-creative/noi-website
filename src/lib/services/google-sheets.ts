@@ -27,7 +27,7 @@
  */
 
 import { google } from 'googleapis';
-import { getEnv } from '@/lib/env';
+import { getNewsletterEnv } from '@/lib/env';
 
 const RANGE = 'Sheet1!A:D';
 
@@ -40,7 +40,7 @@ export type NewsletterRow = {
 };
 
 export async function appendNewsletterRow(row: NewsletterRow): Promise<SheetResult> {
-  const env = getEnv();
+  const env = getNewsletterEnv();
   const auth = new google.auth.JWT({
     email: env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
     // The private key arrives from the env with literal "\n" sequences.

@@ -1,0 +1,76 @@
+import type { CSSProperties } from 'react';
+import styles from './Scallop.module.scss';
+
+export type ScallopTone = 'navy' | 'yellow' | 'burgundy' | 'cream';
+
+type ScallopProps = {
+  readonly tone: ScallopTone;
+  readonly className?: string;
+};
+
+const TONE_FILL: Record<ScallopTone, string> = {
+  navy: '#00385C',
+  yellow: '#FFEDAE',
+  burgundy: '#810C18',
+  cream: '#FFF9F4',
+};
+
+const TONE_COLOR: Record<ScallopTone, string> = {
+  navy: 'var(--color-background-dark)',
+  yellow: 'var(--color-background-warm)',
+  burgundy: 'var(--color-background-strong)',
+  cream: 'var(--color-background-page)',
+};
+
+/** Cubic-bezier k for a 90° circular arc approximation. */
+const K = 0.5522847498;
+
+/**
+ * Generates the SVG path `d` attribute for upward-facing scallops.
+ *
+ * Each scallop is a perfect semicircle formed by two 90° cubic-bezier
+ * arcs. The path rises from the bottom edge to `depth` at the apex
+ * of each arch. After the last scallop the path closes along the top
+ * edge so the fill paints the area above the arches (the section
+ * above "dripping" down into the section below).
+ */
+function scallopPath(width: number, depth: number, count: number): string {
+  const r = width / 2;
+  const cp = r * K;
+  const cx = r - cp;
+  const totalWidth = count * width;
+  const sb: string[] = [`M0 0`, `L 0 ${depth}`];
+
+  for (let i = 0; i < count; i++) {
+    const x0 = i * width;
+    const xm = x0 + r;
+    const x1 = x0 + width;
+    sb.push(
+      `C ${x0} ${depth - cp}, ${x0 + cx} 0, ${xm} 0`,
+      `C ${xm + cx} 0, ${x1} ${depth - cp}, ${x1} ${depth}`,
+    );
+  }
+
+  sb.push(`L ${totalWidth} 0`, `Z`);
+  return sb.join('\n           ');
+}
+
+const VIEWBOX_WIDTH = 1440;
+const SCALLOP_WIDTH = 180;
+const SCALLOP_DEPTH = 90;
+const SCALLOP_COUNT = Math.round(VIEWBOX_WIDTH / SCALLOP_WIDTH);
+
+export function Scallop({ tone, className }: ScallopProps) {
+  return (
+    <svg
+      className={[styles.scallop, className].filter(Boolean).join(' ')}
+      viewBox={`0 0 ${VIEWBOX_WIDTH} ${SCALLOP_DEPTH}`}
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false"
+      style={{ color: TONE_COLOR[tone] } as CSSProperties}
+    >
+      <path fill={TONE_FILL[tone]} d={scallopPath(SCALLOP_WIDTH, SCALLOP_DEPTH, SCALLOP_COUNT)} />
+    </svg>
+  );
+}

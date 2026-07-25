@@ -1,6 +1,6 @@
 .eyebrow {
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: var(--tracking-eyebrow);
   line-height: var(--line-height-subheading);
@@ -16,4 +16,8 @@
 
 .cream {
   color: var(--color-text-on-dark);
+}
+
+.orange {
+  color: var(--color-brand-orange);
 }

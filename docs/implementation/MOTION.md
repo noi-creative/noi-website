@@ -209,11 +209,18 @@ From `AGENTS.md` §13 and §25.
 
 From `AGENTS.md` §13 and `IMPLEMENTATION_WORKFLOW.md` §A01–A04.
 
-**There is no shared `<Reveal>`, `<FadeUp>`, `<Parallax>` or any other reusable animation component yet.** Every section's choreography is specified per section in cycle A01 (Home), A02 (Nosotras), A03 (Contacto) and reviewed in A04 (Shared motion review).
+**Two shared primitives now exist** in `src/lib/motion/`:
 
-A reusable preset will be created only when the same pattern appears in at least two sections and the shared extraction makes the code easier to read. Until then, each section owns its own `"use client"` wrapper with its own choreography — and each choreography is approved per section.
+- `<RevealStagger>` — children-wrapper that reveals each child on viewport entry with a per-index delay. Used by the A02 + A03 text-column staggers and the per-item tile staggers.
+- `<RevealItem>` — single-element motion wrapper that takes an `index` and applies the same delay formula. Used by `<RevealStagger>` internally and by the A02 + A03 per-`<li>` staggers (which need an explicit `index` to preserve `<ol>`/`<ul>` semantics).
 
-The "fade-up" snippet in §4.1 is a worked example for the docs. It is **not** a component to import.
+Full documentation in §11. The worked "fade-up" snippet in §9 is still a reference, not a component; the two shared primitives are the source of truth for the entrance animation pattern.
+
+**Other patterns remain bespoke, per section.** The per-element motion with `className` + `rotation` (used by the ContactHero collage photos and sticker) and the single-element fade-up or scale-in used for hero illustrations, decorative icons, and form cards are too varied across call sites to consolidate cleanly. AGENTS.md §26 explicitly warns against "deeply configurable components with many unrelated variants"; the per-section wrapper file is the right home for the per-section tuning.
+
+A future section that needs a pattern that is **not** one of the two shared primitives (or a close variant) should follow the same approach as A02 + A03: own a small `"use client"` wrapper in its section folder, with the choreography approved per section. If the new pattern appears 2+ more times in later sections, the next shared-motion review (or the next A04-style cycle) considers extracting it.
+
+The "fade-up" snippet in §9 is still a worked example for the docs. It is **not** a component to import — use `<RevealItem>` or `<RevealStagger>` instead.
 
 ---
 
@@ -259,8 +266,89 @@ To make the boundary explicit:
 
 - **No global `<MotionConfig>` provider** in `(site)/layout.tsx`. Pages and the layout stay Server Components.
 - **No animation in any existing component.** Header, Footer, NewsletterForm, SkipLink, every UI primitive — unchanged.
-- **No `<FadeUp>`, `<Reveal>`, `<SectionMotion>` component** in `src/components/`. The pattern is in this document, not the source.
+- **No `<FadeUp>`, `<Reveal>`, `<SectionMotion>` component** in `src/components/`. The pattern is in this document, not the source. (As of A04, this is the historical record; the two shared primitives now live in `src/lib/motion/`. See §8 and §11.)
 - **No automated tests** for the motion modules. C11 installs Vitest; until then the verification surface is `npm run typecheck`.
 - **No README rewrite, no inline JSDoc explosion** on every component. This document is the conventions home.
 
 When A01–A04 starts, the first cycle will add the first real animation usage and, with it, the first section that may need a section-level `<MotionConfig>`. The decision will be made there, not pre-empted here.
+
+---
+
+## 11. Shared motion primitives (added in A04)
+
+A04 reviewed the 15 motion wrappers introduced by A02 (Nosotras) and A03 (Contacto) and extracted the two patterns that appeared 2+ times with stable visual rules. The per-section wrapper files stay (co-location with the section is preserved), but each wrapper now shrinks to a thin shim that configures one of the two shared primitives with its per-section props.
+
+### 11.1 `<RevealStagger>`
+
+Children-wrapper that reveals each child on viewport entry with a per-index delay. The delay formula is `baseDelay + index * stepDelay`.
+
+```tsx
+import { RevealStagger } from '@/lib/motion';
+
+<RevealStagger>
+  <Eyebrow>...</Eyebrow>
+  <h2>...</h2>
+  <p>...</p>
+</RevealStagger>;
+```
+
+**Props (all optional):**
+
+| Prop        | Default         | Purpose                                                                                                             |
+| ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `y`         | `16`            | Initial vertical translate in pixels. `0` when reduced motion is on.                                                |
+| `stepDelay` | `0.08`          | Per-item delay step in seconds. The 80 ms per-step budget from §6.                                                  |
+| `baseDelay` | `0`             | Initial delay before the first item.                                                                                |
+| `amount`    | `0.25`          | Viewport `amount` threshold for `whileInView` (0–1). Element is considered "in view" when this fraction intersects. |
+| `duration`  | `DURATION.base` | Animation duration in seconds.                                                                                      |
+
+**Used by (A02 + A03):** `IntroHeroBodyMotion`, `DevolverTextColumnMotion`, `TeamHeaderMotion`, `TrabajarTextColumnMotion`, `ContactHeroTextBottomMotion`, `ContactDetailsHeadingMotion`. Each configures the props to its own per-section tuning; most use the defaults.
+
+**Reduced motion:** handled internally by `useReducedMotion()` (per §4.1). When `true`, `y` is `0` and `duration` is `0`, so the reveal is opacity-only and instant. The final visual state is identical to the non-reduced case.
+
+**Source:** [`src/lib/motion/RevealItem.tsx`](../../src/lib/motion/RevealItem.tsx) (the `<RevealStagger>` export is at the bottom of the same file; it is implemented in terms of `<RevealItem>` so the two share a single source of truth for the entrance animation).
+
+### 11.2 `<RevealItem>`
+
+Single-element motion wrapper that takes an explicit `index` and applies the same delay formula. Used by `<RevealStagger>` internally and by consumers who need an explicit `index` (e.g. a per-`<li>` stagger inside an `<ol>` or `<ul>` to preserve list semantics).
+
+```tsx
+import { RevealItem } from '@/lib/motion';
+
+{
+  team.map((member, index) => (
+    <li key={member.slug}>
+      <RevealItem index={index} amount={0.2}>
+        <TeamCard member={member} />
+      </RevealItem>
+    </li>
+  ));
+}
+```
+
+**Props:** all 5 config props from `<RevealStagger>` (with the same defaults) plus a required `index: number` and `children: ReactNode`.
+
+**Used by (A02 + A03):** `TeamCardItemMotion`, `ContactTileItemMotion`. Each renders a `<RevealItem>` inside an `<li>` so the per-card / per-tile stagger preserves the list semantics.
+
+**Reduced motion:** same as `<RevealStagger>`.
+
+### 11.3 What remains bespoke
+
+The two shared primitives cover 8 of the 15 motion wrappers introduced by A02 + A03. The remaining 7 stay as per-section bespoke wrappers because their patterns are too varied to consolidate:
+
+- **Single-element fade-up or scale-in** (6 instances: `IntroHeroIllustrationMotion`, `DevolverPhotoMotion`, `ContactHeroTextTopMotion`, `ContactFormCardMotion`, `BrandStatementHeadingMotion`, `TrabajarIconMotion`). Mix of `y` (12 / 16 / 24), `scale` (0.96 / 0.8 / none), `amount` (0.2 / 0.25 / 0.4), `duration` (base / slow), some with `delay`. A shared wrapper would need 5+ props with different defaults per call site — the "deeply configurable component with many unrelated variants" anti-pattern from `AGENTS.md` §26.
+- **Per-element motion with `className` + `rotation`** (2 instances: `ContactPhotoMotion`, `ContactStickerMotion`). The `className` + `rotation` API is specific to the ContactHero collage. The two instances differ in `scale` (0.96 vs 0.8) but share everything else. A shared wrapper would either be too collage-specific (and live in `src/components/contacto/`) or too generic (and not help either future collage work or non-collage work).
+
+The A04 cycle record ([`./cycles/A04-shared-motion-review.md`](./cycles/A04-shared-motion-review.md)) documents the full inventory and the extraction / decline verdicts.
+
+### 11.4 Adding a new section
+
+When a new section needs a viewport-entry reveal:
+
+1. **If the new section reveals a list of children (e.g. a text column with 2–4 blocks):** use `<RevealStagger>`. Pass children in source order; the per-index delay handles the rest.
+2. **If the new section reveals a list of items inside an `<ol>` or `<ul>` (e.g. a list of cards or tiles):** render one `<RevealItem index={i}>` per `<li>`, with the index from the `.map()` call.
+3. **If the new section reveals a single element with a fade-up or scale-in:** write a small per-section wrapper (the existing per-section files are the right model), or copy one of the 6 existing single-element wrappers and adjust the props.
+4. **If the new section reveals a single element with a custom `transform: rotate(...)` or `transform: scale(...)` baked into the layout:** write a small per-section wrapper (the ContactHero `ContactPhotoMotion` / `ContactStickerMotion` are the right model).
+5. **If the new section reveals something that does not fit any of the above:** the "no animation presets" rule from §8 still applies. Write a per-section wrapper; if the pattern appears 2+ more times, the next shared-motion review considers extraction.
+
+`<RevealItem>` and `<RevealStagger>` are exported from `@/lib/motion`. They honour `prefers-reduced-motion: reduce` via the `useReducedMotion` hook (per §4.1). They use `viewport={{ once: true }}` (per §6). They consume `DURATION` and `EASING` from `@/lib/motion` (per §3). They do not hard-code a duration or easing (per §3). They do not introduce a global `<MotionConfig>` provider (per §4.2).

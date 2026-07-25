@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { buildPageMetadata } from '@/lib/metadata';
 import { site } from '@/config/site';
 import { generateStaticParams, getProject } from '@/content/data/projects';
+import { ProjectDetail } from '@/components/portafolio/ProjectDetail';
 
 type Params = { slug: string };
 
@@ -27,18 +27,7 @@ export function generateMetadata({ params }: { params: Promise<Params> }): Promi
 
 export default async function ProjectDetailPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const project = getProject(slug);
-  if (!project) {
-    notFound();
-  }
-
-  // Placeholder. P05/P06 implement the actual project-detail composition.
-  return (
-    <main>
-      <h1>{project.name}</h1>
-      <p>TODO project detail — pending P05/P06.</p>
-    </main>
-  );
+  return <ProjectDetail slug={slug} />;
 }
 
 export { generateStaticParams };

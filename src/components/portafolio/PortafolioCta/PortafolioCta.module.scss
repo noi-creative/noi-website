@@ -1,0 +1,118 @@
+@use '../../../styles/mixins' as *;
+
+.cta {
+  position: relative;
+  overflow: clip;
+}
+
+.ctaContainer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding-block: var(--space-8);
+  gap: var(--space-6);
+
+  @include from(768px) {
+    grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr) minmax(0, 0.6fr);
+    padding-block: var(--space-9);
+    gap: var(--space-7);
+  }
+
+  @include from(1280px) {
+    padding-block: var(--space-10);
+  }
+}
+
+.doodleLeft {
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 14rem;
+
+  @include from(768px) {
+    display: flex;
+  }
+}
+
+.sticker {
+  display: block;
+}
+
+.textBubbleSticker {
+  width: clamp(140px, 14vw, 210px);
+  height: auto;
+  transform: rotate(-8deg);
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-5);
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-heading);
+  font-size: clamp(1.85rem, 1.4rem + 2.4vw, var(--font-size-2xl));
+  color: var(--color-text-on-dark);
+  margin: 0;
+  text-transform: none;
+  gap: 0;
+  word-break: break-word;
+}
+
+.headingPrimary {
+  font-weight: var(--font-weight-bold);
+  text-transform: none;
+  color: var(--color-text-on-dark);
+}
+
+.headingAccent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  text-transform: none;
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-brand-yellow);
+}
+
+.lede {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-body);
+  color: var(--color-text-on-dark);
+  margin: 0;
+  max-width: 36rem;
+}
+
+.ctaRow {
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--space-2);
+}
+
+.stickerRight {
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  @include from(768px) {
+    display: flex;
+  }
+}
+
+.calendarSticker {
+  width: clamp(120px, 12vw, 180px);
+  height: auto;
+  transform: rotate(-6deg);
+}

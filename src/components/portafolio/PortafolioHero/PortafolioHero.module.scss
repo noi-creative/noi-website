@@ -1,0 +1,99 @@
+@use '../../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  background-color: var(--color-surface-cream);
+  overflow: hidden;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-block: var(--space-5);
+  gap: var(--space-5);
+
+  @include from(768px) {
+    padding-block: var(--space-9);
+  }
+
+  @include from(1280px) {
+    padding-block: var(--space-5);
+    gap: var(--space-6);
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  line-height: var(--line-height-subheading);
+  color: var(--color-action-primary);
+}
+
+.decor {
+  position: absolute;
+  left: -90%;
+  top: 0;
+  display: none;
+
+  @include from(768px) {
+    display: block;
+  }
+}
+
+.decorYellow {
+  position: absolute;
+  left: 15%;
+  top: -100%;
+  transform: rotate(90deg);
+  display: none;
+
+  @include from(768px) {
+    display: block;
+  }
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-heading);
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-primary);
+  margin: 0;
+  text-transform: none;
+  gap: 0;
+}
+
+.headingPrimary {
+  font-weight: var(--font-weight-bold);
+  text-transform: none;
+  color: var(--color-text-primary);
+}
+
+.headingAccent {
+  font-family: var(--font-display-accent);
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  text-transform: none;
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-action-primary);
+}
+
+.lede {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  margin: 0;
+  max-width: 36rem;
+}

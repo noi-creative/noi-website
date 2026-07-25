@@ -180,64 +180,70 @@ export function ContactForm() {
         )}
       />
 
-      <Controller
-        name="social"
-        control={control}
-        render={({ field, fieldState }) => (
-          <TextField
-            {...field}
-            value={(field.value as string | undefined) ?? ''}
-            label={copy.form.fields.social}
-            placeholder={copy.form.fields.socialPlaceholder}
-            autoComplete="off"
-            required
-            disabled={isSubmitting}
-            errorText={fieldState.error?.message}
-          />
-        )}
-      />
+      <div className={styles.fullWidth}>
+        <Controller
+          name="social"
+          control={control}
+          render={({ field, fieldState }) => (
+            <TextField
+              {...field}
+              value={(field.value as string | undefined) ?? ''}
+              label={copy.form.fields.social}
+              placeholder={copy.form.fields.socialPlaceholder}
+              autoComplete="off"
+              required
+              disabled={isSubmitting}
+              errorText={fieldState.error?.message}
+            />
+          )}
+        />
+      </div>
 
-      <Controller
-        name="comments"
-        control={control}
-        render={({ field, fieldState }) => (
-          <TextAreaField
-            {...field}
-            value={(field.value as string | undefined) ?? ''}
-            label={copy.form.fields.comments}
-            placeholder={copy.form.fields.commentsPlaceholder}
-            rows={5}
-            required
-            disabled={isSubmitting}
-            errorText={fieldState.error?.message}
-          />
-        )}
-      />
+      <div className={styles.fullWidth}>
+        <Controller
+          name="comments"
+          control={control}
+          render={({ field, fieldState }) => (
+            <TextAreaField
+              {...field}
+              value={(field.value as string | undefined) ?? ''}
+              label={copy.form.fields.comments}
+              placeholder={copy.form.fields.commentsPlaceholder}
+              rows={5}
+              required
+              disabled={isSubmitting}
+              errorText={fieldState.error?.message}
+            />
+          )}
+        />
+      </div>
 
-      <Controller
-        name="privacy"
-        control={control}
-        render={({ field, fieldState }) => (
-          <CheckboxField
-            name={field.name}
-            onChange={field.onChange}
-            onBlur={field.onBlur}
-            checked={Boolean(field.value)}
-            label={
-              <>
-                {copy.form.privacy}{' '}
-                <a href={site.routes.privacidad} target="_blank" rel="noopener noreferrer">
-                  Política de Privacidad
-                </a>
-                .
-              </>
-            }
-            required
-            disabled={isSubmitting}
-            errorText={fieldState.error?.message}
-          />
-        )}
-      />
+      <div className={styles.fullWidth}>
+        <Controller
+          name="privacy"
+          control={control}
+          render={({ field, fieldState }) => (
+            <CheckboxField
+              name={field.name}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              checked={Boolean(field.value)}
+              label={
+                <>
+                  {copy.form.privacy}{' '}
+                  <a href={site.routes.privacidad} target="_blank" rel="noopener noreferrer">
+                    Política de Privacidad
+                  </a>
+                  .
+                </>
+              }
+              required
+              disabled={isSubmitting}
+              errorText={fieldState.error?.message}
+            />
+          )}
+        />
+      </div>
 
       {/* Honeypot. Visually hidden, removed from the tab order. Real bots
           will fill it; humans never see it. */}

@@ -1,0 +1,136 @@
+.card {
+  --service-card-width: 225px;
+  --service-card-height: 280px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: var(--service-card-width);
+  height: var(--service-card-height);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  transform: translateY(var(--card-shift-y, 0px)) rotate(var(--card-tilt, 0deg));
+  transition: transform var(--motion-duration-base) var(--motion-ease-out);
+  box-shadow: var(--shadow-card);
+  scroll-snap-align: start;
+}
+
+.color-cream {
+  background-color: var(--color-surface-cream);
+  color: var(--color-text-primary);
+
+  .badge,
+  .title {
+    color: var(--color-text-primary);
+  }
+}
+
+.color-navy {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-on-dark);
+
+  .badge,
+  .title {
+    color: var(--color-text-on-dark);
+  }
+}
+
+.color-ink {
+  background-color: var(--color-brand-ink);
+  color: var(--color-text-on-dark);
+
+  .badge,
+  .title {
+    color: var(--color-text-on-dark);
+  }
+}
+
+.color-blue {
+  background-color: var(--color-surface-blue);
+  color: var(--color-text-primary);
+
+  .badge,
+  .title {
+    color: var(--color-text-primary);
+  }
+}
+
+.color-yellow {
+  background-color: var(--color-background-warm);
+  color: var(--color-text-primary);
+
+  .badge,
+  .title {
+    color: var(--color-text-primary);
+  }
+}
+
+.color-burgundy {
+  background-color: var(--color-background-strong);
+  color: var(--color-text-on-dark);
+
+  .badge,
+  .title {
+    color: var(--color-text-on-dark);
+  }
+}
+
+.color-orange {
+  background-color: var(--color-brand-orange);
+  color: var(--color-text-on-dark);
+
+  .badge,
+  .title {
+    color: var(--color-text-on-dark);
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xs);
+  opacity: 0.5;
+  letter-spacing: 0;
+}
+
+.badgeNumber {
+  line-height: 1;
+}
+
+.icon {
+  position: absolute;
+  top: -40px;
+  width: 100%;
+  margin: auto;
+  height: 4.5rem;
+  margin-block-end: var(--space-2);
+}
+
+.iconImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-subheading);
+  margin: 0;
+  letter-spacing: var(--tracking-normal);
+}
+
+.description {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-body);
+  margin: 0;
+  opacity: 0.92;
+}

@@ -25,28 +25,30 @@ This roadmap is the live execution plan for the project. It mirrors the cycle se
 
 Implement only pages whose design is approved.
 
-| ID  | Page                                               | Design status      | Status  | Cycle record |
-| --- | -------------------------------------------------- | ------------------ | ------- | ------------ |
-| P01 | Home (`/`)                                         | Approved           | Planned | —            |
-| P02 | Nosotras (`/nosotras`)                             | Approved           | Planned | —            |
-| P03 | Contacto (`/contacto`)                             | Approved           | Planned | —            |
-| P04 | Servicios (`/servicios`)                           | Pending            | Blocked | —            |
-| P05 | Portafolio index (`/portafolio`)                   | Pending            | Blocked | —            |
-| P06 | Project detail (`/portafolio/[slug]`)              | Pending            | Blocked | —            |
-| P07 | Privacidad (`/privacidad`)                         | Legal content only | Planned | —            |
-| P08 | Términos y condiciones (`/terminos-y-condiciones`) | Legal content only | Planned | —            |
+| ID  | Page                                               | Design status      | Status   | Cycle record                                            |
+| --- | -------------------------------------------------- | ------------------ | -------- | ------------------------------------------------------- |
+| P01 | Home (`/`)                                         | Approved           | Complete | [P01-home.md](./cycles/P01-home.md)                     |
+| P02 | Nosotras (`/nosotras`)                             | Approved           | Complete | [P02-nosotras.md](./cycles/P02-nosotras.md)             |
+| P03 | Contacto (`/contacto`)                             | Approved           | Complete | [P03-contacto.md](./cycles/P03-contacto.md)             |
+| P04 | Servicios (`/servicios`)                           | Pending            | Blocked  | —                                                       |
+| P05 | Portafolio index (`/portafolio`)                   | Approved           | Complete | [P05-portafolio.md](./cycles/P05-portafolio.md)         |
+| P06 | Project detail (`/portafolio/[slug]`)              | Approved           | Complete | [P06-project-detail.md](./cycles/P06-project-detail.md) |
+| P07 | Privacidad (`/privacidad`)                         | Legal content only | Planned  | —                                                       |
+| P08 | Términos y condiciones (`/terminos-y-condiciones`) | Legal content only | Planned  | —                                                       |
 
 ## Post-page phase
 
-| ID  | Cycle                              | Status  | Cycle record |
-| --- | ---------------------------------- | ------- | ------------ |
-| A01 | Home animation                     | Planned | —            |
-| A02 | Nosotras animation                 | Planned | —            |
-| A03 | Contacto animation                 | Planned | —            |
-| A04 | Shared motion review               | Planned | —            |
-| Q01 | Final SEO and content completion   | Planned | —            |
-| Q02 | Performance and accessibility pass | Planned | —            |
-| Q03 | Production release                 | Planned | —            |
+| ID  | Cycle                              | Status   | Cycle record                                                        |
+| --- | ---------------------------------- | -------- | ------------------------------------------------------------------- |
+| A01 | Home animation                     | Planned  | —                                                                   |
+| A02 | Nosotras animation                 | Complete | [A02-nosotras-animation.md](./cycles/A02-nosotras-animation.md)     |
+| A03 | Contacto animation                 | Complete | [A03-contacto-animation.md](./cycles/A03-contacto-animation.md)     |
+| A04 | Shared motion review               | Complete | [A04-shared-motion-review.md](./cycles/A04-shared-motion-review.md) |
+| A05 | Portafolio animation               | Planned  | —                                                                   |
+| A06 | Project detail animation           | Planned  | —                                                                   |
+| Q01 | Final SEO and content completion   | Planned  | —                                                                   |
+| Q02 | Performance and accessibility pass | Planned  | —                                                                   |
+| Q03 | Production release                 | Planned  | —                                                                   |
 
 ## Architecture decisions
 

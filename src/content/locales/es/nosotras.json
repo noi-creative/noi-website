@@ -1,39 +1,42 @@
 {
   "metadata": {
     "title": "Nosotras — NOI: creative",
-    "description": "TODO metadata description"
+    "description": "Somos NOI. Un estudio de branding y diseño en Orlando, Florida. Conoce al equipo detrás de cada proyecto: Daniela, María Patricia y Carla."
   },
   "intro": {
-    "eyebrow": "Quiénes somos",
+    "eyebrow": "QUIÉNES SOMOS",
     "headline": {
       "primary": "Somos NOI. Y NOI",
       "accent": "significa nosotros."
     },
-    "lede": "Ese \"nosotros\" lo decimos en serio."
+    "lede1": "Ese \"nosotros\" lo decimos en serio.",
+    "lede2": "Creemos en el diseño, pero sobre todo creemos en las personas. Por eso no somos el típico estudio que entrega un archivo y desaparece; preferimos sentarnos contigo, escuchar tu historia y trazar juntas el camino visual de tu marca.",
+    "lede3": "Creamos marcas globales con una visión muy clara: acompañar a proyectos decididos que ya entienden que una identidad sólida no es un gasto, es la inversión más inteligente para crecer de forma segura."
   },
   "devolver": {
-    "eyebrow": "Por qué existimos",
+    "eyebrow": "POR QUÉ EXISTIMOS",
     "headline": {
       "primary": "Devolver lo humano",
-      "accent": "al proceso creativo"
-    }
+      "accent": "AL PROCESO CREATIVO"
+    },
+    "body1": "Sabemos lo frustrante que es. Allá afuera, el mundo del branding se ha vuelto demasiado frío, automático y desconectado de la realidad. El resultado casi siempre es el mismo: marcas con una estética limpia pero sin dirección real, que en dos meses ya no se dan a notar a sus dueños.",
+    "body2": "Tu marca merece mucho más que un proceso robotizado. Merece un equipo que te escuche de verdad, que entienda tus metas y que diseñe pensando en tu crecimiento a largo plazo. En NOI entendemos que, antes que nada, hay que devolverte la humanidad al proceso de crear."
   },
-  "team": {
-    "eyebrow": "Las personas detrás de NOI",
+  "equipo": {
+    "eyebrow": "LAS PERSONAS DETRÁS DE NOI",
     "headline": {
       "primary": "Un equipo de tres.",
       "accent": "Un solo proceso."
-    }
+    },
+    "intro": "NOI no es una agencia anónima de caras invisibles. Somos Daniela, María Patricia y Carla, y cuando nos eliges, nos tienes a nosotras en cada paso del proceso. Sin intermediarios, sin filtros y sin que tu proyecto pase de mano en mano."
   },
-  "finalCta": {
+  "trabajar": {
+    "eyebrow": null,
     "headline": {
       "primary": "¿Trabajamos",
       "accent": "juntos?"
     },
     "lede": "Si tu marca está creciendo, evolucionando, o necesitas darle un orden estratégico para despegar: este es el momento. Queremos conocerte.",
     "cta": "Agenda tu llamada de orientación"
-  },
-  "placeholder": {
-    "pending": "Esta página se implementa en el ciclo P02."
   }
 }

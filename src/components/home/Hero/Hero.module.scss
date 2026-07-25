@@ -1,0 +1,92 @@
+@use '../../../styles/mixins' as *;
+
+.heroSection {
+  position: relative;
+  overflow: visible;
+  padding-block-start: clamp(6rem, 10vw, 10rem);
+  padding-block-end: clamp(4rem, 7vw, 7rem);
+  overflow: hidden;
+
+  @include from(768px) {
+    padding-block-start: clamp(8rem, 14vw, 14rem);
+    padding-block-end: clamp(6rem, 10vw, 10rem);
+  }
+}
+
+.heroContainer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+  align-items: end;
+
+  @include from(768px) {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+    gap: var(--space-4);
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  color: var(--color-text-on-dark);
+  z-index: var(--z-content);
+  min-height: 18rem;
+}
+
+.heading {
+  position: relative;
+  z-index: 2;
+  font-size: 80px;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--color-brand-yellow);
+  max-width: 14ch;
+  text-align: center;
+
+  @include from(767px) {
+    font-size: 90px;
+    text-align: inherit;
+  }
+
+  @include from(1200px) {
+    font-size: 140px;
+  }
+}
+
+.lede {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-sans);
+  font-size: 25px;
+  align-self: flex-end;
+  line-height: var(--line-height-body);
+  color: var(--color-text-on-dark);
+  margin: 0;
+  text-align: center;
+
+  @include from(767px) {
+    max-width: 36ch;
+    text-align: inherit;
+  }
+}
+
+.rightColumn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  align-items: flex-end;
+  min-width: 150px;
+  z-index: var(--z-content);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  z-index: var(--z-content);
+  width: 100%;
+  justify-content: center;
+}

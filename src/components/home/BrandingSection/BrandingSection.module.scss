@@ -1,0 +1,123 @@
+@use '../../../styles/mixins' as *;
+
+.brandingSection {
+  position: relative;
+  overflow: clip;
+}
+
+.topScallop {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  width: 100%;
+  height: 60px;
+  pointer-events: none;
+  z-index: var(--z-decoration);
+}
+
+.brandingContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  align-items: center;
+  padding-block: 0;
+
+  @include from(768px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-align: center;
+  width: 100%;
+
+  @include from(768px) {
+    gap: var(--space-5);
+  }
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-brand-navy);
+  font-size: var(--font-size-xl);
+  margin: 0;
+  gap: var(--space-2);
+}
+
+.headingRegular {
+  font-weight: var(--font-weight-bold);
+  text-transform: none;
+  color: var(--color-brand-burgundy);
+}
+
+.headingBold {
+  font-weight: var(--font-weight-black);
+  text-transform: uppercase;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+
+  @include from(768px) {
+    max-width: 38ch;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.portraitColumn {
+  position: relative;
+  min-height: 22rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portrait {
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  z-index: var(--z-content);
+}
+
+.portraitImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.sticker {
+  position: absolute;
+  inset-block-start: 10%;
+  inset-inline-start: 4%;
+  width: clamp(64px, 8vw, 112px);
+  height: clamp(64px, 8vw, 112px);
+  transform: rotate(-12deg);
+  z-index: var(--z-content);
+  pointer-events: none;
+}
+
+.stickerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

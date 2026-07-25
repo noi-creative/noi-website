@@ -1,0 +1,120 @@
+@use '../../../styles/mixins' as *;
+
+.finalCtaSection {
+  position: relative;
+  overflow: clip;
+}
+
+.finalCtaContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+  align-items: center;
+  padding-block: var(--space-10);
+
+  @include from(768px) {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 36rem;
+}
+
+.lede {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.boldWord {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.accentWord {
+  color: var(--color-brand-orange);
+  font-weight: var(--font-weight-bold);
+}
+
+.ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-block-start: var(--space-2);
+}
+
+.collageColumn {
+  position: relative;
+  display: none;
+  min-height: 30rem;
+
+  @include from(768px) {
+    display: block;
+  }
+}
+
+.collagePhoto {
+  position: absolute;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.collageImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collagePhoto0 {
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  width: 36%;
+  aspect-ratio: 348 / 422;
+  transform: rotate(6deg);
+  z-index: var(--z-base);
+}
+
+.collagePhoto1 {
+  inset-block-start: 8%;
+  inset-inline-start: 0;
+  width: 58%;
+  aspect-ratio: 646 / 766;
+  transform: rotate(-3deg);
+  z-index: var(--z-content);
+}
+
+.collagePhoto2 {
+  inset-block-end: 0;
+  inset-inline-end: 4%;
+  width: 42%;
+  aspect-ratio: 573 / 652;
+  transform: rotate(5deg);
+  z-index: var(--z-base);
+}
+
+.sticker {
+  position: absolute;
+  inset-block-end: 8%;
+  inset-inline-start: 2%;
+  width: clamp(80px, 10vw, 140px);
+  height: clamp(80px, 10vw, 140px);
+  transform: rotate(-10deg);
+  z-index: var(--z-content);
+  pointer-events: none;
+}
+
+.stickerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

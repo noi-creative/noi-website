@@ -1,9 +1,26 @@
 {
   "metadata": {
     "title": "Portafolio — NOI: creative",
-    "description": "TODO metadata description"
+    "description": "Marcas construidas con coherencia. Conoce los proyectos de branding, identidad y diseño web que hemos creado junto a nuestros clientes en NOI Creative."
   },
-  "placeholder": {
-    "pending": "Esta página se implementa cuando el diseño del Portafolio sea aprobado (P05/P06)."
+  "hero": {
+    "eyebrow": "NUESTROS PROYECTOS",
+    "headline": {
+      "primary": "Marcas construidas",
+      "accent": "con coherencia"
+    },
+    "lede": "Cada proyecto es un proceso distinto. Lo que ves aquí es el resultado de escuchar bien, analizar en profundidad y tomar decisiones visuales con criterio."
+  },
+  "grid": {
+    "tag": "BRANDING",
+    "listLabel": "Listado de proyectos de NOI Creative"
+  },
+  "cta": {
+    "headline": {
+      "primary": "¿Tu marca podría",
+      "accent": "ser la próxima?"
+    },
+    "lede": "Trabajamos con marcas que están listas para tomar decisiones valientes. Construyamos juntas el siguiente paso.",
+    "button": "Agenda tu llamada de orientación"
   }
 }

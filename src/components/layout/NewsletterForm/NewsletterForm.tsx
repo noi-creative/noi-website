@@ -88,12 +88,12 @@ export function NewsletterForm() {
           autoComplete="email"
           placeholder={common.footer.newsletterPlaceholder}
           required
-          disabled={isSubmitting}
+          disabled={true}
           errorText={errors.email?.message}
           containerClassName={styles.input}
           {...register('email')}
         />
-        <Button type="submit" variant="primary-orange" disabled={isSubmitting}>
+        <Button type="submit" variant="primary-orange" disabled={true}>
           {isSubmitting ? '…' : common.footer.subscribeLabel}
         </Button>
       </div>
