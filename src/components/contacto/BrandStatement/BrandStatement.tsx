@@ -22,7 +22,7 @@ export function BrandStatement() {
       ariaLabelledby="contacto-brand-heading"
       className={styles.statement}
     >
-      <Scallop tone="yellow" className={styles.topScallop} />
+      {/*<Scallop tone="yellow" className={styles.topScallop} />*/}
 
       <div className={styles.statementInner}>
         <BrandStatementHeadingMotion>
