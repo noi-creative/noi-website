@@ -57,7 +57,7 @@ export function Footer() {
                   <Image src={assets.shared.iconos.instagram.src} alt="" width={32} height={32} />
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a
                   className={styles.socialLink}
                   href={site.social.linkedin.url}
@@ -67,7 +67,7 @@ export function Footer() {
                 >
                   <Image src={assets.shared.iconos.linkedin.src} alt="" width={32} height={32} />
                 </a>
-              </li>
+              </li>*/}
               <li>
                 <a
                   className={styles.socialLink}

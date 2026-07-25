@@ -34,22 +34,22 @@ export const site = {
 
   social: {
     instagram: {
-      handle: '@noicrealive',
-      url: 'TODO social URL — https://www.instagram.com/noicrealive',
+      handle: '@noicreative.studio',
+      url: 'https://www.instagram.com/noicreative.studio',
     },
     linkedin: {
       handle: 'TODO social handle',
       url: 'TODO social URL — https://www.linkedin.com/company/...',
     },
     tiktok: {
-      handle: 'TODO social handle',
-      url: 'TODO social URL — https://www.tiktok.com/@...',
+      handle: '@noicreative',
+      url: 'https://www.tiktok.com/@noicreative',
     },
     whatsapp: {
       // Phone number is visible in `references/contact/contacto.png` but not
       // yet promoted to the manifest or this config. C08 will own it.
       handle: '+1 (321) 337-4754',
-      url: 'TODO whatsapp URL — https://wa.me/13213374754',
+      url: 'https://wa.me/13213374754',
     },
   },
 
