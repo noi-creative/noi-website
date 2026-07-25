@@ -30,15 +30,17 @@ export function Testimonials() {
     >
       <Container className={styles.testimonialsContainer}>
         <div className={styles.header}>
-          <Eyebrow tone="orange">{home.testimonials.eyebrow}</Eyebrow>
+          <Eyebrow tone="ink">{home.testimonials.eyebrow}</Eyebrow>
           <Heading
             as="h2"
             id="home-testimonials-heading"
             primary={home.testimonials.headline.primary}
             accent={home.testimonials.headline.accent}
-            weight="bold"
+            weight="black"
             align="center"
-            style={{ '--heading-accent-color': 'var(--color-brand-orange)' } as React.CSSProperties}
+            style={
+              { '--heading-accent-color': 'var(--color-brand-burgundy)' } as React.CSSProperties
+            }
           />
         </div>
 

@@ -75,7 +75,8 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
         {items.map((t, index) => {
           const rel = relativePosition(index, active, total);
           const isActive = rel === 0;
-          const xOffset = `${rel * 14}rem`;
+          const isAdjacent = Math.abs(rel) === 1;
+          const xOffset = isAdjacent ? `${rel * 18}rem` : `${rel * 36}rem`;
           return (
             <motion.article
               key={t.id}
@@ -87,8 +88,8 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
               initial={false}
               animate={{
                 x: xOffset,
-                opacity: isActive ? 1 : 0.85,
-                scale: isActive ? 1 : 0.96,
+                opacity: isActive ? 1 : isAdjacent ? 0.85 : 0,
+                scale: isActive ? 1 : isAdjacent ? 0.96 : 0.94,
               }}
               transition={
                 reducedMotion ? { duration: 0 } : { duration: DURATION.slow, ease: EASING.out }
@@ -96,7 +97,11 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
               aria-hidden={!isActive}
               aria-roledescription="slide"
               aria-label={`${index + 1} de ${total}: ${t.author}`}
+              style={{ pointerEvents: isActive ? 'auto' : 'none' }}
             >
+              <span className={styles.quoteMark} aria-hidden="true">
+                &ldquo;
+              </span>
               {t.mark ? <p className={styles.mark}>{t.mark}</p> : null}
               <blockquote className={styles.quote}>
                 <p>{t.quote}</p>
