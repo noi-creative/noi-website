@@ -1,7 +1,7 @@
 @use '../../../styles/mixins' as *;
 
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: var(--z-sticky);
   width: 100%;

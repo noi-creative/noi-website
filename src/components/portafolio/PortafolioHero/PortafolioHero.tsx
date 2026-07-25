@@ -2,6 +2,7 @@ import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import portafolio from '@/content/locales/es/portafolio.json';
 import styles from './PortafolioHero.module.scss';
+import { PortafolioDecor } from '../PortafolioDecor/PortafolioDecor';
 
 /**
  * First section of the Portafolio index page. Light-blue
@@ -19,6 +20,8 @@ import styles from './PortafolioHero.module.scss';
 export function PortafolioHero() {
   return (
     <Section background="soft" ariaLabelledby="portafolio-hero-heading" className={styles.hero}>
+      <PortafolioDecor className={styles.decor} />
+      <PortafolioDecor className={styles.decorYellow} colorHEX="#ED7218" />
       <Container className={styles.heroContainer}>
         <p className={styles.eyebrow}>{portafolio.hero.eyebrow}</p>
 

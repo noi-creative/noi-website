@@ -40,7 +40,7 @@ export function PortafolioCta() {
           <p className={styles.lede}>{portafolio.cta.lede}</p>
 
           <div className={styles.ctaRow}>
-            <Button href="/contacto" variant="primary-yellow" withArrow size="lg">
+            <Button href="/contacto" variant="primary-orange" withArrow size="lg">
               {portafolio.cta.button}
             </Button>
           </div>

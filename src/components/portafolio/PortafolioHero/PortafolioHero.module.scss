@@ -2,14 +2,18 @@
 
 .hero {
   position: relative;
+  background-color: var(--color-surface-cream);
+  overflow: hidden;
 }
 
 .heroContainer {
+  position: relative;
+  z-index: var(--z-content);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-block: var(--space-8);
+  padding-block: var(--space-5);
   gap: var(--space-5);
 
   @include from(768px) {
@@ -17,7 +21,7 @@
   }
 
   @include from(1280px) {
-    padding-block: var(--space-10);
+    padding-block: var(--space-5);
     gap: var(--space-6);
   }
 }
@@ -31,6 +35,29 @@
   letter-spacing: var(--tracking-eyebrow);
   line-height: var(--line-height-subheading);
   color: var(--color-action-primary);
+}
+
+.decor {
+  position: absolute;
+  left: -90%;
+  top: 0;
+  display: none;
+
+  @include from(768px) {
+    display: block;
+  }
+}
+
+.decorYellow {
+  position: absolute;
+  left: 15%;
+  top: -100%;
+  transform: rotate(90deg);
+  display: none;
+
+  @include from(768px) {
+    display: block;
+  }
 }
 
 .heading {
@@ -54,7 +81,7 @@
 }
 
 .headingAccent {
-  font-family: var(--font-serif);
+  font-family: var(--font-display-accent);
   font-style: italic;
   font-weight: var(--font-weight-medium);
   text-transform: none;
