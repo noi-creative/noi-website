@@ -31,30 +31,23 @@ export function PortafolioPreview() {
       ariaLabelledby="home-portafolio-heading"
       className={styles.portafolioSection}
     >
-      <Container className={styles.portafolioContainer}>
-        {/*  <div className={styles.thumbnailRow} aria-hidden="true">
-          {thumbnails.map((project) => (
-            <Thumb key={project.slug} project={project} />
+      <div className={styles.strip} aria-label="Vista previa de proyectos">
+        <ol className={styles.stripList}>
+          {featured.map((project) => (
+            <li key={project.slug} className={styles.stripItem}>
+              <Image
+                src={project.coverSrc}
+                alt=""
+                width={project.coverWidth}
+                height={project.coverHeight}
+                className={styles.stripImage}
+                sizes="(max-width: 767px) 70vw, 30vw"
+              />
+            </li>
           ))}
-        </div>  */}
-
-        <div className={styles.strip} aria-label="Vista previa de proyectos">
-          <ol className={styles.stripList}>
-            {featured.map((project) => (
-              <li key={project.slug} className={styles.stripItem}>
-                <Image
-                  src={project.coverSrc}
-                  alt=""
-                  width={project.coverWidth}
-                  height={project.coverHeight}
-                  className={styles.stripImage}
-                  sizes="(max-width: 767px) 70vw, 30vw"
-                />
-              </li>
-            ))}
-          </ol>
-        </div>
-
+        </ol>
+      </div>
+      <Container className={styles.portafolioContainer}>
         <h2 id="home-portafolio-heading" className={styles.giantHeading}>
           {home.portafolio.title}
         </h2>
@@ -66,10 +59,9 @@ export function PortafolioPreview() {
             accent={home.portafolio.subhead.accent}
             weight="bold"
           />
-          <p className={styles.lede}>{home.portafolio.lede}</p>
         </div>
-
         <div className={styles.cta}>
+          <p className={styles.lede}>{home.portafolio.lede}</p>
           <Button href={site.routes.portafolio} variant="outline-on-dark" withArrow>
             {common.cta.explorarPortafolioCompleto}
           </Button>
