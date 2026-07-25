@@ -1,15 +1,14 @@
 {
   "metadata": {
     "title": "NOI: creative",
-    "description": "TODO metadata description"
+    "description": "Estudio de branding y diseño en Orlando, Florida. Estrategia, identidad visual, diseño web, e-commerce, naming y contenido para marcas que buscan crecer con coherencia."
   },
   "hero": {
-    "eyebrow": "TODO eyebrow pending P01",
     "headline": {
       "primary": "Marcas con",
       "accent": "estrategia"
     },
-    "lede": "En NOI filtraremos y estructuramos cada paso creativo para transformar tus ideas en una identidad visual sólida.",
+    "lede": "En NOI filtraremos y estructuraremos cada paso creativo para transformar tus ideas en una identidad visual sólida.",
     "primaryCta": "Agendar tu llamado",
     "secondaryCta": "Ver portafolio"
   },
@@ -27,7 +26,52 @@
       "accent": "para crecer con coherencia."
     }
   },
-  "placeholder": {
-    "pending": "Esta página se implementa en el ciclo P01."
+  "portafolio": {
+    "title": "PORTAFOLIO",
+    "subhead": {
+      "primary": "Estructura visual para marcas",
+      "accent": "que buscan crecer"
+    },
+    "lede": "Cada proyecto es un proceso distinto. Aquí una muestra de lo que hemos construido junto a nuestras clientes."
+  },
+  "process": {
+    "eyebrow": "NUESTRO MÉTODO",
+    "headline": {
+      "primary": "Hacemos las cosas",
+      "accent": "de manera diferente."
+    },
+    "steps": [
+      {
+        "title": "Escucha Activa",
+        "description": "Tu historia, metas y mercado. Conocemos el contexto completo antes de proponer cualquier solución."
+      },
+      {
+        "title": "Estrategia y Concepto",
+        "description": "Definimos estrategias, objetivos, posicionamiento, tono de voz y mensaje visual."
+      },
+      {
+        "title": "Diseño y Producción",
+        "description": "Sistema visual completo: identidad, piezas web — con criterio y coherencia."
+      },
+      {
+        "title": "Lanzamiento y Seguimiento",
+        "description": "Acompañamos la implementación. Tu marca no queda sola después del día de entrega."
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "LO QUE DICEN NUESTROS CLIENTES",
+    "headline": {
+      "primary": "Marcas que confiaron",
+      "accent": "en el proceso"
+    }
+  },
+  "finalCta": {
+    "headline": {
+      "primary": "¿Lista para construir la marca que",
+      "accent": "tienes en mente?"
+    },
+    "lede": "En NOI no tomamos proyectos por impulso. Elegimos aquellos que podemos cuidar y acompañar con absoluta dedicación. Si estás lista para construir con criterio, estrategia y una estructura real, has llegado al lugar correcto.",
+    "accentWords": ["criterio", "estrategia", "estructura real"]
   }
 }

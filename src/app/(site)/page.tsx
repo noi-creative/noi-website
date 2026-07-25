@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
-import common from '@/content/locales/es/common.json';
 import home from '@/content/locales/es/home.json';
 import { buildPageMetadata } from '@/lib/metadata';
 import { site } from '@/config/site';
-import { Button } from '@/components/ui/Button';
-import { Eyebrow } from '@/components/ui/Eyebrow';
-import { Heading } from '@/components/ui/Heading';
-import { Section } from '@/components/ui/Section';
+import { Hero } from '@/components/home/Hero';
+import { BrandingSection } from '@/components/home/BrandingSection';
+import { ServicesPreview } from '@/components/home/ServicesPreview';
+import { PortafolioPreview } from '@/components/home/PortafolioPreview';
+import { ProcessTimeline } from '@/components/home/ProcessTimeline';
+import { Testimonials } from '@/components/home/Testimonials';
+import { FinalCta } from '@/components/home/FinalCta';
 
 export const metadata: Metadata = buildPageMetadata({
   title: home.metadata.title,
@@ -15,36 +17,24 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 /**
- * Home page placeholder. C07 now provides the shared header and footer
- * via `(site)/layout.tsx`, so the home page only renders its own content.
- * The actual home page composition is implemented in P01.
+ * Home page composition (P01). Seven sections in order, each its
+ * own Server Component. Header and Footer are inherited from the
+ * `(site)/layout.tsx`. Animation is deferred to A01.
+ *
+ * The `dynamic = "error"` guardrail from `(site)/layout.tsx` is
+ * preserved: this page does not read cookies, headers, search
+ * params, or any request-time data.
  */
 export default function Home() {
   return (
-    <Section background="navy" contained>
-      <Eyebrow tone="cream">{home.hero.eyebrow}</Eyebrow>
-      <Heading
-        as="h1"
-        primary={home.hero.headline.primary}
-        accent={home.hero.headline.accent}
-        weight="black"
-      />
-      <p style={{ maxWidth: '52ch', marginTop: 'var(--space-4)' }}>{home.hero.lede}</p>
-      <div
-        style={{
-          display: 'flex',
-          gap: 'var(--space-3)',
-          flexWrap: 'wrap',
-          marginTop: 'var(--space-5)',
-        }}
-      >
-        <Button variant="primary-yellow" withArrow>
-          {common.cta.agendarLlamada}
-        </Button>
-        <Button variant="outline-on-dark" withArrow>
-          {common.cta.verPortafolio}
-        </Button>
-      </div>
-    </Section>
+    <>
+      <Hero />
+      <BrandingSection />
+      <ServicesPreview />
+      <PortafolioPreview />
+      <ProcessTimeline />
+      <Testimonials />
+      <FinalCta />
+    </>
   );
 }

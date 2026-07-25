@@ -1,0 +1,44 @@
+.collage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 6;
+  pointer-events: none;
+}
+
+.photo {
+  position: absolute;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoLeft {
+  inset-block-start: 8%;
+  inset-inline-start: 0;
+  width: 36%;
+  transform: rotate(-6deg);
+  z-index: var(--z-base);
+}
+
+.photoCenter {
+  inset-block-start: 18%;
+  inset-inline-start: 24%;
+  width: 58%;
+  transform: rotate(2deg);
+  z-index: var(--z-content);
+}
+
+.photoRight {
+  inset-block-start: 0;
+  inset-inline-end: 4%;
+  width: 46%;
+  transform: rotate(8deg);
+  z-index: var(--z-base);
+}
