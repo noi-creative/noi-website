@@ -72,6 +72,7 @@
       "accent": "tienes en mente?"
     },
     "lede": "En NOI no tomamos proyectos por impulso. Elegimos aquellos que podemos cuidar y acompañar con absoluta dedicación. Si estás lista para construir con criterio, estrategia y una estructura real, has llegado al lugar correcto.",
-    "accentWords": ["criterio", "estrategia", "estructura real"]
+    "accentWords": ["criterio", "estrategia", "estructura real"],
+    "boldPhrases": ["NOI no tomamos proyectos por impulso"]
   }
 }

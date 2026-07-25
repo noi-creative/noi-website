@@ -25,7 +25,7 @@
 
 .primary {
   font-family: var(--font-sans);
-  text-transform: uppercase;
+  text-transform: var(--heading-primary-transform, uppercase);
 }
 
 .accent {

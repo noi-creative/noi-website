@@ -33,6 +33,11 @@
   margin: 0;
 }
 
+.boldWord {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
 .accentWord {
   color: var(--color-brand-orange);
   font-weight: var(--font-weight-bold);
@@ -40,7 +45,8 @@
 
 .ctas {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-3);
   margin-block-start: var(--space-2);
 }
@@ -48,7 +54,7 @@
 .collageColumn {
   position: relative;
   display: none;
-  min-height: 26rem;
+  min-height: 30rem;
 
   @include from(768px) {
     display: block;
@@ -70,36 +76,39 @@
 }
 
 .collagePhoto0 {
-  inset-block-start: 6%;
-  inset-inline-start: 0;
-  width: 38%;
-  transform: rotate(-4deg);
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  width: 36%;
+  aspect-ratio: 348 / 422;
+  transform: rotate(6deg);
   z-index: var(--z-base);
 }
 
 .collagePhoto1 {
-  inset-block-start: 18%;
-  inset-inline-start: 28%;
-  width: 52%;
-  transform: rotate(3deg);
+  inset-block-start: 8%;
+  inset-inline-start: 0;
+  width: 58%;
+  aspect-ratio: 646 / 766;
+  transform: rotate(-3deg);
   z-index: var(--z-content);
 }
 
 .collagePhoto2 {
-  inset-block-start: 0;
-  inset-inline-end: 6%;
-  width: 44%;
-  transform: rotate(7deg);
+  inset-block-end: 0;
+  inset-inline-end: 4%;
+  width: 42%;
+  aspect-ratio: 573 / 652;
+  transform: rotate(5deg);
   z-index: var(--z-base);
 }
 
 .sticker {
   position: absolute;
-  inset-block-end: 6%;
-  inset-inline-start: 4%;
-  width: clamp(72px, 9vw, 128px);
-  height: clamp(72px, 9vw, 128px);
-  transform: rotate(-12deg);
+  inset-block-end: 8%;
+  inset-inline-start: 2%;
+  width: clamp(80px, 10vw, 140px);
+  height: clamp(80px, 10vw, 140px);
+  transform: rotate(-10deg);
   z-index: var(--z-content);
   pointer-events: none;
 }
