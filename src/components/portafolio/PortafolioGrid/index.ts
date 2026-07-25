@@ -1,0 +1,1 @@
+export { PortafolioGrid } from './PortafolioGrid';

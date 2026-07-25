@@ -1,0 +1,42 @@
+@use '../../../styles/mixins' as *;
+
+.gallery {
+  background-color: var(--color-background-page);
+  padding-block: var(--space-7);
+
+  @include from(768px) {
+    padding-block: var(--space-8);
+  }
+}
+
+.grid {
+  list-style: none;
+  padding-inline: var(--page-gutter-mobile);
+  margin: 0 auto;
+  max-width: var(--container-wide);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @include from(768px) {
+    padding-inline: var(--page-gutter-tablet);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  @include from(1280px) {
+    padding-inline: var(--page-gutter-desktop);
+  }
+}
+
+.cell {
+  display: flex;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}

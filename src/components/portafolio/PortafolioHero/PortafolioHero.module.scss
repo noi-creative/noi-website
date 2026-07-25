@@ -1,0 +1,72 @@
+@use '../../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+}
+
+.heroContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-block: var(--space-8);
+  gap: var(--space-5);
+
+  @include from(768px) {
+    padding-block: var(--space-9);
+  }
+
+  @include from(1280px) {
+    padding-block: var(--space-10);
+    gap: var(--space-6);
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  line-height: var(--line-height-subheading);
+  color: var(--color-action-primary);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-heading);
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-primary);
+  margin: 0;
+  text-transform: none;
+  gap: 0;
+}
+
+.headingPrimary {
+  font-weight: var(--font-weight-bold);
+  text-transform: none;
+  color: var(--color-text-primary);
+}
+
+.headingAccent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  text-transform: none;
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-action-primary);
+}
+
+.lede {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  margin: 0;
+  max-width: 36rem;
+}

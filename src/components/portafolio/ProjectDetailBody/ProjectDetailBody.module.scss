@@ -1,0 +1,45 @@
+@use '../../../styles/mixins' as *;
+
+.body {
+  position: relative;
+}
+
+.bodyContainer {
+  display: flex;
+  justify-content: center;
+  padding-block: var(--space-8);
+
+  @include from(768px) {
+    padding-block: var(--space-9);
+  }
+
+  @include from(1280px) {
+    padding-block: var(--space-10);
+  }
+}
+
+.text {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  max-width: 40rem;
+  width: 100%;
+  overflow-wrap: anywhere;
+
+  @include from(768px) {
+    font-size: var(--font-size-md);
+  }
+}
+
+.text-ink {
+  color: var(--color-text-primary);
+}
+
+.text-cream {
+  color: var(--color-text-on-dark);
+}
+
+.text-burgundy {
+  color: var(--color-text-accent);
+}

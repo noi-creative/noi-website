@@ -1,0 +1,1 @@
+export { ProjectDetailBody } from './ProjectDetailBody';
