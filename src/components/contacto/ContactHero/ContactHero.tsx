@@ -98,6 +98,20 @@ export function ContactHero() {
                 sizes="(max-width: 767px) 24vw, 10vw"
               />
             </ContactStickerMotion>
+
+            <ContactStickerMotion
+              className={`${styles.sticker} ${styles.stickerCalendar}`}
+              rotation={8}
+            >
+              <Image
+                src={assets.shared.stickers.calendar.src}
+                alt=""
+                width={200}
+                height={200}
+                className={styles.stickerImage}
+                sizes="(max-width: 767px) 24vw, 10vw"
+              />
+            </ContactStickerMotion>
           </div>
         </div>
       </Container>
