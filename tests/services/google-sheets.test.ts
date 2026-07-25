@@ -1,9 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-const fakeEnv = {
-  RESEND_API_KEY: 'test-resend-key',
-  CONTACT_FROM_EMAIL: 'formularios@creativenoi.com',
-  CONTACT_RECIPIENT_EMAIL: 'hola@creativenoi.com',
+const fakeNewsletterEnv = {
   GOOGLE_SHEETS_SPREADSHEET_ID: 'test-sheet-id',
   GOOGLE_SERVICE_ACCOUNT_EMAIL: 'test@test.iam.gserviceaccount.com',
   // The real private key in the env has escaped "\n" sequences; the
@@ -11,7 +8,7 @@ const fakeEnv = {
   GOOGLE_PRIVATE_KEY: '-----BEGIN PRIVATE KEY-----\\nfake\\n-----END PRIVATE KEY-----',
 };
 
-vi.mock('@/lib/env', () => ({ getEnv: () => fakeEnv }));
+vi.mock('@/lib/env', () => ({ getNewsletterEnv: () => fakeNewsletterEnv }));
 
 // Mock the googleapis SDK. We test the call shape; we do not retest the SDK.
 const appendMock = vi.fn();
@@ -65,7 +62,7 @@ describe('google-sheets service', () => {
       locale: 'es',
     });
     const call = appendMock.mock.calls[0]?.[0] as { spreadsheetId: string };
-    expect(call.spreadsheetId).toBe(fakeEnv.GOOGLE_SHEETS_SPREADSHEET_ID);
+    expect(call.spreadsheetId).toBe(fakeNewsletterEnv.GOOGLE_SHEETS_SPREADSHEET_ID);
   });
 
   it('appends to the expected range', async () => {
@@ -122,7 +119,7 @@ describe('google-sheets service', () => {
       locale: 'es',
     });
     const jwtCall = mockedJwt.mock.calls[0]?.[0] as { email: string };
-    expect(jwtCall.email).toBe(fakeEnv.GOOGLE_SERVICE_ACCOUNT_EMAIL);
+    expect(jwtCall.email).toBe(fakeNewsletterEnv.GOOGLE_SERVICE_ACCOUNT_EMAIL);
   });
 
   it('requests the spreadsheets scope only', async () => {
