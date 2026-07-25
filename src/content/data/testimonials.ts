@@ -19,7 +19,7 @@
  *   - `order` — display order in the stack (0 = front).
  */
 
-export type TestimonialCardColor = 'navy' | 'burgundy';
+export type TestimonialCardColor = 'navy' | 'burgundy' | 'orange' | 'yellow';
 
 export type Testimonial = {
   readonly id: string;
@@ -28,7 +28,7 @@ export type Testimonial = {
   readonly author: string;
   readonly role: string;
   readonly cardColor: TestimonialCardColor;
-  readonly order: 0 | 1 | 2;
+  readonly order: number;
 };
 
 export const testimonials: readonly Testimonial[] = [
@@ -38,7 +38,7 @@ export const testimonials: readonly Testimonial[] = [
       'Me encantó la experiencia de trabajar con ellas. Lograron captar las ideas que tenía en mi cabeza, escuchando lo que quería y haciendo mucho más de lo que imaginé. Las recomiendo sin dudarlo, son un equipo de primera.',
     author: 'Nayely Urdenata',
     role: '@nayelyurdenata · Nutricionista',
-    cardColor: 'burgundy',
+    cardColor: 'orange',
     order: 2,
   },
   {
@@ -52,11 +52,21 @@ export const testimonials: readonly Testimonial[] = [
     order: 0,
   },
   {
-    id: 'TODO-testimonial-3',
-    quote: 'TODO testimonial copy',
-    author: 'TODO Author',
-    role: 'TODO Role',
+    id: 'oriana-dalessio',
+    quote:
+      'Nos ha quedado entendido perfectamente lo que quería recrear para mi marca. Diseñaron el packaging para mi evento de maquillaje y los stickers que sublimamos en los tote bags, y honestamente no sé cuál de los dos diseños me dejó más enamorada.',
+    author: "Oriana D'alessio",
+    role: 'Diseño gráfico · Evolve You',
     cardColor: 'burgundy',
     order: 1,
+  },
+  {
+    id: 'dayana-rodriguez',
+    quote:
+      'Graciassss chicassss, ame demasiado cada detalle, ahora la academia no solo me representa sino que habla por sí sola. Felicidades por tu equipo de trabajo, AMEEE demasiado',
+    author: 'Dayana Rodriguez',
+    role: 'Diseño gráfico · Crea Desde Cero Academy',
+    cardColor: 'yellow',
+    order: 3,
   },
 ] as const;

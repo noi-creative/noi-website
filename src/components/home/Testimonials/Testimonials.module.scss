@@ -23,37 +23,73 @@
 }
 
 .stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  width: 100%;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand-orange);
+    outline-offset: var(--space-3);
+    border-radius: var(--radius-md);
+  }
+}
+
+.stage {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 18rem;
+  min-height: 22rem;
 
   @include from(768px) {
-    min-height: 22rem;
+    min-height: 24rem;
   }
 }
 
 .card {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
   padding: var(--space-6);
   border-radius: var(--radius-lg);
-  color: var(--color-text-on-dark);
   max-width: 32rem;
-  width: 100%;
+  width: calc(100% - 2 * var(--space-4));
   text-align: start;
+  inset-inline-start: 50%;
+  top: 0;
+  will-change: transform, opacity;
+
+  @include from(768px) {
+    width: 32rem;
+  }
 }
 
 .card-navy {
   background-color: var(--color-background-dark);
+  color: var(--color-text-on-dark);
 }
 
 .card-burgundy {
   background-color: var(--color-background-strong);
+  color: var(--color-text-on-dark);
+}
+
+.card-orange {
+  background-color: var(--color-brand-orange);
+  color: var(--color-text-on-dark);
+}
+
+.card-yellow {
+  background-color: var(--color-brand-yellow);
+  color: var(--color-background-dark);
+
+  .attribution {
+    color: var(--color-background-dark);
+  }
 }
 
 .cardFront {
@@ -62,38 +98,8 @@
 }
 
 .cardBack {
-  display: none;
   z-index: var(--z-base);
-  opacity: 0.85;
-
-  @include from(768px) {
-    display: flex;
-    position: absolute;
-  }
-}
-
-.cardOrder0 {
-  @include from(768px) {
-    inset-block-start: 0;
-    inset-inline-start: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-.cardOrder1 {
-  @include from(768px) {
-    inset-block-start: 1.5rem;
-    inset-inline-start: 50%;
-    transform: translateX(calc(-50% + 14rem));
-  }
-}
-
-.cardOrder2 {
-  @include from(768px) {
-    inset-block-start: 1.5rem;
-    inset-inline-start: 50%;
-    transform: translateX(calc(-50% - 14rem));
-  }
+  pointer-events: none;
 }
 
 .mark {
@@ -127,24 +133,19 @@
   font-family: var(--font-sans);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-sm);
-  color: var(--color-text-on-dark);
 }
 
 .role {
   font-family: var(--font-sans);
   font-size: var(--font-size-xs);
-  color: var(--color-text-on-dark);
   opacity: 0.85;
 }
 
-.controlsPlaceholder {
-  display: none;
-
-  @include from(768px) {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-  }
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  z-index: var(--z-content);
 }
 
 .arrow {
@@ -156,10 +157,40 @@
   border-radius: var(--radius-pill);
   background-color: var(--color-background-dark);
   color: var(--color-text-on-dark);
-  font-family: var(--font-sans);
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-bold);
-  line-height: 1;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-duration-base) var(--motion-ease-out),
+    transform var(--motion-duration-fast) var(--motion-ease-out);
+
+  &:hover {
+    background-color: var(--color-background-strong);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand-orange);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+
+.arrowGlyphLeft {
+  transform: scaleX(-1);
+}
+
+.arrowGlyphRight {
+  transform: none;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 .dot {
@@ -168,5 +199,25 @@
   height: 0.5rem;
   border-radius: var(--radius-pill);
   background-color: var(--color-text-accent);
-  opacity: 0.6;
+  opacity: 0.4;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    opacity var(--motion-duration-base) var(--motion-ease-out),
+    transform var(--motion-duration-fast) var(--motion-ease-out);
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand-orange);
+    outline-offset: 2px;
+  }
+}
+
+.dotActive {
+  opacity: 1;
+  transform: scale(1.3);
 }
