@@ -33,8 +33,8 @@ import { useReducedMotion as useMotionReducedMotion } from 'motion/react';
  *     <motion.div
  *       initial={{ opacity: 0, y: reducedMotion ? 0 : 16 }}
  *       whileInView={{ opacity: 1, y: 0 }}
+ *       viewport={{ once: true, amount: 0.25 }}
  *       transition={{ duration: reducedMotion ? 0 : DURATION.base }}
- *       viewport={{ once: true }}
  *     >
  *       {children}
  *     </motion.div>

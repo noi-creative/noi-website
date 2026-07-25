@@ -1,15 +1,17 @@
-import { createElement } from 'react';
+import { createElement, type CSSProperties } from 'react';
 import styles from './Heading.module.scss';
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 type HeadingProps = {
   readonly as?: `h${HeadingLevel}`;
+  readonly id?: string;
   readonly primary: string;
   readonly accent: string;
   readonly weight?: 'bold' | 'black';
   readonly align?: 'start' | 'center';
   readonly className?: string;
+  readonly style?: CSSProperties;
 };
 
 /**
@@ -24,18 +26,22 @@ type HeadingProps = {
  */
 export function Heading({
   as = 'h1',
+  id,
   primary,
   accent,
   weight = 'black',
   align = 'start',
   className,
+  style,
 }: HeadingProps) {
   return createElement(
     as,
     {
+      id,
       className: [styles.heading, styles[`weight-${weight}`], styles[`align-${align}`], className]
         .filter(Boolean)
         .join(' '),
+      style,
     },
     <>
       <span className={styles.primary}>{primary}</span>{' '}

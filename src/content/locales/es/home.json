@@ -13,6 +13,20 @@
     "primaryCta": "Agendar tu llamado",
     "secondaryCta": "Ver portafolio"
   },
+  "branding": {
+    "eyebrow": "POR QUÉ NOI ES DIFERENTE",
+    "headlineRegular": "El branding no es un momento,",
+    "headlineBold": "ES UN PROCESO",
+    "body1": "El valor real de una identidad no termina cuando se entrega cada pieza. En NOI trabajamos hombro a hombro contigo: escuchamos primero, proponemos después, siempre con una estrategia que lo sustente.",
+    "body2": "Porque detrás de cada marca hay una persona apostándolo todo, y eso merece un trabajo profesional desde el día uno."
+  },
+  "services": {
+    "eyebrow": "LO QUE HACEMOS",
+    "headline": {
+      "primary": "Todo lo que tu marca necesita",
+      "accent": "para crecer con coherencia."
+    }
+  },
   "placeholder": {
     "pending": "Esta página se implementa en el ciclo P01."
   }
