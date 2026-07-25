@@ -1,0 +1,82 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-background-page);
+  flex: 1 1 18rem;
+  min-width: 18rem;
+}
+
+.portrait {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 658 / 840;
+  overflow: hidden;
+  background-color: var(--color-background-dark);
+}
+
+.portraitImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  padding-block-end: var(--space-6);
+  flex: 1 1 auto;
+}
+
+.name {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-subheading);
+  color: var(--color-text-primary);
+  margin: 0;
+  letter-spacing: var(--tracking-heading);
+}
+
+.role {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-text-accent);
+  margin: 0;
+}
+
+.bio {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  margin: 0;
+  opacity: 0.9;
+}
+
+.accent {
+  display: block;
+  width: 100%;
+  height: 0.5rem;
+}
+
+.accent-navy .accent {
+  background-color: var(--color-brand-navy);
+}
+
+.accent-burgundy .accent {
+  background-color: var(--color-brand-burgundy);
+}
+
+.accent-yellow .accent {
+  background-color: var(--color-brand-yellow);
+}

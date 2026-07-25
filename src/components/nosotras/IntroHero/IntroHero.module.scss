@@ -1,0 +1,129 @@
+@use '../../../styles/mixins' as *;
+
+.introSection {
+  position: relative;
+  overflow: clip;
+}
+
+.introContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+  align-items: center;
+  padding-block: var(--space-9);
+
+  @include from(768px) {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: var(--space-8);
+    padding-block: var(--space-10);
+  }
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.heading {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-heading);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 40ch;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+
+  p {
+    margin: 0;
+  }
+}
+
+.ledeEmphasis {
+  font-weight: var(--font-weight-bold);
+}
+
+.illustrationColumn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24rem;
+}
+
+.speechBubble {
+  position: relative;
+  background-color: var(--color-surface-cream);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6) var(--space-5) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 30rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.speechBubble::before {
+  content: '';
+  position: absolute;
+  inset-block-end: -1.5rem;
+  inset-inline-start: 18%;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--color-surface-cream);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.speechBubble::after {
+  content: '';
+  position: absolute;
+  inset-block-end: -2.75rem;
+  inset-inline-start: 14%;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--color-surface-cream);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.illustration {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+.logoMark {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  z-index: 1;
+  line-height: 1;
+}
+
+.logoNoi {
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: var(--font-weight-black);
+  color: var(--color-brand-ink);
+  letter-spacing: -0.03em;
+}
+
+.logoCreative {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-brand-burgundy);
+  letter-spacing: -0.01em;
+}
