@@ -17,8 +17,6 @@ export function BrandingSection() {
       ariaLabelledby="home-branding-heading"
       className={styles.brandingSection}
     >
-      <Scallop tone="navy" className={styles.topScallop} />
-
       <Container className={styles.brandingContainer}>
         <div className={styles.textColumn}>
           <Eyebrow tone="ink">{home.branding.eyebrow}</Eyebrow>

@@ -49,6 +49,12 @@
 
   margin-inline: calc(var(--page-gutter-mobile) * -1);
   padding-inline: var(--page-gutter-mobile);
+
+  overflow: scroll;
+
+  @include from(1000px) {
+    overflow: inherit;
+  }
 }
 
 .cardItem {

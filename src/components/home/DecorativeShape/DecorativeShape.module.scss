@@ -1,3 +1,5 @@
+@use '../../../styles/mixins' as *;
+
 .shape {
   position: absolute;
   display: block;
@@ -11,11 +13,16 @@
 }
 
 .placement-hero {
-  inset-block-start: 50%;
-  inset-inline-start: -27.5%;
-  width: 60%;
+  inset-block-start: 30%;
+  inset-inline-start: -30%;
   opacity: 0.95;
   position: absolute;
+
+  @include from(768px) {
+    inset-block-start: 50%;
+    inset-inline-start: -27.5%;
+    width: 60%;
+  }
 }
 
 .placement-branding {
