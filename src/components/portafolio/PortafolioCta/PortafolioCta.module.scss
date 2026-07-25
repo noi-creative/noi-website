@@ -24,7 +24,7 @@
   }
 }
 
-.doodlesLeft {
+.doodleLeft {
   position: relative;
   display: none;
   align-items: center;
@@ -36,23 +36,14 @@
   }
 }
 
-.doodle {
-  position: absolute;
+.sticker {
   display: block;
 }
 
-.doodleBlue {
-  width: 90%;
-  top: 30%;
-  left: 0;
-  transform: rotate(-12deg);
-}
-
-.doodleOrange {
-  width: 50%;
-  top: 0;
-  left: 20%;
-  transform: rotate(8deg);
+.textBubbleSticker {
+  width: clamp(140px, 14vw, 210px);
+  height: auto;
+  transform: rotate(-8deg);
 }
 
 .textColumn {
@@ -110,7 +101,7 @@
   margin-block-start: var(--space-2);
 }
 
-.doodleRight {
+.stickerRight {
   display: none;
   align-items: center;
   justify-content: center;
@@ -120,7 +111,7 @@
   }
 }
 
-.calendarDoodle {
+.calendarSticker {
   width: clamp(120px, 12vw, 180px);
   height: auto;
   transform: rotate(-6deg);

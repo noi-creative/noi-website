@@ -137,6 +137,14 @@ export const assets = {
         src: '/images/shared/stickers/sticker-telefono-amarillo.svg',
         alt: tbd,
       },
+      calendar: {
+        src: '/images/shared/stickers/sticker-calendar.svg',
+        alt: tbd,
+      },
+      textBubble: {
+        src: '/images/shared/stickers/sticker-text-bubble.svg',
+        alt: tbd,
+      },
     },
   },
   home: {
