@@ -35,6 +35,7 @@ export function IntroHero() {
             id="nosotras-intro-heading"
             primary={nosotras.intro.headline.primary}
             accent={nosotras.intro.headline.accent}
+            style={{ '--heading-accent-color': 'var(--color-brand-orange)' }}
             weight="black"
             className={styles.heading}
           />

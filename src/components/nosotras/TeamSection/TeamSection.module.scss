@@ -23,16 +23,24 @@
 }
 
 .header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.title {
+  max-width: 30rem;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  max-width: 48rem;
+  gap: var(--space-5);
 }
 
 .intro {
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  line-height: var(--line-height-body);
+  line-height: 2;
   color: var(--color-text-primary);
   margin: 0;
   max-width: 56ch;

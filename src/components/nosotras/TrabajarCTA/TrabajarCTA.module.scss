@@ -18,13 +18,13 @@
 .trabajarContainer {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
+  gap: var(--space-2);
   align-items: center;
-  padding-block: var(--space-10);
+  padding-block: var(--space-8);
 
   @include from(768px) {
     grid-template-columns: minmax(0, auto) minmax(0, 1fr);
-    gap: var(--space-8);
+    gap: var(--space-3);
   }
 }
 
@@ -34,21 +34,9 @@
   align-items: center;
 }
 
-.iconCircle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(96px, 12vw, 144px);
-  height: clamp(96px, 12vw, 144px);
-  border-radius: var(--radius-pill);
-  background-color: var(--color-background-dark);
-  color: var(--color-background-soft);
-  box-shadow: var(--shadow-card);
-}
-
-.fistBump {
-  width: 70%;
-  height: 70%;
+.manosSticker {
+  width: clamp(120px, 14vw, 183px);
+  height: auto;
 }
 
 .textColumn {
@@ -58,6 +46,7 @@
   text-align: center;
   gap: var(--space-4);
   max-width: 40rem;
+  justify-self: center;
 }
 
 .heading {

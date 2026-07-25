@@ -31,15 +31,17 @@ export function TeamSection() {
       <Container className={styles.teamContainer}>
         <div className={styles.header}>
           <TeamHeaderMotion>
-            <Eyebrow tone="accent">{nosotras.equipo.eyebrow}</Eyebrow>
+            <div className={styles.title}>
+              <Eyebrow tone="accent">{nosotras.equipo.eyebrow}</Eyebrow>
 
-            <Heading
-              as="h2"
-              id="nosotras-team-heading"
-              primary={nosotras.equipo.headline.primary}
-              accent={nosotras.equipo.headline.accent}
-              weight="bold"
-            />
+              <Heading
+                as="h2"
+                id="nosotras-team-heading"
+                primary={nosotras.equipo.headline.primary}
+                accent={nosotras.equipo.headline.accent}
+                weight="bold"
+              />
+            </div>
 
             <p className={styles.intro}>{nosotras.equipo.intro}</p>
           </TeamHeaderMotion>
