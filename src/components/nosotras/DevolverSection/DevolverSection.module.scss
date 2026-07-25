@@ -20,7 +20,7 @@
   grid-template-columns: 1fr;
   gap: var(--space-7);
   align-items: center;
-  padding-block: var(--space-10);
+  padding-block: var(--space-3);
 
   @include from(768px) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -30,19 +30,13 @@
 
 .photoColumn {
   position: relative;
-  min-height: 22rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .photo {
   position: relative;
   width: 90%;
-  max-width: 30rem;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
   z-index: var(--z-content);
 }
 

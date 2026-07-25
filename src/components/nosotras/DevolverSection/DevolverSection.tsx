@@ -35,17 +35,15 @@ export function DevolverSection() {
 
       <Container className={styles.devolverContainer}>
         <DevolverPhotoMotion>
-          <div className={styles.photoColumn}>
-            <div className={styles.photo}>
-              <Image
-                src={photo.src}
-                alt={photo.alt ?? 'Equipo de NOI trabajando junta'}
-                width={photo.width}
-                height={photo.height}
-                className={styles.photoImage}
-                sizes="(max-width: 767px) 90vw, 40vw"
-              />
-            </div>
+          <div className={styles.photo}>
+            <Image
+              src={photo.src}
+              alt={photo.alt ?? 'Equipo de NOI trabajando junta'}
+              width={photo.width}
+              height={photo.height}
+              className={styles.photoImage}
+              sizes="(max-width: 767px) 90vw, 40vw"
+            />
           </div>
         </DevolverPhotoMotion>
 

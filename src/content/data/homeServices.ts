@@ -28,7 +28,13 @@ export type HomeService = {
   readonly description: string;
   readonly number: string;
   readonly color: HomeServiceColor;
-  readonly iconSticker: 'megafonoRojo' | 'laptopCeleste';
+  readonly iconSticker:
+    | 'manosNaranja'
+    | 'laptopCeleste'
+    | 'bombillaAmarilla'
+    | 'doodleMarino'
+    | 'ilustracion03'
+    | 'ilustracion04';
   readonly textTone: 'ink' | 'cream';
 };
 
@@ -40,7 +46,7 @@ export const homeServices: readonly HomeService[] = [
       'De la plataforma estratégica al sistema visual completo. Construimos la base de tu marca para que cada comunicación se conecte con tu proyecto, no por repetición, sino por convicción.',
     number: '01',
     color: 'blue',
-    iconSticker: 'megafonoRojo',
+    iconSticker: 'manosNaranja',
     textTone: 'ink',
   },
   {
@@ -50,8 +56,8 @@ export const homeServices: readonly HomeService[] = [
       'Piezas visuales que se sostienen solas. Cada decisión gráfica responde a un objetivo claro: un sistema gráfico que se replica a sí mismo sin perder carácter.',
     number: '02',
     color: 'burgundy',
-    iconSticker: 'megafonoRojo',
-    textTone: 'ink',
+    iconSticker: 'bombillaAmarilla',
+    textTone: 'cream',
   },
   {
     id: 'diseno-web',
@@ -60,7 +66,7 @@ export const homeServices: readonly HomeService[] = [
       'Sitios que funcionan bien, se ven bien y se entienden rápido. Estructura, jerarquía visual alineada con la marca, navegación honesta.',
     number: '03',
     color: 'cream',
-    iconSticker: 'laptopCeleste',
+    iconSticker: 'doodleMarino',
     textTone: 'cream',
   },
   {
@@ -70,8 +76,8 @@ export const homeServices: readonly HomeService[] = [
       'Tiendas digitales pensadas para vender, no para decorar. Diseño con foco, cada decisión ayuda a que el cliente compre con la misma facilidad con la que navega por la marca.',
     number: '04',
     color: 'navy',
-    iconSticker: 'megafonoRojo',
-    textTone: 'ink',
+    iconSticker: 'laptopCeleste',
+    textTone: 'cream',
   },
   {
     id: 'estrategia-contenido',
@@ -80,8 +86,8 @@ export const homeServices: readonly HomeService[] = [
       'Qué decir, cuándo decirlo y por qué. Construimos una voz de marca reconocible que conecta con tu audiencia a través de cada punto de contacto, con la misma lógica en redes, web y materiales.',
     number: '05',
     color: 'orange',
-    iconSticker: 'megafonoRojo',
-    textTone: 'ink',
+    iconSticker: 'ilustracion03',
+    textTone: 'cream',
   },
   {
     id: 'naming',
@@ -90,7 +96,7 @@ export const homeServices: readonly HomeService[] = [
       'El nombre correcto no se improvisa, se construye. Te ayudamos a encontrar una identidad verbal que represente la esencia de tu marca y la haga memorable.',
     number: '06',
     color: 'ink',
-    iconSticker: 'megafonoRojo',
+    iconSticker: 'ilustracion04',
     textTone: 'cream',
   },
 ] as const;
