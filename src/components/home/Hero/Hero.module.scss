@@ -21,7 +21,7 @@
   align-items: end;
 
   @include from(768px) {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+    grid-template-columns: minmax(auto, 2fr) minmax(auto, 1.5fr);
     gap: var(--space-4);
   }
 }
@@ -59,7 +59,7 @@
   position: relative;
   z-index: 2;
   font-family: var(--font-sans);
-  font-size: 25px;
+  font-size: var(--font-size-md);
   align-self: flex-end;
   line-height: var(--line-height-body);
   color: var(--color-text-on-dark);

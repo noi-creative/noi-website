@@ -30,8 +30,60 @@
 
 .accent {
   font-family: var(--font-sans);
-  font-weight: var(--font-weight-bold);
   text-transform: none;
   letter-spacing: var(--tracking-normal);
   color: var(--heading-accent-color, inherit);
+}
+
+.accent-family-serif {
+  font-family: var(--font-serif);
+}
+
+.accent-italic {
+  font-style: italic;
+}
+
+.accent-size-xs {
+  font-size: var(--font-size-xs);
+}
+.accent-size-sm {
+  font-size: var(--font-size-sm);
+}
+.accent-size-base {
+  font-size: var(--font-size-base);
+}
+.accent-size-md {
+  font-size: var(--font-size-md);
+}
+.accent-size-lg {
+  font-size: var(--font-size-lg);
+}
+.accent-size-xl {
+  font-size: var(--font-size-xl);
+}
+.accent-size-2xl {
+  font-size: var(--font-size-2xl);
+}
+.accent-size-hero {
+  font-size: var(--font-size-hero);
+}
+
+.accent-weight-regular {
+  font-weight: var(--font-weight-regular);
+}
+
+.accent-weight-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.accent-weight-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.accent-weight-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.accent-weight-black {
+  font-weight: var(--font-weight-black);
 }

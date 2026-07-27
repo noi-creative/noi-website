@@ -3,27 +3,38 @@ import styles from './Heading.module.scss';
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
+type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold' | 'black';
+type AccentFamily = 'sans' | 'serif';
+type AccentSize = 'inherit' | 'xs' | 'sm' | 'base' | 'md' | 'lg' | 'xl' | '2xl' | 'hero';
+
 type HeadingProps = {
   readonly as?: `h${HeadingLevel}`;
   readonly id?: string;
   readonly primary: string;
   readonly accent: string;
-  readonly weight?: 'bold' | 'black';
+  readonly weight?: FontWeight;
   readonly align?: 'start' | 'center';
+  readonly accentFamily?: AccentFamily;
+  readonly accentWeight?: FontWeight;
+  readonly accentItalic?: boolean;
+  readonly accentSize?: AccentSize;
+  readonly accentColor?: string;
   readonly className?: string;
   readonly style?: CSSProperties;
 };
 
 /**
- * Mixed-typeface heading primitive. The C03 audit identified this pattern
- * as the strongest repeated device in the approved system — it is used 14
- * times across Home, Nosotras and Contacto. The component renders a
- * semantic heading with both phrases in Satoshi: the primary in
- * uppercase bold/black and the accent in sentence case bold, tinted via
- * the `--heading-accent-color` CSS custom property (defaults to inherit).
+ * Mixed-typeface heading primitive. Renders a semantic heading with both
+ * phrases in Satoshi: the primary in uppercase bold/black and the accent
+ * in sentence case bold, tinted via `--heading-accent-color`.
  *
- * The default weight is `black` (the display weight used on the approved
- * hero/headline frames). `bold` is available for secondary section titles.
+ * Accent styling can be customized via props:
+ * - `accentFamily` — `'sans'` (default) or `'serif'`
+ * - `accentItalic` — applies italic style when `true`
+ * - `accentSize` — any token from the type scale (`'inherit'` by default)
+ * - `accentColor` — sets `--heading-accent-color` on the heading element
+ *
+ * The default weight is `black`. Use `bold` for secondary section titles.
  */
 export function Heading({
   as = 'h1',
@@ -32,21 +43,43 @@ export function Heading({
   accent,
   weight = 'black',
   align = 'start',
+  accentFamily = 'sans',
+  accentItalic = false,
+  accentSize = 'inherit',
+  accentWeight,
+  accentColor,
   className,
   style,
 }: HeadingProps) {
+  const headingClass = [
+    styles.heading,
+    styles[`weight-${weight}`],
+    styles[`align-${align}`],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const accentClass = [
+    styles.accent,
+    styles[`accent-family-${accentFamily}`],
+    accentItalic ? styles['accent-italic'] : null,
+    accentSize !== 'inherit' ? styles[`accent-size-${accentSize}`] : null,
+    styles[`accent-weight-${accentWeight}`],
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const combinedStyle = accentColor
+    ? ({ ...style, '--heading-accent-color': accentColor } as CSSProperties)
+    : style;
+
   return createElement(
     as,
-    {
-      id,
-      className: [styles.heading, styles[`weight-${weight}`], styles[`align-${align}`], className]
-        .filter(Boolean)
-        .join(' '),
-      style,
-    },
+    { id, className: headingClass, style: combinedStyle },
     <>
       <span className={styles.primary}>{primary}</span>{' '}
-      <span className={styles.accent}>{accent}</span>
+      <span className={accentClass}>{accent}</span>
     </>,
   );
 }

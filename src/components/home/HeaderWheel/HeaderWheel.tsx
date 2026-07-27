@@ -4,11 +4,13 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import { assets } from '@/lib/assets';
 import styles from './HeaderWheel.module.scss';
+import { useScreenWidth } from '@/lib/useScreenWidth';
 
-const ORBIT_RADIUS = 500;
+const ORBIT_RADIUS = 1;
 const SECONDS_PER_REVOLUTION = 60;
 
 export function HeaderWheel() {
+  const width = useScreenWidth(); // number | null
   const images = assets.home.headerWheel
     ? [...assets.home.headerWheel, ...assets.home.headerWheel]
     : [];
@@ -32,7 +34,10 @@ export function HeaderWheel() {
               key={image.src + index}
               className={styles.positioner}
               style={{
-                transform: `rotate(${angle}deg) translateX(${ORBIT_RADIUS}px)`,
+                transform: `
+                  rotate(${angle}deg)
+                  translateX(${(width ?? 0) / 3}px)
+                `,
               }}
             >
               <motion.div

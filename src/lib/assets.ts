@@ -75,6 +75,7 @@ export const assets = {
     figuras: {
       figura1: { src: '/images/shared/figuras/figura-1.svg', alt: tbd },
       figura2: { src: '/images/shared/figuras/figura-2.svg', alt: tbd },
+      figura3: { src: '/images/shared/figuras/figura-3.svg', alt: tbd },
       semiCirculoAzul: {
         src: '/images/shared/figuras/semi-circulo-azul.svg',
         alt: tbd,
