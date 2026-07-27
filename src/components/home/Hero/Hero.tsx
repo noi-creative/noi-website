@@ -18,7 +18,7 @@ export function Hero() {
     >
       <HeaderWheel />
       <DecorativeShape />
-      <Container className={styles.heroContainer} width="viewport">
+      <Container className={styles.heroContainer} width="wide">
         <div className={styles.leftColumn}>
           <Heading
             as="h1"
@@ -29,6 +29,7 @@ export function Hero() {
             accentFamily="serif"
             accentItalic
             accentWeight="medium"
+            accentSize="hero-lg"
             className={styles.heading}
             style={{ color: 'var(--color-brand-yellow)' }}
           />

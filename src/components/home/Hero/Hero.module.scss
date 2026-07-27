@@ -17,12 +17,17 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-7);
+  gap: var(--space-5);
   align-items: end;
+  padding-inline: var(--space-6);
 
   @include from(768px) {
     grid-template-columns: minmax(auto, 2fr) minmax(auto, 1.5fr);
     gap: var(--space-4);
+  }
+
+  @include from(1440px) {
+    padding-inline: 0;
   }
 }
 
@@ -33,6 +38,10 @@
   color: var(--color-text-on-dark);
   z-index: var(--z-content);
   min-height: 18rem;
+
+  @include from(768px) {
+    gap: var(--space-8);
+  }
 }
 
 .heading {

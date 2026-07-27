@@ -27,14 +27,14 @@
   }
 
   @include from(1200px) {
-    inset-block-start: 45%;
+    inset-block-start: 47.5%;
     inset-inline-start: -45%;
   }
 
   @include from(1440px) {
     min-width: 1000px;
     min-height: 1000px;
-    inset-block-start: 250px;
+    inset-block-start: 260px;
     inset-inline-start: -45%;
   }
 }

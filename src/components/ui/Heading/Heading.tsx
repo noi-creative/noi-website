@@ -5,7 +5,8 @@ type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold' | 'black';
 type AccentFamily = 'sans' | 'serif';
-type AccentSize = 'inherit' | 'xs' | 'sm' | 'base' | 'md' | 'lg' | 'xl' | '2xl' | 'hero';
+type AccentSize =
+  'inherit' | 'xs' | 'sm' | 'base' | 'md' | 'lg' | 'xl' | '2xl' | 'hero' | 'hero-lg';
 
 type HeadingProps = {
   readonly as?: `h${HeadingLevel}`;
