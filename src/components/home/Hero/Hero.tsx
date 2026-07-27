@@ -26,12 +26,12 @@ export function Hero() {
             primary={home.hero.headline.primary}
             accent={home.hero.headline.accent}
             weight="black"
+            accentColor='#fff9f4'
             accentFamily="serif"
             accentItalic
             accentWeight="medium"
             accentSize="hero-lg"
             className={styles.heading}
-            style={{ color: 'var(--color-brand-yellow)' }}
           />
           <p className={styles.lede}>{home.hero.lede}</p>
         </div>
