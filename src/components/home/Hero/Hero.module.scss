@@ -8,8 +8,8 @@
   overflow: hidden;
 
   @include from(768px) {
-    padding-block-start: clamp(8rem, 14vw, 14rem);
-    padding-block-end: clamp(6rem, 10vw, 10rem);
+    padding-block-start: clamp(8rem, 14vw, 8rem);
+    padding-block-end: clamp(6rem, 10vw, 8rem);
   }
 }
 
