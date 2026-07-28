@@ -26,7 +26,7 @@ export function Hero() {
             primary={home.hero.headline.primary}
             accent={home.hero.headline.accent}
             weight="black"
-            accentColor='#fff9f4'
+            accentColor="#fff9f4"
             accentFamily="serif"
             accentItalic
             accentWeight="medium"
