@@ -84,6 +84,12 @@
   background-color: color-mix(in srgb, var(--color-brand-ink) 88%, var(--color-brand-navy));
 }
 
+.variant-secondary-navy {
+  background-color: var(--color-background-page);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-pill);
+}
+
 .variant-outline-on-dark {
   background-color: transparent;
   color: var(--color-text-on-dark);

@@ -6,6 +6,7 @@ export type ButtonVariant =
   | 'primary-burgundy'
   | 'primary-orange'
   | 'primary-ink'
+  | 'secondary-navy'
   | 'outline-on-dark'
   | 'outline-on-light'
   | 'text-link';
