@@ -4,7 +4,7 @@ import styles from './Heading.module.scss';
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold' | 'black';
-type AccentFamily = 'sans' | 'serif';
+type AccentFamily = 'sans' | 'serif' | 'display';
 type AccentSize =
   'inherit' | 'xs' | 'sm' | 'base' | 'md' | 'lg' | 'xl' | '2xl' | 'hero' | 'hero-lg';
 

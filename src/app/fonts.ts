@@ -14,11 +14,9 @@ import { Playfair_Display } from 'next/font/google';
  * 400, 500 and 700 weights in both normal and italic. 600 is intentionally
  * not loaded because no approved frame uses it.
  *
- * Panel Sans is NOT loaded. The C03 audit found zero Panel Sans moments in
- * the approved Home, Nosotras or Contacto frames. The .otf files remain on
- * disk at `public/fonts/PanelSans/`. If a future cycle introduces a Panel
- * Sans moment, register the font here with a `variable: '--font-panel-sans'`
- * option; the token `--font-display-accent` already references it.
+ * Panel Sans is loaded as a local font (3 weights: 400, 700, 900).
+ * The CSS variable `--font-panel-sans` is set here; the design token
+ * `--font-display-accent` already references it with a Satoshi fallback.
  */
 
 export const satoshi = localFont({
@@ -49,11 +47,34 @@ export const satoshi = localFont({
   fallback: ['system-ui', 'sans-serif'],
 });
 
+export const panelSans = localFont({
+  src: [
+    {
+      path: '../../public/fonts/PanelSans/PanelSans-Regular.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/PanelSans/PanelSans-Bold.otf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/PanelSans/PanelSans-Black.otf',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-panel-sans',
+  fallback: ['var(--font-satoshi)', 'system-ui', 'sans-serif'],
+});
+
 export const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-playfair',
-  weight: ['400', '500', '700'],
+  weight: ['400', '500', '700', '900'],
   style: ['normal', 'italic'],
   fallback: ['Georgia', 'serif'],
 });
