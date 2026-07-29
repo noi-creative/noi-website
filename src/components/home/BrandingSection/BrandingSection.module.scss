@@ -100,13 +100,20 @@
 
 .sticker {
   position: absolute;
-  inset-block-start: 10%;
-  inset-inline-start: 4%;
-  width: clamp(64px, 8vw, 112px);
-  height: clamp(64px, 8vw, 112px);
+  inset-block-start: clamp(64px, 18vw, 112px);
+  inset-inline-start: clamp(32px, 9vw, 56px);
+  width: clamp(64px, 18vw, 112px);
+  height: clamp(64px, 18vw, 112px);
   transform: rotate(-12deg);
   z-index: var(--z-content);
   pointer-events: none;
+
+  @include from(768px) {
+    inset-block-start: 10%;
+    inset-inline-start: 4%;
+    width: clamp(64px, 8vw, 112px);
+    height: clamp(64px, 8vw, 112px);
+  }
 }
 
 .stickerImage {
