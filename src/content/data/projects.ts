@@ -101,8 +101,8 @@ export const projects: readonly Project[] = [
       },
       {
         type: 'text',
-        background: 'var(--color-background-page)',
-        textColor: 'var(--color-text-accent)',
+        background: '#fffdf6',
+        textColor: '#b60c10',
         body: 'JS Content Lab es un laboratorio de contenido audiovisual estratégico cuyo eslogan, transformar lo ordinario en extraordinario, refleja su filosofía de marca: la fusión de una creatividad audaz con un propósito analítico claro. Mantiene una identidad visual sofisticada, actual y de gran impacto, donde una paleta cromática intencional —protagonizada por el elegante contraste entre el blanco crema, el negro opaco y un rojo vibrante, equilibrada con acentos cálidos en marrón oscuro y naranja. La combinación de sus tipografías, liderada por la elegancia clásica y el carácter editorial de Cormorant junto a la modernidad, limpieza y versatilidad de Montserrat, construye una estética refinada, estructurada y única que rompe por completo con las fórmulas comunes.',
       },
       {
@@ -153,9 +153,9 @@ export const projects: readonly Project[] = [
       },
       {
         type: 'text',
-        background: 'var(--color-background-page)',
-        textColor: 'var(--color-text-primary)',
-        body: 'Jaze es una marca de ropa cristiana que prioriza la excelencia, la calidad de sus materiales y un servicio impecable por encima de cualquier otra cosa. Mantiene una identidad visual sobria, atemporal y profundamente equilibrada, donde una paleta de colores tierra —con tonos crema, amarillo suave, verde oliva y verde bosque— evoca una sofisticación orgánica y serena. La combinación de sus tipografías, encabezada por la elegancia con serifa de una tipografía como Alga junto a la limpieza de Lato, construye una estética minimalista y fresca. Sus elementos ilustrados, simples y sintetizados, complementan una marca de ropa sofisticada, moderna y vanguardista creada para expresar la fe desde un diseño único y con propósito.',
+        background: '#ffeac5',
+        textColor: '#0b3811',
+        body: 'Jaze es una marca de ropa cristiana que prioriza la excelencia, la calidad de sus materiales y un servicio impecable por encima de cualquier otra cosa. Mantiene una identidad visual sobria, atemporal y profundamente equilibrada, donde una paleta de colores tierra —con tonos crema, amarillo suave, verde oliva y verde bosque— evoca una sofisticación orgánica y serena. La combinación de sus tipografías, encabezada por la elegancia con altura de una tipografía con serifa como Alga junto a la limpieza de Lato, construye una estética minimalista y fresca. Sus elementos ilustrados, simples y sintetizados, complementan una marca de ropa sofisticada, moderna y vanguardista creada para expresar la fe desde un diseño único y con propósito.',
       },
       {
         type: 'image',
@@ -211,9 +211,9 @@ export const projects: readonly Project[] = [
       },
       {
         type: 'text',
-        background: 'var(--color-text-accent)',
-        textColor: 'var(--color-background-page)',
-        body: 'Nayeenails es una marca de salón de uñas cuyo tagline refleja su filosofía de marca: la delicadeza en cada detalle y un servicio impecable por encima de cualquier otra cosa. Mantiene una identidad visual sofisticada, sutil y profundamente femenina, donde la elegancia atemporal de su concepto evoca una experiencia de belleza exclusiva y serena. La combinación de sus tipografías, encabezada por la personalidad distintiva de The Seasons junto a la limpieza y modernidad de Lato, construye una estética limpia y refinada. Su logotipo sutil y su sello icónico, diseñado a partir de la "N" de Naye, complementan una marca de cuidado personal elegante, moderna y memorable, creada para elevar la experiencia de manicura desde el diseño y la distinción.',
+        background: '#72202e',
+        textColor: '#f3eeea',
+        body: 'Nayeenails es una marca de salón de uñas cuyo tagline refleja su filosofia de marca, la delicadeza en cada detalle y un servicio impecable por encima de cualquier otra cosa. Mantiene una identidad visual sofisticada, sutil y profundamente femenina, donde la elegancia atemporal de su concepto evoca una experiencia de belleza exclusiva y serena. La combinación de sus tipografías, encabezada por la personalidad distintiva de The Seasons junto a la limpieza y modernidad de Lato, construye una estética limpia y refinada. Su logotipo sutil y su sello icónico, diseñado a partir de la "N" de Naye, complementan una marca de cuidado personal elegante, moderna y memorable, creada para elevar la experiencia de manicura desde el diseño y la distinción.',
       },
       {
         type: 'image',
@@ -301,9 +301,9 @@ export const projects: readonly Project[] = [
       },
       {
         type: 'text',
-        background: 'var(--color-background-page)',
-        textColor: 'var(--color-text-accent)',
-        body: "Simbi Cake's es una marca de tortas y galletas artesanales para perros, creada para celebrar el amor incondicional que nuestros mejores amigos peludos nos dan día a día. Mantiene un estilo visual alegre, festivo y cercano, donde los tonos cálidos, pasteles y los detalles ilustrados —como el sombrerito de fiesta y el perfil del perrito en su isotopo— nos transmiten una esencia amigable, dulce y divertida. Su tipografía redondeada e imponente proyecta la confianza y la calidad de una marca profesional que entiende a los animales como parte fundamental de la familia.",
+        background: '#fffbd6',
+        textColor: '#810c18',
+        body: 'Simbi Cake’s es una marca de tortas y galletas artesanales para perros, creada para celebrar el amor incondicional que nuestros mejores amigos peludos nos dan día a día. Mantiene un estilo visual alegre, festivo y cercano, donde los tonos cálidos, pasteles y los detalles ilustrados —como el sombrerito de fiesta y el perfil del perrito en su isotipo— nos transmiten una esencia amigable, dulce y divertida. Su tipografía redondeada e imponente proyecta la confianza y la calidad de una marca profesional que entiende a los animales como parte fundamental de la familia.',
       },
       {
         type: 'image',
@@ -375,9 +375,9 @@ export const projects: readonly Project[] = [
       },
       {
         type: 'text',
-        background: 'var(--color-background-soft)',
-        textColor: 'var(--color-text-accent)',
-        body: 'Veritomom es una marca de lifestyle fresca, amigable y joven que acompaña a las mujeres como una amiga cercana. Su identidad visual se apoya en una equilibrada paleta de verde, vino tinto, amarillo mantequilla y naranja que evoca vitalidad y cercanía. La personalidad de su tipografía despliega Lato, junto a la limpieza neutral de Neue Montreal y el acento femenino de Parisienne, construye una estética refinada y aesthetic. Un logotipo intervenido y un isotopo cargado de historia completan una marca auténtica y memorable, pensada para conectar en el día a día de sus filtros.',
+        background: '#accfed',
+        textColor: '#881b30',
+        body: 'Veritomom es una marca de lifestyle fresca, amigable y joven que acompaña a las mujeres como una amiga cercana. Su identidad visual se apoya en una equilibrada paleta de verde, vino tinto, amarillo mantequilla y naranja que evoca vitalidad y cercanía. La personalidad de su tipografía display Losera, junto a la limpieza neutral de Neue Montreal y el acento femenino de Parisienne, construye una estética refinada y aesthetic. Un logotipo intervenido y un isotipo cargado de historia completan una marca auténtica y memorable, pensada para conectar en el día a día sin filtros.',
       },
       {
         type: 'image',
@@ -433,8 +433,8 @@ export const projects: readonly Project[] = [
       },
       {
         type: 'text',
-        background: 'var(--color-background-page)',
-        textColor: 'var(--color-text-primary)',
+        background: '#fff9f4',
+        textColor: '#24344d',
         body: 'Crea desde cero academy, es una academia de emprendimiento femenino, cercana y espiritual que guía a las mujeres a descubrir su propósito a través del mundo del estampado y la creatividad. Su identidad visual se apoya en una serena paleta de azules profesionales, tonos rosados y beige que evoca calma, confianza y una profunda paz. La elegancia sofisticada de Playfair Display, junto a la limpieza y claridad neutral de Lato, construye una estética profesional, equilibrada y acogedora. Una marcada energía de mentora y cuidadora completa una marca sólida, inspiradora y memorable, pensada para impulsar a cada mujer a emprender desde la fe, el conocimiento y la pasión.',
       },
       {
