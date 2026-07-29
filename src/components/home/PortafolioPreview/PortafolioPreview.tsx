@@ -8,6 +8,7 @@ import { site } from '@/config/site';
 import common from '@/content/locales/es/common.json';
 import home from '@/content/locales/es/home.json';
 import styles from './PortafolioPreview.module.scss';
+import { CSSProperties } from 'react';
 
 /**
  * "PORTAFOLIO" section. Burgundy background, oversized Satoshi
@@ -23,7 +24,6 @@ import styles from './PortafolioPreview.module.scss';
  */
 export function PortafolioPreview() {
   const featured = projects;
-  const thumbnails = featured.slice(0, 4);
 
   return (
     <Section
@@ -58,30 +58,22 @@ export function PortafolioPreview() {
             primary={home.portafolio.subhead.primary}
             accent={home.portafolio.subhead.accent}
             weight="bold"
+            accentColor="#ffedae"
+            accentFamily="display"
+            style={
+              {
+                '--heading-primary-transform': 'none',
+              } as CSSProperties
+            }
           />
         </div>
         <div className={styles.cta}>
           <p className={styles.lede}>{home.portafolio.lede}</p>
-          <Button href={site.routes.portafolio} variant="outline-on-dark" withArrow>
+          <Button href={site.routes.portafolio} variant="secondary-navy" withArrow>
             {common.cta.explorarPortafolioCompleto}
           </Button>
         </div>
       </Container>
     </Section>
-  );
-}
-
-function Thumb({ project }: { project: Project }) {
-  return (
-    <div className={styles.thumb}>
-      <Image
-        src={project.coverSrc}
-        alt=""
-        width={project.coverWidth}
-        height={project.coverHeight}
-        className={styles.thumbImage}
-        sizes="120px"
-      />
-    </div>
   );
 }

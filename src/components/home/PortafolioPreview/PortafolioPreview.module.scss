@@ -53,7 +53,7 @@
 .giantHeading {
   font-family: var(--font-sans);
   font-weight: var(--font-weight-black);
-  font-size: clamp(4rem, 12vw, 10rem);
+  font-size: var(--font-size-hero-lg);
   line-height: 0.9;
   letter-spacing: var(--tracking-heading);
   text-transform: uppercase;
@@ -73,10 +73,10 @@
   gap: var(--space-4);
   z-index: var(--z-content);
   position: relative;
-  max-width: 28em;
+  max-width: 22.5em;
 
-  @include from(1100px) {
-    max-width: 33em;
+  @include from(1440px) {
+    max-width: 25em;
   }
 }
 

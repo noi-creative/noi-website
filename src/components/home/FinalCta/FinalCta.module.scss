@@ -22,7 +22,16 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
-  max-width: 36rem;
+  text-align: center;
+
+  @include from(768px) {
+    text-align: inherit;
+    max-width: 36rem;
+  }
+}
+
+.heading {
+  color: var(--color-brand-navy);
 }
 
 .lede {
@@ -39,7 +48,6 @@
 }
 
 .accentWord {
-  color: var(--color-brand-orange);
   font-weight: var(--font-weight-bold);
 }
 

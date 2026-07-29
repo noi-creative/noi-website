@@ -3,6 +3,7 @@
 .brandingSection {
   position: relative;
   overflow: clip;
+  padding-bottom: var(--space-10);
 }
 
 .topScallop {
@@ -21,6 +22,7 @@
   gap: var(--space-5);
   align-items: center;
   padding-block: 0;
+  padding-inline: var(--space-6);
 
   @include from(768px) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -36,6 +38,7 @@
   width: 100%;
 
   @include from(768px) {
+    text-align: inherit;
     gap: var(--space-5);
   }
 }
@@ -43,25 +46,15 @@
 .heading {
   display: flex;
   flex-direction: column;
-  font-family: var(--font-sans);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--tracking-heading);
-  color: var(--color-brand-navy);
-  font-size: var(--font-size-xl);
-  margin: 0;
   gap: var(--space-2);
-}
+  font-size: var(--font-size-xl);
+  text-align: center;
+  color: var(--color-text-accent);
 
-.headingRegular {
-  font-weight: var(--font-weight-bold);
-  text-transform: none;
-  color: var(--color-brand-burgundy);
-}
-
-.headingBold {
-  font-weight: var(--font-weight-black);
-  text-transform: uppercase;
+  @include from(768px) {
+    max-width: 8em;
+    text-align: inherit;
+  }
 }
 
 .body {
@@ -69,11 +62,11 @@
   flex-direction: column;
   gap: var(--space-4);
   font-size: var(--font-size-base);
-  line-height: var(--line-height-body);
-  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-background-dark);
 
   @include from(768px) {
-    max-width: 38ch;
+    max-width: 28em;
   }
 
   p {

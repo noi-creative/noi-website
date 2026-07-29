@@ -2,14 +2,14 @@ import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Eyebrow } from '@/components/ui/Eyebrow';
-import { Button } from '@/components/ui/Button';
-import { Scallop } from '@/components/home/Scallop';
 import { ServiceCard } from '@/components/home/ServiceCard';
 import { homeServices } from '@/content/data/homeServices';
-import { site } from '@/config/site';
-import common from '@/content/locales/es/common.json';
 import home from '@/content/locales/es/home.json';
 import styles from './ServicesPreview.module.scss';
+import { CSSProperties } from 'react';
+// import { Button } from '@/components/ui/Button';
+// import { site } from '@/config/site';
+// import common from '@/content/locales/es/common.json';
 
 export function ServicesPreview() {
   return (
@@ -18,8 +18,6 @@ export function ServicesPreview() {
       ariaLabelledby="home-services-heading"
       className={styles.servicesSection}
     >
-      <Scallop tone="yellow" className={styles.topScallop} />
-
       <Container className={styles.servicesContainer}>
         <div className={styles.header}>
           <Eyebrow tone="accent">
@@ -32,6 +30,14 @@ export function ServicesPreview() {
             accent={home.services.headline.accent}
             weight="bold"
             align="center"
+            accentFamily="serif"
+            accentItalic
+            accentWeight="medium"
+            style={
+              {
+                '--heading-primary-transform': 'none',
+              } as CSSProperties
+            }
           />
         </div>
 
