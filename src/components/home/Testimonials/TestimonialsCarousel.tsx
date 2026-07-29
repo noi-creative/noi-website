@@ -102,7 +102,6 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
               <span className={styles.quoteMark} aria-hidden="true">
                 &ldquo;
               </span>
-              {t.mark ? <p className={styles.mark}>{t.mark}</p> : null}
               <blockquote className={styles.quote}>
                 <p>{t.quote}</p>
               </blockquote>

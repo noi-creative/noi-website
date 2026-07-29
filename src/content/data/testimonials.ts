@@ -35,35 +35,34 @@ export const testimonials: readonly Testimonial[] = [
   {
     id: 'nayely-urdenata',
     quote:
-      'Me encantó la experiencia de trabajar con ellas. Lograron captar las ideas que tenía en mi cabeza, escuchando lo que quería y haciendo mucho más de lo que imaginé. Las recomiendo sin dudarlo, son un equipo de primera.',
+      '¡Me encantó la experiencia con ustedes! Son un grupo organizado y que saben escuchar las peticiones de sus clientes, por lo menos contigo me sentí muy cómoda y segura al tomar la decisión de cambiar mi marca por completo',
     author: 'Nayely Urdenata',
-    role: '@nayelyurdenata · Nutricionista',
+    role: 'Identidad visual · Nayeenails',
     cardColor: 'orange',
-    order: 2,
+    order: 0,
   },
   {
     id: 'veronica-dominguez',
-    mark: 'Lo que más me gustó…',
     quote:
-      'Lo que más me gustó fue que no solo entendieron lo que quería transmitir, sino que hicieron suyo ese proceso para darme todo lo que mi marca necesitaba. Cada detalle tuvo una intención y el resultado superó por completo mis expectativas.',
+      'Lo que más me gustó fue que no solo entendieron lo que quería transmitir, sino que lograron ver cosas que yo misma todavía no veía… Cada detalle tuvo una intención y el resultado superó por completo mis expectativas.',
     author: 'Verónica Domínguez',
-    role: '@veritomom · Verito Mom',
+    role: 'Identidad visual · Veritomom',
     cardColor: 'navy',
-    order: 0,
+    order: 1,
   },
   {
     id: 'oriana-dalessio',
     quote:
-      'Nos ha quedado entendido perfectamente lo que quería recrear para mi marca. Diseñaron el packaging para mi evento de maquillaje y los stickers que sublimamos en los tote bags, y honestamente no sé cuál de los dos diseños me dejó más enamorada.',
+      ' Noi de verdad entendió perfectamente lo que quería recrear para mi marca. Diseño el pendón para mi evento de maquillaje y los stickers que sublimamos en las tote bags, y honestamente no sé cuál de los dos diseños me dejó más enamorada.',
     author: "Oriana D'alessio",
     role: 'Diseño gráfico · Evolve You',
     cardColor: 'burgundy',
-    order: 1,
+    order: 2,
   },
   {
     id: 'dayana-rodriguez',
     quote:
-      'Graciassss chicassss, ame demasiado cada detalle, ahora la academia no solo me representa sino que habla por sí sola. Felicidades por tu equipo de trabajo, AMEEE demasiado',
+      'Graciassss chicassss, ame demasiado cada detalle, ahora la  academia no solo me representa sino que habla por sí sola. Felicidades por tu equipo de trabajo, AMEEE demasiado',
     author: 'Dayana Rodriguez',
     role: 'Diseño gráfico · Crea Desde Cero Academy',
     cardColor: 'yellow',
