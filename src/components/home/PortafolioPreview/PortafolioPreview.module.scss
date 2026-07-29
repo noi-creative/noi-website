@@ -104,34 +104,37 @@
 }
 
 .strip {
-  margin-block-start: var(--space-8);
-  margin-inline: calc(var(--page-gutter-desktop) * -1);
   position: absolute;
+  inset-inline: 0;
   top: var(--space-5);
-  margin: auto;
+  overflow: hidden;
+  padding-inline-start: var(--page-gutter-desktop);
 
   &::-webkit-scrollbar {
     display: none;
   }
+}
 
-  @include from(2000px) {
-    width: 100%;
-  }
+.stripTrack {
+  display: flex;
+  width: max-content;
+  will-change: transform;
 }
 
 .stripList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
+  flex: none;
   gap: var(--space-3);
-  padding-inline: var(--page-gutter-desktop);
+  width: max-content;
+  padding: 0;
+  padding-inline-end: var(--space-3);
+  margin: 0;
+  list-style: none;
+}
 
-  @include from(2000px) {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
+.stripClone {
+  display: flex;
+  flex: none;
 }
 
 .stripItem {
@@ -148,4 +151,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strip {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+
+  .stripTrack {
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .stripClone {
+    display: none;
+  }
 }

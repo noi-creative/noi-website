@@ -1,12 +1,12 @@
-import Image from 'next/image';
 import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Button } from '@/components/ui/Button';
-import { projects, type Project } from '@/content/data/projects';
+import { projects } from '@/content/data/projects';
 import { site } from '@/config/site';
 import common from '@/content/locales/es/common.json';
 import home from '@/content/locales/es/home.json';
+import { PortafolioCarousel } from './PortafolioCarousel';
 import styles from './PortafolioPreview.module.scss';
 import { CSSProperties } from 'react';
 
@@ -14,16 +14,22 @@ import { CSSProperties } from 'react';
  * "PORTAFOLIO" section. Burgundy background, oversized Satoshi
  * Black heading, four small project thumbnails overlapping the
  * heading, mixed-typeface subhead, supporting copy, outline CTA,
- * and a static strip of all six featured project `*-med` images.
+ * and an infinite Motion-powered carousel of all six featured
+ * project cover images.
  *
- * The static strip is a placeholder for the infinite carousel
- * owned by A01. P01 ships the strip as a horizontal scroll
- * (mobile) or a static row that fits the container (desktop).
- *
- * Server Component.
+ * Server Component. The carousel behaviour lives in
+ * PortafolioCarousel.tsx (Client Component).
  */
 export function PortafolioPreview() {
   const featured = projects;
+
+  const carouselItems = featured.map((project) => ({
+    slug: project.slug,
+    name: project.name,
+    src: project.coverSrc,
+    width: project.coverWidth,
+    height: project.coverHeight,
+  }));
 
   return (
     <Section
@@ -31,22 +37,7 @@ export function PortafolioPreview() {
       ariaLabelledby="home-portafolio-heading"
       className={styles.portafolioSection}
     >
-      <div className={styles.strip} aria-label="Vista previa de proyectos">
-        <ol className={styles.stripList}>
-          {featured.map((project) => (
-            <li key={project.slug} className={styles.stripItem}>
-              <Image
-                src={project.coverSrc}
-                alt=""
-                width={project.coverWidth}
-                height={project.coverHeight}
-                className={styles.stripImage}
-                sizes="(max-width: 767px) 70vw, 30vw"
-              />
-            </li>
-          ))}
-        </ol>
-      </div>
+      <PortafolioCarousel items={carouselItems} />
       <Container className={styles.portafolioContainer}>
         <h2 id="home-portafolio-heading" className={styles.giantHeading}>
           {home.portafolio.title}
