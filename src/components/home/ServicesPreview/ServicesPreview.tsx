@@ -1,3 +1,8 @@
+'use client';
+
+import { useState } from 'react';
+import type { CSSProperties, FocusEvent } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
@@ -6,12 +11,26 @@ import { ServiceCard } from '@/components/home/ServiceCard';
 import { homeServices } from '@/content/data/homeServices';
 import home from '@/content/locales/es/home.json';
 import styles from './ServicesPreview.module.scss';
-import { CSSProperties } from 'react';
 // import { Button } from '@/components/ui/Button';
 // import { site } from '@/config/site';
 // import common from '@/content/locales/es/common.json';
 
+type OverlapState = 'none' | 'normal' | 'strong';
+
+const CARD_ENTRANCE_EASE = [0.22, 1, 0.36, 1] as const;
+
 export function ServicesPreview() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  const handleRowBlur = (event: FocusEvent<HTMLOListElement>) => {
+    const nextFocusedElement = event.relatedTarget as Node | null;
+
+    if (!event.currentTarget.contains(nextFocusedElement)) {
+      setActiveIndex(null);
+    }
+  };
+
   return (
     <Section
       background="cream"
@@ -41,12 +60,69 @@ export function ServicesPreview() {
           />
         </div>
 
-        <ol className={styles.cardRow} aria-label="Servicios">
-          {homeServices.map((service) => (
-            <li key={service.id} className={styles.cardItem}>
-              <ServiceCard service={service} />
-            </li>
-          ))}
+        <ol
+          className={styles.cardRow}
+          aria-label="Servicios"
+          onMouseLeave={() => setActiveIndex(null)}
+          onBlurCapture={handleRowBlur}
+        >
+          {homeServices.map((service, index) => {
+            const isActive = activeIndex === index;
+
+            return (
+              <motion.li
+                key={service.id}
+                layout="position"
+                layoutDependency={activeIndex}
+                className={styles.cardItem}
+                data-overlap={getOverlapState(index, activeIndex)}
+                style={{ zIndex: isActive ? homeServices.length + 1 : index + 1 }}
+                transition={{
+                  layout: shouldReduceMotion
+                    ? { duration: 0 }
+                    : {
+                        type: 'spring',
+                        stiffness: 420,
+                        damping: 38,
+                        mass: 0.7,
+                      },
+                }}
+                onMouseEnter={() => setActiveIndex(index)}
+                onFocusCapture={() => setActiveIndex(index)}
+              >
+                <motion.div
+                  className={styles.cardEntrance}
+                  initial={
+                    shouldReduceMotion
+                      ? false
+                      : {
+                          opacity: 0,
+                          x: getEntranceOffset(index, homeServices.length),
+                          y: 32,
+                          scale: 0.96,
+                        }
+                  }
+                  whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0 }
+                      : {
+                          duration: 0.62,
+                          delay: index * 0.065,
+                          ease: CARD_ENTRANCE_EASE,
+                        }
+                  }
+                >
+                  <ServiceCard
+                    service={service}
+                    isActive={isActive}
+                    reduceMotion={Boolean(shouldReduceMotion)}
+                  />
+                </motion.div>
+              </motion.li>
+            );
+          })}
         </ol>
 
         {/*<div className={styles.cta}>
@@ -57,4 +133,28 @@ export function ServicesPreview() {
       </Container>
     </Section>
   );
+}
+
+function getOverlapState(index: number, activeIndex: number | null): OverlapState {
+  if (index === 0) {
+    return 'none';
+  }
+
+  if (activeIndex === null) {
+    return 'normal';
+  }
+
+  // Clearing the active card's left margin opens its left side. Clearing the
+  // following card's margin opens the active card's right side.
+  if (index === activeIndex || index === activeIndex + 1) {
+    return 'none';
+  }
+
+  return 'strong';
+}
+
+function getEntranceOffset(index: number, cardCount: number) {
+  const center = (cardCount - 1) / 2;
+
+  return (center - index) * 28;
 }

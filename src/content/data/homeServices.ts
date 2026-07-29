@@ -65,7 +65,7 @@ export const homeServices: readonly HomeService[] = [
     description:
       'Sitios que funcionan bien, se ven bien y se entienden rápido. Estructura, jerarquía visual alineada con la marca, navegación honesta.',
     number: '03',
-    color: 'cream',
+    color: 'yellow',
     iconSticker: 'doodleMarino',
     textTone: 'cream',
   },

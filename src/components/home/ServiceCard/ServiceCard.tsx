@@ -1,24 +1,19 @@
-import type { CSSProperties } from 'react';
 import Image from 'next/image';
+import { motion } from 'motion/react';
 import { getStickerForService, type HomeService } from '@/content/data/homeServices';
 import styles from './ServiceCard.module.scss';
 
 type ServiceCardProps = {
   readonly service: HomeService;
-  /**
-   * Optional small rotation in degrees, applied via CSS transform.
-   * The P01 reference shows slight per-card rotations; if omitted,
-   * a small default is picked from the data file id.
-   */
+  readonly isActive?: boolean;
+  readonly reduceMotion?: boolean;
+  /** Optional resting rotation in degrees. */
   readonly rotation?: number;
-  /**
-   * Optional vertical offset in pixels, applied via CSS transform.
-   * The P01 reference shows a staggered vertical placement so the
-   * overlapping row reads as a scattered collage; if omitted, a
-   * small default is picked from the data file id.
-   */
+  /** Optional resting vertical offset in pixels. */
   readonly translateY?: number;
 };
+
+const ACTIVE_LIFT = 16;
 
 const ROTATION_DEFAULT: Record<HomeService['id'], number> = {
   branding: -5,
@@ -38,26 +33,35 @@ const TRANSLATE_Y_DEFAULT: Record<HomeService['id'], number> = {
   naming: 0,
 };
 
-/**
- * Single card in the home-page services preview (P01). The card
- * renders the numbered badge, the sticker icon, the service title
- * and a short description. Background colour and text tone come
- * from the data record so the row reads as a varied strip of
- * different surface tones.
- */
-export function ServiceCard({ service, rotation, translateY }: ServiceCardProps) {
+/** Single card in the home-page services preview. */
+export function ServiceCard({
+  service,
+  isActive = false,
+  reduceMotion = false,
+  rotation,
+  translateY,
+}: ServiceCardProps) {
   const sticker = getStickerForService(service.iconSticker);
   const tilt = rotation ?? ROTATION_DEFAULT[service.id];
   const shift = translateY ?? TRANSLATE_Y_DEFAULT[service.id];
 
   return (
-    <article
+    <motion.article
       className={[styles.card, styles[`color-${service.color}`]].join(' ')}
-      style={
-        {
-          '--card-tilt': `${tilt}deg`,
-          '--card-shift-y': `${shift}px`,
-        } as CSSProperties
+      initial={false}
+      animate={{
+        rotate: isActive ? 0 : tilt,
+        y: isActive ? shift - ACTIVE_LIFT : shift,
+      }}
+      transition={
+        reduceMotion
+          ? { duration: 0 }
+          : {
+              type: 'spring',
+              stiffness: 360,
+              damping: 28,
+              mass: 0.75,
+            }
       }
     >
       <span className={styles.badge} aria-hidden="true">
@@ -70,6 +74,6 @@ export function ServiceCard({ service, rotation, translateY }: ServiceCardProps)
 
       <h3 className={styles.title}>{service.label}</h3>
       <p className={styles.description}>{service.description}</p>
-    </article>
+    </motion.article>
   );
 }
