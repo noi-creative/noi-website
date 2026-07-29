@@ -5,9 +5,11 @@ import { useScreenWidth } from '@/lib/useScreenWidth';
 import styles from './Scallop.module.scss';
 
 export type ScallopTone = 'navy' | 'yellow' | 'burgundy' | 'cream';
+export type ScallopDirection = 'up' | 'down';
 
 type ScallopProps = {
   readonly tone: ScallopTone;
+  readonly direction?: ScallopDirection;
   readonly className?: string;
 };
 
@@ -69,7 +71,7 @@ function computeConfig(vpWidth: number) {
   return { scallopWidth, count, viewBoxWidth: vpWidth };
 }
 
-export function Scallop({ tone, className }: ScallopProps) {
+export function Scallop({ tone, direction = 'up', className }: ScallopProps) {
   const screenWidth = useScreenWidth();
 
   const { scallopWidth, count, viewBoxWidth } =
@@ -79,7 +81,9 @@ export function Scallop({ tone, className }: ScallopProps) {
 
   return (
     <svg
-      className={[styles.scallop, className].filter(Boolean).join(' ')}
+      className={[styles.scallop, direction === 'down' ? styles.down : undefined, className]
+        .filter(Boolean)
+        .join(' ')}
       viewBox={`0 0 ${viewBoxWidth} ${SCALLOP_DEPTH}`}
       preserveAspectRatio="none"
       aria-hidden="true"
