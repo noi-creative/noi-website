@@ -85,7 +85,7 @@
   font-size: var(--font-size-base);
   line-height: var(--line-height-body);
   color: var(--color-text-on-dark);
-  margin: 0;
+  margin-bottom: 1rem;
   max-width: 28em;
 
   @include from(1100px) {

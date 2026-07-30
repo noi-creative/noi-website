@@ -42,7 +42,6 @@ export function PortafolioPreview() {
         <h2 id="home-portafolio-heading" className={styles.giantHeading}>
           {home.portafolio.title}
         </h2>
-
         <div className={styles.copyBlock}>
           <Heading
             as="h3"
