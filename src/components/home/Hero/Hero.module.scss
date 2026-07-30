@@ -37,9 +37,9 @@
   gap: var(--space-5);
   color: var(--color-text-on-dark);
   z-index: var(--z-content);
-  min-height: 18rem;
 
   @include from(768px) {
+    min-height: 18rem;
     gap: var(--space-8);
   }
 }
@@ -47,7 +47,7 @@
 .heading {
   position: relative;
   z-index: 2;
-  font-size: 80px;
+  font-size: var(--font-size-hero-lg);
   line-height: 1;
   letter-spacing: -0.025em;
   color: var(--color-brand-yellow);
@@ -55,12 +55,7 @@
   text-align: center;
 
   @include from(767px) {
-    font-size: 90px;
     text-align: inherit;
-  }
-
-  @include from(1200px) {
-    font-size: 140px;
   }
 }
 

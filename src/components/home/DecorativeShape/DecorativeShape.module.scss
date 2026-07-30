@@ -7,7 +7,7 @@
   color: var(--color-brand-orange);
   z-index: 0;
   opacity: 0.95;
-  inset-block-start: 50%;
+  inset-block-start: 45%;
   inset-inline-start: -15%;
   min-width: 50vw;
   min-height: 50vw;
@@ -15,7 +15,7 @@
   transform: rotate(-22.5deg);
 
   @include from(425px) {
-    inset-block-start: 40%;
+    inset-block-start: 35%;
     inset-inline-start: -25%;
     transform: rotate(-17.5deg);
   }
