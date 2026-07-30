@@ -152,20 +152,20 @@ export const assets = {
     heroCollage: [
       {
         src: '/images/pages/home/hero-collage-1.png',
-        width: 348,
-        height: 422,
+        width: 160,
+        height: 20,
         alt: 'Persona trabajando en su laptop',
       },
       {
         src: '/images/pages/home/hero-collage-2.png',
-        width: 646,
-        height: 766,
+        width: 290,
+        height: 354,
         alt: 'Persona trabajando con material de marca',
       },
       {
         src: '/images/pages/home/hero-collage-3.png',
-        width: 573,
-        height: 652,
+        width: 252,
+        height: 300,
         alt: 'Persona revisando su teléfono y un cuaderno',
       },
     ],
