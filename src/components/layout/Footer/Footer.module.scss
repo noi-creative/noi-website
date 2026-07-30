@@ -35,7 +35,9 @@
 
 .brand {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
+  flex-direction: column;
+  width: fit-content;
 }
 
 .logo {

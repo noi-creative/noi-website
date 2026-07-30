@@ -32,8 +32,14 @@ export function Footer() {
               height={96}
               className={styles.logo}
             />
+            <Image
+              src={assets.shared.logo.creativeAmarillo.src}
+              alt={assets.shared.logo.creativeAmarillo.alt ?? 'NOI Creative'}
+              width={192}
+              height={96}
+              className={styles.logo}
+            />
           </div>
-
           <div className={styles.newsletter}>
             <NewsletterForm />
           </div>

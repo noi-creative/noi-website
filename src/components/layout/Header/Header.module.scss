@@ -42,10 +42,10 @@
 
 .logo img {
   width: auto;
-  height: 1.25rem;
+  height: 1.5rem;
 
   @include from(1024px) {
-    height: 1.5rem;
+    height: 2rem;
   }
 }
 
