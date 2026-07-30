@@ -107,7 +107,10 @@
   position: absolute;
   inset-inline: 0;
   top: var(--space-5);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
   padding-inline-start: var(--page-gutter-desktop);
 
   &::-webkit-scrollbar {

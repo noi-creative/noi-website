@@ -31,12 +31,12 @@
   }
 }
 
-.heading {
+.textColumn .heading {
   color: var(--color-brand-navy);
   text-align: center;
 
   @include from(768px) {
-    text-align: inherit;
+    text-align: start;
   }
 }
 

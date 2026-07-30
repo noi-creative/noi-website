@@ -2,7 +2,8 @@
 
 .section {
   position: relative;
-  padding-block: var(--space-7);
+  padding-block-start: var(--section-padding-block-start, var(--space-7));
+  padding-block-end: var(--section-padding-block-end, var(--space-7));
 }
 
 .inner {

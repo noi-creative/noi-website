@@ -1,15 +1,15 @@
 @use '../../../styles/mixins' as *;
 
 .heroSection {
+  --section-padding-block-start: clamp(6rem, 10vw, 10rem);
+  --section-padding-block-end: clamp(4rem, 7vw, 7rem);
+
   position: relative;
-  overflow: visible;
-  padding-block-start: clamp(6rem, 10vw, 10rem);
-  padding-block-end: clamp(4rem, 7vw, 7rem);
   overflow: hidden;
 
   @include from(768px) {
-    padding-block-start: clamp(8rem, 14vw, 8rem);
-    padding-block-end: clamp(6rem, 10vw, 8rem);
+    --section-padding-block-start: clamp(8rem, 14vw, 8rem);
+    --section-padding-block-end: clamp(6rem, 10vw, 8rem);
   }
 }
 
@@ -44,7 +44,7 @@
   }
 }
 
-.heading {
+.leftColumn .heading {
   position: relative;
   z-index: 2;
   font-size: var(--font-size-hero-lg);
@@ -55,7 +55,7 @@
   text-align: center;
 
   @include from(767px) {
-    text-align: inherit;
+    text-align: start;
   }
 }
 

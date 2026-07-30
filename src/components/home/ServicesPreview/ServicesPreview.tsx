@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import type { CSSProperties, FocusEvent } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
+import { useReducedMotion } from '@/lib/motion';
 import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
@@ -16,8 +17,6 @@ import styles from './ServicesPreview.module.scss';
 // import common from '@/content/locales/es/common.json';
 
 type OverlapState = 'none' | 'normal' | 'strong';
-
-const CARD_ENTRANCE_EASE = [0.22, 1, 0.36, 1] as const;
 
 export function ServicesPreview() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -90,36 +89,13 @@ export function ServicesPreview() {
                 onMouseEnter={() => setActiveIndex(index)}
                 onFocusCapture={() => setActiveIndex(index)}
               >
-                <motion.div
-                  className={styles.cardEntrance}
-                  initial={
-                    shouldReduceMotion
-                      ? false
-                      : {
-                          opacity: 0,
-                          x: getEntranceOffset(index, homeServices.length),
-                          y: 32,
-                          scale: 0.96,
-                        }
-                  }
-                  whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={
-                    shouldReduceMotion
-                      ? { duration: 0 }
-                      : {
-                          duration: 0.62,
-                          delay: index * 0.065,
-                          ease: CARD_ENTRANCE_EASE,
-                        }
-                  }
-                >
+                <div className={styles.cardEntrance}>
                   <ServiceCard
                     service={service}
                     isActive={isActive}
                     reduceMotion={Boolean(shouldReduceMotion)}
                   />
-                </motion.div>
+                </div>
               </motion.li>
             );
           })}
@@ -151,10 +127,4 @@ function getOverlapState(index: number, activeIndex: number | null): OverlapStat
   }
 
   return 'strong';
-}
-
-function getEntranceOffset(index: number, cardCount: number) {
-  const center = (cardCount - 1) / 2;
-
-  return (center - index) * 28;
 }
