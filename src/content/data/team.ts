@@ -3,7 +3,7 @@ import { assets } from '@/lib/assets';
 /**
  * Team records for `/nosotras`. Each entry exposes the data the page needs:
  * the team-portrait slot from the asset manifest, the display name, the role
- * label, the bottom-accent colour, and a short biography.
+ * label, the bottom-accent colour, a portrait quote, and a short biography.
  *
  * Display order matches the approved Nosotras page. Manifest slot mapping
  * (resolved by C05):
@@ -25,6 +25,7 @@ export type TeamMember = {
   readonly name: string;
   readonly role: string;
   readonly accent: TeamAccent;
+  readonly quote: string;
   readonly bio: string;
   readonly portrait: (typeof assets.nosotras.teamPortraits)[number];
 };
@@ -35,6 +36,8 @@ export const team: readonly TeamMember[] = [
     name: 'Daniela',
     role: 'Founder & Brand Strategist',
     accent: 'navy',
+    quote:
+      'Los sistemas y las estructuras nos permiten crear sin perdernos en el caos del proceso.',
     bio: '**La que pone orden donde otros ven caos.** Daniela es la arquitecta de nuestro proceso. Es la mente que se asegura de que cada proyecto avance con una estructura impecable, tiempos reales y cero improvisaciones. Su criterio es el cable a tierra del equipo, ese que organiza el camino para que la creatividad pueda fluir con total libertad y seguridad.',
     portrait: assets.nosotras.teamPortraits[0],
   },
@@ -43,6 +46,7 @@ export const team: readonly TeamMember[] = [
     name: 'María Patricia',
     role: 'Creative Director',
     accent: 'burgundy',
+    quote: 'La creatividad encuentra su mejor versión cuando tiene dirección.',
     bio: '**La que hace las preguntas que nadie más se atreve a hacer.** María Patricia es la que descifra el "porqué" de cada proyecto. Entiende que detrás de cada gran diseño debe existir un negocio sólido que lo respalde; por eso, a través de las preguntas correctas, su mirada estratégica limpia el camino, ordena las ideas y define la dirección exacta que tu proyecto necesita para crecer con fuerza.',
     portrait: assets.nosotras.teamPortraits[1],
   },
@@ -51,6 +55,7 @@ export const team: readonly TeamMember[] = [
     name: 'Carla',
     role: 'Brand & Project Coordinator',
     accent: 'yellow',
+    quote: 'La intuición y sensibilidad hacen parte de la construcción de marcas con voz propia.',
     bio: '**La mirada artística y libre del equipo.** Carla es la artista que nos reta a mirar las cosas desde un lugar totalmente diferente. Su trabajo no nace de la técnica rígida, sino de una sensibilidad profunda por lo humano y lo estético. Con esa visión libre y una intuición extraordinaria, ella es la encargada de infundir el toque artístico que hace que cada marca deje de ser solo un proyecto y se convierta en una obra con personalidad propia.',
     portrait: assets.nosotras.teamPortraits[2],
   },

@@ -1,4 +1,7 @@
 .card {
+  --team-overlay-color: var(--color-brand-navy);
+  --team-overlay-text: var(--color-text-on-dark);
+
   position: relative;
   display: flex;
   flex-direction: column;
@@ -11,11 +14,28 @@
 
 .portrait {
   position: relative;
+  display: block;
   width: 100%;
   aspect-ratio: 658 / 840;
   overflow: hidden;
+  padding: 0;
+  border: 0;
   background-color: var(--color-background-dark);
   border-radius: var(--radius-lg);
+  color: inherit;
+  cursor: pointer;
+  text-align: start;
+
+  &:focus-visible {
+    outline: 3px solid var(--color-action-primary);
+    outline-offset: 3px;
+  }
+}
+
+.portraitImageFrame {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .portraitImage {
@@ -25,9 +45,38 @@
   object-fit: cover;
 }
 
+.quoteOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-base);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 25%,
+    color-mix(in srgb, var(--team-overlay-color) 20%, transparent) 60%,
+    var(--team-overlay-color) 100%
+  );
+}
+
+.quote {
+  position: absolute;
+  inset-inline: var(--space-4);
+  inset-block-end: var(--space-5);
+  z-index: var(--z-content);
+  margin: 0;
+  color: var(--team-overlay-text);
+  font-family: var(--font-serif);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  pointer-events: none;
+}
+
 .accent {
   position: absolute;
   inset-block-end: 0;
+  z-index: var(--z-content);
   width: 100%;
   height: 0.5rem;
   border-bottom-left-radius: var(--radius-xl);
@@ -82,6 +131,10 @@
   background-color: var(--color-brand-navy);
 }
 
+.accent-navy {
+  --team-overlay-color: var(--color-brand-navy);
+}
+
 .accent-navy .name,
 .accent-navy .role {
   color: var(--color-brand-navy);
@@ -91,6 +144,10 @@
   background-color: var(--color-brand-burgundy);
 }
 
+.accent-burgundy {
+  --team-overlay-color: var(--color-brand-burgundy);
+}
+
 .accent-burgundy .name,
 .accent-burgundy .role {
   color: var(--color-brand-burgundy);
@@ -98,6 +155,10 @@
 
 .accent-yellow .accent {
   background-color: var(--color-brand-orange);
+}
+
+.accent-yellow {
+  --team-overlay-color: var(--color-brand-orange);
 }
 
 .accent-yellow .name,
