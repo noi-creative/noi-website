@@ -5,6 +5,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Heading } from '@/components/ui/Heading';
 import { Scallop } from '@/components/home/Scallop';
 import { assets } from '@/lib/assets';
+import { HoverZoom } from '@/lib/motion';
 import nosotras from '@/content/locales/es/nosotras.json';
 import { DevolverPhotoMotion, DevolverTextColumnMotion } from './DevolverSectionMotion';
 import styles from './DevolverSection.module.scss';
@@ -36,14 +37,16 @@ export function DevolverSection() {
       <Container className={styles.devolverContainer}>
         <DevolverPhotoMotion>
           <div className={styles.photo}>
-            <Image
-              src={photo.src}
-              alt={photo.alt ?? 'Equipo de NOI trabajando junta'}
-              width={photo.width}
-              height={photo.height}
-              className={styles.photoImage}
-              sizes="(max-width: 767px) 90vw, 40vw"
-            />
+            <HoverZoom className={styles.photoZoom}>
+              <Image
+                src={photo.src}
+                alt={photo.alt ?? 'Equipo de NOI trabajando junta'}
+                width={photo.width}
+                height={photo.height}
+                className={styles.photoImage}
+                sizes="(max-width: 767px) 90vw, 40vw"
+              />
+            </HoverZoom>
           </div>
         </DevolverPhotoMotion>
 

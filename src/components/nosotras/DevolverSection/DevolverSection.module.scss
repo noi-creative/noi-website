@@ -38,6 +38,11 @@
   object-fit: cover;
 }
 
+.photoZoom {
+  display: block;
+  width: 100%;
+}
+
 .textColumn {
   display: flex;
   flex-direction: column;

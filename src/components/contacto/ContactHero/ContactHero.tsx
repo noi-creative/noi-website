@@ -4,6 +4,7 @@ import { Container } from '@/components/ui/Container';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
 import { assets } from '@/lib/assets';
+import { HoverZoom } from '@/lib/motion';
 import contacto from '@/content/locales/es/contacto.json';
 import {
   ContactHeroTextTopMotion,
@@ -59,15 +60,17 @@ export function ContactHero() {
         <div className={styles.collageColumn} aria-hidden="true">
           <div className={styles.collage}>
             <ContactPhotoMotion className={`${styles.photo} ${styles.photoA}`} rotation={-5}>
-              <Image
-                src={photoA.src}
-                alt=""
-                width={photoA.width}
-                height={photoA.height}
-                className={styles.image}
-                sizes="(max-width: 767px) 80vw, 32vw"
-                priority
-              />
+              <HoverZoom className={styles.imageZoom}>
+                <Image
+                  src={photoA.src}
+                  alt=""
+                  width={photoA.width}
+                  height={photoA.height}
+                  className={styles.image}
+                  sizes="(max-width: 767px) 80vw, 32vw"
+                  priority
+                />
+              </HoverZoom>
             </ContactPhotoMotion>
 
             <ContactPhotoMotion
@@ -75,14 +78,16 @@ export function ContactHero() {
               rotation={6}
               delay={0.1}
             >
-              <Image
-                src={photoB.src}
-                alt=""
-                width={photoB.width}
-                height={photoB.height}
-                className={styles.image}
-                sizes="(max-width: 767px) 60vw, 22vw"
-              />
+              <HoverZoom className={styles.imageZoom}>
+                <Image
+                  src={photoB.src}
+                  alt=""
+                  width={photoB.width}
+                  height={photoB.height}
+                  className={styles.image}
+                  sizes="(max-width: 767px) 60vw, 22vw"
+                />
+              </HoverZoom>
             </ContactPhotoMotion>
 
             <ContactStickerMotion

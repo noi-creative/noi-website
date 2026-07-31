@@ -4,6 +4,7 @@ import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Button } from '@/components/ui/Button';
 import { parseMarkers } from '@/lib/renderBold';
+import { HoverZoom } from '@/lib/motion';
 import { assets } from '@/lib/assets';
 import { site } from '@/config/site';
 import common from '@/content/locales/es/common.json';
@@ -16,7 +17,8 @@ import styles from './FinalCta.module.scss';
  * supporting copy with bold and orange-accent words, two CTAs
  * stacked vertically (primary-burgundy + outline-on-light), and a
  * photo collage on the right with a megaphone sticker. Server
- * Component.
+ * Component. Each positioned photo frame clips a nested `HoverZoom`
+ * so its CSS rotation remains independent from the pointer scale.
  *
  * The collage reuses the three hero collage images per the C03
  * audit's documented fallback (P01 plan). Q01 may swap to a
@@ -96,14 +98,16 @@ export function FinalCta() {
               key={image.src}
               className={[styles.collagePhoto, styles[`collagePhoto${index}`]].join(' ')}
             >
-              <Image
-                src={image.src}
-                alt=""
-                width={image.width}
-                height={image.height}
-                className={styles.collageImage}
-                sizes="(max-width: 767px) 70vw, 30vw"
-              />
+              <HoverZoom className={styles.collageImageZoom}>
+                <Image
+                  src={image.src}
+                  alt=""
+                  width={image.width}
+                  height={image.height}
+                  className={styles.collageImage}
+                  sizes="(max-width: 767px) 70vw, 30vw"
+                />
+              </HoverZoom>
             </div>
           ))}
           <div className={styles.sticker}>
