@@ -3,6 +3,7 @@
 import { motion } from 'motion/react';
 import type { ReactNode } from 'react';
 import { DURATION, EASING, RevealStagger, useReducedMotion } from '@/lib/motion';
+import styles from './IntroHero.module.scss';
 
 type IllustrationProps = {
   readonly children: ReactNode;
@@ -21,6 +22,7 @@ export function IntroHeroIllustrationMotion({ children }: IllustrationProps) {
 
   return (
     <motion.div
+      className={styles.motionDiv}
       initial={{ opacity: 0, y: reducedMotion ? 0 : 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
