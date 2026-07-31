@@ -10,7 +10,7 @@
   gap: var(--space-7);
   padding-block: var(--space-9);
 
-  @include from(768px) {
+  @include from(1000px) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
     gap: var(--space-8);
     padding-block: var(--space-10);
