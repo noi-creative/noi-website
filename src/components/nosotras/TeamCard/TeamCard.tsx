@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import type { TeamMember } from '@/content/data/team';
+import { renderBold } from '@/lib/renderBold';
 import styles from './TeamCard.module.scss';
 
 type TeamCardProps = {
@@ -30,15 +31,15 @@ export function TeamCard({ member }: TeamCardProps) {
           className={styles.portraitImage}
           sizes="(max-width: 767px) 90vw, 30vw"
         />
+        <span className={styles.accent} aria-hidden="true" />
       </div>
 
       <div className={styles.body}>
         <h3 className={styles.name}>{member.name}</h3>
         <p className={styles.role}>{member.role}</p>
-        <p className={styles.bio}>{member.bio}</p>
+        <hr className={styles.hr} />
+        <p className={styles.bio}>{renderBold(member.bio)}</p>
       </div>
-
-      <span className={styles.accent} aria-hidden="true" />
     </article>
   );
 }

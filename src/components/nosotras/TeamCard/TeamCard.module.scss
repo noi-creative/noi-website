@@ -3,10 +3,10 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: var(--radius-lg);
   background-color: var(--color-background-page);
   flex: 1 1 18rem;
   min-width: 18rem;
+  max-width: 25rem;
 }
 
 .portrait {
@@ -15,6 +15,7 @@
   aspect-ratio: 658 / 840;
   overflow: hidden;
   background-color: var(--color-background-dark);
+  border-radius: var(--radius-lg);
 }
 
 .portraitImage {
@@ -24,11 +25,20 @@
   object-fit: cover;
 }
 
+.accent {
+  position: absolute;
+  inset-block-end: 0;
+  width: 100%;
+  height: 0.5rem;
+  border-bottom-left-radius: var(--radius-xl);
+  border-bottom-right-radius: var(--radius-xl);
+}
+
 .body {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  padding: var(--space-5);
+  padding: var(--space-5) 0;
   padding-block-end: var(--space-6);
   flex: 1 1 auto;
 }
@@ -43,6 +53,12 @@
   letter-spacing: var(--tracking-heading);
 }
 
+.hr {
+  border: none;
+  height: 1px;
+  background-color: var(--color-surface-blue);
+}
+
 .role {
   font-family: var(--font-sans);
   font-size: var(--font-size-xs);
@@ -50,7 +66,6 @@
   line-height: var(--line-height-body);
   text-transform: uppercase;
   letter-spacing: var(--tracking-eyebrow);
-  color: var(--color-text-accent);
   margin: 0;
 }
 
@@ -63,20 +78,29 @@
   opacity: 0.9;
 }
 
-.accent {
-  display: block;
-  width: 100%;
-  height: 0.5rem;
-}
-
 .accent-navy .accent {
   background-color: var(--color-brand-navy);
+}
+
+.accent-navy .name,
+.accent-navy .role {
+  color: var(--color-brand-navy);
 }
 
 .accent-burgundy .accent {
   background-color: var(--color-brand-burgundy);
 }
 
+.accent-burgundy .name,
+.accent-burgundy .role {
+  color: var(--color-brand-burgundy);
+}
+
 .accent-yellow .accent {
-  background-color: var(--color-brand-yellow);
+  background-color: var(--color-brand-orange);
+}
+
+.accent-yellow .name,
+.accent-yellow .role {
+  color: var(--color-brand-orange);
 }
