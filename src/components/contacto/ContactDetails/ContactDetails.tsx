@@ -1,8 +1,10 @@
 import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
+import { Heading } from '@/components/ui/Heading';
 import { ContactTile } from '@/components/contacto/ContactTile';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { assets } from '@/lib/assets';
+import { renderBold } from '@/lib/renderBold';
 import contacto from '@/content/locales/es/contacto.json';
 import {
   ContactDetailsHeadingMotion,
@@ -35,18 +37,20 @@ export function ContactDetails() {
       <Container className={styles.detailsContainer}>
         <div className={styles.textColumn}>
           <ContactDetailsHeadingMotion>
-            <h2 id="contacto-encontrarnos-heading" className={styles.heading}>
-              <span className={styles.headingPrimary}>
-                {contacto.encontrarnos.headline.primary}
-              </span>
-              <span className={styles.headingAccent}>{contacto.encontrarnos.headline.accent}</span>
-            </h2>
+            <Heading
+              as="h2"
+              id="contacto-encontrarnos-heading"
+              primary={contacto.encontrarnos.headline.primary}
+              accent={contacto.encontrarnos.headline.accent}
+              weight="black"
+              accentFamily="serif"
+              accentWeight="medium"
+              accentItalic
+              accentColor="var(--color-text-accent)"
+              className={styles.heading}
+            />
 
-            <p className={styles.lede}>
-              Respondemos todos los mensajes en un máximo de <strong>48 horas hábiles</strong>. Nos
-              tomamos el tiempo de leer cada consulta antes de responder —{' '}
-              <strong>porque tu proyecto lo merece</strong>.
-            </p>
+            <p className={styles.lede}>{renderBold(contacto.encontrarnos.lede)}</p>
           </ContactDetailsHeadingMotion>
 
           <ul className={styles.tileList} aria-label="Canales de contacto">
@@ -86,7 +90,7 @@ export function ContactDetails() {
             <li>
               <ContactTileItemMotion index={3}>
                 <ContactTile
-                  tone="navy"
+                  tone="ink"
                   icon={assets.shared.iconos.location}
                   label={channels.location.label}
                   value={channels.location.value}

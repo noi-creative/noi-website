@@ -1,15 +1,13 @@
 import { Section } from '@/components/ui/Section';
+import { Heading } from '@/components/ui/Heading';
 import contacto from '@/content/locales/es/contacto.json';
 import { BrandStatementHeadingMotion } from './BrandStatementMotion';
 import styles from './BrandStatement.module.scss';
 
 /**
- * "NOI existe para acompañarte" brand statement. Yellow scallop
- * backdrop (inheriting the `cream` background below), with a
- * centered mixed-typeface statement in navy + orange. The scallop
- * sits at the top of the section, painted in the section's own
- * yellow (inverted relative to Nosotras — the section's own
- * colour is the scallop tone here, not the previous section's).
+ * "NOI existe para acompañarte" brand statement. A decorative
+ * yellow three-oval SVG sits behind the centered mixed-typeface
+ * statement on the cream section surface.
  *
  * Headings render inline (Satoshi + Playfair Italic) so both
  * lines stay in mixed case, per `DESIGN.md` §24.3.
@@ -23,10 +21,19 @@ export function BrandStatement() {
     >
       <div className={styles.statementInner}>
         <BrandStatementHeadingMotion>
-          <h2 id="contacto-brand-heading" className={styles.heading}>
-            <span className={styles.headingPrimary}>{contacto.brand.headline.primary}</span>
-            <span className={styles.headingAccent}>{contacto.brand.headline.accent}</span>
-          </h2>
+          <Heading
+            as="h2"
+            id="contacto-brand-heading"
+            primary={contacto.brand.headline.primary}
+            accent={contacto.brand.headline.accent}
+            weight="black"
+            align="center"
+            accentFamily="serif"
+            accentWeight="bold"
+            accentItalic
+            accentColor="var(--color-brand-orange)"
+            className={styles.heading}
+          />
         </BrandStatementHeadingMotion>
       </div>
     </Section>

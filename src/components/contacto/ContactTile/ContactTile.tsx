@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { ReactNode } from 'react';
 import styles from './ContactTile.module.scss';
 
-export type ContactTileTone = 'navy' | 'orange' | 'burgundy' | 'cream';
+export type ContactTileTone = 'navy' | 'orange' | 'burgundy' | 'ink';
 
 type ContactTileProps = {
   readonly tone: ContactTileTone;
@@ -16,7 +16,7 @@ type ContactTileProps = {
  * One contact row in the "También puedes encontrarnos aquí" section.
  * Composed of a coloured square icon tile on the left and a label +
  * value stack on the right. The icon tile uses the design-system
- * palette (navy / orange / burgundy / cream) per the Figma.
+ * palette (navy / orange / burgundy / ink) per the Figma.
  *
  * When `href` is provided, the whole row becomes a link.
  */
