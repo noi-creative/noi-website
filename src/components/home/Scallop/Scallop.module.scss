@@ -3,7 +3,13 @@
   inset-block-start: -1px;
   inset-inline: 0;
   width: 100%;
-  height: 90px;
+  height: 60px;
   display: block;
   pointer-events: none;
+}
+
+.down {
+  inset-block-start: auto;
+  inset-block-end: -1px;
+  transform: scaleY(-1);
 }

@@ -3,6 +3,8 @@ import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Button } from '@/components/ui/Button';
+import { parseMarkers } from '@/lib/renderBold';
+import { HoverZoom } from '@/lib/motion';
 import { assets } from '@/lib/assets';
 import { site } from '@/config/site';
 import common from '@/content/locales/es/common.json';
@@ -15,7 +17,8 @@ import styles from './FinalCta.module.scss';
  * supporting copy with bold and orange-accent words, two CTAs
  * stacked vertically (primary-burgundy + outline-on-light), and a
  * photo collage on the right with a megaphone sticker. Server
- * Component.
+ * Component. Each positioned photo frame clips a nested `HoverZoom`
+ * so its CSS rotation remains independent from the pointer scale.
  *
  * The collage reuses the three hero collage images per the C03
  * audit's documented fallback (P01 plan). Q01 may swap to a
@@ -24,7 +27,7 @@ import styles from './FinalCta.module.scss';
 export function FinalCta() {
   const collage = assets.home.ctaCollage ?? [];
   const megafonoSticker = assets.shared.stickers.megafonoRojo;
-  const { accentWords = [], boldPhrases = [], lede } = home.finalCta;
+  const { lede } = home.finalCta;
 
   return (
     <Section
@@ -35,19 +38,50 @@ export function FinalCta() {
       <Container className={styles.finalCtaContainer}>
         <div className={styles.textColumn}>
           <Heading
+            className={styles.heading}
             as="h2"
             id="home-finalcta-heading"
             primary={home.finalCta.headline.primary}
             accent={home.finalCta.headline.accent}
+            accentFamily="serif"
+            accentWeight="medium"
+            accentItalic
             weight="black"
+            accentColor="#ed7218"
             style={
               {
-                '--heading-accent-color': 'var(--color-brand-orange)',
                 '--heading-primary-transform': 'none',
               } as React.CSSProperties
             }
           />
-          <p className={styles.lede}>{renderLede(lede, boldPhrases, accentWords)}</p>
+          <p className={styles.lede}>
+            {parseMarkers(lede).map((s, i) => {
+              switch (s.type) {
+                case 'bold':
+                  return (
+                    <span key={i} className={styles.boldWord}>
+                      {s.text}
+                    </span>
+                  );
+                case 'italic':
+                  return <em key={i}>{s.text}</em>;
+                case 'bold-italic':
+                  return (
+                    <strong key={i}>
+                      <em>{s.text}</em>
+                    </strong>
+                  );
+                case 'accent':
+                  return (
+                    <span key={i} className={styles.accentWord}>
+                      {s.text}
+                    </span>
+                  );
+                default:
+                  return <span key={i}>{s.text}</span>;
+              }
+            })}
+          </p>
           <div className={styles.ctas}>
             <Button href={site.routes.contacto} variant="primary-burgundy" withArrow>
               {common.cta.agendarLlamadaGratuita}
@@ -64,14 +98,16 @@ export function FinalCta() {
               key={image.src}
               className={[styles.collagePhoto, styles[`collagePhoto${index}`]].join(' ')}
             >
-              <Image
-                src={image.src}
-                alt=""
-                width={image.width}
-                height={image.height}
-                className={styles.collageImage}
-                sizes="(max-width: 767px) 70vw, 30vw"
-              />
+              <HoverZoom className={styles.collageImageZoom}>
+                <Image
+                  src={image.src}
+                  alt=""
+                  width={image.width}
+                  height={image.height}
+                  className={styles.collageImage}
+                  sizes="(max-width: 767px) 70vw, 30vw"
+                />
+              </HoverZoom>
             </div>
           ))}
           <div className={styles.sticker}>
@@ -87,57 +123,4 @@ export function FinalCta() {
       </Container>
     </Section>
   );
-}
-
-/**
- * Splits the lede into segments, wrapping the configured bold
- * phrases in a styled span and the configured accent words in an
- * orange-tinted span. Words are matched case-insensitively but
- * the original casing in the lede is preserved.
- */
-function renderLede(
-  lede: string,
-  boldPhrases: readonly string[],
-  accentWords: readonly string[],
-): React.ReactNode {
-  const segments: { text: string; tone: 'bold' | 'orange' | 'plain' }[] = [];
-  const pattern = buildPattern(boldPhrases, accentWords);
-  if (!pattern) return lede;
-  const parts = lede.split(pattern);
-  for (const part of parts) {
-    if (!part) continue;
-    if (boldPhrases.some((w) => w.toLowerCase() === part.toLowerCase())) {
-      segments.push({ text: part, tone: 'bold' });
-    } else if (accentWords.some((w) => w.toLowerCase() === part.toLowerCase())) {
-      segments.push({ text: part, tone: 'bold' });
-    } else {
-      segments.push({ text: part, tone: 'plain' });
-    }
-  }
-  return segments.map((segment, i) => {
-    if (segment.tone === 'bold') {
-      return (
-        <span key={i} className={styles.boldWord}>
-          {segment.text}
-        </span>
-      );
-    }
-    if (segment.tone === 'orange') {
-      return (
-        <span key={i} className={styles.accentWord}>
-          {segment.text}
-        </span>
-      );
-    }
-    return <span key={i}>{segment.text}</span>;
-  });
-}
-
-function buildPattern(
-  boldPhrases: readonly string[],
-  accentWords: readonly string[],
-): RegExp | null {
-  const all = [...boldPhrases, ...accentWords].map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-  if (all.length === 0) return null;
-  return new RegExp(`(${all.join('|')})`, 'gi');
 }

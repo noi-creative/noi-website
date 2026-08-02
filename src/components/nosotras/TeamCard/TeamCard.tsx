@@ -1,5 +1,6 @@
-import Image from 'next/image';
 import type { TeamMember } from '@/content/data/team';
+import { renderBold } from '@/lib/renderBold';
+import { TeamCardPortraitMotion } from './TeamCardPortraitMotion';
 import styles from './TeamCard.module.scss';
 
 type TeamCardProps = {
@@ -8,8 +9,9 @@ type TeamCardProps = {
 
 /**
  * Single team-member card in the home page Nosotras section. The
- * card renders the portrait, name, role label, short biography,
- * and a coloured bottom-accent strip matching the team member.
+ * card renders an interactive portrait quote, name, role label,
+ * short biography, and a coloured bottom-accent strip matching
+ * the team member.
  *
  * Accent colours are owned by the data file (`TeamAccent`) and
  * map to the existing brand tokens:
@@ -21,24 +23,14 @@ type TeamCardProps = {
 export function TeamCard({ member }: TeamCardProps) {
   return (
     <article className={[styles.card, styles[`accent-${member.accent}`]].join(' ')}>
-      <div className={styles.portrait}>
-        <Image
-          src={member.portrait.src}
-          alt={member.portrait.alt ?? member.name}
-          width={member.portrait.width}
-          height={member.portrait.height}
-          className={styles.portraitImage}
-          sizes="(max-width: 767px) 90vw, 30vw"
-        />
-      </div>
+      <TeamCardPortraitMotion member={member} />
 
       <div className={styles.body}>
         <h3 className={styles.name}>{member.name}</h3>
         <p className={styles.role}>{member.role}</p>
-        <p className={styles.bio}>{member.bio}</p>
+        <hr className={styles.hr} />
+        <p className={styles.bio}>{renderBold(member.bio)}</p>
       </div>
-
-      <span className={styles.accent} aria-hidden="true" />
     </article>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.scss';
-import { playfairDisplay, satoshi } from './fonts';
+import { panelSans, playfairDisplay, satoshi } from './fonts';
 import { site } from '@/config/site';
 
 const defaultDescription =
@@ -72,7 +72,10 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${satoshi.variable} ${playfairDisplay.variable}`}>
+    <html
+      lang="es"
+      className={`${satoshi.variable} ${panelSans.variable} ${playfairDisplay.variable}`}
+    >
       <body>
         <script
           type="application/ld+json"

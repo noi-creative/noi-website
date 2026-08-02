@@ -22,7 +22,7 @@
   gap: var(--space-3);
   max-width: var(--container-wide);
   margin-inline: auto;
-  background-color: var(--color-background-page);
+  background-color: var(--color-background-soft);
   border-radius: var(--radius-pill);
   box-shadow: var(--shadow-nav);
   padding: var(--space-2) var(--space-3);
@@ -42,10 +42,10 @@
 
 .logo img {
   width: auto;
-  height: 1.25rem;
+  height: 1.5rem;
 
   @include from(1024px) {
-    height: 1.5rem;
+    height: 2rem;
   }
 }
 
@@ -156,7 +156,7 @@
 .dropdown {
   display: none;
 
-  @media (max-width: 1023px) {
+  @include until(1024px) {
     display: block;
     position: absolute;
     top: calc(var(--space-3) + var(--header-height-mobile) + var(--space-2));
@@ -180,7 +180,7 @@
 }
 
 .dropdownOpen {
-  @media (max-width: 1023px) {
+  @include until(1024px) {
     display: block;
   }
 }

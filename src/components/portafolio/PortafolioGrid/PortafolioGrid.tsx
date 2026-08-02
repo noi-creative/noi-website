@@ -3,6 +3,7 @@ import { Container } from '@/components/ui/Container';
 import { projects } from '@/content/data/projects';
 import portafolio from '@/content/locales/es/portafolio.json';
 import { ProjectTile } from '@/components/portafolio/ProjectTile';
+import { PortafolioGridItemMotion } from './PortafolioGridMotion';
 import styles from './PortafolioGrid.module.scss';
 
 /**
@@ -22,7 +23,9 @@ export function PortafolioGrid() {
         <ol className={styles.list} aria-label={portafolio.grid.listLabel}>
           {projects.map((project, index) => (
             <li key={project.slug} className={styles.listItem}>
-              <ProjectTile project={project} tag={portafolio.grid.tag} priority={index === 0} />
+              <PortafolioGridItemMotion index={index} className={styles.motionItem}>
+                <ProjectTile project={project} tag={portafolio.grid.tag} priority={index === 0} />
+              </PortafolioGridItemMotion>
             </li>
           ))}
         </ol>

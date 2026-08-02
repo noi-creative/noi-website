@@ -9,7 +9,7 @@
       "primary": "Hablemos de",
       "accent": "tu marca"
     },
-    "lede": "Agendemos una llamada de 30 minutos para hablar de tu proyecto. Cuéntanos dónde está tu negocio hoy y hacia dónde quieres ir. Solo una conversación de persona a persona para entender qué necesita tu marca y descubrir si somos el equipo ideal para ayudarte a llegar allí.",
+    "lede": "Agendemos una llamada de **30 minutos** para hablar de tu proyecto. Cuéntanos dónde está tu negocio hoy y hacia dónde quieres ir. Solo una conversación de **persona a persona** para entender qué necesita tu marca y descubrir si somos el equipo ideal para ayudarte a llegar allí.",
     "cta": "Agenda tu llamada gratuita"
   },
   "encontrarnos": {
@@ -17,7 +17,7 @@
       "primary": "También puedes",
       "accent": "encontrarnos aquí"
     },
-    "lede": "Respondemos todos los mensajes en un máximo de 48 horas hábiles. Nos tomamos el tiempo de leer cada consulta antes de responder — porque tu proyecto lo merece.",
+    "lede": "Respondemos todos los mensajes en un máximo de **48 horas hábiles**. Nos tomamos el tiempo de leer cada consulta antes de responder — **porque tu proyecto lo merece**.",
     "channels": {
       "email": {
         "label": "Email",

@@ -17,8 +17,8 @@ export function Hero() {
       className={styles.heroSection}
     >
       <HeaderWheel />
-      <DecorativeShape placement="hero" />
-      <Container className={styles.heroContainer} width="viewport">
+      <DecorativeShape />
+      <Container className={styles.heroContainer} width="wide">
         <div className={styles.leftColumn}>
           <Heading
             as="h1"
@@ -26,14 +26,17 @@ export function Hero() {
             primary={home.hero.headline.primary}
             accent={home.hero.headline.accent}
             weight="black"
+            accentColor="#fff9f4"
+            accentFamily="serif"
+            accentItalic
+            accentWeight="medium"
+            accentSize="hero-lg"
             className={styles.heading}
-            style={{ color: 'var(--color-brand-yellow)' }}
           />
           <p className={styles.lede}>{home.hero.lede}</p>
         </div>
 
         <div className={styles.rightColumn}>
-          {/*<HeroCollage /> */}
           <div className={styles.ctas}>
             <Button href={site.routes.contacto} variant="primary-yellow" withArrow>
               {home.hero.primaryCta}

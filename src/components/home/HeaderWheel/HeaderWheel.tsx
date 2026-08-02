@@ -3,12 +3,13 @@
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import { assets } from '@/lib/assets';
+import { useReducedMotion } from '@/lib/motion';
 import styles from './HeaderWheel.module.scss';
 
-const ORBIT_RADIUS = 500;
 const SECONDS_PER_REVOLUTION = 60;
 
 export function HeaderWheel() {
+  const reducedMotion = useReducedMotion();
   const images = assets.home.headerWheel
     ? [...assets.home.headerWheel, ...assets.home.headerWheel]
     : [];
@@ -24,7 +25,12 @@ export function HeaderWheel() {
 
   return (
     <div className={styles.wheel} aria-hidden="true">
-      <motion.div className={styles.orbit} animate={{ rotate: 360 }} transition={orbitTransition}>
+      <motion.div
+        className={styles.orbit}
+        initial={{ rotate: 0 }}
+        animate={{ rotate: reducedMotion ? 0 : 360 }}
+        transition={reducedMotion ? { duration: 0 } : orbitTransition}
+      >
         {images.map((image, index) => {
           const angle = (360 / count) * index;
           return (
@@ -32,7 +38,7 @@ export function HeaderWheel() {
               key={image.src + index}
               className={styles.positioner}
               style={{
-                transform: `rotate(${angle}deg) translateX(${ORBIT_RADIUS}px)`,
+                transform: `rotate(${angle}deg) translateX(var(--header-wheel-orbit-radius))`,
               }}
             >
               <motion.div

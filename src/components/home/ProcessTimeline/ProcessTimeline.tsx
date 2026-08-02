@@ -26,8 +26,6 @@ export function ProcessTimeline() {
       ariaLabelledby="home-process-heading"
       className={styles.processSection}
     >
-      <Scallop tone="burgundy" className={styles.topScallop} />
-
       <Container className={styles.processContainer}>
         <div className={styles.header}>
           <Eyebrow tone="orange">{home.process.eyebrow}</Eyebrow>

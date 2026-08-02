@@ -1,15 +1,15 @@
 @use '../../../styles/mixins' as *;
 
 .heroSection {
+  --section-padding-block-start: clamp(6rem, 10vw, 10rem);
+  --section-padding-block-end: clamp(4rem, 7vw, 7rem);
+
   position: relative;
-  overflow: visible;
-  padding-block-start: clamp(6rem, 10vw, 10rem);
-  padding-block-end: clamp(4rem, 7vw, 7rem);
   overflow: hidden;
 
   @include from(768px) {
-    padding-block-start: clamp(8rem, 14vw, 14rem);
-    padding-block-end: clamp(6rem, 10vw, 10rem);
+    --section-padding-block-start: clamp(8rem, 14vw, 8rem);
+    --section-padding-block-end: clamp(6rem, 10vw, 8rem);
   }
 }
 
@@ -17,12 +17,17 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-7);
+  gap: var(--space-5);
   align-items: end;
+  padding-inline: var(--space-6);
 
   @include from(768px) {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+    grid-template-columns: minmax(auto, 2fr) minmax(auto, 1.5fr);
     gap: var(--space-4);
+  }
+
+  @include from(1440px) {
+    padding-inline: 0;
   }
 }
 
@@ -32,13 +37,17 @@
   gap: var(--space-5);
   color: var(--color-text-on-dark);
   z-index: var(--z-content);
-  min-height: 18rem;
+
+  @include from(768px) {
+    min-height: 18rem;
+    gap: var(--space-8);
+  }
 }
 
-.heading {
+.leftColumn .heading {
   position: relative;
   z-index: 2;
-  font-size: 80px;
+  font-size: var(--font-size-hero-lg);
   line-height: 1;
   letter-spacing: -0.025em;
   color: var(--color-brand-yellow);
@@ -46,12 +55,7 @@
   text-align: center;
 
   @include from(767px) {
-    font-size: 90px;
-    text-align: inherit;
-  }
-
-  @include from(1200px) {
-    font-size: 140px;
+    text-align: start;
   }
 }
 
@@ -59,7 +63,7 @@
   position: relative;
   z-index: 2;
   font-family: var(--font-sans);
-  font-size: 25px;
+  font-size: var(--font-size-md);
   align-self: flex-end;
   line-height: var(--line-height-body);
   color: var(--color-text-on-dark);
@@ -89,4 +93,8 @@
   z-index: var(--z-content);
   width: 100%;
   justify-content: center;
+
+  @include from(767px) {
+    justify-content: flex-end;
+  }
 }

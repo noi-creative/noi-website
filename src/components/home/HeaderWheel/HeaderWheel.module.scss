@@ -1,6 +1,8 @@
 @use '../../../styles/mixins' as *;
 
 .wheel {
+  --header-wheel-orbit-radius: 33.333333vw;
+
   position: absolute;
   inset-block-start: -55%;
   inset-inline-end: -35%;

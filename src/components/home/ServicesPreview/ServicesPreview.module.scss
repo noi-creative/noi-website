@@ -29,31 +29,47 @@
   align-items: center;
   text-align: center;
   gap: var(--space-3);
-  max-width: 52rem;
+  max-width: 30em;
   color: var(--color-brand-navy);
+
+  @include from(768px) {
+    max-width: 35em;
+  }
+
+  @include from(1440px) {
+    max-width: 40em;
+  }
 }
 
 .cardRow {
-  --service-card-overlap: 3%;
+  --service-card-overlap: clamp(1.75rem, 3vw, 2.75rem);
+  --service-card-overlap-active: clamp(3rem, 4.5vw, 4.5rem);
 
-  list-style: none;
-  margin: 0;
-  padding: var(--space-5) 0;
-  padding: var(--space-7) 0;
   display: flex;
-  gap: 0;
-  width: 100%;
-  justify-content: center;
   flex-wrap: nowrap;
   justify-content: flex-start;
-
+  gap: 0;
+  width: 100%;
+  margin: 0;
   margin-inline: calc(var(--page-gutter-mobile) * -1);
-  padding-inline: var(--page-gutter-mobile);
+  padding: var(--space-8) var(--page-gutter-mobile);
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline proximity;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 
-  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @include from(1000px) {
-    overflow: inherit;
+    justify-content: center;
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: visible;
+    scroll-snap-type: none;
   }
 }
 
@@ -61,16 +77,33 @@
   position: relative;
   display: flex;
   flex: 0 0 auto;
+  scroll-snap-align: start;
 
-  &:not(:first-child) {
-    margin-inline-start: calc(var(--service-card-overlap) * -1);
+  &[data-overlap='normal'] {
+    margin-inline-start: calc(var(--service-card-overlap) * -3);
   }
 
-  @for $i from 1 through 6 {
-    &:nth-child(#{$i}) {
-      z-index: $i;
+  &[data-overlap='strong'] {
+    margin-inline-start: calc(var(--service-card-overlap-active) * -3);
+  }
+
+  &[data-overlap='none'] {
+    margin-inline-start: 0;
+  }
+
+  @include from(768px) {
+    &[data-overlap='normal'] {
+      margin-inline-start: calc(var(--service-card-overlap) * -1);
+    }
+
+    &[data-overlap='strong'] {
+      margin-inline-start: calc(var(--service-card-overlap-active) * -1);
     }
   }
+}
+
+.cardEntrance {
+  display: flex;
 }
 
 .cta {

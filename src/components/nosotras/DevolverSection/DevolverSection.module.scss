@@ -5,16 +5,6 @@
   overflow: clip;
 }
 
-.topScallop {
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline: 0;
-  width: 100%;
-  height: 40px;
-  pointer-events: none;
-  z-index: var(--z-decoration);
-}
-
 .devolverContainer {
   display: grid;
   grid-template-columns: 1fr;
@@ -34,10 +24,11 @@
 
 .photo {
   position: relative;
-  width: 90%;
+  width: 100%;
   border-radius: var(--radius-lg);
   overflow: hidden;
   z-index: var(--z-content);
+  margin: 0 auto;
 }
 
 .photoImage {
@@ -45,6 +36,11 @@
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+.photoZoom {
+  display: block;
+  width: 100%;
 }
 
 .textColumn {
@@ -57,39 +53,20 @@
 .heading {
   display: flex;
   flex-direction: column;
-  font-family: var(--font-sans);
-  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  letter-spacing: var(--tracking-heading);
-  font-size: var(--font-size-2xl);
-  margin: 0;
+  font-size: var(--font-size-xl);
   gap: var(--space-2);
-}
-
-.headlinePrimary {
-  font-weight: var(--font-weight-regular);
-  text-transform: none;
-  color: var(--color-text-on-dark);
-  white-space: nowrap;
-}
-
-@media (max-width: 767px) {
-  .headlinePrimary {
-    white-space: normal;
-  }
-}
-
-.headlineAccent {
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
   color: var(--color-brand-yellow);
+
+  @include from(768px) {
+    max-width: 40em;
+  }
 }
 
 .body {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  max-width: 40ch;
   font-size: var(--font-size-base);
   line-height: var(--line-height-body);
   color: var(--color-text-on-dark);

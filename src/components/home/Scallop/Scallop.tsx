@@ -1,10 +1,15 @@
+'use client';
+
 import type { CSSProperties } from 'react';
+import { useScreenWidth } from '@/lib/useScreenWidth';
 import styles from './Scallop.module.scss';
 
 export type ScallopTone = 'navy' | 'yellow' | 'burgundy' | 'cream';
+export type ScallopDirection = 'up' | 'down';
 
 type ScallopProps = {
   readonly tone: ScallopTone;
+  readonly direction?: ScallopDirection;
   readonly className?: string;
 };
 
@@ -55,22 +60,37 @@ function scallopPath(width: number, depth: number, count: number): string {
   return sb.join('\n           ');
 }
 
-const VIEWBOX_WIDTH = 1440;
-const SCALLOP_WIDTH = 180;
+const MAX_SCALLOP_WIDTH = 180;
 const SCALLOP_DEPTH = 90;
-const SCALLOP_COUNT = Math.round(VIEWBOX_WIDTH / SCALLOP_WIDTH);
+const SSR_VIEWBOX = 1440;
+const SSR_COUNT = 8;
 
-export function Scallop({ tone, className }: ScallopProps) {
+function computeConfig(vpWidth: number) {
+  const count = Math.max(1, Math.ceil(vpWidth / MAX_SCALLOP_WIDTH));
+  const scallopWidth = vpWidth / count;
+  return { scallopWidth, count, viewBoxWidth: vpWidth };
+}
+
+export function Scallop({ tone, direction = 'up', className }: ScallopProps) {
+  const screenWidth = useScreenWidth();
+
+  const { scallopWidth, count, viewBoxWidth } =
+    screenWidth !== null
+      ? computeConfig(screenWidth)
+      : { scallopWidth: MAX_SCALLOP_WIDTH, count: SSR_COUNT, viewBoxWidth: SSR_VIEWBOX };
+
   return (
     <svg
-      className={[styles.scallop, className].filter(Boolean).join(' ')}
-      viewBox={`0 0 ${VIEWBOX_WIDTH} ${SCALLOP_DEPTH}`}
+      className={[styles.scallop, direction === 'down' ? styles.down : undefined, className]
+        .filter(Boolean)
+        .join(' ')}
+      viewBox={`0 0 ${viewBoxWidth} ${SCALLOP_DEPTH}`}
       preserveAspectRatio="none"
       aria-hidden="true"
       focusable="false"
       style={{ color: TONE_COLOR[tone] } as CSSProperties}
     >
-      <path fill={TONE_FILL[tone]} d={scallopPath(SCALLOP_WIDTH, SCALLOP_DEPTH, SCALLOP_COUNT)} />
+      <path fill={TONE_FILL[tone]} d={scallopPath(scallopWidth, SCALLOP_DEPTH, count)} />
     </svg>
   );
 }

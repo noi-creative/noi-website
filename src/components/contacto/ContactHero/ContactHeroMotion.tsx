@@ -74,7 +74,8 @@ type PhotoProps = {
  *
  * Scale 0.96 → 1 matches the editorial tone established by
  * A02's DevolverSection photo; a stronger scale would feel
- * cartoonish against the burgundy background.
+ * cartoonish against the burgundy background. The nested
+ * `HoverZoom` scales only the image, preserving this outer rotation.
  */
 export function ContactPhotoMotion({ className, rotation, delay = 0, children }: PhotoProps) {
   const reducedMotion = useReducedMotion();

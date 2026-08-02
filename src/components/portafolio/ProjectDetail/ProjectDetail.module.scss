@@ -1,3 +1,5 @@
+@use '../../../styles/mixins' as *;
+
 .detail {
   display: block;
 }
@@ -19,7 +21,7 @@
   width: 100%;
   line-height: 0;
 
-  @media (min-width: 768px) {
+  @include from(768px) {
     width: 50%;
   }
 }
@@ -36,7 +38,7 @@
   display: block;
   padding-block: var(--space-8);
 
-  @media (min-width: 768px) {
+  @include from(768px) {
     padding-block: var(--space-10);
   }
 }
@@ -46,12 +48,12 @@
   margin-inline: auto;
   padding-inline: var(--page-gutter-mobile);
 
-  @media (min-width: 768px) {
+  @include from(768px) {
     padding-inline: var(--page-gutter-tablet);
     max-width: 80%;
   }
 
-  @media (min-width: 1280px) {
+  @include from(1280px) {
     padding-inline: var(--page-gutter-desktop);
     max-width: 66%;
   }

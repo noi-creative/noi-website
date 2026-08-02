@@ -16,7 +16,7 @@
     "eyebrow": "POR QUÉ NOI ES DIFERENTE",
     "headlineRegular": "El branding no es un momento,",
     "headlineBold": "ES UN PROCESO",
-    "body1": "El valor real de una identidad no termina cuando se entrega cada pieza. En NOI trabajamos hombro a hombro contigo: escuchamos primero, proponemos después, siempre con una estrategia que lo sustente.",
+    "body1": "El valor real de una identidad no termina cuando se entrega cada pieza. **En NOI trabajamos hombro a hombro contigo:** escuchamos primero, proponemos después, siempre con una estrategia que lo sustente.",
     "body2": "Porque detrás de cada marca hay una persona apostándolo todo, y eso merece un trabajo profesional desde el día uno."
   },
   "services": {
@@ -71,8 +71,6 @@
       "primary": "¿Lista para construir la marca que",
       "accent": "tienes en mente?"
     },
-    "lede": "En NOI no tomamos proyectos por impulso. Elegimos aquellos que podemos cuidar y acompañar con absoluta dedicación. Si estás lista para construir con criterio, estrategia y una estructura real, has llegado al lugar correcto.",
-    "accentWords": ["criterio", "estrategia", "estructura real"],
-    "boldPhrases": ["NOI no tomamos proyectos por impulso"]
+    "lede": "***En NOI no tomamos proyectos por impulso.*** Elegimos aquellos que podemos cuidar y acompañar con absoluta dedicación. Si estás lista para construir con __criterio__, __estrategia__ y __una estructura real__, has llegado al lugar correcto."
   }
 }

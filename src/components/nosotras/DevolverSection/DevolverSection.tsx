@@ -2,25 +2,26 @@ import Image from 'next/image';
 import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import { Eyebrow } from '@/components/ui/Eyebrow';
+import { Heading } from '@/components/ui/Heading';
 import { Scallop } from '@/components/home/Scallop';
 import { assets } from '@/lib/assets';
+import { HoverZoom } from '@/lib/motion';
 import nosotras from '@/content/locales/es/nosotras.json';
 import { DevolverPhotoMotion, DevolverTextColumnMotion } from './DevolverSectionMotion';
 import styles from './DevolverSection.module.scss';
+import { CSSProperties } from 'react';
 
 /**
  * "Devolver lo humano / AL PROCESO CREATIVO" section. Navy
  * background with a yellow scallop at the top (dripping from the
  * yellow intro section above), team photo on the left, and a
- * two-line Satoshi heading with body paragraphs on the right.
+ * two-line mixed-typeface heading with body paragraphs on the right.
  * Scallop at the bottom (navy→cream).
  *
  * The team photo file already has the paper-clip illustration
  * and the "Creation Connection" sticker baked in, so no
  * additional sticker overlay is rendered here. The second line
- * "AL PROCESO CREATIVO" is rendered as a separate `<span>` so
- * the mixed treatment (regular + bold uppercase) and the yellow
- * accent per the Figma are preserved.
+ * "AL PROCESO CREATIVO" uses the Panel Sans accent treatment.
  */
 export function DevolverSection() {
   const photo = assets.nosotras.sectionDevolver[0];
@@ -31,19 +32,21 @@ export function DevolverSection() {
       ariaLabelledby="nosotras-devolver-heading"
       className={styles.devolverSection}
     >
-      <Scallop tone="yellow" className={styles.topScallop} />
+      <Scallop tone="yellow" className={styles.topScallop} direction="up" />
 
       <Container className={styles.devolverContainer}>
         <DevolverPhotoMotion>
           <div className={styles.photo}>
-            <Image
-              src={photo.src}
-              alt={photo.alt ?? 'Equipo de NOI trabajando junta'}
-              width={photo.width}
-              height={photo.height}
-              className={styles.photoImage}
-              sizes="(max-width: 767px) 90vw, 40vw"
-            />
+            <HoverZoom className={styles.photoZoom}>
+              <Image
+                src={photo.src}
+                alt={photo.alt ?? 'Equipo de NOI trabajando junta'}
+                width={photo.width}
+                height={photo.height}
+                className={styles.photoImage}
+                sizes="(max-width: 767px) 90vw, 40vw"
+              />
+            </HoverZoom>
           </div>
         </DevolverPhotoMotion>
 
@@ -51,10 +54,23 @@ export function DevolverSection() {
           <DevolverTextColumnMotion>
             <Eyebrow tone="cream">{nosotras.devolver.eyebrow}</Eyebrow>
 
-            <h2 id="nosotras-devolver-heading" className={styles.heading}>
-              <span className={styles.headlinePrimary}>{nosotras.devolver.headline.primary}</span>
-              <span className={styles.headlineAccent}>{nosotras.devolver.headline.accent}</span>
-            </h2>
+            <Heading
+              as="h2"
+              id="nosotras-devolver-heading"
+              primary={nosotras.devolver.headline.primary}
+              accent={nosotras.devolver.headline.accent}
+              weight="bold"
+              accentFamily="display"
+              accentWeight="bold"
+              accentColor="var(--color-text-on-dark)"
+              accentSize="xl"
+              className={styles.heading}
+              style={
+                {
+                  '--heading-primary-transform': 'none',
+                } as CSSProperties
+              }
+            />
 
             <div className={styles.body}>
               <p>{nosotras.devolver.body1}</p>
@@ -66,6 +82,7 @@ export function DevolverSection() {
           </DevolverTextColumnMotion>
         </div>
       </Container>
+      <Scallop tone="cream" direction="down" />
     </Section>
   );
 }

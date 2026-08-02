@@ -12,7 +12,8 @@ type PhotoProps = {
  * Reveals the DevolverSection team photo on viewport entry with a
  * subtle scale + opacity. Scale 0.96 → 1, not 0.8 → 1, because
  * the editorial tone is restrained; a 20% scale would feel
- * cartoonish against the navy background.
+ * cartoonish against the navy background. The nested `HoverZoom`
+ * owns the independent pointer scale after this entrance completes.
  */
 export function DevolverPhotoMotion({ children }: PhotoProps) {
   const reducedMotion = useReducedMotion();

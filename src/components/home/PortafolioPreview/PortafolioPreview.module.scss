@@ -51,20 +51,19 @@
 }
 
 .giantHeading {
-  font-family: var(--font-sans);
-  font-weight: var(--font-weight-black);
-  font-size: clamp(4rem, 12vw, 10rem);
+  font-size: var(--font-size-2xl);
   line-height: 0.9;
-  letter-spacing: var(--tracking-heading);
-  text-transform: uppercase;
   color: var(--color-brand-yellow);
-  margin: 0;
   z-index: var(--z-content);
   position: relative;
   text-shadow:
     1px 1px 2px transparent,
     0 0 1em var(--color-brand-burgundy),
     0 0 1em var(--color-brand-burgundy);
+
+  @include from(1440px) {
+    font-size: var(--font-size-hero-lg);
+  }
 }
 
 .copyBlock {
@@ -73,10 +72,10 @@
   gap: var(--space-4);
   z-index: var(--z-content);
   position: relative;
-  max-width: 28em;
+  max-width: 22.5em;
 
-  @include from(1100px) {
-    max-width: 33em;
+  @include from(1440px) {
+    max-width: 25em;
   }
 }
 
@@ -85,7 +84,7 @@
   font-size: var(--font-size-base);
   line-height: var(--line-height-body);
   color: var(--color-text-on-dark);
-  margin: 0;
+  margin-bottom: 1rem;
   max-width: 28em;
 
   @include from(1100px) {
@@ -104,34 +103,40 @@
 }
 
 .strip {
-  margin-block-start: var(--space-8);
-  margin-inline: calc(var(--page-gutter-desktop) * -1);
   position: absolute;
+  inset-inline: 0;
   top: var(--space-5);
-  margin: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-inline-start: var(--page-gutter-desktop);
 
   &::-webkit-scrollbar {
     display: none;
   }
+}
 
-  @include from(2000px) {
-    width: 100%;
-  }
+.stripTrack {
+  display: flex;
+  width: max-content;
+  will-change: transform;
 }
 
 .stripList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
+  flex: none;
   gap: var(--space-3);
-  padding-inline: var(--page-gutter-desktop);
+  width: max-content;
+  padding: 0;
+  padding-inline-end: var(--space-3);
+  margin: 0;
+  list-style: none;
+}
 
-  @include from(2000px) {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
+.stripClone {
+  display: flex;
+  flex: none;
 }
 
 .stripItem {
@@ -148,4 +153,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strip {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+
+  .stripTrack {
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .stripClone {
+    display: none;
+  }
 }

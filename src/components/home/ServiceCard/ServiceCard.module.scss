@@ -9,10 +9,11 @@
   height: var(--service-card-height);
   padding: var(--space-4);
   border-radius: var(--radius-md);
-  transform: translateY(var(--card-shift-y, 0px)) rotate(var(--card-tilt, 0deg));
-  transition: transform var(--motion-duration-base) var(--motion-ease-out);
+  transform-origin: 50% 90%;
+  will-change: transform;
   box-shadow: var(--shadow-card);
   scroll-snap-align: start;
+  pointer-events: none;
 }
 
 .color-cream {

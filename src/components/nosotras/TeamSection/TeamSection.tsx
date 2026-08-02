@@ -2,12 +2,13 @@ import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Eyebrow } from '@/components/ui/Eyebrow';
-import { Scallop } from '@/components/home/Scallop';
 import { TeamCard } from '@/components/nosotras/TeamCard';
 import { team } from '@/content/data/team';
 import nosotras from '@/content/locales/es/nosotras.json';
+import { renderBold } from '@/lib/renderBold';
 import { TeamHeaderMotion, TeamCardItemMotion } from './TeamSectionMotion';
 import styles from './TeamSection.module.scss';
+import { CSSProperties } from 'react';
 
 /**
  * "Un equipo de tres" section. Cream background with a navy
@@ -26,8 +27,6 @@ export function TeamSection() {
       ariaLabelledby="nosotras-team-heading"
       className={styles.teamSection}
     >
-      <Scallop tone="navy" className={styles.topScallop} />
-
       <Container className={styles.teamContainer}>
         <div className={styles.header}>
           <TeamHeaderMotion>
@@ -35,15 +34,25 @@ export function TeamSection() {
               <Eyebrow tone="accent">{nosotras.equipo.eyebrow}</Eyebrow>
 
               <Heading
+                className={styles.heading}
                 as="h2"
                 id="nosotras-team-heading"
                 primary={nosotras.equipo.headline.primary}
                 accent={nosotras.equipo.headline.accent}
-                weight="bold"
+                accentColor="var(--color-text-accent)"
+                accentFamily="serif"
+                accentItalic
+                accentWeight="medium"
+                weight="black"
+                style={
+                  {
+                    '--heading-primary-transform': 'none',
+                  } as CSSProperties
+                }
               />
             </div>
 
-            <p className={styles.intro}>{nosotras.equipo.intro}</p>
+            <p className={styles.intro}>{renderBold(nosotras.equipo.intro)}</p>
           </TeamHeaderMotion>
         </div>
 

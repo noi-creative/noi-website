@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
-import { Scallop } from '@/components/home/Scallop';
+import { Heading } from '@/components/ui/Heading';
 import { assets } from '@/lib/assets';
 import { site } from '@/config/site';
 import common from '@/content/locales/es/common.json';
@@ -18,15 +18,23 @@ import styles from './TrabajarCTA.module.scss';
  */
 export function TrabajarCTA() {
   const manosSticker = assets.shared.stickers.manosAzul;
+  const figure1 = assets.shared.figuras.figura1;
+  const figure2 = assets.shared.figuras.figura2;
+
   return (
     <Section
       background="soft"
       ariaLabelledby="nosotras-trabajar-heading"
       className={styles.trabajarSection}
     >
-      <Scallop tone="cream" className={styles.topScallop} />
-
       <Container className={styles.trabajarContainer}>
+        <Image
+          src={figure1.src}
+          alt=""
+          width={315}
+          height={200}
+          className={`${styles.figure} ${styles.figure1}`}
+        />
         <TrabajarIconMotion>
           <div className={styles.iconColumn} aria-hidden="true">
             <Image
@@ -41,10 +49,19 @@ export function TrabajarCTA() {
 
         <div className={styles.textColumn}>
           <TrabajarTextColumnMotion>
-            <h2 id="nosotras-trabajar-heading" className={styles.heading}>
-              <span className={styles.headingPrimary}>{nosotras.trabajar.headline.primary}</span>{' '}
-              <span className={styles.headingAccent}>{nosotras.trabajar.headline.accent}</span>
-            </h2>
+            <Heading
+              as="h2"
+              id="nosotras-trabajar-heading"
+              primary={nosotras.trabajar.headline.primary}
+              accent={nosotras.trabajar.headline.accent}
+              weight="black"
+              align="center"
+              accentFamily="display"
+              accentWeight="bold"
+              accentColor="var(--color-brand-orange)"
+              accentItalic
+              className={styles.heading}
+            />
             <p className={styles.lede}>{nosotras.trabajar.lede}</p>
             <div className={styles.cta}>
               <Button href={site.routes.contacto} variant="primary-orange" withArrow size="lg">
@@ -53,6 +70,14 @@ export function TrabajarCTA() {
             </div>
           </TrabajarTextColumnMotion>
         </div>
+        <Image
+          src={figure2.src}
+          alt=""
+          width={315}
+          height={200}
+          className={`${styles.figure} ${styles.figure2}`}
+          priority
+        />
       </Container>
     </Section>
   );

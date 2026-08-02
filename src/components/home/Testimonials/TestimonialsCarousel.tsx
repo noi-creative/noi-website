@@ -76,7 +76,7 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
           const rel = relativePosition(index, active, total);
           const isActive = rel === 0;
           const isAdjacent = Math.abs(rel) === 1;
-          const xOffset = isAdjacent ? `${rel * 18}rem` : `${rel * 36}rem`;
+          const xOffset = isAdjacent ? `${rel * 78}%` : `${rel * 156}%`;
           return (
             <motion.article
               key={t.id}
@@ -102,7 +102,6 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
               <span className={styles.quoteMark} aria-hidden="true">
                 &ldquo;
               </span>
-              {t.mark ? <p className={styles.mark}>{t.mark}</p> : null}
               <blockquote className={styles.quote}>
                 <p>{t.quote}</p>
               </blockquote>

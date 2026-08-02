@@ -57,7 +57,6 @@
 
   // ============================================================
   // Fluid type scale (DESIGN.md §6) — clamp()
-  // TODO pending Figma MCP: the max values for xl/2xl/hero are provisional
   // and will be re-validated against the Figma frame in a later cycle.
   // ============================================================
   --font-size-xs: clamp(0.72rem, 0.69rem + 0.12vw, 0.8rem);
@@ -67,7 +66,8 @@
   --font-size-lg: clamp(1.35rem, 1.15rem + 0.85vw, 1.95rem);
   --font-size-xl: clamp(1.85rem, 1.45rem + 1.65vw, 3rem);
   --font-size-2xl: clamp(2.5rem, 1.7rem + 3.2vw, 5rem);
-  --font-size-hero: clamp(3.25rem, 1.8rem + 5.7vw, 7.5rem);
+  --font-size-hero: clamp(3.25rem, 1.8rem + 8vw, 8.5rem);
+  --font-size-hero-lg: clamp(3.25rem, 1.8rem + 7vw, 10.5rem);
 
   // ============================================================
   // Line-height and tracking (DESIGN.md §7)
@@ -133,6 +133,7 @@
   --shadow-nav: 0 0.5rem 2rem rgb(0 28 54 / 0.25);
   --shadow-card: 0 0.75rem 1.75rem rgb(0 28 54 / 0.14);
   --shadow-soft: 0 0.35rem 1rem rgb(0 28 54 / 0.1);
+  --shadow-collage: 0px 4px 4px 0px #00000040;
 
   // ============================================================
   // Z-index system (DESIGN.md §13)
