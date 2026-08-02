@@ -4,6 +4,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Heading } from '@/components/ui/Heading';
 import portafolio from '@/content/locales/es/portafolio.json';
 import styles from './PortafolioHero.module.scss';
+import { PortafolioHeroArtworkMotion, PortafolioHeroTextMotion } from './PortafolioHeroMotion';
 import { PortafolioDecor } from '../PortafolioDecor/PortafolioDecor';
 
 /**
@@ -19,10 +20,15 @@ import { PortafolioDecor } from '../PortafolioDecor/PortafolioDecor';
 export function PortafolioHero() {
   return (
     <Section background="soft" ariaLabelledby="portafolio-hero-heading" className={styles.hero}>
-      <PortafolioDecor className={styles.decor} />
-      <PortafolioDecor className={styles.decorYellow} colorHEX="#ED7218" />
+      <PortafolioHeroArtworkMotion className={styles.artwork}>
+        <PortafolioDecor className={styles.decor} />
+        <PortafolioDecor className={styles.decorYellow} colorHEX="#ED7218" />
+      </PortafolioHeroArtworkMotion>
+
       <Container className={styles.heroContainer}>
-        <Eyebrow tone="orange">{portafolio.hero.eyebrow}</Eyebrow>
+        <PortafolioHeroTextMotion>
+          <Eyebrow tone="orange">{portafolio.hero.eyebrow}</Eyebrow>
+        </PortafolioHeroTextMotion>
 
         <Heading
           as="h1"
@@ -38,7 +44,9 @@ export function PortafolioHero() {
           className={styles.heading}
         />
 
-        <p className={styles.lede}>{portafolio.hero.lede}</p>
+        <PortafolioHeroTextMotion delay={0.12}>
+          <p className={styles.lede}>{portafolio.hero.lede}</p>
+        </PortafolioHeroTextMotion>
       </Container>
     </Section>
   );
