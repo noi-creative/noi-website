@@ -156,7 +156,7 @@
 .dropdown {
   display: none;
 
-  @media (max-width: 1023px) {
+  @include until(1024px) {
     display: block;
     position: absolute;
     top: calc(var(--space-3) + var(--header-height-mobile) + var(--space-2));
@@ -180,7 +180,7 @@
 }
 
 .dropdownOpen {
-  @media (max-width: 1023px) {
+  @include until(1024px) {
     display: block;
   }
 }

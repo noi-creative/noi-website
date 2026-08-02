@@ -40,7 +40,7 @@
   padding: 0 var(--page-gutter-mobile) var(--space-8) var(--page-gutter-mobile);
   z-index: var(--z-content);
 
-  @media (max-width: 767px) {
+  @include until(768px) {
     min-height: 15rem;
     padding-block: var(--space-5);
   }

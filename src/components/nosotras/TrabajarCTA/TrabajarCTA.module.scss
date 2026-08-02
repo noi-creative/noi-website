@@ -54,7 +54,7 @@
   color: var(--color-brand-navy);
   white-space: nowrap;
 
-  @media (max-width: 767px) {
+  @include until(768px) {
     white-space: normal;
     font-size: clamp(1.75rem, 1.2rem + 2.4vw, 3rem);
   }
@@ -80,7 +80,7 @@
   width: 315px;
   height: 200px;
 
-  @media (max-width: 767px) {
+  @include until(768px) {
     width: 200px;
     height: 130px;
   }

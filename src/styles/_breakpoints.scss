@@ -1,5 +1,6 @@
 // Compile-time breakpoints. Never use these as runtime values; use them with
-// the `from()` or `until()` mixin in `_mixins.scss`, or in raw `@media` queries.
+// the `from()`, `until()`, or `between()` mixins in `_mixins.scss`. Reserve raw
+// `@media` queries for non-viewport features such as `prefers-reduced-motion`.
 // Sass variables are used because the values are only needed at compile time
 // (they are interpolated into media-query strings). CSS custom properties are
 // not appropriate here.
