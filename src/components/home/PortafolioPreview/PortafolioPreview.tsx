@@ -39,9 +39,13 @@ export function PortafolioPreview() {
     >
       <PortafolioCarousel items={carouselItems} />
       <Container className={styles.portafolioContainer}>
-        <h2 id="home-portafolio-heading" className={styles.giantHeading}>
-          {home.portafolio.title}
-        </h2>
+        <Heading
+          as="h2"
+          id="home-portafolio-heading"
+          primary={home.portafolio.title}
+          weight="black"
+          className={styles.giantHeading}
+        />
         <div className={styles.copyBlock}>
           <Heading
             as="h3"

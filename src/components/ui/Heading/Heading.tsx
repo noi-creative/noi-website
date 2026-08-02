@@ -12,7 +12,7 @@ type HeadingProps = {
   readonly as?: `h${HeadingLevel}`;
   readonly id?: string;
   readonly primary: string;
-  readonly accent: string;
+  readonly accent?: string;
   readonly weight?: FontWeight;
   readonly align?: 'start' | 'center';
   readonly accentFamily?: AccentFamily;
@@ -25,9 +25,9 @@ type HeadingProps = {
 };
 
 /**
- * Mixed-typeface heading primitive. Renders a semantic heading with both
- * phrases in Satoshi: the primary in uppercase bold/black and the accent
- * in sentence case bold, tinted via `--heading-accent-color`.
+ * Semantic heading primitive. The primary phrase renders in Satoshi and can
+ * stand alone for editorial display headings. When supplied, the accent phrase
+ * adds the configured mixed-typeface treatment.
  *
  * Accent styling can be customized via props:
  * - `accentFamily` — `'sans'` (default) or `'serif'`
@@ -79,8 +79,13 @@ export function Heading({
     as,
     { id, className: headingClass, style: combinedStyle },
     <>
-      <span className={styles.primary}>{primary}</span>{' '}
-      <span className={accentClass}>{accent}</span>
+      <span className={styles.primary}>{primary}</span>
+      {accent ? (
+        <>
+          {' '}
+          <span className={accentClass}>{accent}</span>
+        </>
+      ) : null}
     </>,
   );
 }

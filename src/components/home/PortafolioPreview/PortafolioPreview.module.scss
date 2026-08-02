@@ -51,20 +51,19 @@
 }
 
 .giantHeading {
-  font-family: var(--font-sans);
-  font-weight: var(--font-weight-black);
-  font-size: var(--font-size-hero-lg);
+  font-size: var(--font-size-2xl);
   line-height: 0.9;
-  letter-spacing: var(--tracking-heading);
-  text-transform: uppercase;
   color: var(--color-brand-yellow);
-  margin: 0;
   z-index: var(--z-content);
   position: relative;
   text-shadow:
     1px 1px 2px transparent,
     0 0 1em var(--color-brand-burgundy),
     0 0 1em var(--color-brand-burgundy);
+
+  @include from(1440px) {
+    font-size: var(--font-size-hero-lg);
+  }
 }
 
 .copyBlock {
