@@ -3,8 +3,10 @@ import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
+import { Heading } from '@/components/ui/Heading';
 import { assets } from '@/lib/assets';
 import { HoverZoom } from '@/lib/motion';
+import { renderBold } from '@/lib/renderBold';
 import contacto from '@/content/locales/es/contacto.json';
 import {
   ContactHeroTextTopMotion,
@@ -20,10 +22,8 @@ import styles from './ContactHero.module.scss';
  * two rotated portrait photos with the retro telephone sticker
  * (and a smaller secondary phone illustration) on the right.
  *
- * Headings render inline (Satoshi + Playfair Italic) so both
- * lines stay in mixed case, per `DESIGN.md` §24.1. The current
- * `Heading` primitive uppercases the primary line, so it is
- * not used here.
+ * The shared heading renders the mixed-case Satoshi primary and
+ * Panel Sans accent treatment from the approved design.
  */
 export function ContactHero() {
   const [photoA, photoB] = assets.contacto.hero;
@@ -35,19 +35,20 @@ export function ContactHero() {
           <ContactHeroTextTopMotion>
             <Eyebrow tone="cream">{contacto.hero.eyebrow}</Eyebrow>
           </ContactHeroTextTopMotion>
-
-          <h1 id="contacto-hero-heading" className={styles.heading}>
-            <span className={styles.headingPrimary}>{contacto.hero.headline.primary}</span>
-            <span className={styles.headingAccent}>{contacto.hero.headline.accent}</span>
-          </h1>
-
+          <Heading
+            as="h1"
+            id="contacto-hero-heading"
+            primary={contacto.hero.headline.primary}
+            accent={contacto.hero.headline.accent}
+            weight="black"
+            accentFamily="display"
+            accentWeight="bold"
+            accentItalic
+            accentColor="var(--color-brand-yellow)"
+            className={styles.heading}
+          />
           <ContactHeroTextBottomMotion>
-            <p className={styles.lede}>
-              Agendemos una llamada de <strong>30 minutos</strong> para hablar de tu proyecto.
-              Cuéntanos dónde está tu negocio hoy y hacia dónde quieres ir. Solo una conversación de{' '}
-              <strong>persona a persona</strong> para entender qué necesita tu marca y descubrir si
-              somos el equipo ideal para ayudarte a llegar allí.
-            </p>
+            <p className={styles.lede}>{renderBold(contacto.hero.lede)}</p>
 
             <div className={styles.ctaRow}>
               <Button href="#contacto-detalles" variant="primary-yellow" withArrow size="lg">
@@ -59,7 +60,7 @@ export function ContactHero() {
 
         <div className={styles.collageColumn} aria-hidden="true">
           <div className={styles.collage}>
-            <ContactPhotoMotion className={`${styles.photo} ${styles.photoA}`} rotation={-5}>
+            <ContactPhotoMotion className={`${styles.photo} ${styles.photoA}`} rotation={-6}>
               <HoverZoom className={styles.imageZoom}>
                 <Image
                   src={photoA.src}
@@ -67,7 +68,6 @@ export function ContactHero() {
                   width={photoA.width}
                   height={photoA.height}
                   className={styles.image}
-                  sizes="(max-width: 767px) 80vw, 32vw"
                   priority
                 />
               </HoverZoom>
@@ -85,17 +85,16 @@ export function ContactHero() {
                   width={photoB.width}
                   height={photoB.height}
                   className={styles.image}
-                  sizes="(max-width: 767px) 60vw, 22vw"
                 />
               </HoverZoom>
             </ContactPhotoMotion>
 
             <ContactStickerMotion
               className={`${styles.sticker} ${styles.stickerPhone}`}
-              rotation={8}
+              rotation={0}
             >
               <Image
-                src={assets.shared.stickers.telefonoAmarillo.src}
+                src={assets.shared.stickers.telefonoAzul.src}
                 alt=""
                 width={200}
                 height={200}
@@ -105,14 +104,14 @@ export function ContactHero() {
             </ContactStickerMotion>
 
             <ContactStickerMotion
-              className={`${styles.sticker} ${styles.stickerCalendar}`}
+              className={`${styles.sticker} ${styles.stickerPhone2}`}
               rotation={8}
             >
               <Image
-                src={assets.shared.stickers.calendar.src}
+                src={assets.shared.stickers.telefonoCrema.src}
                 alt=""
-                width={200}
-                height={200}
+                width={210}
+                height={187}
                 className={styles.stickerImage}
                 sizes="(max-width: 767px) 24vw, 10vw"
               />

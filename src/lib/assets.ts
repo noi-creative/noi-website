@@ -135,8 +135,12 @@ export const assets = {
         src: '/images/shared/stickers/sticker-megafono-rojo.svg',
         alt: tbd,
       },
-      telefonoAmarillo: {
-        src: '/images/shared/stickers/sticker-telefono-amarillo.svg',
+      telefonoAzul: {
+        src: '/images/shared/stickers/sticker-telefono-azul.svg',
+        alt: tbd,
+      },
+      telefonoCrema: {
+        src: '/images/shared/stickers/sticker-telefono-crema.svg',
         alt: tbd,
       },
       calendar: {
@@ -293,14 +297,14 @@ export const assets = {
     hero: [
       {
         src: '/images/pages/contacto/contact-hero-1.webp',
-        width: 552,
-        height: 653,
+        width: 245,
+        height: 300,
         alt: 'Integrante de NOI hablando por teléfono con un cliente',
       },
       {
         src: '/images/pages/contacto/contact-hero-2.webp',
-        width: 489,
-        height: 556,
+        width: 245,
+        height: 300,
         alt: 'Integrante de NOI revisando un proyecto en su laptop',
       },
     ],

@@ -1,5 +1,4 @@
 import { Section } from '@/components/ui/Section';
-import { Scallop } from '@/components/home/Scallop';
 import contacto from '@/content/locales/es/contacto.json';
 import { BrandStatementHeadingMotion } from './BrandStatementMotion';
 import styles from './BrandStatement.module.scss';
@@ -22,8 +21,6 @@ export function BrandStatement() {
       ariaLabelledby="contacto-brand-heading"
       className={styles.statement}
     >
-      {/*<Scallop tone="yellow" className={styles.topScallop} />*/}
-
       <div className={styles.statementInner}>
         <BrandStatementHeadingMotion>
           <h2 id="contacto-brand-heading" className={styles.heading}>
