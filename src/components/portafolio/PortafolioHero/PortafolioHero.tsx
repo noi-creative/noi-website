@@ -1,5 +1,7 @@
 import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { Heading } from '@/components/ui/Heading';
 import portafolio from '@/content/locales/es/portafolio.json';
 import styles from './PortafolioHero.module.scss';
 import { PortafolioDecor } from '../PortafolioDecor/PortafolioDecor';
@@ -10,12 +12,9 @@ import { PortafolioDecor } from '../PortafolioDecor/PortafolioDecor';
  * with the eyebrow, the mixed-typeface H1 (Satoshi + Playfair
  * Italic), and the lede paragraph.
  *
- * The eyebrow is rendered as a one-off `<p>` because the C06
- * `Eyebrow` primitive does not offer an orange tone (per
- * AGENTS.md §26 we do not extend a primitive for a single use).
- * The H1 is an inline `<h1>` with two `<span>` children because
- * the C06 `Heading` primitive uppercases the primary line and
- * this hero's primary line is mixed case.
+ * Shared Eyebrow and Heading primitives provide the orange label
+ * and mixed-typeface heading while section styles preserve the
+ * approved two-line composition.
  */
 export function PortafolioHero() {
   return (
@@ -23,12 +22,21 @@ export function PortafolioHero() {
       <PortafolioDecor className={styles.decor} />
       <PortafolioDecor className={styles.decorYellow} colorHEX="#ED7218" />
       <Container className={styles.heroContainer}>
-        <p className={styles.eyebrow}>{portafolio.hero.eyebrow}</p>
+        <Eyebrow tone="orange">{portafolio.hero.eyebrow}</Eyebrow>
 
-        <h1 id="portafolio-hero-heading" className={styles.heading}>
-          <span className={styles.headingPrimary}>{portafolio.hero.headline.primary}</span>
-          <span className={styles.headingAccent}>{portafolio.hero.headline.accent}</span>
-        </h1>
+        <Heading
+          as="h1"
+          id="portafolio-hero-heading"
+          primary={portafolio.hero.headline.primary}
+          accent={portafolio.hero.headline.accent}
+          weight="black"
+          align="center"
+          accentFamily="display"
+          accentWeight="bold"
+          accentItalic
+          accentColor="var(--color-action-primary)"
+          className={styles.heading}
+        />
 
         <p className={styles.lede}>{portafolio.hero.lede}</p>
       </Container>

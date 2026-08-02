@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
+import { Heading } from '@/components/ui/Heading';
 import { assets } from '@/lib/assets';
 import portafolio from '@/content/locales/es/portafolio.json';
 import styles from './PortafolioCta.module.scss';
@@ -32,10 +33,19 @@ export function PortafolioCta() {
         </div>
 
         <div className={styles.textColumn}>
-          <h2 id="portafolio-cta-heading" className={styles.heading}>
-            <span className={styles.headingPrimary}>{portafolio.cta.headline.primary}</span>
-            <span className={styles.headingAccent}>{portafolio.cta.headline.accent}</span>
-          </h2>
+          <Heading
+            as="h2"
+            id="portafolio-cta-heading"
+            primary={portafolio.cta.headline.primary}
+            accent={portafolio.cta.headline.accent}
+            weight="bold"
+            align="center"
+            accentFamily="serif"
+            accentWeight="medium"
+            accentItalic
+            accentColor="var(--color-brand-yellow)"
+            className={styles.heading}
+          />
 
           <p className={styles.lede}>{portafolio.cta.lede}</p>
 
