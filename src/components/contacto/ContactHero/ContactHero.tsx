@@ -94,7 +94,7 @@ export function ContactHero() {
               rotation={0}
             >
               <Image
-                src={assets.shared.stickers.telefonoAzul.src}
+                src={assets.shared.stickers.telefonoDescolgado.azul.src}
                 alt=""
                 width={200}
                 height={200}
@@ -108,7 +108,7 @@ export function ContactHero() {
               rotation={8}
             >
               <Image
-                src={assets.shared.stickers.telefonoCrema.src}
+                src={assets.shared.stickers.telefono.azul.src}
                 alt=""
                 width={210}
                 height={187}

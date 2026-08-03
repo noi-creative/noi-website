@@ -17,7 +17,7 @@ import styles from './TrabajarCTA.module.scss';
  * heading + lede + single orange CTA. Centered layout.
  */
 export function TrabajarCTA() {
-  const manosSticker = assets.shared.stickers.manosAzul;
+  const manosSticker = assets.shared.stickers.manos.azul;
   const figure1 = assets.shared.figuras.figura1;
   const figure2 = assets.shared.figuras.figura2;
 

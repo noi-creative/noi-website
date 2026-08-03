@@ -12,7 +12,7 @@ import styles from './BrandingSection.module.scss';
 
 export function BrandingSection() {
   const portrait = assets.home.sectionBrandingPortrait;
-  const stickerManos = assets.shared.stickers.manosRojo;
+  const stickerManos = assets.shared.stickers.manos.rojo;
 
   return (
     <Section

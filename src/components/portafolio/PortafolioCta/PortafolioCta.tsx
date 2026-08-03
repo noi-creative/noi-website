@@ -13,11 +13,12 @@ import { PortafolioCtaStickerMotion, PortafolioCtaTextMotion } from './Portafoli
  * with the mixed-typeface heading, the lede, the yellow CTA, and
  * 2 decorative SVG stickers: a light-blue text-bubble sticker on
  * the left and a yellow calendar sticker on the right (both from
- * `shared.stickers`, the studio-supplied stickers that replace
+ * `assets.shared.stickers`, the studio-supplied stickers that replace
  * the earlier best-effort inline + semi-circle approximations).
  */
 export function PortafolioCta() {
-  const { textBubble, calendar } = assets.shared.stickers;
+  const textBubble = assets.shared.stickers.burbujaTexto.naranja;
+  const calendar = assets.shared.stickers.calendario.azul;
 
   return (
     <Section background="burgundy" ariaLabelledby="portafolio-cta-heading" className={styles.cta}>

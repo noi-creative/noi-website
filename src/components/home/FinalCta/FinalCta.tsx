@@ -26,7 +26,7 @@ import styles from './FinalCta.module.scss';
  */
 export function FinalCta() {
   const collage = assets.home.ctaCollage ?? [];
-  const megafonoSticker = assets.shared.stickers.megafonoRojo;
+  const megafonoSticker = assets.shared.stickers.megafono.rojo;
   const { lede } = home.finalCta;
 
   return (

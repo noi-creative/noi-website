@@ -31,10 +31,10 @@ export type HomeService = {
   readonly iconSticker:
     | 'manosNaranja'
     | 'laptopCeleste'
-    | 'bombillaAmarilla'
-    | 'doodleMarino'
-    | 'ilustracion03'
-    | 'ilustracion04';
+    | 'bombillaRoja'
+    | 'webDesignInk'
+    | 'celularAzul'
+    | 'calendarioRojo';
   readonly textTone: 'ink' | 'cream';
 };
 
@@ -56,7 +56,7 @@ export const homeServices: readonly HomeService[] = [
       'Piezas visuales que se sostienen solas. Cada decisión gráfica responde a un objetivo claro: un sistema gráfico que se replica a sí mismo sin perder carácter.',
     number: '02',
     color: 'burgundy',
-    iconSticker: 'bombillaAmarilla',
+    iconSticker: 'bombillaRoja',
     textTone: 'cream',
   },
   {
@@ -66,7 +66,7 @@ export const homeServices: readonly HomeService[] = [
       'Sitios que funcionan bien, se ven bien y se entienden rápido. Estructura, jerarquía visual alineada con la marca, navegación honesta.',
     number: '03',
     color: 'yellow',
-    iconSticker: 'doodleMarino',
+    iconSticker: 'webDesignInk',
     textTone: 'cream',
   },
   {
@@ -86,7 +86,7 @@ export const homeServices: readonly HomeService[] = [
       'Qué decir, cuándo decirlo y por qué. Construimos una voz de marca reconocible que conecta con tu audiencia a través de cada punto de contacto, con la misma lógica en redes, web y materiales.',
     number: '05',
     color: 'orange',
-    iconSticker: 'ilustracion03',
+    iconSticker: 'celularAzul',
     textTone: 'cream',
   },
   {
@@ -96,7 +96,7 @@ export const homeServices: readonly HomeService[] = [
       'El nombre correcto no se improvisa, se construye. Te ayudamos a encontrar una identidad verbal que represente la esencia de tu marca y la haga memorable.',
     number: '06',
     color: 'ink',
-    iconSticker: 'ilustracion04',
+    iconSticker: 'calendarioRojo',
     textTone: 'cream',
   },
 ] as const;
@@ -110,5 +110,14 @@ export function getStickerForService(sticker: HomeService['iconSticker']): {
   src: string;
   alt: string | null;
 } {
-  return assets.shared.stickers[sticker];
+  const serviceStickers = {
+    manosNaranja: assets.shared.stickers.manos.naranja,
+    laptopCeleste: assets.shared.stickers.laptop.celeste,
+    bombillaRoja: assets.shared.stickers.bombilla.rojo,
+    webDesignInk: assets.shared.stickers.webDesign.ink,
+    celularAzul: assets.shared.stickers.celular.azul,
+    calendarioRojo: assets.shared.stickers.calendario.rojo,
+  } as const;
+
+  return serviceStickers[sticker];
 }

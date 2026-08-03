@@ -11,6 +11,7 @@
  * A whole slot can also be `null` (e.g. a missing team portrait) to
  * signal "no asset yet — implementation must guard against this".
  *
+ *
  * Conventions:
  *   - Slugs are kebab-case, ASCII, no diacritics.
  *   - Each project in `proyectos/[slug]/` is self-contained:
@@ -18,6 +19,8 @@
  *       -med.png    → card on / (home carousel)
  *       -cover.jpg  → hero of /portafolio/[slug]
  *       portafolio/detail-N.jpg → gallery of /portafolio/[slug]
+ *   - Stickers are grouped as `type.variant` (for example, `bombilla.rojo`).
+ *   - This nesting convention is exclusive to stickers and must not be reproduced in the other asset sections.
  */
 
 export type RasterAsset = {
@@ -76,7 +79,10 @@ export const assets = {
       figura1: { src: '/images/shared/figuras/figura-1.svg', alt: tbd },
       figura2: { src: '/images/shared/figuras/figura-2.svg', alt: tbd },
       figura3: { src: '/images/shared/figuras/figura-3.svg', alt: tbd },
+      figura4: { src: '/images/shared/figuras/figura-4.svg', alt: tbd },
       ovaloCrema: { src: '/images/shared/figuras/ovalo-crema.svg', alt: tbd },
+      ovalosBackground: { src: '/images/shared/figuras/ovalos-background.svg', alt: tbd },
+      ovalosInk: { src: '/images/shared/figuras/ovalos-ink.svg', alt: tbd },
       semiCirculoAzul: {
         src: '/images/shared/figuras/semi-circulo-azul.svg',
         alt: tbd,
@@ -85,71 +91,46 @@ export const assets = {
         src: '/images/shared/figuras/semi-circulo-naranja.svg',
         alt: tbd,
       },
+      semiOvalosBlancos: { src: '/images/shared/figuras/semi-ovalos-blancos.svg', alt: tbd },
     },
     stickers: {
-      blobCeleste: {
-        src: '/images/shared/stickers/sticker-blob-celeste.svg',
-        alt: tbd,
+      bombilla: {
+        rojo: { src: '/images/shared/stickers/sticker-bombilla-roja.svg', alt: tbd },
       },
-      blobAmarillo: {
-        src: '/images/shared/stickers/sticker-blob-amarillo.svg',
-        alt: tbd,
+      calendario: {
+        azul: { src: '/images/shared/stickers/sticker-calendario-azul.svg', alt: tbd },
+        rojo: { src: '/images/shared/stickers/sticker-calendario-rojo.svg', alt: tbd },
       },
-      bombillaAmarilla: {
-        src: '/images/shared/stickers/sticker-bombilla-amarilla.svg',
-        alt: tbd,
+      celular: {
+        azul: { src: '/images/shared/stickers/sticker-celular-azul.svg', alt: tbd },
       },
-      doodleMarino: {
-        src: '/images/shared/stickers/sticker-doodle-marino.svg',
-        alt: tbd,
+      laptop: {
+        celeste: { src: '/images/shared/stickers/sticker-laptop-celeste.svg', alt: tbd },
       },
-      ilustracion03: {
-        src: '/images/shared/stickers/sticker-ilustracion-03.svg',
-        alt: tbd,
+      manos: {
+        azul: { src: '/images/shared/stickers/sticker-manos-azul.svg', alt: tbd },
+        naranja: { src: '/images/shared/stickers/sticker-manos-naranja.svg', alt: tbd },
+        rojo: { src: '/images/shared/stickers/sticker-manos-rojo.svg', alt: tbd },
       },
-      ilustracion04: {
-        src: '/images/shared/stickers/sticker-ilustracion-04.svg',
-        alt: tbd,
+      megafono: {
+        blanco: { src: '/images/shared/stickers/sticker-megafono-blanco.svg', alt: tbd },
+        rojo: { src: '/images/shared/stickers/sticker-megafono-rojo.svg', alt: tbd },
       },
-      ilustracion08: {
-        src: '/images/shared/stickers/sticker-ilustracion-08.svg',
-        alt: tbd,
+      telefono: {
+        azul: { src: '/images/shared/stickers/sticker-telefono-azul.svg', alt: tbd },
+        naranja: { src: '/images/shared/stickers/sticker-telefono-naranja.svg', alt: tbd },
       },
-      laptopCeleste: {
-        src: '/images/shared/stickers/sticker-laptop-celeste.svg',
-        alt: tbd,
+      telefonoDescolgado: {
+        azul: { src: '/images/shared/stickers/sticker-telefono-descolgado-azul.svg', alt: tbd },
       },
-      manosAzul: {
-        src: '/images/shared/stickers/sticker-manos-azul.svg',
-        alt: tbd,
+      burbujaTexto: {
+        naranja: { src: '/images/shared/stickers/sticker-text-booble-naranja.svg', alt: tbd },
       },
-      manosNaranja: {
-        src: '/images/shared/stickers/sticker-manos-naranja.svg',
-        alt: tbd,
+      webDesign: {
+        ink: { src: '/images/shared/stickers/sticker-web-design-ink.svg', alt: tbd },
       },
-      manosRojo: {
-        src: '/images/shared/stickers/sticker-manos-rojo.svg',
-        alt: tbd,
-      },
-      megafonoRojo: {
-        src: '/images/shared/stickers/sticker-megafono-rojo.svg',
-        alt: tbd,
-      },
-      telefonoAzul: {
-        src: '/images/shared/stickers/sticker-telefono-azul.svg',
-        alt: tbd,
-      },
-      telefonoCrema: {
-        src: '/images/shared/stickers/sticker-telefono-crema.svg',
-        alt: tbd,
-      },
-      calendar: {
-        src: '/images/shared/stickers/sticker-calendar.svg',
-        alt: tbd,
-      },
-      textBubble: {
-        src: '/images/shared/stickers/sticker-text-bubble.svg',
-        alt: tbd,
+      clip: {
+        naranja: { src: '/images/shared/stickers/stickers-clip-naranja.svg', alt: tbd },
       },
     },
   },
