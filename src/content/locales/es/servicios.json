@@ -3,7 +3,172 @@
     "title": "Servicios — NOI: creative",
     "description": "TODO metadata description"
   },
-  "placeholder": {
-    "pending": "Esta página se implementa cuando el diseño de Servicios sea aprobado (P04)."
+  "hero": {
+    "eyebrow": "LO QUE HACEMOS",
+    "headline": {
+      "primary": "Todo lo que tu marca necesita.",
+      "accent": "En un solo lugar, con estrategia"
+    },
+    "lede": "No ofrecemos servicios aislados. Ofrecemos un sistema. Cada servicio que desarrollamos está pensado para que tu marca tenga coherencia visual, claridad comunicativa y una base sólida que funcione en el tiempo.",
+    "primaryCta": "Agenda tu llamada",
+    "secondaryCta": "Ver portafolio"
+  },
+  "services": {
+    "branding": {
+      "eyebrow": "BRANDING E IDENTIDAD VISUAL / 01",
+      "headline": {
+        "primary": "Una marca que se sostiene",
+        "accent": "y crece en el tiempo."
+      },
+      "paragraphs": [
+        "El branding va mucho más allá de un logo: es la esencia de una marca, su historia, sus valores y la forma en que conecta con las personas.",
+        "Por eso, nuestro proceso comienza definiendo su estrategia, propósito y posicionamiento. Solo así creamos una identidad visual que refleje auténticamente quién eres y hacia dónde quieres llevar tu negocio."
+      ],
+      "detailsTitle": "QUÉ INCLUYE:",
+      "details": [
+        {
+          "title": "Plataforma estratégica",
+          "description": "Propósito, valores, público objetivo y posicionamiento de mercado."
+        },
+        {
+          "title": "Identidad verbal",
+          "description": "Tono de voz, mensajes clave y narrativa de marca coherente."
+        },
+        {
+          "title": "Dirección creativa",
+          "description": "Universo visual, paleta cromática, tipografías y sistema de marca completo."
+        }
+      ],
+      "cta": "Hablemos de tu marca"
+    },
+    "graphicDesign": {
+      "eyebrow": "DISEÑO GRÁFICO / 02",
+      "headline": {
+        "primary": "Piezas visuales con",
+        "accent": "lógica de negocio detrás."
+      },
+      "paragraphs": [
+        "Diseñamos cada pieza para que respete la esencia de tu marca. Desde un flyer hasta un empaque, todo mantiene una identidad visual coherente, profesional y consistente en cada punto de contacto."
+      ],
+      "detailsTitle": "QUÉ INCLUYE:",
+      "details": [
+        { "title": "Material corporativo e impresos" },
+        { "title": "Diseño digital y promocional" },
+        { "title": "Packaging y etiquetas" },
+        { "title": "Recursos visuales" }
+      ],
+      "cta": "Cuéntanos qué necesita tu marca"
+    },
+    "webDesign": {
+      "eyebrow": "DISEÑO WEB / 03",
+      "headline": {
+        "primary": "Tu sitio web no es solo una vitrina.",
+        "accent": "Es tu mejor vendedor."
+      },
+      "paragraphs": [
+        "No diseñamos páginas web, diseñamos experiencias estratégicas. Cada decisión de estructura, navegación y diseño tiene un propósito: reflejar tu marca, generar confianza y guiar a cada visitante hacia la acción."
+      ],
+      "note": "En todos nuestros proyectos incluimos asesoría y criterio estratégico para decidir qué secciones y funcionalidades realmente aportarán valor a tu cliente.",
+      "detailsTitle": "QUÉ INCLUYE:",
+      "details": [
+        { "title": "Arquitectura y estructura de navegación" },
+        { "title": "Diseño UI alineado con tu marca" },
+        { "title": "Copywriting estratégico" },
+        { "title": "Diseño responsive" },
+        { "title": "Desarrollo e implementación del sitio web" },
+        { "title": "Asesoría estratégica" }
+      ],
+      "cta": "Hablemos de tu web"
+    },
+    "ecommerce": {
+      "eyebrow": "E-COMMERCE / 04",
+      "headline": {
+        "primary": "Una tienda digital que convierte",
+        "accent": "sin perder la identidad."
+      },
+      "paragraphs": [
+        "Diseñar un e-commerce no es solo subir productos con buenas fotos. Es construir una experiencia de compra que inspire confianza, que sea fácil de navegar y que refleje exactamente lo que tu marca es.",
+        "Trabajamos el diseño, el flujo de compra y la coherencia visual para que tu tienda venda, y lo haga bien."
+      ],
+      "detailsTitle": "QUÉ INCLUYE:",
+      "details": [
+        { "title": "Diseño y desarrollo del e-commerce" },
+        { "title": "Categorías y fichas de producto optimizadas" },
+        { "title": "Experiencia visual coherente con tu marca" },
+        { "title": "Checkout diseñado para convertir" },
+        { "title": "Navegación responsive y fácil de usar" },
+        { "title": "Tienda lista para vender desde el primer día" }
+      ],
+      "cta": "Agenda tu llamada de orientación"
+    },
+    "contentStrategy": {
+      "eyebrow": "ESTRATEGIA DE CONTENIDO Y MANEJO DE REDES / 05",
+      "headline": {
+        "primary": "Qué decir, cómo decirlo",
+        "accent": "y cuándo publicarlo."
+      },
+      "lede": "Las redes sociales son el lugar donde tu marca conecta con las personas todos los días. Por eso, desarrollamos una estrategia de contenido con objetivos claros, un mensaje coherente y un plan pensado para generar resultados sostenibles.",
+      "plans": [
+        {
+          "number": "01",
+          "title": "Dirección y Diseño",
+          "description": "Para quienes quieren delegar la estrategia, los copys y el diseño visual de sus publicaciones, pero prefieren encargarse de la programación y el día a día de su cuenta."
+        },
+        {
+          "number": "02",
+          "title": "Estrategia, Dirección y Acompañamiento",
+          "description": "La combinación perfecta. Nosotras planificamos, diseñamos y programamos, pero nos unimos contigo en sesiones mensuales de dirección creativa para aprobar y producir tu contenido original."
+        },
+        {
+          "number": "03",
+          "title": "Gestión Integral y Crecimiento Premium",
+          "description": "Delegación absoluta. Nos encargamos de todo: desde la dirección de tu estrategia hasta la moderación de tus comentarios y la atención de los mensajes directos de lunes a viernes."
+        }
+      ],
+      "cta": "Agenda una llamada y elijamos tu plan ideal"
+    },
+    "naming": {
+      "eyebrow": "NAMING ESTRATÉGICO / 06",
+      "headline": {
+        "primary": "Tu nombre es el primer punto de contacto",
+        "accent": "de tu marca."
+      },
+      "paragraphs": [
+        "Un buen nombre es estratégico, memorable y sonoro, pero la fórmula cambia según tu industria, cada rubro exige un camino distinto.",
+        "Nuestro proceso es estratégico y va de la mano contigo. Nos sentamos a entender a fondo tu negocio, investigamos tu mercado y diseñamos el territorio conceptual perfecto antes de empezar a buscar."
+      ],
+      "detailsTitle": "QUÉ INCLUYE:",
+      "details": [
+        {
+          "title": "Reunión estratégica",
+          "description": "Conocemos tu marca, sus objetivos y la personalidad que queremos transmitir."
+        },
+        {
+          "title": "Exploración conceptual",
+          "description": "Investigamos tu industria para definir el territorio ideal donde construiremos el nombre."
+        },
+        {
+          "title": "Desarrollo de propuestas",
+          "description": "Creamos, evaluamos y refinamos múltiples opciones hasta seleccionar las más sólidas."
+        },
+        {
+          "title": "Validación digital",
+          "description": "Comprobamos la disponibilidad del dominio web y los usuarios en redes sociales."
+        },
+        {
+          "title": "Presentación estratégica",
+          "description": "Recibes cinco propuestas con su concepto, fundamento y lógica de negocio."
+        }
+      ],
+      "cta": "Hablemos del nombre de tu marca"
+    }
+  },
+  "finalCta": {
+    "headline": {
+      "primary": "¿No sabes por",
+      "accent": "dónde empezar?"
+    },
+    "lede": "En 30 minutos entendemos tu situación, te decimos con honestidad qué tiene más sentido para tu marca ahora mismo. Y si realmente somos el equipo indicado para acompañarte.",
+    "cta": "Agenda tu llamada gratuita"
   }
 }

@@ -2,7 +2,7 @@
 
 **Status:** Visual implementation specification  
 **Visual source of truth:** Approved Figma file  
-**Secondary references:** Home, Nosotras and Contacto screenshots  
+**Secondary references:** Home, Nosotras, Servicios and Contacto screenshots\
 **Reference viewport:** 1440 px  
 **Minimum supported width:** 320 px
 
@@ -1051,11 +1051,12 @@ Mobile:
 
 ---
 
-## 25. Pending page designs
+## 25. Servicios And Pending Designs
+
+Servicios uses `references/servicios/servicios.png` as its approved 1440 px desktop reference. Its responsive variants remain pending and must follow the shared responsive adaptation rules in this document.
 
 The following pages are not visually specified yet:
 
-- Servicios.
 - Portafolio index.
 - Project detail.
 - Privacidad layout beyond legal-content requirements.
@@ -1067,7 +1068,7 @@ Rules until designs are approved:
 - Do not invent full page compositions.
 - Shared Header, Footer, button, typography and legal-content patterns may be implemented.
 - Legal pages may use a simple content container consistent with the system.
-- Servicios, Portafolio and project pages should remain unimplemented or clearly marked as pending if no approved design exists.
+- Project pages should remain unimplemented or clearly marked as pending if no approved design exists.
 
 ---
 

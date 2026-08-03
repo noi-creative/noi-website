@@ -36,11 +36,11 @@ The currently approved page designs are:
 
 - Home
 - Nosotras
+- Servicios
 - Contacto
 
 The following designs are still pending:
 
-- Servicios
 - Portafolio
 - Portfolio project detail pages
 - Responsive Figma variants

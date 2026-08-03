@@ -1,0 +1,124 @@
+@use '../../../styles/mixins' as *;
+
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-7);
+  padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 4.5rem);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-action-primary);
+  color: var(--color-text-on-dark);
+}
+
+.header {
+  position: relative;
+  z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 52rem;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-wide);
+}
+
+.heading {
+  --heading-primary-transform: none;
+
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-5);
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  line-height: var(--line-height-tight);
+}
+
+.lede {
+  max-width: 46rem;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+}
+
+.plans {
+  position: relative;
+  z-index: var(--z-content);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid color-mix(in srgb, var(--color-text-on-dark) 42%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-text-on-dark) 5%, transparent);
+}
+
+.plan[data-featured='true'] {
+  border-width: 2px;
+  background: color-mix(in srgb, var(--color-text-on-dark) 9%, transparent);
+}
+
+.plan h3 {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-subheading);
+}
+
+.plan h3 span {
+  font-weight: var(--font-weight-regular);
+}
+
+.plan p {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-body);
+}
+
+.sticker {
+  position: absolute;
+  inset-block-start: var(--space-6);
+  inset-inline-end: clamp(1.5rem, 6vw, 6rem);
+  width: clamp(5rem, 10vw, 8.5rem);
+  height: auto;
+  pointer-events: none;
+}
+
+@include until(900px) {
+  .plans {
+    grid-template-columns: 1fr;
+    max-width: 42rem;
+  }
+
+  .sticker {
+    opacity: 0.5;
+  }
+}
+
+@include until(480px) {
+  .section {
+    border-radius: var(--radius-md);
+  }
+
+  .sticker {
+    width: 4.5rem;
+    inset-block-start: var(--space-4);
+    inset-inline-end: var(--space-3);
+  }
+}

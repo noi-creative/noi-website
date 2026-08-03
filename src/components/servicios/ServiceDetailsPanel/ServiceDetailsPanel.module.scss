@@ -1,0 +1,119 @@
+.panel {
+  position: relative;
+  padding: clamp(1.35rem, 2.5vw, 2.25rem);
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, currentColor 4%, transparent);
+}
+
+.title {
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-wide);
+}
+
+.items {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.marker {
+  display: grid;
+  place-items: center;
+  min-width: 1.35rem;
+  min-height: 1.35rem;
+  color: var(--service-accent, var(--color-action-primary));
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.itemCopy {
+  display: grid;
+  gap: var(--space-1);
+  font-family: var(--font-sans);
+  line-height: var(--line-height-body);
+}
+
+.itemCopy strong {
+  font-size: var(--font-size-sm);
+}
+
+.itemCopy span {
+  font-size: var(--font-size-xs);
+}
+
+.list .marker::before {
+  content: '+';
+}
+
+.checklist .marker::before {
+  content: '\2713';
+}
+
+.grid .items {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.grid .item {
+  min-height: 4.4rem;
+  padding: var(--space-3);
+  border-radius: var(--radius-xs);
+  background: color-mix(in srgb, currentColor 7%, transparent);
+}
+
+.grid .marker {
+  border: 1px solid currentColor;
+  border-radius: 0.25rem;
+}
+
+.grid .marker::before {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.checklist .items {
+  gap: var(--space-4);
+}
+
+.checklist .item {
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding-block-end: var(--space-3);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+}
+
+.checklist .marker {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.checklist .itemCopy {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.steps .items {
+  gap: var(--space-3);
+}
+
+@media (max-width: 479px) {
+  .grid .items {
+    grid-template-columns: 1fr;
+  }
+}
