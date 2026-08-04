@@ -7,6 +7,19 @@ export type ServiceContentKey = 'branding' | 'graphicDesign' | 'webDesign' | 'ec
 export type ServiceTone = 'soft' | 'burgundy' | 'yellow' | 'navy' | 'ink';
 export type ServiceLayout = 'copy-first' | 'details-first';
 export type ServiceDetailsVariant = 'list' | 'grid' | 'checklist' | 'steps';
+export type ServiceDetailIcon =
+  | 'briefcase'
+  | 'brush'
+  | 'compass'
+  | 'credit-card'
+  | 'message-circle'
+  | 'monitor-smartphone'
+  | 'package'
+  | 'package-open'
+  | 'palette'
+  | 'shapes'
+  | 'shopping-cart'
+  | 'sparkles';
 export type StickerParent = 'section' | 'copy' | 'details';
 export type StickerHorizontal = 'left' | 'center' | 'right';
 export type StickerVertical = 'top' | 'center' | 'bottom';
@@ -24,6 +37,7 @@ export type ServiceSectionConfig = {
   readonly layout: ServiceLayout;
   readonly eyebrowTone: EyebrowTone;
   readonly detailsVariant: ServiceDetailsVariant;
+  readonly detailIcons?: readonly ServiceDetailIcon[];
   readonly sticker: { readonly src: string; readonly alt: string | null };
   readonly stickerWidth: number;
   readonly stickerHeight: number;
@@ -39,6 +53,7 @@ export const serviceSections: readonly ServiceSectionConfig[] = [
     layout: 'copy-first',
     eyebrowTone: 'orange',
     detailsVariant: 'list',
+    detailIcons: ['compass', 'message-circle', 'sparkles'],
     sticker: assets.shared.stickers.manos.naranja,
     stickerWidth: 126,
     stickerHeight: 126,
@@ -52,6 +67,7 @@ export const serviceSections: readonly ServiceSectionConfig[] = [
     layout: 'details-first',
     eyebrowTone: 'cream',
     detailsVariant: 'grid',
+    detailIcons: ['briefcase', 'monitor-smartphone', 'package-open', 'shapes'],
     sticker: assets.shared.stickers.bombilla.rojo,
     stickerWidth: 64,
     stickerHeight: 68,
@@ -78,6 +94,14 @@ export const serviceSections: readonly ServiceSectionConfig[] = [
     layout: 'details-first',
     eyebrowTone: 'cream',
     detailsVariant: 'grid',
+    detailIcons: [
+      'brush',
+      'package',
+      'palette',
+      'credit-card',
+      'monitor-smartphone',
+      'shopping-cart',
+    ],
     sticker: assets.shared.stickers.laptop.celeste,
     stickerWidth: 60,
     stickerHeight: 57,

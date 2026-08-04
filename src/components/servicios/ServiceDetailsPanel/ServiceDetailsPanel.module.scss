@@ -49,15 +49,20 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: var(--space-3);
-  align-items: start;
+  align-items: center;
+}
+
+.item-steps {
+  align-items: flex-start;
 }
 
 .marker {
   display: grid;
+  place-items: center;
   margin-top: 0.2em;
   color: var(--service-accent, var(--color-action-primary));
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
+  width: clamp(16px, 2vw, 20px);
   font-weight: var(--font-weight-bold);
 }
 
@@ -85,14 +90,6 @@
   }
 }
 
-.list .marker::before {
-  content: '+';
-}
-
-.checklist .marker::before {
-  content: '\2713';
-}
-
 .grid .items {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
@@ -103,19 +100,6 @@
   padding: var(--space-3);
   border-radius: var(--radius-xs);
   background: color-mix(var(--color-surface-cream) 10%, transparent);
-}
-
-.grid .marker {
-  border: 1px solid currentColor;
-  border-radius: 0.25rem;
-}
-
-.grid .marker::before {
-  content: '';
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 50%;
-  background: currentColor;
 }
 
 .checklist .items {

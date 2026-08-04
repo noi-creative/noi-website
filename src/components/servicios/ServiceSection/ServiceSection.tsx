@@ -70,6 +70,7 @@ export function ServiceSection({ config, content }: ServiceSectionProps) {
           title={content.detailsTitle}
           items={content.details}
           variant={config.detailsVariant}
+          icons={config.detailIcons}
           tone={config.tone}
           stickerPlacement={config.stickerPlacement}
         />
