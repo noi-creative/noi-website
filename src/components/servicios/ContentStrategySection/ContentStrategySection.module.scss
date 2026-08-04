@@ -10,7 +10,7 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--color-action-primary);
-  color: var(--color-text-on-dark);
+  color: var(--color-surface-blue);
 }
 
 .header {
@@ -25,28 +25,24 @@
 
 .eyebrow {
   margin: 0 0 var(--space-4);
-  font-family: var(--font-sans);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-wide);
 }
 
 .heading {
   --heading-primary-transform: none;
 
-  display: flex;
-  flex-direction: column;
+  max-width: 11em;
   margin-bottom: var(--space-5);
-  font-size: clamp(2rem, 4vw, 3.75rem);
-  line-height: var(--line-height-tight);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  line-height: 55px;
 }
 
 .lede {
-  max-width: 46rem;
+  max-width: 42rem;
   margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   line-height: var(--line-height-body);
+  color: var(--color-text-primary);
 }
 
 .plans {
@@ -63,14 +59,9 @@
 
 .plan {
   padding: clamp(1.25rem, 2.5vw, 2rem);
-  border: 1px solid color-mix(in srgb, var(--color-text-on-dark) 42%, transparent);
+  border: 1px solid color-mix(var(--color-surface-cream) 90%, transparent);
   border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--color-text-on-dark) 5%, transparent);
-}
-
-.plan[data-featured='true'] {
-  border-width: 2px;
-  background: color-mix(in srgb, var(--color-text-on-dark) 9%, transparent);
+  background: color-mix(var(--color-surface-cream) 5%, transparent);
 }
 
 .plan h3 {
@@ -78,10 +69,7 @@
   font-family: var(--font-sans);
   font-size: var(--font-size-md);
   line-height: var(--line-height-subheading);
-}
-
-.plan h3 span {
-  font-weight: var(--font-weight-regular);
+  color: var(--color-surface-cream);
 }
 
 .plan p {
@@ -89,6 +77,7 @@
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-body);
+  color: var(--color-text-primary);
 }
 
 .sticker {
@@ -101,13 +90,34 @@
 }
 
 @include until(900px) {
+  .section {
+    align-items: flex-start;
+  }
+
   .plans {
     grid-template-columns: 1fr;
     max-width: 42rem;
   }
 
-  .sticker {
-    opacity: 0.5;
+  .header {
+    max-width: none;
+    align-items: flex-start;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .eyebrow,
+  .heading {
+    max-width: 20em;
+  }
+
+  .heading {
+    max-width: 75%;
+  }
+
+  .eyebrow,
+  .heading,
+  .lede {
+    text-align: left;
   }
 }
 
@@ -118,7 +128,12 @@
 
   .sticker {
     width: 4.5rem;
-    inset-block-start: var(--space-4);
+    inset-block-start: var(--space-3);
     inset-inline-end: var(--space-3);
+  }
+
+  .heading {
+    font-size: clamp(1.8rem, 9vw, 2.4rem);
+    max-width: none;
   }
 }

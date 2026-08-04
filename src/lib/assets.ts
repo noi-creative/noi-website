@@ -103,6 +103,7 @@ export const assets = {
       },
       celular: {
         azul: { src: '/images/shared/stickers/sticker-celular-azul.svg', alt: tbd },
+        naranja: { src: '/images/shared/stickers/sticker-celular-naranja.svg', alt: tbd },
       },
       laptop: {
         celeste: { src: '/images/shared/stickers/sticker-laptop-celeste.svg', alt: tbd },
@@ -118,7 +119,6 @@ export const assets = {
       },
       telefono: {
         azul: { src: '/images/shared/stickers/sticker-telefono-azul.svg', alt: tbd },
-        naranja: { src: '/images/shared/stickers/sticker-telefono-naranja.svg', alt: tbd },
       },
       telefonoDescolgado: {
         azul: { src: '/images/shared/stickers/sticker-telefono-descolgado-azul.svg', alt: tbd },

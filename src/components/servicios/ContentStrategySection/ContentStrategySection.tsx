@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
+import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Heading } from '@/components/ui/Heading';
 import { assets } from '@/lib/assets';
 import servicios from '@/content/locales/es/servicios.json';
@@ -7,7 +8,7 @@ import styles from './ContentStrategySection.module.scss';
 
 export function ContentStrategySection() {
   const content = servicios.services.contentStrategy;
-  const sticker = assets.shared.stickers.celular.azul;
+  const sticker = assets.shared.stickers.celular.naranja;
 
   return (
     <section
@@ -24,7 +25,9 @@ export function ContentStrategySection() {
         aria-hidden="true"
       />
       <div className={styles.header}>
-        <p className={styles.eyebrow}>{content.eyebrow}</p>
+        <Eyebrow tone="cream" className={styles.eyebrow}>
+          {content.eyebrow}
+        </Eyebrow>
         <Heading
           as="h2"
           id="servicio-estrategia-heading"
@@ -44,7 +47,7 @@ export function ContentStrategySection() {
         {content.plans.map((plan, index) => (
           <li key={plan.number} className={styles.plan} data-featured={index === 1 || undefined}>
             <h3>
-              <span>{plan.number} /</span> {plan.title}
+              {plan.number} / {plan.title}
             </h3>
             <p>{plan.description}</p>
           </li>
