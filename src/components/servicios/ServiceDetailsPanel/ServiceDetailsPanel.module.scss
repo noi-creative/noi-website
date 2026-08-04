@@ -1,9 +1,17 @@
 .panel {
   position: relative;
   padding: clamp(1.35rem, 2.5vw, 2.25rem);
-  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  border: 1px solid color-mix(var(--color-surface-cream) 90%, transparent);
   border-radius: var(--radius-md);
-  background: color-mix(in srgb, currentColor 4%, transparent);
+  background: color-mix(var(--color-surface-cream) 5%, transparent);
+}
+
+.panel-bottom {
+  padding-bottom: clamp(2.35rem, 3.5vw, 3.25rem);
+}
+
+.panel-top {
+  padding-top: clamp(2.35rem, 3.5vw, 3.25rem);
 }
 
 .title {
@@ -12,6 +20,21 @@
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--tracking-wide);
+}
+
+.soft,
+.yellow {
+  .title {
+    color: var(--color-brand-ink);
+  }
+}
+
+.burgundy,
+.navy,
+.ink {
+  .title {
+    color: var(--color-surface-cream);
+  }
 }
 
 .items {
@@ -31,12 +54,10 @@
 
 .marker {
   display: grid;
-  place-items: center;
-  min-width: 1.35rem;
-  min-height: 1.35rem;
+  margin-top: 0.2em;
   color: var(--service-accent, var(--color-action-primary));
   font-family: var(--font-sans);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
 }
 
@@ -52,7 +73,16 @@
 }
 
 .itemCopy span {
-  font-size: var(--font-size-xs);
+  font-size: 14px;
+}
+
+.itemCopy-steps {
+  display: inline;
+  align-items: flex-start;
+
+  strong {
+    font-size: 14px;
+  }
 }
 
 .list .marker::before {
@@ -72,7 +102,7 @@
   min-height: 4.4rem;
   padding: var(--space-3);
   border-radius: var(--radius-xs);
-  background: color-mix(in srgb, currentColor 7%, transparent);
+  background: color-mix(var(--color-surface-cream) 10%, transparent);
 }
 
 .grid .marker {

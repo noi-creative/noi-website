@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
+import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Heading } from '@/components/ui/Heading';
-import type { ServiceSectionConfig } from '@/content/data/servicios';
+import type { ServiceSectionConfig, StickerParent } from '@/content/data/servicios';
 import { ServiceDetailsPanel } from '../ServiceDetailsPanel/ServiceDetailsPanel';
 import styles from './ServiceSection.module.scss';
+import { renderBold } from '@/lib/renderBold';
 
 type ServiceContent = {
   readonly eyebrow: string;
@@ -22,6 +24,8 @@ type ServiceSectionProps = {
 
 export function ServiceSection({ config, content }: ServiceSectionProps) {
   const headingId = `servicio-${config.id}-heading`;
+  const stickerFor = (parent: StickerParent) =>
+    config.stickerPlacement.parent === parent ? <ServiceSticker config={config} /> : null;
 
   return (
     <section
@@ -33,8 +37,12 @@ export function ServiceSection({ config, content }: ServiceSectionProps) {
         styles[`layout-${config.layout}`],
       ].join(' ')}
     >
+      {stickerFor('section')}
       <div className={styles.copy}>
-        <p className={styles.eyebrow}>{content.eyebrow}</p>
+        {stickerFor('copy')}
+        <Eyebrow tone={config.eyebrowTone} className={styles.eyebrow}>
+          {content.eyebrow}
+        </Eyebrow>
         <Heading
           as="h2"
           id={headingId}
@@ -48,11 +56,11 @@ export function ServiceSection({ config, content }: ServiceSectionProps) {
         />
         <div className={styles.body}>
           {content.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}>{renderBold(paragraph)}</p>
           ))}
           {content.note ? <p className={styles.note}>{content.note}</p> : null}
         </div>
-        <Button href="/contacto" variant={config.buttonVariant} withArrow>
+        <Button href="/contacto" className={styles.button} variant={config.buttonVariant} withArrow>
           {content.cta}
         </Button>
       </div>
@@ -62,16 +70,30 @@ export function ServiceSection({ config, content }: ServiceSectionProps) {
           title={content.detailsTitle}
           items={content.details}
           variant={config.detailsVariant}
+          tone={config.tone}
+          stickerPlacement={config.stickerPlacement}
         />
-        <Image
-          src={config.sticker.src}
-          alt=""
-          width={config.stickerWidth}
-          height={config.stickerHeight}
-          className={styles.sticker}
-          aria-hidden="true"
-        />
+        {stickerFor('details')}
       </div>
     </section>
+  );
+}
+
+function ServiceSticker({ config }: { readonly config: ServiceSectionConfig }) {
+  const { horizontal, vertical } = config.stickerPlacement;
+
+  return (
+    <Image
+      src={config.sticker.src}
+      alt=""
+      width={config.stickerWidth}
+      height={config.stickerHeight}
+      className={[
+        styles.sticker,
+        styles[`sticker-horizontal-${horizontal}`],
+        styles[`sticker-vertical-${vertical}`],
+      ].join(' ')}
+      aria-hidden="true"
+    />
   );
 }
