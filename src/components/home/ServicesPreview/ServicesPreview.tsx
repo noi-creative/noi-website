@@ -12,9 +12,9 @@ import { ServiceCard } from '@/components/home/ServiceCard';
 import { homeServices } from '@/content/data/homeServices';
 import home from '@/content/locales/es/home.json';
 import styles from './ServicesPreview.module.scss';
-// import { Button } from '@/components/ui/Button';
-// import { site } from '@/config/site';
-// import common from '@/content/locales/es/common.json';
+import { Button } from '@/components/ui/Button';
+import { site } from '@/config/site';
+import common from '@/content/locales/es/common.json';
 
 type OverlapState = 'none' | 'normal' | 'strong';
 
@@ -101,11 +101,11 @@ export function ServicesPreview() {
           })}
         </ol>
 
-        {/*<div className={styles.cta}>
+        <div className={styles.cta}>
           <Button href={site.routes.servicios} variant="primary-orange" withArrow>
             {common.cta.verTodosServicios}
           </Button>
-        </div>*/}
+        </div>
       </Container>
     </Section>
   );

@@ -7,6 +7,7 @@ import { site } from '@/config/site';
 import servicios from '@/content/locales/es/servicios.json';
 import { assets } from '@/lib/assets';
 import styles from './ServiciosFinalCta.module.scss';
+import { renderBold } from '@/lib/renderBold';
 
 export function ServiciosFinalCta() {
   const { finalCta } = servicios;
@@ -31,12 +32,12 @@ export function ServiciosFinalCta() {
           accent={finalCta.headline.accent}
           weight="black"
           align="center"
-          accentFamily="sans"
+          accentFamily="display"
           accentWeight="black"
           accentColor="var(--color-action-primary)"
           className={styles.heading}
         />
-        <p className={styles.lede}>{finalCta.lede}</p>
+        <p className={styles.lede}>{renderBold(finalCta.lede)}</p>
         <Button href={site.routes.contacto} variant="primary-orange" withArrow size="lg">
           {finalCta.cta}
         </Button>

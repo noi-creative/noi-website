@@ -196,6 +196,12 @@
   }
 }
 
+@include until(768px) {
+  .heading {
+    line-height: var(--line-height-heading);
+  }
+}
+
 @include until(480px) {
   .section {
     padding: var(--space-6) var(--space-5);

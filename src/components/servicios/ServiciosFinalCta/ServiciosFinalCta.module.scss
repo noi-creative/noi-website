@@ -32,7 +32,7 @@
   max-width: 44rem;
   margin: var(--space-5) 0 var(--space-6);
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-md);
   line-height: var(--line-height-relaxed);
 }
 
@@ -46,8 +46,8 @@
 .left,
 .right {
   position: absolute;
-  inset-block-end: 0;
-  width: clamp(11rem, 22vw, 21rem);
+  inset-block-end: calc(clamp(6rem, 15vw, 15rem) * 0.5);
+  width: clamp(6rem, 15vw, 15rem);
   height: auto;
 }
 
@@ -61,8 +61,17 @@
 }
 
 @include until(768px) {
+  .heading {
+    line-height: var(--line-height-heading);
+  }
+
+  .lede {
+    max-width: 30rem;
+  }
+
   .left,
   .right {
+    inset-block-end: 7rem;
     width: 10rem;
     opacity: 0.55;
   }
