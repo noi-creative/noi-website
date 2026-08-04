@@ -53,11 +53,20 @@
 
 .left {
   inset-inline-start: 0;
-  transform: scaleX(-1);
 }
 
 .right {
   inset-inline-end: 0;
+}
+
+.decorationImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.left .decorationImage {
+  transform: scaleX(-1);
 }
 
 @include until(768px) {

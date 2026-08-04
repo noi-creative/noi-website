@@ -5,6 +5,7 @@ import { Heading } from '@/components/ui/Heading';
 import type { ServiceSectionConfig, StickerParent } from '@/content/data/servicios';
 import { ServiceDetailsPanel } from '../ServiceDetailsPanel/ServiceDetailsPanel';
 import styles from './ServiceSection.module.scss';
+import { ServiceSectionMotion, ServiceStickerMotion } from './ServiceSectionMotion';
 import { renderBold } from '@/lib/renderBold';
 
 type ServiceContent = {
@@ -28,9 +29,10 @@ export function ServiceSection({ config, content }: ServiceSectionProps) {
     config.stickerPlacement.parent === parent ? <ServiceSticker config={config} /> : null;
 
   return (
-    <section
+    <ServiceSectionMotion
       id={config.id}
-      aria-labelledby={headingId}
+      labelledBy={headingId}
+      tilt={config.layout === 'copy-first' ? 1 : -1}
       className={[
         styles.section,
         styles[`tone-${config.tone}`],
@@ -76,25 +78,32 @@ export function ServiceSection({ config, content }: ServiceSectionProps) {
         />
         {stickerFor('details')}
       </div>
-    </section>
+    </ServiceSectionMotion>
   );
 }
 
 function ServiceSticker({ config }: { readonly config: ServiceSectionConfig }) {
   const { horizontal, vertical } = config.stickerPlacement;
+  const rotation = horizontal === 'left' ? -7 : horizontal === 'right' ? 7 : 4;
 
   return (
-    <Image
-      src={config.sticker.src}
-      alt=""
-      width={config.stickerWidth}
-      height={config.stickerHeight}
+    <span
       className={[
         styles.sticker,
         styles[`sticker-horizontal-${horizontal}`],
         styles[`sticker-vertical-${vertical}`],
       ].join(' ')}
       aria-hidden="true"
-    />
+    >
+      <ServiceStickerMotion className={styles.stickerMotion} rotation={rotation}>
+        <Image
+          src={config.sticker.src}
+          alt=""
+          width={config.stickerWidth}
+          height={config.stickerHeight}
+          className={styles.stickerImage}
+        />
+      </ServiceStickerMotion>
+    </span>
   );
 }

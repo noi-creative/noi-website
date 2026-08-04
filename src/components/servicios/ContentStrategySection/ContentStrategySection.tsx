@@ -4,6 +4,10 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Heading } from '@/components/ui/Heading';
 import { assets } from '@/lib/assets';
 import servicios from '@/content/locales/es/servicios.json';
+import {
+  ContentStrategyHeaderMotion,
+  ContentStrategyPlanMotion,
+} from './ContentStrategySectionMotion';
 import styles from './ContentStrategySection.module.scss';
 
 export function ContentStrategySection() {
@@ -24,7 +28,7 @@ export function ContentStrategySection() {
         className={styles.sticker}
         aria-hidden="true"
       />
-      <div className={styles.header}>
+      <ContentStrategyHeaderMotion className={styles.header}>
         <Eyebrow tone="cream" className={styles.eyebrow}>
           {content.eyebrow}
         </Eyebrow>
@@ -41,16 +45,21 @@ export function ContentStrategySection() {
           className={styles.heading}
         />
         <p className={styles.lede}>{content.lede}</p>
-      </div>
+      </ContentStrategyHeaderMotion>
 
       <ol className={styles.plans}>
         {content.plans.map((plan, index) => (
-          <li key={plan.number} className={styles.plan} data-featured={index === 1 || undefined}>
+          <ContentStrategyPlanMotion
+            key={plan.number}
+            className={styles.plan}
+            featured={index === 1}
+            index={index}
+          >
             <h3>
               {plan.number} / {plan.title}
             </h3>
             <p>{plan.description}</p>
-          </li>
+          </ContentStrategyPlanMotion>
         ))}
       </ol>
 

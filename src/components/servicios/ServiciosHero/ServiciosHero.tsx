@@ -7,6 +7,7 @@ import { Section } from '@/components/ui/Section';
 import { assets } from '@/lib/assets';
 import { site } from '@/config/site';
 import servicios from '@/content/locales/es/servicios.json';
+import { ServiciosHeroArtworkMotion } from './ServiciosHeroMotion';
 import styles from './ServiciosHero.module.scss';
 
 export function ServiciosHero() {
@@ -15,38 +16,46 @@ export function ServiciosHero() {
   return (
     <Section background="yellow" ariaLabelledby="servicios-hero-heading" className={styles.hero}>
       <div className={styles.artwork} aria-hidden="true">
-        <Image
-          src={assets.shared.figuras.figura4.src}
-          alt=""
-          width={300}
-          height={205}
-          className={styles.figure}
-          priority
-        />
-        <Image
-          src={assets.shared.stickers.megafono.blanco.src}
-          alt=""
-          width={180}
-          height={142}
-          className={styles.megaphone}
-          priority
-        />
-        <Image
-          src={assets.shared.stickers.clip.naranja.src}
-          alt=""
-          width={125}
-          height={114}
-          className={styles.clip}
-          priority
-        />
-        <Image
-          src={assets.shared.figuras.ovalosInk.src}
-          alt=""
-          width={214}
-          height={288}
-          className={styles.ovals}
-          priority
-        />
+        <ServiciosHeroArtworkMotion className={styles.figure} variant="figure">
+          <Image
+            src={assets.shared.figuras.figura4.src}
+            alt=""
+            width={300}
+            height={205}
+            className={styles.artworkImage}
+            priority
+          />
+        </ServiciosHeroArtworkMotion>
+        <ServiciosHeroArtworkMotion className={styles.megaphone} variant="megaphone">
+          <Image
+            src={assets.shared.stickers.megafono.blanco.src}
+            alt=""
+            width={180}
+            height={142}
+            className={styles.artworkImage}
+            priority
+          />
+        </ServiciosHeroArtworkMotion>
+        <ServiciosHeroArtworkMotion className={styles.clip} variant="clip">
+          <Image
+            src={assets.shared.stickers.clip.naranja.src}
+            alt=""
+            width={125}
+            height={114}
+            className={styles.artworkImage}
+            priority
+          />
+        </ServiciosHeroArtworkMotion>
+        <ServiciosHeroArtworkMotion className={styles.ovals} variant="ovals">
+          <Image
+            src={assets.shared.figuras.ovalosInk.src}
+            alt=""
+            width={214}
+            height={288}
+            className={styles.artworkImage}
+            priority
+          />
+        </ServiciosHeroArtworkMotion>
       </div>
 
       <Container className={styles.container}>

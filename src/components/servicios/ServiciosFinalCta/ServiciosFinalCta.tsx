@@ -7,6 +7,7 @@ import { site } from '@/config/site';
 import servicios from '@/content/locales/es/servicios.json';
 import { assets } from '@/lib/assets';
 import styles from './ServiciosFinalCta.module.scss';
+import { ServiciosFinalDecorationMotion } from './ServiciosFinalCtaMotion';
 import { renderBold } from '@/lib/renderBold';
 
 export function ServiciosFinalCta() {
@@ -21,8 +22,24 @@ export function ServiciosFinalCta() {
       className={styles.section}
     >
       <div className={styles.decorations} aria-hidden="true">
-        <Image src={decoration.src} alt="" width={200} height={250} className={styles.left} />
-        <Image src={decoration.src} alt="" width={200} height={250} className={styles.right} />
+        <ServiciosFinalDecorationMotion className={styles.left} side="left">
+          <Image
+            src={decoration.src}
+            alt=""
+            width={200}
+            height={250}
+            className={styles.decorationImage}
+          />
+        </ServiciosFinalDecorationMotion>
+        <ServiciosFinalDecorationMotion className={styles.right} side="right">
+          <Image
+            src={decoration.src}
+            alt=""
+            width={200}
+            height={250}
+            className={styles.decorationImage}
+          />
+        </ServiciosFinalDecorationMotion>
       </div>
       <Container className={styles.container}>
         <Heading

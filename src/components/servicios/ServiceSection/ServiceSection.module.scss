@@ -141,6 +141,16 @@
   transform: translate(var(--sticker-translate-x), var(--sticker-translate-y));
 }
 
+.stickerMotion,
+.stickerImage {
+  display: block;
+  width: 100%;
+}
+
+.stickerImage {
+  height: auto;
+}
+
 .sticker-horizontal-left {
   --sticker-translate-x: -30%;
 
