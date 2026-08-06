@@ -6,7 +6,12 @@ import { HeaderWheel } from '@/components/home/HeaderWheel';
 import { DecorativeShape } from '@/components/home/DecorativeShape';
 import { site } from '@/config/site';
 import home from '@/content/locales/es/home.json';
-import { HeroActionsMotion, HeroLedeMotion } from './HeroMotion';
+import {
+  HeroActionsMotion,
+  HeroFigureMotion,
+  HeroHeadingMotion,
+  HeroLedeMotion,
+} from './HeroMotion';
 import styles from './Hero.module.scss';
 
 export function Hero() {
@@ -18,22 +23,26 @@ export function Hero() {
       className={styles.heroSection}
     >
       <HeaderWheel />
-      <DecorativeShape />
+      <HeroFigureMotion className={styles.figureMotion}>
+        <DecorativeShape />
+      </HeroFigureMotion>
       <Container className={styles.heroContainer} width="wide">
         <div className={styles.leftColumn}>
-          <Heading
-            as="h1"
-            id="home-hero-heading"
-            primary={home.hero.headline.primary}
-            accent={home.hero.headline.accent}
-            weight="black"
-            accentColor="#fff9f4"
-            accentFamily="serif"
-            accentItalic
-            accentWeight="medium"
-            accentSize="hero-lg"
-            className={styles.heading}
-          />
+          <HeroHeadingMotion>
+            <Heading
+              as="h1"
+              id="home-hero-heading"
+              primary={home.hero.headline.primary}
+              accent={home.hero.headline.accent}
+              weight="black"
+              accentColor="#fff9f4"
+              accentFamily="serif"
+              accentItalic
+              accentWeight="medium"
+              accentSize="hero-lg"
+              className={styles.heading}
+            />
+          </HeroHeadingMotion>
           <HeroLedeMotion className={styles.lede}>{home.hero.lede}</HeroLedeMotion>
         </div>
 
