@@ -63,13 +63,25 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
   );
 
   return (
-    <div
+    <motion.div
       className={styles.stack}
       role="group"
       aria-roledescription="carousel"
       aria-label="Testimonios de clientes"
       tabIndex={0}
       onKeyDown={onKeyDown}
+      initial={{
+        opacity: 0,
+        y: reducedMotion ? 0 : 20,
+        scale: reducedMotion ? 1 : 0.98,
+      }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: reducedMotion ? 0 : DURATION.slow,
+        ease: EASING.out,
+        delay: reducedMotion ? 0 : 0.06,
+      }}
     >
       <div className={styles.stage} aria-live="polite" aria-atomic="true">
         {items.map((t, index) => {
@@ -150,7 +162,7 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
           <ArrowGlyph direction="right" />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

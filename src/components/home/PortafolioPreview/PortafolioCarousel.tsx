@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import { useReducedMotion } from '@/lib/motion';
+import { DURATION, EASING, useReducedMotion } from '@/lib/motion';
 import type { Project } from '@/content/data/projects';
 import styles from './PortafolioPreview.module.scss';
 
@@ -22,11 +22,15 @@ export function PortafolioCarousel({ items }: PortafolioCarouselProps) {
   const reducedMotion = useReducedMotion();
 
   return (
-    <div
+    <motion.div
       className={styles.strip}
       role="region"
       aria-roledescription="carousel"
       aria-label="Vista previa de proyectos"
+      initial={{ opacity: 0, y: reducedMotion ? 0 : -12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: reducedMotion ? 0 : DURATION.slow, ease: EASING.out }}
     >
       <motion.div
         className={styles.stripTrack}
@@ -73,6 +77,6 @@ export function PortafolioCarousel({ items }: PortafolioCarouselProps) {
           ))}
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }

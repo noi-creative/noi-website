@@ -6,6 +6,7 @@ import { HeaderWheel } from '@/components/home/HeaderWheel';
 import { DecorativeShape } from '@/components/home/DecorativeShape';
 import { site } from '@/config/site';
 import home from '@/content/locales/es/home.json';
+import { HeroActionsMotion, HeroLedeMotion } from './HeroMotion';
 import styles from './Hero.module.scss';
 
 export function Hero() {
@@ -33,18 +34,18 @@ export function Hero() {
             accentSize="hero-lg"
             className={styles.heading}
           />
-          <p className={styles.lede}>{home.hero.lede}</p>
+          <HeroLedeMotion className={styles.lede}>{home.hero.lede}</HeroLedeMotion>
         </div>
 
         <div className={styles.rightColumn}>
-          <div className={styles.ctas}>
+          <HeroActionsMotion className={styles.ctas}>
             <Button href={site.routes.contacto} variant="primary-yellow" withArrow>
               {home.hero.primaryCta}
             </Button>
             <Button href={site.routes.portafolio} variant="outline-on-dark" withArrow>
               {home.hero.secondaryCta}
             </Button>
-          </div>
+          </HeroActionsMotion>
         </div>
       </Container>
     </Section>

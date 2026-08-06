@@ -3,10 +3,10 @@ import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
-import { Scallop } from '@/components/home/Scallop';
 import { site } from '@/config/site';
 import common from '@/content/locales/es/common.json';
 import home from '@/content/locales/es/home.json';
+import { ProcessCtaMotion, ProcessHeaderMotion, ProcessStepMotion } from './ProcessTimelineMotion';
 import styles from './ProcessTimeline.module.scss';
 
 /**
@@ -27,7 +27,7 @@ export function ProcessTimeline() {
       className={styles.processSection}
     >
       <Container className={styles.processContainer}>
-        <div className={styles.header}>
+        <ProcessHeaderMotion className={styles.header}>
           <Eyebrow tone="orange">{home.process.eyebrow}</Eyebrow>
           <Heading
             as="h2"
@@ -37,7 +37,7 @@ export function ProcessTimeline() {
             weight="bold"
             style={{ '--heading-accent-color': 'var(--color-brand-orange)' } as React.CSSProperties}
           />
-        </div>
+        </ProcessHeaderMotion>
 
         <ol className={styles.timeline} aria-label="Fases del método">
           <span className={styles.connectorMobile} aria-hidden="true" />
@@ -45,9 +45,10 @@ export function ProcessTimeline() {
 
           {home.process.steps.map((step, index) => {
             return (
-              <li
+              <ProcessStepMotion
                 key={step.title}
                 className={[styles.step, styles[`stepAlt${index % 2}`]].join(' ')}
+                index={index}
               >
                 <span className={styles.bigNumber} aria-hidden="true">
                   {index + 1}
@@ -59,16 +60,16 @@ export function ProcessTimeline() {
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepDescription}>{step.description}</p>
                 </div>
-              </li>
+              </ProcessStepMotion>
             );
           })}
         </ol>
 
-        <div className={styles.cta}>
+        <ProcessCtaMotion className={styles.cta}>
           <Button href={site.routes.nosotras} variant="primary-ink" withArrow>
             {common.cta.conoceComoTrabajamos}
           </Button>
-        </div>
+        </ProcessCtaMotion>
       </Container>
     </Section>
   );
