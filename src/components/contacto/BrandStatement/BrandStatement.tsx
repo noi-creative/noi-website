@@ -3,6 +3,7 @@ import { Heading } from '@/components/ui/Heading';
 import contacto from '@/content/locales/es/contacto.json';
 import { BrandStatementHeadingMotion } from './BrandStatementMotion';
 import styles from './BrandStatement.module.scss';
+import { Scallop } from '@/components/home/Scallop';
 
 /**
  * "NOI existe para acompañarte" brand statement. A decorative
@@ -20,6 +21,7 @@ export function BrandStatement() {
       className={styles.statement}
     >
       <div className={styles.statementInner}>
+        <Scallop tone="cream" className={styles.topScallop} direction="up" />
         <BrandStatementHeadingMotion>
           <Heading
             as="h2"
