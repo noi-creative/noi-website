@@ -5,6 +5,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { testimonials } from '@/content/data/testimonials';
 import home from '@/content/locales/es/home.json';
 import { TestimonialsCarousel } from './TestimonialsCarousel';
+import { TestimonialsHeaderMotion } from './TestimonialsMotion';
 import styles from './Testimonials.module.scss';
 
 /**
@@ -29,7 +30,7 @@ export function Testimonials() {
       className={styles.testimonialsSection}
     >
       <Container className={styles.testimonialsContainer}>
-        <div className={styles.header}>
+        <TestimonialsHeaderMotion className={styles.header}>
           <Eyebrow tone="ink">{home.testimonials.eyebrow}</Eyebrow>
           <Heading
             as="h2"
@@ -42,7 +43,7 @@ export function Testimonials() {
               { '--heading-accent-color': 'var(--color-brand-burgundy)' } as React.CSSProperties
             }
           />
-        </div>
+        </TestimonialsHeaderMotion>
 
         <TestimonialsCarousel items={ordered} />
       </Container>

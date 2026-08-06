@@ -31,6 +31,14 @@
   }
 }
 
+.figureMotion {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-base);
+  pointer-events: none;
+  transform-origin: left center;
+}
+
 .leftColumn {
   display: flex;
   flex-direction: column;

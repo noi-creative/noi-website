@@ -76,8 +76,9 @@ The current route map is:
 - `/`, `/nosotras`, `/servicios`, `/portafolio`, `/contacto`, `/privacidad` and `/terminos-y-condiciones` must be statically prerendered.
 - Every `/portafolio/[slug]` project page must be generated statically at build time.
 - No public route may depend on cookies, request headers, sessions or request-time data.
-- The current approved designs exist for Home, Nosotras and Contacto.
-- Servicios, Portafolio and project-detail designs are still pending. They must not be invented before the approved designs are available.
+- The current approved designs exist for Home, Nosotras, Servicios and Contacto.
+- The approved Servicios desktop reference is `references/servicios/servicios.png`; responsive variants remain pending and must follow the shared adaptation rules.
+- Portafolio and project-detail designs are still pending. They must not be invented before the approved designs are available.
 
 ---
 

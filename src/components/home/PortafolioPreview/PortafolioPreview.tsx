@@ -7,6 +7,7 @@ import { site } from '@/config/site';
 import common from '@/content/locales/es/common.json';
 import home from '@/content/locales/es/home.json';
 import { PortafolioCarousel } from './PortafolioCarousel';
+import { PortafolioCopyMotion, PortafolioCtaMotion } from './PortafolioPreviewMotion';
 import styles from './PortafolioPreview.module.scss';
 import { CSSProperties } from 'react';
 
@@ -46,7 +47,7 @@ export function PortafolioPreview() {
           weight="black"
           className={styles.giantHeading}
         />
-        <div className={styles.copyBlock}>
+        <PortafolioCopyMotion className={styles.copyBlock}>
           <Heading
             as="h3"
             primary={home.portafolio.subhead.primary}
@@ -60,13 +61,13 @@ export function PortafolioPreview() {
               } as CSSProperties
             }
           />
-        </div>
-        <div className={styles.cta}>
+        </PortafolioCopyMotion>
+        <PortafolioCtaMotion className={styles.cta}>
           <p className={styles.lede}>{home.portafolio.lede}</p>
           <Button href={site.routes.portafolio} variant="secondary-navy" withArrow>
             {common.cta.explorarPortafolioCompleto}
           </Button>
-        </div>
+        </PortafolioCtaMotion>
       </Container>
     </Section>
   );

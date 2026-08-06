@@ -13,7 +13,7 @@ import styles from './Header.module.scss';
 const NAV_ITEMS: ReadonlyArray<{ href: string; label: string }> = [
   { href: site.routes.nosotras, label: common.navigation.nosotras },
   { href: site.routes.portafolio, label: common.navigation.portafolio },
-  /*{ href: site.routes.servicios, label: common.navigation.servicios }, */
+  { href: site.routes.servicios, label: common.navigation.servicios },
   { href: site.routes.contacto, label: common.navigation.contacto },
 ];
 

@@ -9,7 +9,10 @@ import { assets } from '@/lib/assets';
 import { site } from '@/config/site';
 import common from '@/content/locales/es/common.json';
 import home from '@/content/locales/es/home.json';
+import { FinalCtaPhotoMotion, FinalCtaStickerMotion, FinalCtaTextMotion } from './FinalCtaMotion';
 import styles from './FinalCta.module.scss';
+
+const COLLAGE_ROTATIONS = [4, -6, 7] as const;
 
 /**
  * "Construyamos juntos" final call to action. Cream background,
@@ -26,7 +29,7 @@ import styles from './FinalCta.module.scss';
  */
 export function FinalCta() {
   const collage = assets.home.ctaCollage ?? [];
-  const megafonoSticker = assets.shared.stickers.megafonoRojo;
+  const megafonoSticker = assets.shared.stickers.megafono.rojo;
   const { lede } = home.finalCta;
 
   return (
@@ -36,7 +39,7 @@ export function FinalCta() {
       className={styles.finalCtaSection}
     >
       <Container className={styles.finalCtaContainer}>
-        <div className={styles.textColumn}>
+        <FinalCtaTextMotion className={styles.textColumn}>
           <Heading
             className={styles.heading}
             as="h2"
@@ -90,13 +93,15 @@ export function FinalCta() {
               {common.cta.escribenosDirectamente}
             </Button>
           </div>
-        </div>
+        </FinalCtaTextMotion>
 
         <div className={styles.collageColumn} aria-hidden="true">
           {collage.map((image, index) => (
-            <div
+            <FinalCtaPhotoMotion
               key={image.src}
               className={[styles.collagePhoto, styles[`collagePhoto${index}`]].join(' ')}
+              index={index}
+              rotation={COLLAGE_ROTATIONS[index] ?? 0}
             >
               <HoverZoom className={styles.collageImageZoom}>
                 <Image
@@ -108,9 +113,9 @@ export function FinalCta() {
                   sizes="(max-width: 767px) 70vw, 30vw"
                 />
               </HoverZoom>
-            </div>
+            </FinalCtaPhotoMotion>
           ))}
-          <div className={styles.sticker}>
+          <FinalCtaStickerMotion className={styles.sticker}>
             <Image
               src={megafonoSticker.src}
               alt=""
@@ -118,7 +123,7 @@ export function FinalCta() {
               height={140}
               className={styles.stickerImage}
             />
-          </div>
+          </FinalCtaStickerMotion>
         </div>
       </Container>
     </Section>

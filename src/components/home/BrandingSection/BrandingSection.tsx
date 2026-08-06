@@ -8,11 +8,16 @@ import { Scallop } from '@/components/home/Scallop';
 import { renderBold } from '@/lib/renderBold';
 import { assets } from '@/lib/assets';
 import home from '@/content/locales/es/home.json';
+import {
+  BrandingPortraitMotion,
+  BrandingStickerMotion,
+  BrandingTextMotion,
+} from './BrandingSectionMotion';
 import styles from './BrandingSection.module.scss';
 
 export function BrandingSection() {
   const portrait = assets.home.sectionBrandingPortrait;
-  const stickerManos = assets.shared.stickers.manosRojo;
+  const stickerManos = assets.shared.stickers.manos.rojo;
 
   return (
     <Section
@@ -21,7 +26,7 @@ export function BrandingSection() {
       className={styles.brandingSection}
     >
       <Container className={styles.brandingContainer}>
-        <div className={styles.textColumn}>
+        <BrandingTextMotion className={styles.textColumn}>
           <Eyebrow tone="ink">{home.branding.eyebrow}</Eyebrow>
 
           <Heading
@@ -45,10 +50,10 @@ export function BrandingSection() {
             <p>{renderBold(home.branding.body1)}</p>
             <p>{renderBold(home.branding.body2)}</p>
           </div>
-        </div>
+        </BrandingTextMotion>
 
         <div className={styles.portraitColumn}>
-          <div className={styles.portrait}>
+          <BrandingPortraitMotion className={styles.portrait}>
             <Image
               loading="eager"
               src={portrait.src}
@@ -58,9 +63,9 @@ export function BrandingSection() {
               className={styles.portraitImage}
               sizes="(max-width: 767px) 90vw, 40vw"
             />
-          </div>
+          </BrandingPortraitMotion>
 
-          <div className={styles.sticker} aria-hidden="true">
+          <BrandingStickerMotion className={styles.sticker}>
             <Image
               src={stickerManos.src}
               alt=""
@@ -68,7 +73,7 @@ export function BrandingSection() {
               height={96}
               className={styles.stickerImage}
             />
-          </div>
+          </BrandingStickerMotion>
         </div>
       </Container>
       <Scallop tone="cream" direction="down" />

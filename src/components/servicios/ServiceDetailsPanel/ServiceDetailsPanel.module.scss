@@ -1,0 +1,133 @@
+.panel {
+  position: relative;
+  padding: clamp(1.35rem, 2.5vw, 2.25rem);
+  border: 1px solid color-mix(var(--color-surface-cream) 90%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(var(--color-surface-cream) 5%, transparent);
+}
+
+.panel-bottom {
+  padding-bottom: clamp(2.35rem, 3.5vw, 3.25rem);
+}
+
+.panel-top {
+  padding-top: clamp(2.35rem, 3.5vw, 3.25rem);
+}
+
+.title {
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-wide);
+}
+
+.soft,
+.yellow {
+  .title {
+    color: var(--color-brand-ink);
+  }
+}
+
+.burgundy,
+.navy,
+.ink {
+  .title {
+    color: var(--color-surface-cream);
+  }
+}
+
+.items {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.item-steps {
+  align-items: flex-start;
+}
+
+.marker {
+  display: grid;
+  place-items: center;
+  margin-top: 0.2em;
+  color: var(--service-accent, var(--color-action-primary));
+  font-family: var(--font-sans);
+  width: clamp(16px, 2vw, 20px);
+  font-weight: var(--font-weight-bold);
+}
+
+.itemCopy {
+  display: grid;
+  gap: var(--space-1);
+  font-family: var(--font-sans);
+  line-height: var(--line-height-body);
+}
+
+.itemCopy strong {
+  font-size: var(--font-size-sm);
+}
+
+.itemCopy span {
+  font-size: 14px;
+}
+
+.itemCopy-steps {
+  display: inline;
+  align-items: flex-start;
+
+  strong {
+    font-size: 14px;
+  }
+}
+
+.grid .items {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.grid .item {
+  min-height: 4.4rem;
+  padding: var(--space-3);
+  border-radius: var(--radius-xs);
+  background: color-mix(var(--color-surface-cream) 10%, transparent);
+}
+
+.checklist .items {
+  gap: var(--space-4);
+}
+
+.checklist .item {
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding-block-end: var(--space-3);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+}
+
+.checklist .marker {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.checklist .itemCopy {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.steps .items {
+  gap: var(--space-3);
+}
+
+@media (max-width: 479px) {
+  .grid .items {
+    grid-template-columns: 1fr;
+  }
+}

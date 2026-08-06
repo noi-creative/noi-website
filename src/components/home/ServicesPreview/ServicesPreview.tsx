@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import type { CSSProperties, FocusEvent } from 'react';
 import { motion } from 'motion/react';
-import { useReducedMotion } from '@/lib/motion';
+import { DURATION, EASING, useReducedMotion } from '@/lib/motion';
 import { Section } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
@@ -12,9 +12,9 @@ import { ServiceCard } from '@/components/home/ServiceCard';
 import { homeServices } from '@/content/data/homeServices';
 import home from '@/content/locales/es/home.json';
 import styles from './ServicesPreview.module.scss';
-// import { Button } from '@/components/ui/Button';
-// import { site } from '@/config/site';
-// import common from '@/content/locales/es/common.json';
+import { Button } from '@/components/ui/Button';
+import { site } from '@/config/site';
+import common from '@/content/locales/es/common.json';
 
 type OverlapState = 'none' | 'normal' | 'strong';
 
@@ -37,7 +37,16 @@ export function ServicesPreview() {
       className={styles.servicesSection}
     >
       <Container className={styles.servicesContainer}>
-        <div className={styles.header}>
+        <motion.div
+          className={styles.header}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{
+            duration: shouldReduceMotion ? 0 : DURATION.base,
+            ease: EASING.out,
+          }}
+        >
           <Eyebrow tone="accent">
             <b>{home.services.eyebrow}</b>
           </Eyebrow>
@@ -57,7 +66,7 @@ export function ServicesPreview() {
               } as CSSProperties
             }
           />
-        </div>
+        </motion.div>
 
         <ol
           className={styles.cardRow}
@@ -89,23 +98,48 @@ export function ServicesPreview() {
                 onMouseEnter={() => setActiveIndex(index)}
                 onFocusCapture={() => setActiveIndex(index)}
               >
-                <div className={styles.cardEntrance}>
+                <motion.div
+                  className={styles.cardEntrance}
+                  initial={{
+                    opacity: 0,
+                    x: shouldReduceMotion ? 0 : index % 2 === 0 ? -14 : 14,
+                    y: shouldReduceMotion ? 0 : 24,
+                    scale: shouldReduceMotion ? 1 : 0.95,
+                  }}
+                  whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{
+                    duration: shouldReduceMotion ? 0 : DURATION.slow,
+                    ease: EASING.out,
+                    delay: shouldReduceMotion ? 0 : index * 0.055,
+                  }}
+                >
                   <ServiceCard
                     service={service}
                     isActive={isActive}
                     reduceMotion={Boolean(shouldReduceMotion)}
                   />
-                </div>
+                </motion.div>
               </motion.li>
             );
           })}
         </ol>
 
-        {/*<div className={styles.cta}>
+        <motion.div
+          className={styles.cta}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{
+            duration: shouldReduceMotion ? 0 : DURATION.base,
+            ease: EASING.out,
+            delay: shouldReduceMotion ? 0 : 0.18,
+          }}
+        >
           <Button href={site.routes.servicios} variant="primary-orange" withArrow>
             {common.cta.verTodosServicios}
           </Button>
-        </div>*/}
+        </motion.div>
       </Container>
     </Section>
   );

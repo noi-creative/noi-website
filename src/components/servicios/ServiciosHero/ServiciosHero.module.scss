@@ -1,0 +1,158 @@
+@use '../../../styles/mixins' as *;
+
+.hero {
+  --section-padding-block-start: 0;
+  --section-padding-block-end: 0;
+
+  position: relative;
+  min-height: 34rem;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: inherit;
+  padding-block: calc(var(--header-height-desktop) + var(--space-9)) var(--space-9);
+  text-align: center;
+}
+
+.heading {
+  --heading-primary-transform: none;
+
+  display: flex;
+  flex-direction: column;
+  margin-block: var(--space-4);
+  color: var(--color-brand-ink);
+  font-size: clamp(2.4rem, 3.6vw, 3.6rem);
+  line-height: 0.98;
+}
+
+.lede {
+  max-width: 32.5em;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.artwork {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-decoration);
+  pointer-events: none;
+}
+
+.figure,
+.megaphone,
+.clip,
+.ovals {
+  position: absolute;
+  line-height: 0;
+}
+
+.artworkImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.figure {
+  inset-block-start: 20%;
+  width: clamp(18rem, 25vw, 25rem);
+}
+
+.megaphone {
+  inset-block-start: 50%;
+  inset-inline-start: clamp(2rem, 15vw, 15rem);
+  width: clamp(8rem, 15vw, 15rem);
+}
+
+.clip {
+  inset-block-start: 22%;
+  inset-inline-end: clamp(9rem, 17vw, 18rem);
+  width: clamp(5rem, 8vw, 8rem);
+}
+
+.ovals {
+  inset-block-end: -5rem;
+  inset-inline-end: 4%;
+  width: clamp(12rem, 19vw, 19rem);
+}
+
+@include until(1440px) {
+  .megaphone {
+    inset-block-start: auto;
+    inset-block-end: 12.5%;
+    inset-inline-start: 10%;
+    width: 10rem;
+  }
+}
+
+@include until(1024px) {
+  .figure {
+    inset-inline-start: -10rem;
+  }
+
+  .megaphone {
+    inset-block-end: 1rem;
+    inset-inline-start: 1rem;
+  }
+
+  .ovals {
+    inset-inline-end: -2.5rem;
+  }
+}
+
+@include until(768px) {
+  .hero {
+    min-height: 40rem;
+  }
+
+  .container {
+    padding-block-start: calc(var(--header-height-mobile) + var(--space-8));
+  }
+
+  .megaphone {
+    width: 9rem;
+  }
+
+  .clip {
+    inset-block-start: 17%;
+    inset-inline-end: var(--space-4);
+    width: 4.5rem;
+  }
+}
+
+@include until(480px) {
+  .figure {
+    inset-block-start: 10%;
+  }
+
+  .heading {
+    font-size: clamp(2.2rem, 11vw, 3.1rem);
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 19rem;
+  }
+
+  .actions > * {
+    width: 100%;
+  }
+}

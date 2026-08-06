@@ -19,7 +19,8 @@ export const metadata: Metadata = buildPageMetadata({
 /**
  * Home page composition (P01). Seven sections in order, each its
  * own Server Component. Header and Footer are inherited from the
- * `(site)/layout.tsx`. Animation is deferred to A01.
+ * `(site)/layout.tsx`. Animation stays isolated in section-level
+ * client components so this page remains server-rendered.
  *
  * The `dynamic = "error"` guardrail from `(site)/layout.tsx` is
  * preserved: this page does not read cookies, headers, search

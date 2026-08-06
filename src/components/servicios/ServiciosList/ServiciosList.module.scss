@@ -1,0 +1,16 @@
+@use '../../../styles/mixins' as *;
+
+.wrapper {
+  padding-block: clamp(3rem, 7vw, 6.5rem);
+  background: var(--color-background-page);
+}
+
+.list {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.item {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+}

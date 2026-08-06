@@ -1,0 +1,145 @@
+@use '../../../styles/mixins' as *;
+
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-7);
+  padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 4.5rem);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-action-primary);
+  color: var(--color-surface-blue);
+}
+
+.header {
+  position: relative;
+  z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 52rem;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-4);
+}
+
+.heading {
+  --heading-primary-transform: none;
+
+  max-width: 11em;
+  margin-bottom: var(--space-5);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  line-height: 55px;
+}
+
+.lede {
+  max-width: 42rem;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+
+.plans {
+  position: relative;
+  z-index: var(--z-content);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid color-mix(var(--color-surface-cream) 90%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(var(--color-surface-cream) 5%, transparent);
+}
+
+.plan h3 {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-subheading);
+  color: var(--color-surface-cream);
+}
+
+.plan p {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+}
+
+.sticker {
+  position: absolute;
+  inset-block-start: var(--space-6);
+  inset-inline-end: clamp(1.5rem, 6vw, 6rem);
+  width: clamp(5rem, 10vw, 8.5rem);
+  height: auto;
+  pointer-events: none;
+}
+
+@include until(900px) {
+  .section {
+    align-items: flex-start;
+  }
+
+  .plans {
+    grid-template-columns: 1fr;
+    max-width: 42rem;
+  }
+
+  .header {
+    max-width: none;
+    align-items: flex-start;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .eyebrow,
+  .heading {
+    max-width: 20em;
+  }
+
+  .heading {
+    max-width: 75%;
+  }
+
+  .eyebrow,
+  .heading,
+  .lede {
+    text-align: left;
+  }
+}
+
+@include until(768px) {
+  .heading {
+    line-height: var(--line-height-heading);
+  }
+}
+
+@include until(480px) {
+  .section {
+    border-radius: var(--radius-md);
+  }
+
+  .sticker {
+    width: 4.5rem;
+    inset-block-start: var(--space-3);
+    inset-inline-end: var(--space-3);
+  }
+
+  .heading {
+    font-size: clamp(1.8rem, 9vw, 2.4rem);
+    max-width: none;
+  }
+}
