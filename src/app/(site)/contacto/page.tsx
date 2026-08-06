@@ -10,6 +10,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: contacto.metadata.title,
   description: contacto.metadata.description,
   path: site.routes.contacto,
+  absoluteTitle: true,
 });
 
 /**

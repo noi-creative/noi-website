@@ -27,6 +27,7 @@ export function PortafolioPreview() {
   const carouselItems = featured.map((project) => ({
     slug: project.slug,
     name: project.name,
+    alt: project.coverAlt,
     src: project.coverSrc,
     width: project.coverWidth,
     height: project.coverHeight,
