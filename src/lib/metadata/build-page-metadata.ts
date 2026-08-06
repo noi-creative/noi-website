@@ -7,6 +7,12 @@ type BuildPageMetadataInput = {
   readonly title: string;
   readonly description?: string;
   readonly path: string;
+  /**
+   * When `true`, the title is emitted verbatim (`title: { absolute }`)
+   * and the root layout template does not append the brand suffix.
+   * Use for pages with a full SEO title defined in the copy strategy.
+   */
+  readonly absoluteTitle?: boolean;
   readonly image?: {
     readonly url: string;
     readonly width: number;
@@ -18,9 +24,6 @@ type BuildPageMetadataInput = {
   readonly publishedTime?: string;
   readonly modifiedTime?: string;
 };
-
-const DEFAULT_DESCRIPTION =
-  'NOI Creative — estudio de branding y diseño en Orlando, Florida. Estrategia, identidad y producción visual para marcas que buscan crecer.';
 
 const FALLBACK_OG_IMAGE = {
   url: '/opengraph-image',
@@ -42,24 +45,24 @@ function buildCanonical(path: string): string {
 
 /**
  * Build a per-page `Metadata` object. Centralises the SEO surface
- * (title template, canonical, Open Graph, Twitter, robots) so future
- * Q01 changes happen in a single file.
+ * (title handling, canonical, Open Graph, Twitter, robots) so copy
+ * changes happen in a single file.
  *
- * The description, the OG image and the social URLs are all currently
- * TODO placeholders. Q01 will replace them with designer-supplied copy
- * and assets; per-page `metadata` exports only pass the per-page values.
+ * `site.defaultDescription` is the fallback description. Pages pass
+ * their own description, title and optional per-page social image.
  */
 export function buildPageMetadata({
   title,
   description,
   path,
+  absoluteTitle = false,
   image,
   noIndex = false,
   type = 'website',
   publishedTime,
   modifiedTime,
 }: BuildPageMetadataInput): Metadata {
-  const finalDescription = description ?? DEFAULT_DESCRIPTION;
+  const finalDescription = description ?? site.defaultDescription;
   const finalImage = image ?? FALLBACK_OG_IMAGE;
   const canonical = buildCanonical(path);
   const imageUrl = finalImage.url.startsWith('http')
@@ -67,7 +70,7 @@ export function buildPageMetadata({
     : `${site.siteUrl.replace(/\/+$/, '')}${finalImage.url.startsWith('/') ? '' : '/'}${finalImage.url}`;
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description: finalDescription,
     alternates: {
       canonical,
@@ -95,7 +98,12 @@ export function buildPageMetadata({
       card: 'summary_large_image',
       title,
       description: finalDescription,
-      images: [imageUrl],
+      images: [
+        {
+          url: imageUrl,
+          alt: finalImage.alt,
+        },
+      ],
     },
   };
 }

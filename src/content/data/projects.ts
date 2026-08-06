@@ -1,11 +1,23 @@
 import { assets, type ProyectoSlug } from '@/lib/assets';
 
 /**
+ * Resolve an asset alt slot. Every meaningful raster asset must declare
+ * alt text in `src/lib/assets.ts`; a missing slot fails at build time.
+ */
+function manifestAlt(value: string | null): string {
+  if (value === null) {
+    throw new Error('Asset alt is unresolved. Fill the `alt` slot in src/lib/assets.ts.');
+  }
+  return value;
+}
+
+/**
  * Project records for the portfolio. Order is the homepage/portfolio
  * ordering. Slugs must match the keys in `src/lib/assets.ts` exactly.
  *
  * Each project record exposes:
  *   - slug, name, summary — the canonical metadata
+ *   - coverAlt — alt text for the index/carousel cover image
  *   - gallery — the ordered list of full-bleed images and text
  *     sections that compose the `/portafolio/[slug]` page
  *
@@ -46,6 +58,11 @@ export type Project = {
   readonly name: string;
   readonly summary: string;
   /**
+   * Alt text for the index card and home carousel cover image
+   * (the `large` slot of the manifest).
+   */
+  readonly coverAlt: string;
+  /**
    * Index card image (used by the Portafolio index tile and the home
    * carousel). Points at the `large` slot of the manifest per the
    * C03 manifest convention. Distinct from the detail-page `gallery`
@@ -68,7 +85,9 @@ export const projects: readonly Project[] = [
   {
     slug: 'content-lab',
     name: 'Js/Content Lab',
-    summary: 'TODO project summary — copy is added in Q01.',
+    summary:
+      'Identidad visual para JS Content Lab, un laboratorio de contenido audiovisual estratégico con una estética editorial en crema, negro y rojo.',
+    coverAlt: manifestAlt(cl.large.alt),
     coverSrc: cl.large.src,
     coverWidth: cl.large.width,
     coverHeight: cl.large.height,
@@ -78,7 +97,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: cl.cover.src,
-        alt: cl.cover.alt ?? 'JS/CONTENT LAB',
+        alt: manifestAlt(cl.cover.alt),
         width_px: cl.cover.width,
         height_px: cl.cover.height,
         priority: true,
@@ -87,7 +106,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: cl.detail[0].src,
-        alt: cl.detail[0].alt ?? '',
+        alt: manifestAlt(cl.detail[0].alt),
         width_px: cl.detail[0].width,
         height_px: cl.detail[0].height,
       },
@@ -95,7 +114,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: cl.detail[1].src,
-        alt: cl.detail[1].alt ?? '',
+        alt: manifestAlt(cl.detail[1].alt),
         width_px: cl.detail[1].width,
         height_px: cl.detail[1].height,
       },
@@ -109,7 +128,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: cl.detail[2].src,
-        alt: cl.detail[2].alt ?? '',
+        alt: manifestAlt(cl.detail[2].alt),
         width_px: cl.detail[2].width,
         height_px: cl.detail[2].height,
       },
@@ -118,7 +137,9 @@ export const projects: readonly Project[] = [
   {
     slug: 'jaze',
     name: 'Jaze',
-    summary: 'TODO project summary — copy is added in Q01.',
+    summary:
+      'Branding e identidad visual para Jaze, una marca de ropa cristiana con una estética sobria, contemporánea y basada en tonos tierra.',
+    coverAlt: manifestAlt(jz.large.alt),
     coverSrc: jz.large.src,
     coverWidth: jz.large.width,
     coverHeight: jz.large.height,
@@ -130,7 +151,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: jz.cover.src,
-        alt: jz.cover.alt ?? 'Jaze',
+        alt: manifestAlt(jz.cover.alt),
         width_px: jz.cover.width,
         height_px: jz.cover.height,
         priority: true,
@@ -139,7 +160,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: jz.detail[0].src,
-        alt: '',
+        alt: manifestAlt(jz.detail[0].alt),
         width_px: jz.detail[0].width,
         height_px: jz.detail[0].height,
       },
@@ -147,7 +168,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: jz.detail[1].src,
-        alt: '',
+        alt: manifestAlt(jz.detail[1].alt),
         width_px: jz.detail[1].width,
         height_px: jz.detail[1].height,
       },
@@ -161,7 +182,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: jz.detail[2].src,
-        alt: '',
+        alt: manifestAlt(jz.detail[2].alt),
         width_px: jz.detail[2].width,
         height_px: jz.detail[2].height,
       },
@@ -169,7 +190,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: jz.detail[3].src,
-        alt: '',
+        alt: manifestAlt(jz.detail[3].alt),
         width_px: jz.detail[3].width,
         height_px: jz.detail[3].height,
       },
@@ -177,7 +198,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: jz.detail[4].src,
-        alt: '',
+        alt: manifestAlt(jz.detail[4].alt),
         width_px: jz.detail[4].width,
         height_px: jz.detail[4].height,
       },
@@ -185,7 +206,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: jz.detail[5].src,
-        alt: '',
+        alt: manifestAlt(jz.detail[5].alt),
         width_px: jz.detail[5].width,
         height_px: jz.detail[5].height,
       },
@@ -194,7 +215,9 @@ export const projects: readonly Project[] = [
   {
     slug: 'nayeenails',
     name: 'Nayeenails',
-    summary: 'TODO project summary — copy is added in Q01.',
+    summary:
+      'Identidad visual para Nayeenails, un salón de uñas con una marca femenina, refinada y enfocada en una experiencia de cuidado memorable.',
+    coverAlt: manifestAlt(nn.large.alt),
     coverSrc: nn.large.src,
     coverWidth: nn.large.width,
     coverHeight: nn.large.height,
@@ -204,7 +227,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: nn.cover.src,
-        alt: nn.cover.alt ?? 'Nayeenails',
+        alt: manifestAlt(nn.cover.alt),
         width_px: nn.cover.width,
         height_px: nn.cover.height,
         priority: true,
@@ -219,7 +242,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: nn.detail[0].src,
-        alt: nn.detail[0].alt ?? '',
+        alt: manifestAlt(nn.detail[0].alt),
         width_px: nn.detail[0].width,
         height_px: nn.detail[0].height,
       },
@@ -227,7 +250,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: nn.detail[1].src,
-        alt: nn.detail[1].alt ?? '',
+        alt: manifestAlt(nn.detail[1].alt),
         width_px: nn.detail[1].width,
         height_px: nn.detail[1].height,
       },
@@ -235,7 +258,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: nn.detail[2].src,
-        alt: nn.detail[2].alt ?? '',
+        alt: manifestAlt(nn.detail[2].alt),
         width_px: nn.detail[2].width,
         height_px: nn.detail[2].height,
       },
@@ -243,7 +266,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: nn.detail[3].src,
-        alt: nn.detail[3].alt ?? '',
+        alt: manifestAlt(nn.detail[3].alt),
         width_px: nn.detail[3].width,
         height_px: nn.detail[3].height,
       },
@@ -251,7 +274,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: nn.detail[4].src,
-        alt: nn.detail[4].alt ?? '',
+        alt: manifestAlt(nn.detail[4].alt),
         width_px: nn.detail[4].width,
         height_px: nn.detail[4].height,
       },
@@ -260,7 +283,9 @@ export const projects: readonly Project[] = [
   {
     slug: 'simbi-cakes',
     name: 'Simbi Cakes',
-    summary: 'TODO project summary — copy is added in Q01.',
+    summary:
+      'Branding para Simbi Cakes, una marca de tortas y galletas artesanales para perros con una identidad alegre, cercana y festiva.',
+    coverAlt: manifestAlt(sc.large.alt),
     coverSrc: sc.large.src,
     coverWidth: sc.large.width,
     coverHeight: sc.large.height,
@@ -270,7 +295,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: sc.cover.src,
-        alt: sc.cover.alt ?? 'Simbi Cakes',
+        alt: manifestAlt(sc.cover.alt),
         width_px: sc.cover.width,
         height_px: sc.cover.height,
         priority: true,
@@ -279,7 +304,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: sc.detail[0].src,
-        alt: sc.detail[0].alt ?? '',
+        alt: manifestAlt(sc.detail[0].alt),
         width_px: sc.detail[0].width,
         height_px: sc.detail[0].height,
       },
@@ -287,7 +312,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: sc.detail[1].src,
-        alt: sc.detail[1].alt ?? '',
+        alt: manifestAlt(sc.detail[1].alt),
         width_px: sc.detail[1].width,
         height_px: sc.detail[1].height,
       },
@@ -295,7 +320,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: sc.detail[2].src,
-        alt: sc.detail[2].alt ?? '',
+        alt: manifestAlt(sc.detail[2].alt),
         width_px: sc.detail[2].width,
         height_px: sc.detail[2].height,
       },
@@ -309,7 +334,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: sc.detail[3].src,
-        alt: sc.detail[3].alt ?? '',
+        alt: manifestAlt(sc.detail[3].alt),
         width_px: sc.detail[3].width,
         height_px: sc.detail[3].height,
       },
@@ -317,7 +342,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: sc.detail[4].src,
-        alt: sc.detail[4].alt ?? '',
+        alt: manifestAlt(sc.detail[4].alt),
         width_px: sc.detail[4].width,
         height_px: sc.detail[4].height,
       },
@@ -325,7 +350,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: sc.detail[5].src,
-        alt: sc.detail[5].alt ?? '',
+        alt: manifestAlt(sc.detail[5].alt),
         width_px: sc.detail[5].width,
         height_px: sc.detail[5].height,
       },
@@ -333,7 +358,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: sc.detail[6].src,
-        alt: sc.detail[6].alt ?? '',
+        alt: manifestAlt(sc.detail[6].alt),
         width_px: sc.detail[6].width,
         height_px: sc.detail[6].height,
       },
@@ -342,7 +367,9 @@ export const projects: readonly Project[] = [
   {
     slug: 'veritomom',
     name: 'Veritomom',
-    summary: 'TODO project summary — copy is added in Q01.',
+    summary:
+      'Identidad visual para Veritomom, una marca lifestyle para mujeres con una personalidad fresca, cercana y llena de color.',
+    coverAlt: manifestAlt(vm.large.alt),
     coverSrc: vm.large.src,
     coverWidth: vm.large.width,
     coverHeight: vm.large.height,
@@ -352,7 +379,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: vm.cover.src,
-        alt: vm.cover.alt ?? 'VERITO mom',
+        alt: manifestAlt(vm.cover.alt),
         width_px: vm.cover.width,
         height_px: vm.cover.height,
         priority: true,
@@ -361,7 +388,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: vm.detail[0].src,
-        alt: vm.detail[0].alt ?? '',
+        alt: manifestAlt(vm.detail[0].alt),
         width_px: vm.detail[0].width,
         height_px: vm.detail[0].height,
       },
@@ -369,7 +396,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: vm.detail[1].src,
-        alt: vm.detail[1].alt ?? '',
+        alt: manifestAlt(vm.detail[1].alt),
         width_px: vm.detail[1].width,
         height_px: vm.detail[1].height,
       },
@@ -383,7 +410,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: vm.detail[2].src,
-        alt: vm.detail[2].alt ?? '',
+        alt: manifestAlt(vm.detail[2].alt),
         width_px: vm.detail[2].width,
         height_px: vm.detail[2].height,
       },
@@ -391,7 +418,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: vm.detail[3].src,
-        alt: vm.detail[3].alt ?? '',
+        alt: manifestAlt(vm.detail[3].alt),
         width_px: vm.detail[3].width,
         height_px: vm.detail[3].height,
       },
@@ -399,7 +426,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: vm.detail[4].src,
-        alt: vm.detail[4].alt ?? '',
+        alt: manifestAlt(vm.detail[4].alt),
         width_px: vm.detail[4].width,
         height_px: vm.detail[4].height,
       },
@@ -407,7 +434,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: vm.detail[5].src,
-        alt: vm.detail[5].alt ?? '',
+        alt: manifestAlt(vm.detail[5].alt),
         width_px: vm.detail[5].width,
         height_px: vm.detail[5].height,
       },
@@ -416,7 +443,9 @@ export const projects: readonly Project[] = [
   {
     slug: 'crea-desde-cero',
     name: 'Crea desde Cero',
-    summary: 'TODO project summary — copy is added in Q01.',
+    summary:
+      'Branding para Crea desde Cero Academy, una academia de emprendimiento femenino enfocada en creatividad, formación y propósito.',
+    coverAlt: manifestAlt(cc.large.alt),
     coverSrc: cc.large.src,
     coverWidth: cc.large.width,
     coverHeight: cc.large.height,
@@ -426,7 +455,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: cc.cover.src,
-        alt: cc.cover.alt ?? 'Crea Desde Cero',
+        alt: manifestAlt(cc.cover.alt),
         width_px: cc.cover.width,
         height_px: cc.cover.height,
         priority: true,
@@ -441,7 +470,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: cc.detail[0].src,
-        alt: cc.detail[0].alt ?? '',
+        alt: manifestAlt(cc.detail[0].alt),
         width_px: cc.detail[0].width,
         height_px: cc.detail[0].height,
       },
@@ -449,7 +478,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: cc.detail[1].src,
-        alt: cc.detail[1].alt ?? '',
+        alt: manifestAlt(cc.detail[1].alt),
         width_px: cc.detail[1].width,
         height_px: cc.detail[1].height,
       },
@@ -457,7 +486,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: cc.detail[2].src,
-        alt: cc.detail[2].alt ?? '',
+        alt: manifestAlt(cc.detail[2].alt),
         width_px: cc.detail[2].width,
         height_px: cc.detail[2].height,
       },
@@ -465,7 +494,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'half',
         src: cc.detail[3].src,
-        alt: cc.detail[3].alt ?? '',
+        alt: manifestAlt(cc.detail[3].alt),
         width_px: cc.detail[3].width,
         height_px: cc.detail[3].height,
       },
@@ -473,7 +502,7 @@ export const projects: readonly Project[] = [
         type: 'image',
         width: 'full',
         src: cc.detail[4].src,
-        alt: cc.detail[4].alt ?? '',
+        alt: manifestAlt(cc.detail[4].alt),
         width_px: cc.detail[4].width,
         height_px: cc.detail[4].height,
       },

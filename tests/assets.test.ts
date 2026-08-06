@@ -119,16 +119,11 @@ describe('assets manifest', () => {
     }
   });
 
-  it('logs how many alt placeholders still need copy', () => {
+  it('requires alt text for every asset slot', () => {
     const pending: string[] = [];
     for (const entry of walk(assets)) {
       if (entry.alt === null) pending.push(entry.src);
     }
-    if (pending.length > 0) {
-      console.warn(
-        `[assets] ${pending.length} alt placeholder(s) still TODO:\n  - ${pending.join('\n  - ')}`,
-      );
-    }
-    expect(pending.length).toBeGreaterThanOrEqual(0);
+    expect(pending, `alt placeholder(s) still TODO:\n  - ${pending.join('\n  - ')}`).toEqual([]);
   });
 });

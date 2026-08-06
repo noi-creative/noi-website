@@ -11,6 +11,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: nosotras.metadata.title,
   description: nosotras.metadata.description,
   path: site.routes.nosotras,
+  absoluteTitle: true,
 });
 
 /**

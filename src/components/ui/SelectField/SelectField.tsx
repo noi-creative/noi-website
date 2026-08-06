@@ -35,6 +35,11 @@ export function SelectField({
   const helpId = `${baseId}-help`;
   const errorId = `${baseId}-error`;
 
+  // Controlled consumers (e.g. RHF Controller) pass `value`; React forbids
+  // combining it with `defaultValue`. Uncontrolled usage keeps the empty
+  // default so the disabled placeholder option is shown initially.
+  const isControlled = selectProps.value !== undefined && selectProps.value !== null;
+
   const describedBy = [helpText ? helpId : null, errorText ? errorId : null]
     .filter(Boolean)
     .join(' ');
@@ -57,7 +62,7 @@ export function SelectField({
           aria-invalid={errorText ? true : undefined}
           aria-describedby={describedBy || undefined}
           className={styles.select}
-          defaultValue=""
+          {...(!isControlled ? { defaultValue: '' } : {})}
         >
           {placeholder ? (
             <option value="" disabled>

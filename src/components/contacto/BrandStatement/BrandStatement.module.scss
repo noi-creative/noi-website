@@ -18,14 +18,21 @@
       var(--brand-statement-backdrop-width),
       calc(100% - (2 * var(--page-gutter-mobile)))
     );
-    background: url('/images/shared/figuras/ovalos-background.svg') center / contain no-repeat;
+    background-image: url('/images/shared/figuras/ovalos-background.svg');
+    background-position: center bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
     pointer-events: none;
-    transform: translate(-50%, -30%);
     z-index: var(--z-decoration);
+    transform: translate(-50%, -0%);
+
+    @include from(500px) {
+      transform: translate(-50%, -50%);
+    }
 
     @include from(768px) {
-      transform: translate(-50%, -40%);
-      inset-block-start: 60%;
+      transform: translate(-50%, -50%);
+      inset-block-start: 50%;
     }
   }
 }
@@ -40,9 +47,22 @@
   padding: 0 var(--page-gutter-mobile) var(--space-8) var(--page-gutter-mobile);
   z-index: var(--z-content);
 
+  @include until(500px) {
+    background-color: var(--color-brand-yellow);
+    min-height: 0;
+  }
+
   @include until(768px) {
-    min-height: 15rem;
+    min-height: 12.5rem;
     padding-block: var(--space-5);
+  }
+}
+
+.topScallop {
+  background-color: var(--color-brand-yellow);
+
+  @include from(500) {
+    display: none !important;
   }
 }
 

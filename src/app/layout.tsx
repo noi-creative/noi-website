@@ -2,9 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.scss';
 import { panelSans, playfairDisplay, satoshi } from './fonts';
 import { site } from '@/config/site';
-
-const defaultDescription =
-  'NOI Creative — estudio de branding y diseño en Orlando, Florida. Estrategia, identidad y producción visual para marcas que buscan crecer.';
+import { serializeJsonLd } from '@/lib/metadata';
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.siteUrl),
@@ -12,7 +10,7 @@ export const metadata: Metadata = {
     default: site.shortTitle,
     template: `%s — ${site.shortTitle}`,
   },
-  description: defaultDescription,
+  description: site.defaultDescription,
   applicationName: site.brand,
   authors: [{ name: site.brand }],
   generator: 'Next.js',
@@ -33,12 +31,12 @@ export const metadata: Metadata = {
     url: site.siteUrl,
     siteName: site.brand,
     title: site.shortTitle,
-    description: defaultDescription,
+    description: site.defaultDescription,
   },
   twitter: {
     card: 'summary_large_image',
     title: site.shortTitle,
-    description: defaultDescription,
+    description: site.defaultDescription,
   },
   robots: {
     index: true,
@@ -59,12 +57,13 @@ export const viewport: Viewport = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
+  '@id': `${site.siteUrl.replace(/\/+$/, '')}/#organization`,
   '@type': 'Organization',
   name: site.brand,
   url: site.siteUrl,
   logo: `${site.siteUrl.replace(/\/+$/, '')}/images/shared/logo/noi-blanco.svg`,
   email: site.contactEmail,
-  description: defaultDescription,
+  description: site.defaultDescription,
   sameAs: [site.social.instagram.url, site.social.linkedin.url, site.social.tiktok.url].filter(
     (value) => !value.startsWith('TODO'),
   ),
@@ -79,7 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
         {children}
       </body>

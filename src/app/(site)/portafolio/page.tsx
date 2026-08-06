@@ -10,6 +10,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: portafolio.metadata.title,
   description: portafolio.metadata.description,
   path: site.routes.portafolio,
+  absoluteTitle: true,
 });
 
 export default function PortafolioIndexPage() {

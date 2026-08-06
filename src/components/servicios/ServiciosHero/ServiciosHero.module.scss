@@ -93,7 +93,7 @@
   width: clamp(12rem, 19vw, 19rem);
 }
 
-@include until(1440px) {
+@include until(1700px) {
   .megaphone {
     inset-block-start: auto;
     inset-block-end: 12.5%;
@@ -102,14 +102,16 @@
   }
 }
 
-@include until(1024px) {
-  .figure {
-    inset-inline-start: -10rem;
-  }
-
+@include until(1240px) {
   .megaphone {
     inset-block-end: 1rem;
     inset-inline-start: 1rem;
+  }
+}
+
+@include until(1024px) {
+  .figure {
+    inset-inline-start: -10rem;
   }
 
   .ovals {

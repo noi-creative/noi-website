@@ -21,7 +21,7 @@
   gap: var(--space-7);
 
   @include from(768px) {
-    padding-block: var(--space-10);
+    padding-block: var(--space-7);
   }
 }
 
@@ -44,6 +44,10 @@
   gap: var(--space-5);
   color: var(--color-background-dark);
   max-width: 20em;
+
+  @include until(500px) {
+    max-width: 18em;
+  }
 
   @include from(768px) {
     max-width: 25em;

@@ -9,6 +9,7 @@ import styles from './PortafolioPreview.module.scss';
 type CarouselItem = {
   readonly slug: Project['slug'];
   readonly name: string;
+  readonly alt: string;
   readonly src: string;
   readonly width: number;
   readonly height: number;
@@ -52,7 +53,7 @@ export function PortafolioCarousel({ items }: PortafolioCarouselProps) {
             <li key={item.slug} className={styles.stripItem}>
               <Image
                 src={item.src}
-                alt={item.name}
+                alt={item.alt}
                 width={item.width}
                 height={item.height}
                 className={styles.stripImage}

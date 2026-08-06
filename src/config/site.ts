@@ -16,7 +16,8 @@ export const site = {
   brand: 'NOI Creative',
   shortTitle: 'NOI: creative',
   siteUrl: 'https://creativenoi.com',
-  defaultDescription: 'TODO metadata description',
+  defaultDescription:
+    'Somos un estudio creativo en Orlando con alcance global. Construimos marcas con criterio estratégico, identidad visual y acompañamiento real. Sin improvisación, sin piezas sueltas.',
   contactEmail: 'hola@creativenoi.com',
   primaryMarket: 'Orlando',
   copyrightYear: 2025,

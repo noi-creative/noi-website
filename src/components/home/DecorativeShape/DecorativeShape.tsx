@@ -16,7 +16,8 @@ export function DecorativeShape({ className }: DecorativeShapeProps) {
       className={[styles.shape, className].filter(Boolean).join(' ')}
       width="540"
       height="673"
-      alt="Figure"
+      alt=""
+      aria-hidden="true"
       src={assets.shared.figuras.figura3.src}
     />
   );

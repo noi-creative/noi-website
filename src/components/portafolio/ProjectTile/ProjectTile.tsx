@@ -30,7 +30,7 @@ export function ProjectTile({ project, tag, priority = false }: ProjectTileProps
         <span className={styles.tag}>{tag}</span>
         <Image
           src={project.coverSrc}
-          alt={project.name}
+          alt={project.coverAlt}
           width={project.coverWidth}
           height={project.coverHeight}
           sizes="(max-width: 767px) 100vw, 50vw"
